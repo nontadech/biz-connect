@@ -1,0 +1,9 @@
+export 'auth_repository.dart';
+export 'event_repository.dart';
+export 'news_repository.dart';
+export 'master_data_repository.dart';
+export 'user_repository.dart';
+export 'contact_repository.dart';
+export 'policy_repository.dart';
+export 'qr_repository.dart';
+export 'join_repository.dart';

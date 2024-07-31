@@ -1,0 +1,65 @@
+import 'package:biz_connect/presentation/widgets/widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+class SpeakerList extends StatelessWidget {
+  const SpeakerList({
+    super.key
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(padding: const EdgeInsets.only(left: 25, right: 25, top: 10, bottom: 10),
+      child: GridView.count(
+        shrinkWrap: true,
+        crossAxisCount: 2,
+        childAspectRatio: 0.43,
+        mainAxisSpacing: 10,
+        children: [
+          Center(
+            child: CardSpeaker(
+              onTap: () {
+                context.push('/join/speaker');
+              },
+            ),
+          ),
+          Center(
+            child: CardSpeaker(
+              onTap: () {
+                context.push('/join/speaker');
+              },
+            ),
+        ),
+          Center(
+            child: CardSpeaker(
+              onTap: () {
+                context.push('/join/speaker');
+              },
+            ),
+          ),
+          Center(
+            child: CardSpeaker(
+              onTap: () {
+                context.push('/join/speaker');
+              },
+            ),
+          ),
+            Center(
+            child: CardSpeaker(
+              onTap: () {
+                context.push('/join/speaker');
+              },
+            ),
+          ),
+          Center(
+            child: CardSpeaker(
+              onTap: () {
+                context.push('/join/speaker');
+              },
+            ),
+          ),
+        ]
+      ) 
+    );
+  }
+}

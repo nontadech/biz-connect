@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "386145539313",
+    "firebase_url": "https://tceb-6770e.firebaseio.com",
+    "project_id": "tceb-6770e",
+    "storage_bucket": "tceb-6770e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:386145539313:android:9ac438fd2b454788",
+        "android_client_info": {
+          "package_name": "com.mice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "386145539313-1r49hcb7t3c8jjc233hv5dtvn6bj4bg8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSZUox63ReQjBUD8_MW_FrcI8GSDvjsas"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

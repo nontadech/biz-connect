@@ -1,0 +1,1 @@
+export 'my_qr.dart';

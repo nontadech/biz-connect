@@ -1,0 +1,1 @@
+export 'rate_page.dart';
