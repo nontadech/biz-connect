@@ -1,13 +1,22 @@
 import 'package:biz_connect/app/config/themes/theme.dart';
 import 'package:biz_connect/presentation/widgets/text.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class CardSpeaker extends StatelessWidget {
   final VoidCallback? onTap;
+  final String image;
+  final String fullname;
+  final String position;
+  final String company;
 
   const CardSpeaker({
     super.key,
     this.onTap,
+    required this.image,
+    required this.fullname,
+    required this.position,
+    required this.company,
   });
 
   @override
@@ -26,11 +35,13 @@ class CardSpeaker extends StatelessWidget {
         onTap: onTap,
         child: Column(
           children: <Widget>[
-            Image.asset(
-              'assets/demo/speaker.png',
+            CachedNetworkImage(
+              imageUrl: image,
               width: 179,
               height: 254,
               fit: BoxFit.cover,
+              placeholder: (BuildContext context, String url) => const CircularProgressIndicator(),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
             Padding(
               padding: const EdgeInsets.all(10),
@@ -38,7 +49,7 @@ class CardSpeaker extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   TextCustom(
-                    text: 'Ms. Kaewalin Wangpitchasuk',
+                    text: fullname,
                     fontSize: FontSize.h7,
                     fontWeight: FontWeight.w500,
                     height: 1.2,
@@ -50,7 +61,7 @@ class CardSpeaker extends StatelessWidget {
                     endIndent: 120,
                   ),
                   TextCustom(
-                    text: 'Deputy Managing Director',
+                    text: position,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 3,
                     fontSize: FontSize.h11,
@@ -60,7 +71,7 @@ class CardSpeaker extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   TextCustom(
-                    text: 'Kasikorn Research Center',
+                    text: company,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 3,
                     fontSize: FontSize.h11,

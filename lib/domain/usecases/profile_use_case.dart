@@ -1,4 +1,4 @@
-import 'package:biz_connect/app/core/usecases/pram_usecase.dart';
+import 'package:biz_connect/app/core/usecases/param_usecase.dart';
 import 'package:biz_connect/data/models/user_model.dart';
 import 'package:biz_connect/domain/entities/user_entity.dart';
 import 'package:biz_connect/domain/repositories/user_repository.dart';

@@ -31,10 +31,12 @@ class _Survey5State extends State<Survey5> {
         const SizedBox(
           height: 15,
         ),
-        const SizedBox(
+        SizedBox(
           width: 232,
           child: Rate(
-            type: RateType.middle,
+            type: RateType.middle, setRateCallBack: (value) {
+              // Call controller method
+            },
           ),
         )
       ],

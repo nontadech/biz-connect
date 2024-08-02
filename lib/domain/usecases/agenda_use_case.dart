@@ -1,6 +1,6 @@
 
 
-import 'package:biz_connect/app/core/usecases/pram_usecase.dart';
+import 'package:biz_connect/app/core/usecases/param_usecase.dart';
 import 'package:biz_connect/data/models/join_model.dart';
 import 'package:biz_connect/domain/entities/join_entity.dart';
 import 'package:biz_connect/domain/repositories/join_repository.dart';
@@ -11,6 +11,9 @@ class AgendaUseCase extends ParamUseCase<JoinAgenda, JoinAgendaInput> {
 
   @override
   Future<JoinAgenda> execute(JoinAgendaInput params) {
-    return _repo.getAgenda(params.eventId, params.room!);
+    if (params.speakerId != null) {
+      return _repo.getAgenda(params.eventId, '', params.speakerId!);
+    }
+    return _repo.getAgenda(params.eventId, params.room!, 0);
   }
 }

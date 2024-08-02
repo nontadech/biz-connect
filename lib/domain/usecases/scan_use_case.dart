@@ -1,5 +1,5 @@
 
-import 'package:biz_connect/app/core/usecases/pram_usecase.dart';
+import 'package:biz_connect/app/core/usecases/param_usecase.dart';
 import 'package:biz_connect/data/models/qr_model.dart';
 import 'package:biz_connect/domain/repositories/qr_repository.dart';
 

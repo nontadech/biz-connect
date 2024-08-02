@@ -36,7 +36,7 @@ class ForgotController extends GetxController {
   forgotPassword() async {
     LoadingBinding().dependencies();
     final loadingC = LoadingController.call;
-    // try {
+    try {
       if (forgotPageFormKey.currentState!.validate()) {
         popupLoading(context.value);
         final result = await _forgotInUseCase.execute(emailController.value.text);
@@ -51,8 +51,8 @@ class ForgotController extends GetxController {
           },
         );
       }
-    // } catch (error) {
-    //   log('error ${error.toString()}');
-    // }
+    } catch (error) {
+      log('error ${error.toString()}');
+    }
   }
 }

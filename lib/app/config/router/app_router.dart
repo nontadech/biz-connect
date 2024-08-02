@@ -188,24 +188,47 @@ class AppRouter {
           Map<String, dynamic> extra = state.extra as Map<String, dynamic>;
           return SessionPage(
             session: extra['session'],
+            eventId: extra['event_id'],
           );
         },
       ),
       GoRoute(
         path: '/join/agenda/session/rate',
-        builder: (context, state) => const RatePage(),
+        builder: (context, state){
+          Map<String, dynamic> extra = state.extra as Map<String, dynamic>;
+          return RatePage(
+            agendaId: extra['agendaId'],
+            eventId: extra['event_id'],
+          );
+        },
       ),
       GoRoute(
         path: '/join/zone',
-        builder: (context, state) => const ZonePage(),
+        builder: (context, state){
+          Map<String, dynamic> extra = state.extra as Map<String, dynamic>;
+          return ZonePage(
+            eventId: extra['event_id'],
+          );
+        },
       ),
       GoRoute(
         path: '/join/speakers',
-        builder: (context, state) => const SpeakersPage(),
+        builder: (context, state){
+          Map<String, dynamic> extra = state.extra as Map<String, dynamic>;
+          return SpeakersPage(
+            eventId: extra['event_id'],
+          );
+        },
       ),
       GoRoute(
         path: '/join/speaker',
-        builder: (context, state) => const SpeakerPage(),
+        builder: (context, state){
+          Map<String, dynamic> extra = state.extra as Map<String, dynamic>;
+          return SpeakerPage(
+            speaker: extra['speaker'],
+            eventId: extra['event_id'],
+          );
+        },
       ),
       GoRoute(
         path: '/join/downloads',

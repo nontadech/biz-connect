@@ -33,7 +33,7 @@ class _DownloadsPageState extends State<DownloadsPage> {
                 title: 'Blockchain 2024_1',
                 size: 'Size: 3KB',
                 onTap: () {
-                  popupPicture(context);
+                  popupPicture(context, 'https://via.placeholder.com/150');
                 },
               ),
               const SizedBox(height: 10),
@@ -41,7 +41,7 @@ class _DownloadsPageState extends State<DownloadsPage> {
                 title: 'Blockchain 2024_2',
                 size: 'Size: 3KB',
                 onTap: () {
-                  popupPicture(context);
+                  popupPicture(context, 'https://via.placeholder.com/150');
                 },
               ),
               const SizedBox(height: 10),
@@ -49,7 +49,7 @@ class _DownloadsPageState extends State<DownloadsPage> {
                 title: 'Blockchain 2024_3',
                 size: 'Size: 3KB',
                 onTap: () {
-                  popupPicture(context);
+                  popupPicture(context, 'https://via.placeholder.com/150');
                 },
               ),
               const SizedBox(height: 20),

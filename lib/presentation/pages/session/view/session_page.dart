@@ -6,9 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 class SessionPage extends StatelessWidget {
   final SessionList session;
+  final int eventId;
   const SessionPage({
     super.key,
-    required this.session
+    required this.session,
+    required this.eventId
   });
  
   @override
@@ -47,7 +49,13 @@ class SessionPage extends StatelessWidget {
               padding: const EdgeInsets.only(left: 25, right: 25, bottom: 40),
               child: ButtonRate(
                 onPressed: () {
-                  context.push('/join/agenda/session/rate');
+                  context.push(
+                    '/join/agenda/session/rate', 
+                    extra: {
+                      'agendaId': session.id, 
+                      'event_id': eventId
+                    }
+                  );
                 },
               )
             )

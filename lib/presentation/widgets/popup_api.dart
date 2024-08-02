@@ -46,7 +46,7 @@ Future<void> popupAPI(BuildContext context, String message) {
                 child: ElevatedButtonCustom(
                   text: 'CLOSE',
                   onPressed: () {
-                    Navigator.pop(context);
+                    // Navigator.pop(context);
                     Navigator.pop(loadingC.buildContext.value);
                   },
                 ),

@@ -296,3 +296,158 @@ abstract class _QRContact implements QRContact {
   _$$QRContactImplCopyWith<_$QRContactImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+QRPrivateEvent _$QRPrivateEventFromJson(Map<String, dynamic> json) {
+  return _QRPrivateEvent.fromJson(json);
+}
+
+/// @nodoc
+mixin _$QRPrivateEvent {
+  QRPrivateEventData? get data => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $QRPrivateEventCopyWith<QRPrivateEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $QRPrivateEventCopyWith<$Res> {
+  factory $QRPrivateEventCopyWith(
+          QRPrivateEvent value, $Res Function(QRPrivateEvent) then) =
+      _$QRPrivateEventCopyWithImpl<$Res, QRPrivateEvent>;
+  @useResult
+  $Res call({QRPrivateEventData? data});
+
+  $QRPrivateEventDataCopyWith<$Res>? get data;
+}
+
+/// @nodoc
+class _$QRPrivateEventCopyWithImpl<$Res, $Val extends QRPrivateEvent>
+    implements $QRPrivateEventCopyWith<$Res> {
+  _$QRPrivateEventCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_value.copyWith(
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as QRPrivateEventData?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $QRPrivateEventDataCopyWith<$Res>? get data {
+    if (_value.data == null) {
+      return null;
+    }
+
+    return $QRPrivateEventDataCopyWith<$Res>(_value.data!, (value) {
+      return _then(_value.copyWith(data: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$QRPrivateEventImplCopyWith<$Res>
+    implements $QRPrivateEventCopyWith<$Res> {
+  factory _$$QRPrivateEventImplCopyWith(_$QRPrivateEventImpl value,
+          $Res Function(_$QRPrivateEventImpl) then) =
+      __$$QRPrivateEventImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({QRPrivateEventData? data});
+
+  @override
+  $QRPrivateEventDataCopyWith<$Res>? get data;
+}
+
+/// @nodoc
+class __$$QRPrivateEventImplCopyWithImpl<$Res>
+    extends _$QRPrivateEventCopyWithImpl<$Res, _$QRPrivateEventImpl>
+    implements _$$QRPrivateEventImplCopyWith<$Res> {
+  __$$QRPrivateEventImplCopyWithImpl(
+      _$QRPrivateEventImpl _value, $Res Function(_$QRPrivateEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_$QRPrivateEventImpl(
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as QRPrivateEventData?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$QRPrivateEventImpl implements _QRPrivateEvent {
+  const _$QRPrivateEventImpl({this.data});
+
+  factory _$QRPrivateEventImpl.fromJson(Map<String, dynamic> json) =>
+      _$$QRPrivateEventImplFromJson(json);
+
+  @override
+  final QRPrivateEventData? data;
+
+  @override
+  String toString() {
+    return 'QRPrivateEvent(data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$QRPrivateEventImpl &&
+            (identical(other.data, data) || other.data == data));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, data);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$QRPrivateEventImplCopyWith<_$QRPrivateEventImpl> get copyWith =>
+      __$$QRPrivateEventImplCopyWithImpl<_$QRPrivateEventImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$QRPrivateEventImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _QRPrivateEvent implements QRPrivateEvent {
+  const factory _QRPrivateEvent({final QRPrivateEventData? data}) =
+      _$QRPrivateEventImpl;
+
+  factory _QRPrivateEvent.fromJson(Map<String, dynamic> json) =
+      _$QRPrivateEventImpl.fromJson;
+
+  @override
+  QRPrivateEventData? get data;
+  @override
+  @JsonKey(ignore: true)
+  _$$QRPrivateEventImplCopyWith<_$QRPrivateEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

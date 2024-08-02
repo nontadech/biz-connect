@@ -15,4 +15,10 @@ class QRRepositoryIml extends QRRepository {
     return QRContact.fromJson(response);
   }
 
+  @override
+  Future<QRPrivateEvent> getQRPrivateEvent(String contactQRCode) async {
+     final response = await QRAPI.getQRContactInformation(contactQRCode).request();
+    return QRPrivateEvent.fromJson(response);
+  }
+
 }

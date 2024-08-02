@@ -1,20 +1,15 @@
 import 'package:biz_connect/presentation/pages/rate/view/rate_form.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-class RatePage extends StatefulWidget {
-  const RatePage({super.key});
+class RatePage extends StatelessWidget {
+  final int agendaId;
+  final int eventId;
+  const RatePage({
+    super.key,
+    required this.agendaId,
+    required this.eventId
+  });
 
-  @override
-  State<RatePage> createState() => _RatePageState();
-}
-
-class _RatePageState extends State<RatePage> {
-  @override
-  void initState() {
-    // Initialize & inject UserController() using Get.put()
-    super.initState();
-  }
- 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +19,10 @@ class _RatePageState extends State<RatePage> {
         title: 'Session Rating',
         type: AppBarType.back,
       ),
-      body: const RateForm(),
+      body: RateForm(
+        agendaId: agendaId,
+        eventId: eventId,
+      ),
     );
   }
 }

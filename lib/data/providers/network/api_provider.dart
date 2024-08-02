@@ -4,25 +4,40 @@ import 'package:biz_connect/data/models/body_model.dart';
 import 'package:biz_connect/data/providers/network/api_request_representable.dart';
 import 'package:biz_connect/main.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
-import 'package:get/get_connect/connect.dart';
+import 'package:dio/dio.dart' as dio;
 
 class APIProvider {
   static const requestTimeOut = Duration(seconds: 25);
-  final _client = GetConnect(timeout: requestTimeOut);
-
+  // final _client = GetConnect(
+  //   timeout: requestTimeOut,
+  //   allowAutoSignedCert: true,
+  //   withCredentials: true,
+  // );
+  final api = dio.Dio();
   static final _singleton = APIProvider();
   static APIProvider get instance => _singleton;
 
   Future request(APIRequestRepresentable request) async {
     try {
-      final response = await _client.request(
+      /*
+          String url, {
+    Object? data,
+    Map<String, dynamic>? queryParameters,
+    CancelToken? cancelToken,
+    Options? options,
+      */
+      final response = await api.request(
         request.url,
-        request.method.string,
-        headers: request.headers,
-        query: request.query,
-        body: request.body,
+        // request.method.string,
+        // headers: request.headers,
+        queryParameters: request.query,
+        data: request.body,
+        options: dio.Options(
+          contentType: 'application/json',
+          method: request.method.string,
+          headers: request.headers
+        )
       );
-  
       return _returnResponse(response);
     } on TimeoutException catch (_) {
       throw TimeOutException(null);
@@ -31,15 +46,15 @@ class APIProvider {
     }
   }
 
-  dynamic _returnResponse(Response<dynamic> response) {
-    var body = Body.fromJson(response.body);
+  dynamic _returnResponse(dio.Response<dynamic> response) {
+    var body = Body.fromJson(response.data);
     switch (body.status) {
       case true:
       case 200:
-        return response.body;
+        return response.data;
       default:
       if(body.success){
-         return response.body;
+         return response.data;
       }else{
         popupAPI(NavigationService.navigatorKey.currentContext!, body.message.toString());
         throw BadRequestException(body.message.toString());

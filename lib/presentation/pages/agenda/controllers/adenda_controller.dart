@@ -1,10 +1,10 @@
-// ignore_for_file: unused_result
 import 'dart:developer';
 
 import 'package:biz_connect/app/services/local_storage.dart';
 import 'package:biz_connect/data/models/join_model.dart';
 import 'package:biz_connect/domain/entities/join_entity.dart';
 import 'package:biz_connect/domain/usecases/agenda_use_case.dart';
+import 'package:carousel_slider/carousel_controller.dart';
 import 'package:get/get.dart';
 
 class AgendaController extends GetxController {
@@ -12,10 +12,11 @@ class AgendaController extends GetxController {
   final AgendaUseCase _agendaUseCase;
   final store = Get.find<LocalStorageService>();
   final Rx<JoinAgenda> agenda = const JoinAgenda().obs;
-  final RxList<SessionList> sessionList = <SessionList>[].obs;
+  final RxList<SessionData> sessionList = <SessionData>[].obs;
+  final carouselController = CarouselController();
 
   final Rx<String> selectRoom = ''.obs;
-  final Rx<String> selectSession = ''.obs;
+  final Rx<int> selectSession = 0.obs;
   final Rx<int> eventId = 0.obs;
   
   getAgenda(JoinAgendaInput joinAgendaInput) async {
@@ -43,16 +44,13 @@ class AgendaController extends GetxController {
     selectRoom(room);
   }
 
-  onSelectSession(String session) async {
+  onSelectSession(int session) async {
+    carouselController.animateToPage(session);
     selectSession(session);
-    filterSession();
+    // filterSession();
   }
   filterSession() {
-    if(selectSession.value.isNotEmpty && agenda.value.sessions.length > 1){
-      sessionList.value = agenda.value.sessions.firstWhere((element) => element.session_title_date == selectSession.value).session_list as List<SessionList>;
-    }else{
-      sessionList.value = agenda.value.sessions[0].session_list as List<SessionList>;
-    }
+     sessionList.value = agenda.value.sessions;
   }
 
 }

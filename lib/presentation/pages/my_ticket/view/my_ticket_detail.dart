@@ -51,7 +51,8 @@ class MyTicketDetail extends GetView<MyTicketController> {
               items: tickets.map((ticket) {
                 return Builder(
                   builder: (BuildContext context) {
-                    return Padding(padding: const EdgeInsets.only(left: 25, right: 25, top: 10, bottom: 10),
+                    return Padding(
+                      padding: const EdgeInsets.only(left: 25, right: 25, top: 10, bottom: 10),
                       child: SingleChildScrollView(
                         scrollDirection: Axis.vertical,
                         child: Stack(
@@ -343,7 +344,7 @@ class MyTicketDetail extends GetView<MyTicketController> {
                 height: MediaQuery.of(context).size.height-100,
                 aspectRatio: 16/9,
                 viewportFraction: 1,
-                initialPage: tickets.length,
+                initialPage: 0,
                 enableInfiniteScroll: false,
                 reverse: false,
                 autoPlay: false,

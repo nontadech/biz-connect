@@ -3,6 +3,7 @@ import 'package:biz_connect/presentation/pages/agenda/controllers/controllers.da
 import 'package:biz_connect/presentation/pages/agenda/view/adenda_slide_date.dart';
 import 'package:biz_connect/presentation/pages/agenda/view/adenda_slide_time.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
@@ -13,9 +14,9 @@ class AgendaPage extends GetView<AgendaController> {
     super.key,
     required this.eventId
   });
-  Widget getCardCustum(BuildContext context) {
+  Widget getCardCustum(BuildContext context,List<SessionList> sessions) {
     List<Widget> widgetList = [];
-    for (var session in controller.sessionList) {
+    for (var session in sessions) {
       widgetList.add(AdendaSlideTime(
         time: session.start_time!,
       ));
@@ -26,11 +27,13 @@ class AgendaPage extends GetView<AgendaController> {
             title: session.title!,
             location: session.location!,
             time: '${session.start_time} - ${session.end_time}',
+            files:  const [],
             onTap: () {
               context.push(
                 '/join/agenda/session', 
                 extra: {
-                  'session': session
+                  'session': session,
+                  'event_id': eventId
                 }
               );
             },
@@ -38,14 +41,13 @@ class AgendaPage extends GetView<AgendaController> {
         )
       );
     }
-    return Expanded(
-      child: SingleChildScrollView(
-        child: widgetList.isNotEmpty ? 
-        Column(
-          children: widgetList
-        ) : 
-        const SizedBox(),
-      ),
+    
+    return SingleChildScrollView(
+      child: widgetList.isNotEmpty ? 
+      Column(
+        children: widgetList
+      ) : 
+      const SizedBox(),
     );
   }
   
@@ -101,14 +103,39 @@ class AgendaPage extends GetView<AgendaController> {
                 child: AdendaSlideDate(
                   agendaList: controller.agenda.value.sessions,
                   onSelectSession: controller.onSelectSession,
-                  selectSession: controller.selectSession.value != '' ? controller.selectSession.value : controller.agenda.value.sessions[0].session_title_date!,
+                  selectSession: controller.selectSession.value,
                 ),
               ),
               const SizedBox(
                 height: 5,
               ),
-              getCardCustum(context),
-            
+              Expanded(
+                child: CarouselSlider(
+                  disableGesture: true,
+                  carouselController: controller.carouselController,
+                  items: controller.sessionList.map((sessions) {
+                    return getCardCustum(context, sessions.session_list!);
+                  }).toList(),
+                  options: CarouselOptions(
+                    aspectRatio: 16/9,
+                    viewportFraction: 1,
+                    initialPage: 0,
+                    height: double.infinity,
+                    enableInfiniteScroll: false,
+                    reverse: false,
+                    autoPlay: false,
+                    pauseAutoPlayOnTouch: false,
+                    autoPlayInterval: const Duration(seconds: 3),
+                    autoPlayAnimationDuration: const Duration(milliseconds: 800),
+                    autoPlayCurve: Curves.fastOutSlowIn,
+                    enlargeCenterPage: false,
+                    scrollDirection: Axis.horizontal,
+                    onPageChanged: (index, reason) {
+                      controller.onSelectSession(index);
+                    }
+                  ),
+                ),
+              )
             ],
           )
         );

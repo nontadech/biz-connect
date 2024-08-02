@@ -165,6 +165,8 @@ JoinAgenda _$JoinAgendaFromJson(Map<String, dynamic> json) {
 mixin _$JoinAgenda {
   List<String> get room_list => throw _privateConstructorUsedError;
   List<SessionData> get sessions => throw _privateConstructorUsedError;
+  String? get event_start_date => throw _privateConstructorUsedError;
+  String? get event_end_date => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -178,7 +180,11 @@ abstract class $JoinAgendaCopyWith<$Res> {
           JoinAgenda value, $Res Function(JoinAgenda) then) =
       _$JoinAgendaCopyWithImpl<$Res, JoinAgenda>;
   @useResult
-  $Res call({List<String> room_list, List<SessionData> sessions});
+  $Res call(
+      {List<String> room_list,
+      List<SessionData> sessions,
+      String? event_start_date,
+      String? event_end_date});
 }
 
 /// @nodoc
@@ -196,6 +202,8 @@ class _$JoinAgendaCopyWithImpl<$Res, $Val extends JoinAgenda>
   $Res call({
     Object? room_list = null,
     Object? sessions = null,
+    Object? event_start_date = freezed,
+    Object? event_end_date = freezed,
   }) {
     return _then(_value.copyWith(
       room_list: null == room_list
@@ -206,6 +214,14 @@ class _$JoinAgendaCopyWithImpl<$Res, $Val extends JoinAgenda>
           ? _value.sessions
           : sessions // ignore: cast_nullable_to_non_nullable
               as List<SessionData>,
+      event_start_date: freezed == event_start_date
+          ? _value.event_start_date
+          : event_start_date // ignore: cast_nullable_to_non_nullable
+              as String?,
+      event_end_date: freezed == event_end_date
+          ? _value.event_end_date
+          : event_end_date // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -218,7 +234,11 @@ abstract class _$$JoinAgendaImplCopyWith<$Res>
       __$$JoinAgendaImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<String> room_list, List<SessionData> sessions});
+  $Res call(
+      {List<String> room_list,
+      List<SessionData> sessions,
+      String? event_start_date,
+      String? event_end_date});
 }
 
 /// @nodoc
@@ -234,6 +254,8 @@ class __$$JoinAgendaImplCopyWithImpl<$Res>
   $Res call({
     Object? room_list = null,
     Object? sessions = null,
+    Object? event_start_date = freezed,
+    Object? event_end_date = freezed,
   }) {
     return _then(_$JoinAgendaImpl(
       room_list: null == room_list
@@ -244,6 +266,14 @@ class __$$JoinAgendaImplCopyWithImpl<$Res>
           ? _value._sessions
           : sessions // ignore: cast_nullable_to_non_nullable
               as List<SessionData>,
+      event_start_date: freezed == event_start_date
+          ? _value.event_start_date
+          : event_start_date // ignore: cast_nullable_to_non_nullable
+              as String?,
+      event_end_date: freezed == event_end_date
+          ? _value.event_end_date
+          : event_end_date // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -253,7 +283,9 @@ class __$$JoinAgendaImplCopyWithImpl<$Res>
 class _$JoinAgendaImpl implements _JoinAgenda {
   const _$JoinAgendaImpl(
       {final List<String> room_list = const [],
-      final List<SessionData> sessions = const []})
+      final List<SessionData> sessions = const [],
+      this.event_start_date = '',
+      this.event_end_date = ''})
       : _room_list = room_list,
         _sessions = sessions;
 
@@ -279,8 +311,15 @@ class _$JoinAgendaImpl implements _JoinAgenda {
   }
 
   @override
+  @JsonKey()
+  final String? event_start_date;
+  @override
+  @JsonKey()
+  final String? event_end_date;
+
+  @override
   String toString() {
-    return 'JoinAgenda(room_list: $room_list, sessions: $sessions)';
+    return 'JoinAgenda(room_list: $room_list, sessions: $sessions, event_start_date: $event_start_date, event_end_date: $event_end_date)';
   }
 
   @override
@@ -290,7 +329,11 @@ class _$JoinAgendaImpl implements _JoinAgenda {
             other is _$JoinAgendaImpl &&
             const DeepCollectionEquality()
                 .equals(other._room_list, _room_list) &&
-            const DeepCollectionEquality().equals(other._sessions, _sessions));
+            const DeepCollectionEquality().equals(other._sessions, _sessions) &&
+            (identical(other.event_start_date, event_start_date) ||
+                other.event_start_date == event_start_date) &&
+            (identical(other.event_end_date, event_end_date) ||
+                other.event_end_date == event_end_date));
   }
 
   @JsonKey(ignore: true)
@@ -298,7 +341,9 @@ class _$JoinAgendaImpl implements _JoinAgenda {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_room_list),
-      const DeepCollectionEquality().hash(_sessions));
+      const DeepCollectionEquality().hash(_sessions),
+      event_start_date,
+      event_end_date);
 
   @JsonKey(ignore: true)
   @override
@@ -317,7 +362,9 @@ class _$JoinAgendaImpl implements _JoinAgenda {
 abstract class _JoinAgenda implements JoinAgenda {
   const factory _JoinAgenda(
       {final List<String> room_list,
-      final List<SessionData> sessions}) = _$JoinAgendaImpl;
+      final List<SessionData> sessions,
+      final String? event_start_date,
+      final String? event_end_date}) = _$JoinAgendaImpl;
 
   factory _JoinAgenda.fromJson(Map<String, dynamic> json) =
       _$JoinAgendaImpl.fromJson;
@@ -327,7 +374,460 @@ abstract class _JoinAgenda implements JoinAgenda {
   @override
   List<SessionData> get sessions;
   @override
+  String? get event_start_date;
+  @override
+  String? get event_end_date;
+  @override
   @JsonKey(ignore: true)
   _$$JoinAgendaImplCopyWith<_$JoinAgendaImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+SessionAnswer _$SessionAnswerFromJson(Map<String, dynamic> json) {
+  return _SessionAnswer.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SessionAnswer {
+  bool get answer_status => throw _privateConstructorUsedError;
+  List<SessionAnswerData> get answer_list => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SessionAnswerCopyWith<SessionAnswer> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SessionAnswerCopyWith<$Res> {
+  factory $SessionAnswerCopyWith(
+          SessionAnswer value, $Res Function(SessionAnswer) then) =
+      _$SessionAnswerCopyWithImpl<$Res, SessionAnswer>;
+  @useResult
+  $Res call({bool answer_status, List<SessionAnswerData> answer_list});
+}
+
+/// @nodoc
+class _$SessionAnswerCopyWithImpl<$Res, $Val extends SessionAnswer>
+    implements $SessionAnswerCopyWith<$Res> {
+  _$SessionAnswerCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? answer_status = null,
+    Object? answer_list = null,
+  }) {
+    return _then(_value.copyWith(
+      answer_status: null == answer_status
+          ? _value.answer_status
+          : answer_status // ignore: cast_nullable_to_non_nullable
+              as bool,
+      answer_list: null == answer_list
+          ? _value.answer_list
+          : answer_list // ignore: cast_nullable_to_non_nullable
+              as List<SessionAnswerData>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$SessionAnswerImplCopyWith<$Res>
+    implements $SessionAnswerCopyWith<$Res> {
+  factory _$$SessionAnswerImplCopyWith(
+          _$SessionAnswerImpl value, $Res Function(_$SessionAnswerImpl) then) =
+      __$$SessionAnswerImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({bool answer_status, List<SessionAnswerData> answer_list});
+}
+
+/// @nodoc
+class __$$SessionAnswerImplCopyWithImpl<$Res>
+    extends _$SessionAnswerCopyWithImpl<$Res, _$SessionAnswerImpl>
+    implements _$$SessionAnswerImplCopyWith<$Res> {
+  __$$SessionAnswerImplCopyWithImpl(
+      _$SessionAnswerImpl _value, $Res Function(_$SessionAnswerImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? answer_status = null,
+    Object? answer_list = null,
+  }) {
+    return _then(_$SessionAnswerImpl(
+      answer_status: null == answer_status
+          ? _value.answer_status
+          : answer_status // ignore: cast_nullable_to_non_nullable
+              as bool,
+      answer_list: null == answer_list
+          ? _value._answer_list
+          : answer_list // ignore: cast_nullable_to_non_nullable
+              as List<SessionAnswerData>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SessionAnswerImpl implements _SessionAnswer {
+  const _$SessionAnswerImpl(
+      {this.answer_status = false,
+      final List<SessionAnswerData> answer_list = const []})
+      : _answer_list = answer_list;
+
+  factory _$SessionAnswerImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SessionAnswerImplFromJson(json);
+
+  @override
+  @JsonKey()
+  final bool answer_status;
+  final List<SessionAnswerData> _answer_list;
+  @override
+  @JsonKey()
+  List<SessionAnswerData> get answer_list {
+    if (_answer_list is EqualUnmodifiableListView) return _answer_list;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_answer_list);
+  }
+
+  @override
+  String toString() {
+    return 'SessionAnswer(answer_status: $answer_status, answer_list: $answer_list)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SessionAnswerImpl &&
+            (identical(other.answer_status, answer_status) ||
+                other.answer_status == answer_status) &&
+            const DeepCollectionEquality()
+                .equals(other._answer_list, _answer_list));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, answer_status,
+      const DeepCollectionEquality().hash(_answer_list));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SessionAnswerImplCopyWith<_$SessionAnswerImpl> get copyWith =>
+      __$$SessionAnswerImplCopyWithImpl<_$SessionAnswerImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SessionAnswerImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SessionAnswer implements SessionAnswer {
+  const factory _SessionAnswer(
+      {final bool answer_status,
+      final List<SessionAnswerData> answer_list}) = _$SessionAnswerImpl;
+
+  factory _SessionAnswer.fromJson(Map<String, dynamic> json) =
+      _$SessionAnswerImpl.fromJson;
+
+  @override
+  bool get answer_status;
+  @override
+  List<SessionAnswerData> get answer_list;
+  @override
+  @JsonKey(ignore: true)
+  _$$SessionAnswerImplCopyWith<_$SessionAnswerImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+FloorPlan _$FloorPlanFromJson(Map<String, dynamic> json) {
+  return _FloorPlan.fromJson(json);
+}
+
+/// @nodoc
+mixin _$FloorPlan {
+  List<FloorPlanData> get data => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $FloorPlanCopyWith<FloorPlan> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $FloorPlanCopyWith<$Res> {
+  factory $FloorPlanCopyWith(FloorPlan value, $Res Function(FloorPlan) then) =
+      _$FloorPlanCopyWithImpl<$Res, FloorPlan>;
+  @useResult
+  $Res call({List<FloorPlanData> data});
+}
+
+/// @nodoc
+class _$FloorPlanCopyWithImpl<$Res, $Val extends FloorPlan>
+    implements $FloorPlanCopyWith<$Res> {
+  _$FloorPlanCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_value.copyWith(
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<FloorPlanData>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$FloorPlanImplCopyWith<$Res>
+    implements $FloorPlanCopyWith<$Res> {
+  factory _$$FloorPlanImplCopyWith(
+          _$FloorPlanImpl value, $Res Function(_$FloorPlanImpl) then) =
+      __$$FloorPlanImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<FloorPlanData> data});
+}
+
+/// @nodoc
+class __$$FloorPlanImplCopyWithImpl<$Res>
+    extends _$FloorPlanCopyWithImpl<$Res, _$FloorPlanImpl>
+    implements _$$FloorPlanImplCopyWith<$Res> {
+  __$$FloorPlanImplCopyWithImpl(
+      _$FloorPlanImpl _value, $Res Function(_$FloorPlanImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$FloorPlanImpl(
+      data: null == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<FloorPlanData>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$FloorPlanImpl implements _FloorPlan {
+  const _$FloorPlanImpl({final List<FloorPlanData> data = const []})
+      : _data = data;
+
+  factory _$FloorPlanImpl.fromJson(Map<String, dynamic> json) =>
+      _$$FloorPlanImplFromJson(json);
+
+  final List<FloorPlanData> _data;
+  @override
+  @JsonKey()
+  List<FloorPlanData> get data {
+    if (_data is EqualUnmodifiableListView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
+
+  @override
+  String toString() {
+    return 'FloorPlan(data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FloorPlanImpl &&
+            const DeepCollectionEquality().equals(other._data, _data));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FloorPlanImplCopyWith<_$FloorPlanImpl> get copyWith =>
+      __$$FloorPlanImplCopyWithImpl<_$FloorPlanImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$FloorPlanImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _FloorPlan implements FloorPlan {
+  const factory _FloorPlan({final List<FloorPlanData> data}) = _$FloorPlanImpl;
+
+  factory _FloorPlan.fromJson(Map<String, dynamic> json) =
+      _$FloorPlanImpl.fromJson;
+
+  @override
+  List<FloorPlanData> get data;
+  @override
+  @JsonKey(ignore: true)
+  _$$FloorPlanImplCopyWith<_$FloorPlanImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Speaker _$SpeakerFromJson(Map<String, dynamic> json) {
+  return _Speaker.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Speaker {
+  List<SpeakerData> get data => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SpeakerCopyWith<Speaker> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SpeakerCopyWith<$Res> {
+  factory $SpeakerCopyWith(Speaker value, $Res Function(Speaker) then) =
+      _$SpeakerCopyWithImpl<$Res, Speaker>;
+  @useResult
+  $Res call({List<SpeakerData> data});
+}
+
+/// @nodoc
+class _$SpeakerCopyWithImpl<$Res, $Val extends Speaker>
+    implements $SpeakerCopyWith<$Res> {
+  _$SpeakerCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_value.copyWith(
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<SpeakerData>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$SpeakerImplCopyWith<$Res> implements $SpeakerCopyWith<$Res> {
+  factory _$$SpeakerImplCopyWith(
+          _$SpeakerImpl value, $Res Function(_$SpeakerImpl) then) =
+      __$$SpeakerImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<SpeakerData> data});
+}
+
+/// @nodoc
+class __$$SpeakerImplCopyWithImpl<$Res>
+    extends _$SpeakerCopyWithImpl<$Res, _$SpeakerImpl>
+    implements _$$SpeakerImplCopyWith<$Res> {
+  __$$SpeakerImplCopyWithImpl(
+      _$SpeakerImpl _value, $Res Function(_$SpeakerImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$SpeakerImpl(
+      data: null == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<SpeakerData>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SpeakerImpl implements _Speaker {
+  const _$SpeakerImpl({final List<SpeakerData> data = const []}) : _data = data;
+
+  factory _$SpeakerImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SpeakerImplFromJson(json);
+
+  final List<SpeakerData> _data;
+  @override
+  @JsonKey()
+  List<SpeakerData> get data {
+    if (_data is EqualUnmodifiableListView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
+
+  @override
+  String toString() {
+    return 'Speaker(data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SpeakerImpl &&
+            const DeepCollectionEquality().equals(other._data, _data));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SpeakerImplCopyWith<_$SpeakerImpl> get copyWith =>
+      __$$SpeakerImplCopyWithImpl<_$SpeakerImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SpeakerImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Speaker implements Speaker {
+  const factory _Speaker({final List<SpeakerData> data}) = _$SpeakerImpl;
+
+  factory _Speaker.fromJson(Map<String, dynamic> json) = _$SpeakerImpl.fromJson;
+
+  @override
+  List<SpeakerData> get data;
+  @override
+  @JsonKey(ignore: true)
+  _$$SpeakerImplCopyWith<_$SpeakerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

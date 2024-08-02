@@ -4,9 +4,9 @@ extension HTTPMethodString on HTTPMethod {
   String get string {
     switch (this) {
       case HTTPMethod.get:
-        return "get";
+        return "GET";
       case HTTPMethod.post:
-        return "post";
+        return "POST";
       case HTTPMethod.delete:
         return "delete";
       case HTTPMethod.patch:

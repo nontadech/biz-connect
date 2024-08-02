@@ -1,9 +1,10 @@
 import 'package:biz_connect/app/config/themes/theme.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 
-Future<void> popupPicture(BuildContext context) {
+Future<void> popupPicture(BuildContext context, String image) {
   return showDialog<void>(
     context: context,
     builder: (context) => Dialog(
@@ -14,8 +15,10 @@ Future<void> popupPicture(BuildContext context) {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-           Image.asset(
-            'assets/demo/zone.png',
+            CachedNetworkImage(
+              imageUrl: image,
+              placeholder: (BuildContext context, String url) => const CircularProgressIndicator(),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 40, right: 40, top: 100),

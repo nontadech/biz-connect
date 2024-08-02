@@ -99,7 +99,7 @@ class CardHorizontal extends StatelessWidget {
                   ),
                   const SizedBox(height: 5),
                   SizedBox(
-                    height: 50,
+                    height: 55,
                     child: TextCustom(
                       text: title,
                       fontSize: FontSize.h10,
@@ -145,5 +145,4 @@ class CardHorizontal extends StatelessWidget {
       ),
     );
   }
-
 }

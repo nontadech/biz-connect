@@ -18,10 +18,39 @@ class JoinMenu with _$JoinMenu  {
 class JoinAgenda with _$JoinAgenda  {
   const factory JoinAgenda({
     @Default([]) List<String> room_list,
-    @Default([]) List<SessionData> sessions
+    @Default([]) List<SessionData> sessions,
+    @Default('') String? event_start_date,
+    @Default('') String? event_end_date
   }) = _JoinAgenda;
   factory JoinAgenda.fromJson(Map<String, Object?> json)
       => _$JoinAgendaFromJson(json);
 }
 
 
+@freezed
+class SessionAnswer with _$SessionAnswer  {
+  const factory SessionAnswer({
+    @Default(false) bool answer_status,
+    @Default([]) List<SessionAnswerData> answer_list
+  }) = _SessionAnswer;
+  factory SessionAnswer.fromJson(Map<String, Object?> json)
+      => _$SessionAnswerFromJson(json);
+}
+
+@freezed
+class FloorPlan with _$FloorPlan  {
+  const factory FloorPlan({
+    @Default([]) List<FloorPlanData> data
+  }) = _FloorPlan;
+  factory FloorPlan.fromJson(Map<String, Object?> json)
+      => _$FloorPlanFromJson(json);
+}
+
+@freezed
+class Speaker with _$Speaker  {
+  const factory Speaker({
+    @Default([]) List<SpeakerData> data
+  }) = _Speaker;
+  factory Speaker.fromJson(Map<String, Object?> json)
+      => _$SpeakerFromJson(json);
+}

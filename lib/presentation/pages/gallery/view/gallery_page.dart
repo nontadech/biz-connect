@@ -34,7 +34,7 @@ class _GalleryPageState extends State<GalleryPage> {
               for (var i = 0; i < 9; i++)
                 InkWell(
                   onTap: () {
-                    popupPicture(context);
+                    popupPicture(context, 'https://via.placeholder.com/150');
                   }, 
                   child: Container(
                     clipBehavior: Clip.hardEdge,

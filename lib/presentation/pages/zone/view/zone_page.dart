@@ -1,22 +1,38 @@
+import 'package:biz_connect/presentation/pages/zone/controllers/controllers.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class ZonePage extends StatefulWidget {
-  const ZonePage({super.key});
+class ZonePage extends GetView<ZoneController> {
+  final int eventId;
+  const ZonePage({
+    super.key,
+    required this.eventId
+  });
 
-  @override
-  State<ZonePage> createState() => _ZonePageState();
-}
+  Widget getCard(BuildContext context) {
+    List<Widget> widgetList = [];
+    for (var element in controller.floorPlan.value.data) {
+      widgetList.add(
+        CardZone(
+          title: element.fl_title!,
+          onTap: () {
+            popupPicture(
+              context,
+              element.image_url!,
+            );
+          },
+        )
+      );
+    }
 
-class _ZonePageState extends State<ZonePage> {
-  @override
-  void initState() {
-    // Initialize & inject UserController() using Get.put()
-    super.initState();
+    return Column(
+      children: widgetList
+    );
   }
-
   @override
    Widget build(BuildContext context) {
+    ZoneBinding().dependencies();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBarCustom(
@@ -27,31 +43,28 @@ class _ZonePageState extends State<ZonePage> {
       body: Padding(
         padding: const EdgeInsets.only(left: 25, right: 25, top: 10, bottom: 10),
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              CardZone(
-                title: 'Blockchain 2024_1',
-                onTap: () {
-                  popupPicture(context);
-                },
-              ),
-              const SizedBox(height: 10),
-              CardZone(
-                title: 'Blockchain 2024_2',
-                onTap: () {
-                  popupPicture(context);
-                },
-              ),
-              const SizedBox(height: 10),
-              CardZone(
-                title: 'Blockchain 2024_3',
-                onTap: () {
-                  popupPicture(context);
-                },
-              ),
-              const SizedBox(height: 10),
-            ]
-          ),
+          child: GetX(
+            init: controller,
+            initState: (_) {
+              controller.getFloorPlan(eventId);
+            },
+            builder: (_){
+              if(controller.floorPlan.value.data.isEmpty){
+                return const Column(
+                  children: [
+                    SizedBox(
+                      height: 200,
+                    ),
+                    Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  ],
+                );
+              }
+         
+              return getCard(context);
+            }
+          )
         ),
       )
     );

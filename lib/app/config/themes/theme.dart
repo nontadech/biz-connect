@@ -46,9 +46,9 @@ class AppTheme {
   }
 }
 class FontSize {
-  static double h12 = 10.0;
-  static double h11 = 11.0;
-  static double h10 = 12.0;
+  static double h12 = 12.0;
+  static double h11 = 12.0;
+  static double h10 = 14.0;
   static double h9 = 14.0;
   static double h8 = 16.0;
   static double h7 = 18.0;
