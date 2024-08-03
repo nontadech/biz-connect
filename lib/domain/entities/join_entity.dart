@@ -128,6 +128,39 @@ class EventFileData with _$EventFileData  {
       => _$EventFileDataFromJson(json);
 }
 
+
+@freezed
+class PartnersList with _$PartnersList  {
+  const factory PartnersList({
+    @Default('') String title,
+    @Default([]) List<MemberList> member_list
+  }) = _PartnersList;
+  factory PartnersList.fromJson(Map<String, Object?> json)
+      => _$PartnersListFromJson(json);
+}
+
+@freezed
+class MemberList with _$MemberList  {
+  const factory MemberList({
+    int? id,
+    @Default('') String partner_type,
+    @Default('') String logo_url,
+  }) = _MemberList;
+  factory MemberList.fromJson(Map<String, Object?> json)
+      => _$MemberListFromJson(json);
+}
+
+@freezed
+class GalleryData with _$GalleryData  {
+  const factory GalleryData({
+    int? id,
+    @Default('') String image_path,
+    @Default('') String url,
+  }) = _GalleryData;
+  factory GalleryData.fromJson(Map<String, Object?> json)
+      => _$GalleryDataFromJson(json);
+}
+
 class JoinAgendaInput {
   final int eventId;
   final int? speakerId;
@@ -169,8 +202,6 @@ class SessionRateInput {
     this.userId,
   }); 
 }
-
-
 
 class FileEmailInput {
   final int? eventId;

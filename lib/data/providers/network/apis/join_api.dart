@@ -7,7 +7,18 @@ import 'package:biz_connect/domain/entities/event_entity.dart';
 import 'package:biz_connect/domain/entities/join_entity.dart';
 import 'package:get/get.dart';
 
-enum JoinType { getEventMenuList, getEventAgenda, postEventSessionRatingAnswer, getEventSessionRatingAnswers, getEventFloorPlan, getSpeaker, getEventFile, sendFileEmail }
+enum JoinType { 
+  getEventMenuList, 
+  getEventAgenda, 
+  postEventSessionRatingAnswer, 
+  getEventSessionRatingAnswers, 
+  getEventFloorPlan, 
+  getSpeaker, 
+  getEventFile, 
+  sendFileEmail, 
+  getEventPartners, 
+  getEventGallery 
+}
 
 class JoinAPI implements APIRequestRepresentable {
   final JoinType type;
@@ -28,7 +39,9 @@ class JoinAPI implements APIRequestRepresentable {
   JoinAPI.getSpeaker(int eventId) : this._(type: JoinType.getSpeaker, eventId: eventId);
   JoinAPI.getEventFile(int eventId) : this._(type: JoinType.getEventFile, eventId: eventId);
   JoinAPI.sendFileEmail(FileEmailInput fileEmailInput) : this._(type: JoinType.sendFileEmail, fileEmailInput: fileEmailInput);
-
+  JoinAPI.getEventPartners(int eventId) : this._(type: JoinType.getEventPartners, eventId: eventId);
+  JoinAPI.getEventGallery(int eventId) : this._(type: JoinType.getEventGallery, eventId: eventId);
+  
 
   @override
   String get endpoint => APIEndpoint.api;
@@ -36,6 +49,10 @@ class JoinAPI implements APIRequestRepresentable {
   @override
   String get path {
     switch (type) {
+      case JoinType.getEventGallery:
+        return "/getEventGallery";
+      case JoinType.getEventPartners:
+        return "/getEventPartners";
       case JoinType.sendFileEmail:
         return "/sendFileEmail";
       case JoinType.getEventFile:
@@ -60,6 +77,8 @@ class JoinAPI implements APIRequestRepresentable {
   @override
   HTTPMethod get method {
     switch (type) {
+      case JoinType.getEventGallery:
+      case JoinType.getEventPartners:
       case JoinType.getEventFile:
       case JoinType.getSpeaker:
       case JoinType.getEventFloorPlan:
@@ -93,6 +112,8 @@ class JoinAPI implements APIRequestRepresentable {
           'event_id': eventId.toString(),
           'lang': store.setting!.language == LangType.th ? 'th' : 'en'
         };
+      case JoinType.getEventGallery:
+      case JoinType.getEventPartners:
       case JoinType.getEventFile:
       case JoinType.getEventFloorPlan:
         return {

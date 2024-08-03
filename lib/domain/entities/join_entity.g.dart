@@ -187,3 +187,46 @@ Map<String, dynamic> _$$EventFileDataImplToJson(_$EventFileDataImpl instance) =>
       'path_file': instance.path_file,
       'size_file': instance.size_file,
     };
+
+_$PartnersListImpl _$$PartnersListImplFromJson(Map<String, dynamic> json) =>
+    _$PartnersListImpl(
+      title: json['title'] as String? ?? '',
+      member_list: (json['member_list'] as List<dynamic>?)
+              ?.map((e) => MemberList.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+    );
+
+Map<String, dynamic> _$$PartnersListImplToJson(_$PartnersListImpl instance) =>
+    <String, dynamic>{
+      'title': instance.title,
+      'member_list': instance.member_list,
+    };
+
+_$MemberListImpl _$$MemberListImplFromJson(Map<String, dynamic> json) =>
+    _$MemberListImpl(
+      id: (json['id'] as num?)?.toInt(),
+      partner_type: json['partner_type'] as String? ?? '',
+      logo_url: json['logo_url'] as String? ?? '',
+    );
+
+Map<String, dynamic> _$$MemberListImplToJson(_$MemberListImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'partner_type': instance.partner_type,
+      'logo_url': instance.logo_url,
+    };
+
+_$GalleryDataImpl _$$GalleryDataImplFromJson(Map<String, dynamic> json) =>
+    _$GalleryDataImpl(
+      id: (json['id'] as num?)?.toInt(),
+      image_path: json['image_path'] as String? ?? '',
+      url: json['url'] as String? ?? '',
+    );
+
+Map<String, dynamic> _$$GalleryDataImplToJson(_$GalleryDataImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'image_path': instance.image_path,
+      'url': instance.url,
+    };

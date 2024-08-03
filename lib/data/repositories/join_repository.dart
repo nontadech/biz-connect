@@ -54,4 +54,15 @@ class JoinRepositoryIml extends JoinRepository {
     return Body.fromJson(response);
   }
 
+  @override
+  Future<Partners> getPartners(int eventId) async {
+    final response = await JoinAPI.getEventPartners(eventId).request();
+    return Partners.fromJson(response);
+  }
+
+  @override
+  Future<Gallery> getGallery(int eventId) async {
+    final response = await JoinAPI.getEventGallery(eventId).request();
+    return Gallery.fromJson(response);
+  }
 }

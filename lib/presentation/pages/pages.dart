@@ -18,7 +18,7 @@ export 'term_condition/term_condition.dart';
 export 'zone/zone.dart';
 export 'speaker/speaker.dart';
 export 'download/download.dart';
-export 'supported/supported.dart';
+export 'supported/support.dart';
 export 'gallery/gallery.dart';
 export 'live_poll/live_poll.dart';
 export 'survey/survey.dart';

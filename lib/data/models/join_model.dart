@@ -63,3 +63,31 @@ class EventFile with _$EventFile  {
   factory EventFile.fromJson(Map<String, Object?> json)
       => _$EventFileFromJson(json);
 }
+
+@freezed
+class Partners with _$Partners  {
+  const factory Partners({
+    PartnersData? data
+  }) = _Partners;
+  factory Partners.fromJson(Map<String, Object?> json)
+      => _$PartnersFromJson(json);
+}
+
+@freezed
+class PartnersData with _$PartnersData  {
+  const factory PartnersData({
+    PartnersList? group_left
+  }) = _PartnersData;
+  factory PartnersData.fromJson(Map<String, Object?> json)
+      => _$PartnersDataFromJson(json);
+}
+
+@freezed
+class Gallery with _$Gallery  {
+  const factory Gallery({
+    @Default([]) List<GalleryData>? data
+  }) = _Gallery;
+  factory Gallery.fromJson(Map<String, Object?> json)
+      => _$GalleryFromJson(json);
+}
+

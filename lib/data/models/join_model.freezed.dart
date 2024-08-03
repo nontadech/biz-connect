@@ -974,3 +974,452 @@ abstract class _EventFile implements EventFile {
   _$$EventFileImplCopyWith<_$EventFileImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+Partners _$PartnersFromJson(Map<String, dynamic> json) {
+  return _Partners.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Partners {
+  PartnersData? get data => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PartnersCopyWith<Partners> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PartnersCopyWith<$Res> {
+  factory $PartnersCopyWith(Partners value, $Res Function(Partners) then) =
+      _$PartnersCopyWithImpl<$Res, Partners>;
+  @useResult
+  $Res call({PartnersData? data});
+
+  $PartnersDataCopyWith<$Res>? get data;
+}
+
+/// @nodoc
+class _$PartnersCopyWithImpl<$Res, $Val extends Partners>
+    implements $PartnersCopyWith<$Res> {
+  _$PartnersCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_value.copyWith(
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as PartnersData?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PartnersDataCopyWith<$Res>? get data {
+    if (_value.data == null) {
+      return null;
+    }
+
+    return $PartnersDataCopyWith<$Res>(_value.data!, (value) {
+      return _then(_value.copyWith(data: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$PartnersImplCopyWith<$Res>
+    implements $PartnersCopyWith<$Res> {
+  factory _$$PartnersImplCopyWith(
+          _$PartnersImpl value, $Res Function(_$PartnersImpl) then) =
+      __$$PartnersImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({PartnersData? data});
+
+  @override
+  $PartnersDataCopyWith<$Res>? get data;
+}
+
+/// @nodoc
+class __$$PartnersImplCopyWithImpl<$Res>
+    extends _$PartnersCopyWithImpl<$Res, _$PartnersImpl>
+    implements _$$PartnersImplCopyWith<$Res> {
+  __$$PartnersImplCopyWithImpl(
+      _$PartnersImpl _value, $Res Function(_$PartnersImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_$PartnersImpl(
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as PartnersData?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$PartnersImpl implements _Partners {
+  const _$PartnersImpl({this.data});
+
+  factory _$PartnersImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PartnersImplFromJson(json);
+
+  @override
+  final PartnersData? data;
+
+  @override
+  String toString() {
+    return 'Partners(data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PartnersImpl &&
+            (identical(other.data, data) || other.data == data));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, data);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PartnersImplCopyWith<_$PartnersImpl> get copyWith =>
+      __$$PartnersImplCopyWithImpl<_$PartnersImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$PartnersImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Partners implements Partners {
+  const factory _Partners({final PartnersData? data}) = _$PartnersImpl;
+
+  factory _Partners.fromJson(Map<String, dynamic> json) =
+      _$PartnersImpl.fromJson;
+
+  @override
+  PartnersData? get data;
+  @override
+  @JsonKey(ignore: true)
+  _$$PartnersImplCopyWith<_$PartnersImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+PartnersData _$PartnersDataFromJson(Map<String, dynamic> json) {
+  return _PartnersData.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PartnersData {
+  PartnersList? get group_left => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PartnersDataCopyWith<PartnersData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PartnersDataCopyWith<$Res> {
+  factory $PartnersDataCopyWith(
+          PartnersData value, $Res Function(PartnersData) then) =
+      _$PartnersDataCopyWithImpl<$Res, PartnersData>;
+  @useResult
+  $Res call({PartnersList? group_left});
+
+  $PartnersListCopyWith<$Res>? get group_left;
+}
+
+/// @nodoc
+class _$PartnersDataCopyWithImpl<$Res, $Val extends PartnersData>
+    implements $PartnersDataCopyWith<$Res> {
+  _$PartnersDataCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? group_left = freezed,
+  }) {
+    return _then(_value.copyWith(
+      group_left: freezed == group_left
+          ? _value.group_left
+          : group_left // ignore: cast_nullable_to_non_nullable
+              as PartnersList?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PartnersListCopyWith<$Res>? get group_left {
+    if (_value.group_left == null) {
+      return null;
+    }
+
+    return $PartnersListCopyWith<$Res>(_value.group_left!, (value) {
+      return _then(_value.copyWith(group_left: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$PartnersDataImplCopyWith<$Res>
+    implements $PartnersDataCopyWith<$Res> {
+  factory _$$PartnersDataImplCopyWith(
+          _$PartnersDataImpl value, $Res Function(_$PartnersDataImpl) then) =
+      __$$PartnersDataImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({PartnersList? group_left});
+
+  @override
+  $PartnersListCopyWith<$Res>? get group_left;
+}
+
+/// @nodoc
+class __$$PartnersDataImplCopyWithImpl<$Res>
+    extends _$PartnersDataCopyWithImpl<$Res, _$PartnersDataImpl>
+    implements _$$PartnersDataImplCopyWith<$Res> {
+  __$$PartnersDataImplCopyWithImpl(
+      _$PartnersDataImpl _value, $Res Function(_$PartnersDataImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? group_left = freezed,
+  }) {
+    return _then(_$PartnersDataImpl(
+      group_left: freezed == group_left
+          ? _value.group_left
+          : group_left // ignore: cast_nullable_to_non_nullable
+              as PartnersList?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$PartnersDataImpl implements _PartnersData {
+  const _$PartnersDataImpl({this.group_left});
+
+  factory _$PartnersDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PartnersDataImplFromJson(json);
+
+  @override
+  final PartnersList? group_left;
+
+  @override
+  String toString() {
+    return 'PartnersData(group_left: $group_left)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PartnersDataImpl &&
+            (identical(other.group_left, group_left) ||
+                other.group_left == group_left));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, group_left);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PartnersDataImplCopyWith<_$PartnersDataImpl> get copyWith =>
+      __$$PartnersDataImplCopyWithImpl<_$PartnersDataImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$PartnersDataImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PartnersData implements PartnersData {
+  const factory _PartnersData({final PartnersList? group_left}) =
+      _$PartnersDataImpl;
+
+  factory _PartnersData.fromJson(Map<String, dynamic> json) =
+      _$PartnersDataImpl.fromJson;
+
+  @override
+  PartnersList? get group_left;
+  @override
+  @JsonKey(ignore: true)
+  _$$PartnersDataImplCopyWith<_$PartnersDataImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Gallery _$GalleryFromJson(Map<String, dynamic> json) {
+  return _Gallery.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Gallery {
+  List<GalleryData>? get data => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $GalleryCopyWith<Gallery> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GalleryCopyWith<$Res> {
+  factory $GalleryCopyWith(Gallery value, $Res Function(Gallery) then) =
+      _$GalleryCopyWithImpl<$Res, Gallery>;
+  @useResult
+  $Res call({List<GalleryData>? data});
+}
+
+/// @nodoc
+class _$GalleryCopyWithImpl<$Res, $Val extends Gallery>
+    implements $GalleryCopyWith<$Res> {
+  _$GalleryCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_value.copyWith(
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<GalleryData>?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$GalleryImplCopyWith<$Res> implements $GalleryCopyWith<$Res> {
+  factory _$$GalleryImplCopyWith(
+          _$GalleryImpl value, $Res Function(_$GalleryImpl) then) =
+      __$$GalleryImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<GalleryData>? data});
+}
+
+/// @nodoc
+class __$$GalleryImplCopyWithImpl<$Res>
+    extends _$GalleryCopyWithImpl<$Res, _$GalleryImpl>
+    implements _$$GalleryImplCopyWith<$Res> {
+  __$$GalleryImplCopyWithImpl(
+      _$GalleryImpl _value, $Res Function(_$GalleryImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_$GalleryImpl(
+      data: freezed == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<GalleryData>?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$GalleryImpl implements _Gallery {
+  const _$GalleryImpl({final List<GalleryData>? data = const []})
+      : _data = data;
+
+  factory _$GalleryImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GalleryImplFromJson(json);
+
+  final List<GalleryData>? _data;
+  @override
+  @JsonKey()
+  List<GalleryData>? get data {
+    final value = _data;
+    if (value == null) return null;
+    if (_data is EqualUnmodifiableListView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  String toString() {
+    return 'Gallery(data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GalleryImpl &&
+            const DeepCollectionEquality().equals(other._data, _data));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GalleryImplCopyWith<_$GalleryImpl> get copyWith =>
+      __$$GalleryImplCopyWithImpl<_$GalleryImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$GalleryImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Gallery implements Gallery {
+  const factory _Gallery({final List<GalleryData>? data}) = _$GalleryImpl;
+
+  factory _Gallery.fromJson(Map<String, dynamic> json) = _$GalleryImpl.fromJson;
+
+  @override
+  List<GalleryData>? get data;
+  @override
+  @JsonKey(ignore: true)
+  _$$GalleryImplCopyWith<_$GalleryImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

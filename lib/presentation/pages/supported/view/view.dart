@@ -1,1 +1,1 @@
-export 'supported_page.dart';
+export 'support_page.dart';

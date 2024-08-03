@@ -2163,3 +2163,517 @@ abstract class _EventFileData implements EventFileData {
   _$$EventFileDataImplCopyWith<_$EventFileDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+PartnersList _$PartnersListFromJson(Map<String, dynamic> json) {
+  return _PartnersList.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PartnersList {
+  String get title => throw _privateConstructorUsedError;
+  List<MemberList> get member_list => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PartnersListCopyWith<PartnersList> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PartnersListCopyWith<$Res> {
+  factory $PartnersListCopyWith(
+          PartnersList value, $Res Function(PartnersList) then) =
+      _$PartnersListCopyWithImpl<$Res, PartnersList>;
+  @useResult
+  $Res call({String title, List<MemberList> member_list});
+}
+
+/// @nodoc
+class _$PartnersListCopyWithImpl<$Res, $Val extends PartnersList>
+    implements $PartnersListCopyWith<$Res> {
+  _$PartnersListCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? title = null,
+    Object? member_list = null,
+  }) {
+    return _then(_value.copyWith(
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      member_list: null == member_list
+          ? _value.member_list
+          : member_list // ignore: cast_nullable_to_non_nullable
+              as List<MemberList>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$PartnersListImplCopyWith<$Res>
+    implements $PartnersListCopyWith<$Res> {
+  factory _$$PartnersListImplCopyWith(
+          _$PartnersListImpl value, $Res Function(_$PartnersListImpl) then) =
+      __$$PartnersListImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String title, List<MemberList> member_list});
+}
+
+/// @nodoc
+class __$$PartnersListImplCopyWithImpl<$Res>
+    extends _$PartnersListCopyWithImpl<$Res, _$PartnersListImpl>
+    implements _$$PartnersListImplCopyWith<$Res> {
+  __$$PartnersListImplCopyWithImpl(
+      _$PartnersListImpl _value, $Res Function(_$PartnersListImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? title = null,
+    Object? member_list = null,
+  }) {
+    return _then(_$PartnersListImpl(
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      member_list: null == member_list
+          ? _value._member_list
+          : member_list // ignore: cast_nullable_to_non_nullable
+              as List<MemberList>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$PartnersListImpl implements _PartnersList {
+  const _$PartnersListImpl(
+      {this.title = '', final List<MemberList> member_list = const []})
+      : _member_list = member_list;
+
+  factory _$PartnersListImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PartnersListImplFromJson(json);
+
+  @override
+  @JsonKey()
+  final String title;
+  final List<MemberList> _member_list;
+  @override
+  @JsonKey()
+  List<MemberList> get member_list {
+    if (_member_list is EqualUnmodifiableListView) return _member_list;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_member_list);
+  }
+
+  @override
+  String toString() {
+    return 'PartnersList(title: $title, member_list: $member_list)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PartnersListImpl &&
+            (identical(other.title, title) || other.title == title) &&
+            const DeepCollectionEquality()
+                .equals(other._member_list, _member_list));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, title, const DeepCollectionEquality().hash(_member_list));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PartnersListImplCopyWith<_$PartnersListImpl> get copyWith =>
+      __$$PartnersListImplCopyWithImpl<_$PartnersListImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$PartnersListImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PartnersList implements PartnersList {
+  const factory _PartnersList(
+      {final String title,
+      final List<MemberList> member_list}) = _$PartnersListImpl;
+
+  factory _PartnersList.fromJson(Map<String, dynamic> json) =
+      _$PartnersListImpl.fromJson;
+
+  @override
+  String get title;
+  @override
+  List<MemberList> get member_list;
+  @override
+  @JsonKey(ignore: true)
+  _$$PartnersListImplCopyWith<_$PartnersListImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+MemberList _$MemberListFromJson(Map<String, dynamic> json) {
+  return _MemberList.fromJson(json);
+}
+
+/// @nodoc
+mixin _$MemberList {
+  int? get id => throw _privateConstructorUsedError;
+  String get partner_type => throw _privateConstructorUsedError;
+  String get logo_url => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $MemberListCopyWith<MemberList> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MemberListCopyWith<$Res> {
+  factory $MemberListCopyWith(
+          MemberList value, $Res Function(MemberList) then) =
+      _$MemberListCopyWithImpl<$Res, MemberList>;
+  @useResult
+  $Res call({int? id, String partner_type, String logo_url});
+}
+
+/// @nodoc
+class _$MemberListCopyWithImpl<$Res, $Val extends MemberList>
+    implements $MemberListCopyWith<$Res> {
+  _$MemberListCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? partner_type = null,
+    Object? logo_url = null,
+  }) {
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      partner_type: null == partner_type
+          ? _value.partner_type
+          : partner_type // ignore: cast_nullable_to_non_nullable
+              as String,
+      logo_url: null == logo_url
+          ? _value.logo_url
+          : logo_url // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$MemberListImplCopyWith<$Res>
+    implements $MemberListCopyWith<$Res> {
+  factory _$$MemberListImplCopyWith(
+          _$MemberListImpl value, $Res Function(_$MemberListImpl) then) =
+      __$$MemberListImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int? id, String partner_type, String logo_url});
+}
+
+/// @nodoc
+class __$$MemberListImplCopyWithImpl<$Res>
+    extends _$MemberListCopyWithImpl<$Res, _$MemberListImpl>
+    implements _$$MemberListImplCopyWith<$Res> {
+  __$$MemberListImplCopyWithImpl(
+      _$MemberListImpl _value, $Res Function(_$MemberListImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? partner_type = null,
+    Object? logo_url = null,
+  }) {
+    return _then(_$MemberListImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      partner_type: null == partner_type
+          ? _value.partner_type
+          : partner_type // ignore: cast_nullable_to_non_nullable
+              as String,
+      logo_url: null == logo_url
+          ? _value.logo_url
+          : logo_url // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$MemberListImpl implements _MemberList {
+  const _$MemberListImpl({this.id, this.partner_type = '', this.logo_url = ''});
+
+  factory _$MemberListImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MemberListImplFromJson(json);
+
+  @override
+  final int? id;
+  @override
+  @JsonKey()
+  final String partner_type;
+  @override
+  @JsonKey()
+  final String logo_url;
+
+  @override
+  String toString() {
+    return 'MemberList(id: $id, partner_type: $partner_type, logo_url: $logo_url)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MemberListImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.partner_type, partner_type) ||
+                other.partner_type == partner_type) &&
+            (identical(other.logo_url, logo_url) ||
+                other.logo_url == logo_url));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, partner_type, logo_url);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MemberListImplCopyWith<_$MemberListImpl> get copyWith =>
+      __$$MemberListImplCopyWithImpl<_$MemberListImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$MemberListImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _MemberList implements MemberList {
+  const factory _MemberList(
+      {final int? id,
+      final String partner_type,
+      final String logo_url}) = _$MemberListImpl;
+
+  factory _MemberList.fromJson(Map<String, dynamic> json) =
+      _$MemberListImpl.fromJson;
+
+  @override
+  int? get id;
+  @override
+  String get partner_type;
+  @override
+  String get logo_url;
+  @override
+  @JsonKey(ignore: true)
+  _$$MemberListImplCopyWith<_$MemberListImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+GalleryData _$GalleryDataFromJson(Map<String, dynamic> json) {
+  return _GalleryData.fromJson(json);
+}
+
+/// @nodoc
+mixin _$GalleryData {
+  int? get id => throw _privateConstructorUsedError;
+  String get image_path => throw _privateConstructorUsedError;
+  String get url => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $GalleryDataCopyWith<GalleryData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GalleryDataCopyWith<$Res> {
+  factory $GalleryDataCopyWith(
+          GalleryData value, $Res Function(GalleryData) then) =
+      _$GalleryDataCopyWithImpl<$Res, GalleryData>;
+  @useResult
+  $Res call({int? id, String image_path, String url});
+}
+
+/// @nodoc
+class _$GalleryDataCopyWithImpl<$Res, $Val extends GalleryData>
+    implements $GalleryDataCopyWith<$Res> {
+  _$GalleryDataCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? image_path = null,
+    Object? url = null,
+  }) {
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      image_path: null == image_path
+          ? _value.image_path
+          : image_path // ignore: cast_nullable_to_non_nullable
+              as String,
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$GalleryDataImplCopyWith<$Res>
+    implements $GalleryDataCopyWith<$Res> {
+  factory _$$GalleryDataImplCopyWith(
+          _$GalleryDataImpl value, $Res Function(_$GalleryDataImpl) then) =
+      __$$GalleryDataImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int? id, String image_path, String url});
+}
+
+/// @nodoc
+class __$$GalleryDataImplCopyWithImpl<$Res>
+    extends _$GalleryDataCopyWithImpl<$Res, _$GalleryDataImpl>
+    implements _$$GalleryDataImplCopyWith<$Res> {
+  __$$GalleryDataImplCopyWithImpl(
+      _$GalleryDataImpl _value, $Res Function(_$GalleryDataImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? image_path = null,
+    Object? url = null,
+  }) {
+    return _then(_$GalleryDataImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      image_path: null == image_path
+          ? _value.image_path
+          : image_path // ignore: cast_nullable_to_non_nullable
+              as String,
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$GalleryDataImpl implements _GalleryData {
+  const _$GalleryDataImpl({this.id, this.image_path = '', this.url = ''});
+
+  factory _$GalleryDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GalleryDataImplFromJson(json);
+
+  @override
+  final int? id;
+  @override
+  @JsonKey()
+  final String image_path;
+  @override
+  @JsonKey()
+  final String url;
+
+  @override
+  String toString() {
+    return 'GalleryData(id: $id, image_path: $image_path, url: $url)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GalleryDataImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.image_path, image_path) ||
+                other.image_path == image_path) &&
+            (identical(other.url, url) || other.url == url));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, image_path, url);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GalleryDataImplCopyWith<_$GalleryDataImpl> get copyWith =>
+      __$$GalleryDataImplCopyWithImpl<_$GalleryDataImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$GalleryDataImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _GalleryData implements GalleryData {
+  const factory _GalleryData(
+      {final int? id,
+      final String image_path,
+      final String url}) = _$GalleryDataImpl;
+
+  factory _GalleryData.fromJson(Map<String, dynamic> json) =
+      _$GalleryDataImpl.fromJson;
+
+  @override
+  int? get id;
+  @override
+  String get image_path;
+  @override
+  String get url;
+  @override
+  @JsonKey(ignore: true)
+  _$$GalleryDataImplCopyWith<_$GalleryDataImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

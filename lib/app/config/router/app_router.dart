@@ -232,7 +232,7 @@ class AppRouter {
       ),
       GoRoute(
         path: '/join/downloads',
-         builder: (context, state){
+        builder: (context, state){
           Map<String, dynamic> extra = state.extra as Map<String, dynamic>;
           return DownloadsPage(
             eventId: extra['event_id'],
@@ -241,11 +241,21 @@ class AppRouter {
       ),
       GoRoute(
         path: '/join/supported',
-        builder: (context, state) => const SupportedPage(),
+        builder: (context, state){
+          Map<String, dynamic> extra = state.extra as Map<String, dynamic>;
+          return SupportPage(
+            eventId: extra['event_id'],
+          );
+        },
       ),
       GoRoute(
         path: '/join/gallery',
-        builder: (context, state) => const GalleryPage(),
+        builder: (context, state){
+          Map<String, dynamic> extra = state.extra as Map<String, dynamic>;
+          return GalleryPage(
+            eventId: extra['event_id'],
+          );
+        },
       ),
       GoRoute(
         path: '/join/live_poll',
