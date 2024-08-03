@@ -82,3 +82,16 @@ Map<String, dynamic> _$$SpeakerImplToJson(_$SpeakerImpl instance) =>
     <String, dynamic>{
       'data': instance.data,
     };
+
+_$EventFileImpl _$$EventFileImplFromJson(Map<String, dynamic> json) =>
+    _$EventFileImpl(
+      data: (json['data'] as List<dynamic>?)
+              ?.map((e) => EventFileData.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+    );
+
+Map<String, dynamic> _$$EventFileImplToJson(_$EventFileImpl instance) =>
+    <String, dynamic>{
+      'data': instance.data,
+    };

@@ -232,7 +232,12 @@ class AppRouter {
       ),
       GoRoute(
         path: '/join/downloads',
-        builder: (context, state) => const DownloadsPage(),
+         builder: (context, state){
+          Map<String, dynamic> extra = state.extra as Map<String, dynamic>;
+          return DownloadsPage(
+            eventId: extra['event_id'],
+          );
+        },
       ),
       GoRoute(
         path: '/join/supported',

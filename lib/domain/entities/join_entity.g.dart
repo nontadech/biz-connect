@@ -171,3 +171,19 @@ Map<String, dynamic> _$$SpeakerDataImplToJson(_$SpeakerDataImpl instance) =>
       'image_url': instance.image_url,
       'attendees_detail': instance.attendees_detail,
     };
+
+_$EventFileDataImpl _$$EventFileDataImplFromJson(Map<String, dynamic> json) =>
+    _$EventFileDataImpl(
+      id: (json['id'] as num?)?.toInt(),
+      name: json['name'] as String? ?? '',
+      path_file: json['path_file'] as String? ?? '',
+      size_file: json['size_file'] as String? ?? '',
+    );
+
+Map<String, dynamic> _$$EventFileDataImplToJson(_$EventFileDataImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'path_file': instance.path_file,
+      'size_file': instance.size_file,
+    };

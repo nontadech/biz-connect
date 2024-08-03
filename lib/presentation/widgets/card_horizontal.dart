@@ -110,7 +110,7 @@ class CardHorizontal extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 8),
                   SizedBox(
                     height: 30,
                     child: Row(

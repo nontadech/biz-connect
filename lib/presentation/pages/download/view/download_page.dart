@@ -1,22 +1,62 @@
+import 'package:biz_connect/presentation/pages/download/controllers/controllers.dart';
+import 'package:biz_connect/presentation/pages/download/view/send_email.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class DownloadsPage extends StatefulWidget {
-  const DownloadsPage({super.key});
+class DownloadsPage extends GetView<DownloadController> {
+  final int eventId;
+  const DownloadsPage({
+    super.key,
+    required this.eventId,
+  });
 
-  @override
-  State<DownloadsPage> createState() => _DownloadsPageState();
-}
+  
 
-class _DownloadsPageState extends State<DownloadsPage> {
-  @override
-  void initState() {
-    // Initialize & inject UserController() using Get.put()
-    super.initState();
+  Widget getCard(BuildContext context){
+    List<Widget> widgetList = [];
+    for (var eventFile in controller.eventFile.value.data){
+      widgetList.add(
+        CardDownload(
+          title: eventFile.name!,
+          size: 'Size: ${eventFile.size_file}',
+          onTap: ()  {
+            controller.downloadFile(eventFile);
+          },
+        )
+      );
+      widgetList.add(const SizedBox(height: 10));
+    }
+    widgetList.add(const SizedBox(height: 20));
+    if(controller.eventFile.value.data.isNotEmpty){
+      widgetList.add(
+        ElevatedButtonCustom(
+          text: 'SEND ALL FILES TO YOUR EMAIL',
+          onPressed: () {
+            sendEmail(context, eventId);
+            WidgetsBinding.instance.addPostFrameCallback((_){
+              try {
+                
+              } catch (error) {
+                popupStatus(
+                  context, 
+                  PopupStatusType.error,
+                  message: 'Error: ${error.toString()}',
+                );
+              }
+            });
+          }
+        )
+      );
+    }
+    return Column(
+      children: widgetList,
+    );
   }
-
+  
   @override
    Widget build(BuildContext context) {
+    DownloadBinding().dependencies();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBarCustom(
@@ -27,40 +67,28 @@ class _DownloadsPageState extends State<DownloadsPage> {
       body: Padding(
         padding: const EdgeInsets.only(left: 25, right: 25, top: 10, bottom: 10),
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              CardDownload(
-                title: 'Blockchain 2024_1',
-                size: 'Size: 3KB',
-                onTap: () {
-                  popupPicture(context, 'https://via.placeholder.com/150');
-                },
-              ),
-              const SizedBox(height: 10),
-              CardDownload(
-                title: 'Blockchain 2024_2',
-                size: 'Size: 3KB',
-                onTap: () {
-                  popupPicture(context, 'https://via.placeholder.com/150');
-                },
-              ),
-              const SizedBox(height: 10),
-              CardDownload(
-                title: 'Blockchain 2024_3',
-                size: 'Size: 3KB',
-                onTap: () {
-                  popupPicture(context, 'https://via.placeholder.com/150');
-                },
-              ),
-              const SizedBox(height: 20),
-              ElevatedButtonCustom(
-                text: 'SEND ALL  FILES TO YOUR EMAIL',
-                onPressed: () {
-                  // GoRouter.of(context).go('/sign_up');
-                }
-              ),
-            ]
-          ),
+          child: GetX(
+            init: controller,
+            initState: (_){
+              controller.isDataEmtpy(false);
+              controller.isLoading(false);
+              controller.getEventFile(eventId);
+            },
+            builder: (_){
+              if(!controller.isLoading.value){
+                return Column(
+                  children: [
+                    const SizedBox(
+                      height: 200,
+                    ),
+                    Center(
+                      child: controller.isDataEmtpy.value ? const SizedBox() : const CircularProgressIndicator(),
+                    )
+                  ],
+                );
+              }
+              return getCard(context);
+          })
         ),
       )
     );

@@ -7,16 +7,17 @@ import 'package:biz_connect/domain/entities/event_entity.dart';
 import 'package:biz_connect/domain/entities/join_entity.dart';
 import 'package:get/get.dart';
 
-enum JoinType { getEventMenuList, getEventAgenda, postEventSessionRatingAnswer, getEventSessionRatingAnswers, getEventFloorPlan, getSpeaker }
+enum JoinType { getEventMenuList, getEventAgenda, postEventSessionRatingAnswer, getEventSessionRatingAnswers, getEventFloorPlan, getSpeaker, getEventFile, sendFileEmail }
 
 class JoinAPI implements APIRequestRepresentable {
   final JoinType type;
   int? eventId;
   int? speakerId;
   String? room;
+  FileEmailInput? fileEmailInput;
   List<int>? answers;
   SessionRateInput? sessionRateInput;
-  JoinAPI._({required this.type, this.eventId, this.room, this.sessionRateInput, this.speakerId});
+  JoinAPI._({required this.type, this.eventId, this.room, this.sessionRateInput, this.speakerId, this.fileEmailInput});
   final store = Get.find<LocalStorageService>();
 
   JoinAPI.getEventMenuList(int eventId) : this._(type: JoinType.getEventMenuList, eventId: eventId);
@@ -25,7 +26,9 @@ class JoinAPI implements APIRequestRepresentable {
   JoinAPI.postEventSessionRatingAnswer(SessionRateInput sessionRateInput) : this._(type: JoinType.postEventSessionRatingAnswer, sessionRateInput: sessionRateInput);
   JoinAPI.getEventFloorPlan(int eventId) : this._(type: JoinType.getEventFloorPlan, eventId: eventId);
   JoinAPI.getSpeaker(int eventId) : this._(type: JoinType.getSpeaker, eventId: eventId);
-  
+  JoinAPI.getEventFile(int eventId) : this._(type: JoinType.getEventFile, eventId: eventId);
+  JoinAPI.sendFileEmail(FileEmailInput fileEmailInput) : this._(type: JoinType.sendFileEmail, fileEmailInput: fileEmailInput);
+
 
   @override
   String get endpoint => APIEndpoint.api;
@@ -33,6 +36,10 @@ class JoinAPI implements APIRequestRepresentable {
   @override
   String get path {
     switch (type) {
+      case JoinType.sendFileEmail:
+        return "/sendFileEmail";
+      case JoinType.getEventFile:
+        return "/getEventFile";
       case JoinType.getSpeaker:
         return "/getSpeaker";
       case JoinType.getEventFloorPlan:
@@ -53,6 +60,7 @@ class JoinAPI implements APIRequestRepresentable {
   @override
   HTTPMethod get method {
     switch (type) {
+      case JoinType.getEventFile:
       case JoinType.getSpeaker:
       case JoinType.getEventFloorPlan:
       case JoinType.getEventSessionRatingAnswers:
@@ -85,6 +93,7 @@ class JoinAPI implements APIRequestRepresentable {
           'event_id': eventId.toString(),
           'lang': store.setting!.language == LangType.th ? 'th' : 'en'
         };
+      case JoinType.getEventFile:
       case JoinType.getEventFloorPlan:
         return {
           'event_id': eventId.toString(),
@@ -136,6 +145,13 @@ class JoinAPI implements APIRequestRepresentable {
   @override
   get body {
     switch (type) {
+      case JoinType.sendFileEmail:
+        return {
+          HttpHeaders.contentTypeHeader: 'application/json',
+          'event_id': fileEmailInput!.eventId.toString(),
+          'attendee_id': store.user!.data!.attendee!.id.toString(),
+          'email': fileEmailInput!.email,
+        };
       case JoinType.postEventSessionRatingAnswer:
         return {
           HttpHeaders.contentTypeHeader: 'application/json',

@@ -14,6 +14,7 @@ class TextFormFieldCustom extends StatelessWidget {
   final double borderRadius;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
+  final TextInputType? keyboardType;
 
   TextFormFieldCustom(
     this.context,
@@ -27,7 +28,8 @@ class TextFormFieldCustom extends StatelessWidget {
     this.readOnly = false,
     this.maxLines = 1,
     this.borderRadius = 8.0,
-    this.validator
+    this.validator,
+    this.keyboardType,
   });
 
 
@@ -44,7 +46,7 @@ class TextFormFieldCustom extends StatelessWidget {
       autofocus: autofocus,
       focusNode: inputNode,
       validator: validator,
-      keyboardType: isNumber ? TextInputType.number : TextInputType.text,
+      keyboardType: keyboardType ?? (isNumber ? TextInputType.number : TextInputType.text),
       obscureText: obscureText,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),

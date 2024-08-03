@@ -41,5 +41,17 @@ class JoinRepositoryIml extends JoinRepository {
     final response = await JoinAPI.getSpeaker(eventId).request();
     return Speaker.fromJson(response);
   }
+
+  @override
+  Future<EventFile> getEventFile(int eventId) async {
+    final response = await JoinAPI.getEventFile(eventId).request();
+    return EventFile.fromJson(response);
+  }
   
+  @override
+  Future<Body> sendFileEmail(FileEmailInput fileEmailInput) async {
+    final response = await JoinAPI.sendFileEmail(fileEmailInput).request();
+    return Body.fromJson(response);
+  }
+
 }

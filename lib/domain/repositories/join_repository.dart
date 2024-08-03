@@ -9,4 +9,6 @@ abstract class JoinRepository {
   Future<SessionAnswer> getSessionRating(SessionRateInput sessionRateInput);
   Future<FloorPlan> getFloorPlan(int eventId);
   Future<Speaker> getSpeaker(int eventId);
+  Future<EventFile> getEventFile(int eventId);
+  Future<Body> sendFileEmail(FileEmailInput fileEmailInput);
 }

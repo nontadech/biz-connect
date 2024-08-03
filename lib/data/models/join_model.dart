@@ -54,3 +54,12 @@ class Speaker with _$Speaker  {
   factory Speaker.fromJson(Map<String, Object?> json)
       => _$SpeakerFromJson(json);
 }
+
+@freezed
+class EventFile with _$EventFile  {
+  const factory EventFile({
+    @Default([]) List<EventFileData> data
+  }) = _EventFile;
+  factory EventFile.fromJson(Map<String, Object?> json)
+      => _$EventFileFromJson(json);
+}

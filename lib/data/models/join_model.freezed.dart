@@ -831,3 +831,146 @@ abstract class _Speaker implements Speaker {
   _$$SpeakerImplCopyWith<_$SpeakerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+EventFile _$EventFileFromJson(Map<String, dynamic> json) {
+  return _EventFile.fromJson(json);
+}
+
+/// @nodoc
+mixin _$EventFile {
+  List<EventFileData> get data => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $EventFileCopyWith<EventFile> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EventFileCopyWith<$Res> {
+  factory $EventFileCopyWith(EventFile value, $Res Function(EventFile) then) =
+      _$EventFileCopyWithImpl<$Res, EventFile>;
+  @useResult
+  $Res call({List<EventFileData> data});
+}
+
+/// @nodoc
+class _$EventFileCopyWithImpl<$Res, $Val extends EventFile>
+    implements $EventFileCopyWith<$Res> {
+  _$EventFileCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_value.copyWith(
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<EventFileData>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$EventFileImplCopyWith<$Res>
+    implements $EventFileCopyWith<$Res> {
+  factory _$$EventFileImplCopyWith(
+          _$EventFileImpl value, $Res Function(_$EventFileImpl) then) =
+      __$$EventFileImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<EventFileData> data});
+}
+
+/// @nodoc
+class __$$EventFileImplCopyWithImpl<$Res>
+    extends _$EventFileCopyWithImpl<$Res, _$EventFileImpl>
+    implements _$$EventFileImplCopyWith<$Res> {
+  __$$EventFileImplCopyWithImpl(
+      _$EventFileImpl _value, $Res Function(_$EventFileImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$EventFileImpl(
+      data: null == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<EventFileData>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$EventFileImpl implements _EventFile {
+  const _$EventFileImpl({final List<EventFileData> data = const []})
+      : _data = data;
+
+  factory _$EventFileImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EventFileImplFromJson(json);
+
+  final List<EventFileData> _data;
+  @override
+  @JsonKey()
+  List<EventFileData> get data {
+    if (_data is EqualUnmodifiableListView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
+
+  @override
+  String toString() {
+    return 'EventFile(data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EventFileImpl &&
+            const DeepCollectionEquality().equals(other._data, _data));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EventFileImplCopyWith<_$EventFileImpl> get copyWith =>
+      __$$EventFileImplCopyWithImpl<_$EventFileImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$EventFileImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _EventFile implements EventFile {
+  const factory _EventFile({final List<EventFileData> data}) = _$EventFileImpl;
+
+  factory _EventFile.fromJson(Map<String, dynamic> json) =
+      _$EventFileImpl.fromJson;
+
+  @override
+  List<EventFileData> get data;
+  @override
+  @JsonKey(ignore: true)
+  _$$EventFileImplCopyWith<_$EventFileImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

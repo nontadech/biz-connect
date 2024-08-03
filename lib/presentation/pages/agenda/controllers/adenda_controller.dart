@@ -23,11 +23,10 @@ class AgendaController extends GetxController {
   
   getAgenda(JoinAgendaInput joinAgendaInput) async {
     isDataEmtpy(false);
+    isLoading(false);
     try {
-      isLoading(false);
       eventId.value = joinAgendaInput.eventId;
       agenda.value = await _agendaUseCase.execute(joinAgendaInput);
-      log(agenda.value.toString());
       filterSession();
       isLoading(true);
     } catch (error) {

@@ -7,29 +7,14 @@ import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:dio/dio.dart' as dio;
 
 class APIProvider {
-  static const requestTimeOut = Duration(seconds: 25);
-  // final _client = GetConnect(
-  //   timeout: requestTimeOut,
-  //   allowAutoSignedCert: true,
-  //   withCredentials: true,
-  // );
   final api = dio.Dio();
   static final _singleton = APIProvider();
   static APIProvider get instance => _singleton;
 
   Future request(APIRequestRepresentable request) async {
     try {
-      /*
-          String url, {
-    Object? data,
-    Map<String, dynamic>? queryParameters,
-    CancelToken? cancelToken,
-    Options? options,
-      */
       final response = await api.request(
         request.url,
-        // request.method.string,
-        // headers: request.headers,
         queryParameters: request.query,
         data: request.body,
         options: dio.Options(

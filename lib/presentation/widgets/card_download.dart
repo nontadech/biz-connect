@@ -26,24 +26,27 @@ class CardDownload extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  TextCustom(
-                    text: title, 
-                    fontSize: FontSize.h7,
-                    fontWeight: FontWeight.w600, 
-                    color: const Color(0xff13315F),
-                    height: 1.2,
-                  ),
-                  TextCustom(
-                    text: size, 
-                    fontSize: FontSize.h8,
-                    fontWeight: FontWeight.w400, 
-                    color: const Color(0xff6481A9),
-                    height: 1.2,
-                  ),
-                ],
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TextCustom(
+                      text: title, 
+                      fontSize: FontSize.h7,
+                      fontWeight: FontWeight.w600, 
+                      color: const Color(0xff13315F),
+                      height: 1.2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    TextCustom(
+                      text: size, 
+                      fontSize: FontSize.h8,
+                      fontWeight: FontWeight.w400, 
+                      color: const Color(0xff6481A9),
+                      height: 1.2,
+                    ),
+                  ],
+              )
               ),
               Container(
                 height: 43,

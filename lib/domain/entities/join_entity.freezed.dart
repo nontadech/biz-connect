@@ -1969,3 +1969,197 @@ abstract class _SpeakerData implements SpeakerData {
   _$$SpeakerDataImplCopyWith<_$SpeakerDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+EventFileData _$EventFileDataFromJson(Map<String, dynamic> json) {
+  return _EventFileData.fromJson(json);
+}
+
+/// @nodoc
+mixin _$EventFileData {
+  int? get id => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  String? get path_file => throw _privateConstructorUsedError;
+  String? get size_file => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $EventFileDataCopyWith<EventFileData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EventFileDataCopyWith<$Res> {
+  factory $EventFileDataCopyWith(
+          EventFileData value, $Res Function(EventFileData) then) =
+      _$EventFileDataCopyWithImpl<$Res, EventFileData>;
+  @useResult
+  $Res call({int? id, String? name, String? path_file, String? size_file});
+}
+
+/// @nodoc
+class _$EventFileDataCopyWithImpl<$Res, $Val extends EventFileData>
+    implements $EventFileDataCopyWith<$Res> {
+  _$EventFileDataCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? path_file = freezed,
+    Object? size_file = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      path_file: freezed == path_file
+          ? _value.path_file
+          : path_file // ignore: cast_nullable_to_non_nullable
+              as String?,
+      size_file: freezed == size_file
+          ? _value.size_file
+          : size_file // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$EventFileDataImplCopyWith<$Res>
+    implements $EventFileDataCopyWith<$Res> {
+  factory _$$EventFileDataImplCopyWith(
+          _$EventFileDataImpl value, $Res Function(_$EventFileDataImpl) then) =
+      __$$EventFileDataImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int? id, String? name, String? path_file, String? size_file});
+}
+
+/// @nodoc
+class __$$EventFileDataImplCopyWithImpl<$Res>
+    extends _$EventFileDataCopyWithImpl<$Res, _$EventFileDataImpl>
+    implements _$$EventFileDataImplCopyWith<$Res> {
+  __$$EventFileDataImplCopyWithImpl(
+      _$EventFileDataImpl _value, $Res Function(_$EventFileDataImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? path_file = freezed,
+    Object? size_file = freezed,
+  }) {
+    return _then(_$EventFileDataImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      path_file: freezed == path_file
+          ? _value.path_file
+          : path_file // ignore: cast_nullable_to_non_nullable
+              as String?,
+      size_file: freezed == size_file
+          ? _value.size_file
+          : size_file // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$EventFileDataImpl implements _EventFileData {
+  const _$EventFileDataImpl(
+      {this.id, this.name = '', this.path_file = '', this.size_file = ''});
+
+  factory _$EventFileDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EventFileDataImplFromJson(json);
+
+  @override
+  final int? id;
+  @override
+  @JsonKey()
+  final String? name;
+  @override
+  @JsonKey()
+  final String? path_file;
+  @override
+  @JsonKey()
+  final String? size_file;
+
+  @override
+  String toString() {
+    return 'EventFileData(id: $id, name: $name, path_file: $path_file, size_file: $size_file)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EventFileDataImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.path_file, path_file) ||
+                other.path_file == path_file) &&
+            (identical(other.size_file, size_file) ||
+                other.size_file == size_file));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, name, path_file, size_file);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EventFileDataImplCopyWith<_$EventFileDataImpl> get copyWith =>
+      __$$EventFileDataImplCopyWithImpl<_$EventFileDataImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$EventFileDataImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _EventFileData implements EventFileData {
+  const factory _EventFileData(
+      {final int? id,
+      final String? name,
+      final String? path_file,
+      final String? size_file}) = _$EventFileDataImpl;
+
+  factory _EventFileData.fromJson(Map<String, dynamic> json) =
+      _$EventFileDataImpl.fromJson;
+
+  @override
+  int? get id;
+  @override
+  String? get name;
+  @override
+  String? get path_file;
+  @override
+  String? get size_file;
+  @override
+  @JsonKey(ignore: true)
+  _$$EventFileDataImplCopyWith<_$EventFileDataImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

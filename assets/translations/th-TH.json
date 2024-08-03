@@ -65,6 +65,8 @@
     "Scan": "สแกน",
     "Hold the QR code inside the frame. It will be scanned automatically or": "วางรหัส QR ในกรอบ ระบบจะสแกนโดยอัตโนมัติ",
     "Choose where you want to display the Agenda": "เลือกที่จะแสดงกำหนดการที่ไหน",
-    "Event Detail": "รายละเอียดกิจกรรม"
+    "Event Detail": "รายละเอียดกิจกรรม",
+    "SEND ALL FILES TO YOUR EMAIL": "ส่งไฟล์ทั้งหมดไปที่อีเมลของคุณ",
+    "Success: send email": "สำเร็จ: ส่งอีเมล"
 
 }

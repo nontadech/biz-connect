@@ -116,6 +116,18 @@ class SpeakerData with _$SpeakerData  {
       => _$SpeakerDataFromJson(json);
 }
 
+@freezed
+class EventFileData with _$EventFileData  {
+  const factory EventFileData({
+    int? id,
+    @Default('') String? name,
+    @Default('') String? path_file,
+    @Default('') String? size_file
+  }) = _EventFileData;
+  factory EventFileData.fromJson(Map<String, Object?> json)
+      => _$EventFileDataFromJson(json);
+}
+
 class JoinAgendaInput {
   final int eventId;
   final int? speakerId;
@@ -155,5 +167,17 @@ class SessionRateInput {
     this.answers,
     this.questionTypeId,
     this.userId,
+  }); 
+}
+
+
+
+class FileEmailInput {
+  final int? eventId;
+  final String? email;
+  
+  FileEmailInput({
+    this.eventId,
+    this.email,
   }); 
 }
