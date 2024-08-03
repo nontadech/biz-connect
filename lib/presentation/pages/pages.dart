@@ -22,3 +22,4 @@ export 'supported/supported.dart';
 export 'gallery/gallery.dart';
 export 'live_poll/live_poll.dart';
 export 'survey/survey.dart';
+export 'web_view/web_view.dart';

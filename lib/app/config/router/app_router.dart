@@ -258,6 +258,17 @@ class AppRouter {
         path: '/join/survey_thank',
         builder: (context, state) => const SurveyThankPage(),
       ),
+      GoRoute(
+        path: '/web_view',
+        builder: (context, state){
+          Map<String, dynamic> extra = state.extra as Map<String, dynamic>;
+          return WebViewPage(
+            title: extra['title'],
+            url: extra['url'],
+          );
+        },
+      ),
+      
     ]
   );
 

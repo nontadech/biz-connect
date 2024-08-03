@@ -3,17 +3,21 @@ import 'package:biz_connect/domain/entities/event_entity.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:go_router/go_router.dart';
+import "package:latlong2/latlong.dart";
+import 'package:maps_launcher/maps_launcher.dart';
+
 
 class PopularEventDetail extends StatelessWidget {
-  final EventList event;
-  
+
   const PopularEventDetail({
     super.key,
     required this.event
   });
+  final EventList event;
 
   @override
   Widget build(BuildContext context) {
@@ -91,13 +95,25 @@ class PopularEventDetail extends StatelessWidget {
                               children: [
                                 ButtonIcon(
                                   icon: SvgPicture.asset('assets/icons/agenda.svg'),
-                                  onPressed: () {  },
+                                  onPressed: () {
+                                    context.push('/join/agenda', 
+                                      extra: {
+                                        'event_id': event.event_id,
+                                      }
+                                    );
+                                  },
                                   text: 'Agenda',
                                 ),
                                 const SizedBox(width: 10),
                                 ButtonIcon(
                                   icon: SvgPicture.asset('assets/icons/people.svg'),
-                                  onPressed: () {  },
+                                  onPressed: () { 
+                                    context.push('/join/speakers', 
+                                      extra: {
+                                        'event_id': event.event_id,
+                                      }
+                                    );
+                                  },
                                   text: 'Speaker',
                                 ),
                               ],
@@ -169,7 +185,41 @@ class PopularEventDetail extends StatelessWidget {
                           ],
                         )
                       ),
-                      Image.asset('assets/demo/map.png'),
+                      SizedBox(
+                        width: double.infinity,
+                        height: 300,
+                        child: FlutterMap(
+                          options: MapOptions(
+                            initialCenter: LatLng(event.location_lat!, event.location_lng!),
+                            initialZoom: 16,
+                            interactionOptions: const InteractionOptions(
+                              flags:InteractiveFlag.pinchZoom,
+                            ),
+                          ),
+                          children: [
+                            TileLayer(
+                              urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
+                            ),
+                            const Center(
+                              child: Icon(
+                                Icons.location_pin,
+                                size: 40,
+                                color: Colors.red,
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () {
+                                MapsLauncher.launchCoordinates( event.location_lat!, event.location_lng!, event.location_name!);
+                              },
+                              child: Container(
+                                width: double.infinity,
+                                height: 300,
+                                color: Colors.transparent,
+                              ),
+                            ),
+                          ],
+                        )
+                      ),
                       const SizedBox(
                         height: 100,
                       )
@@ -187,7 +237,13 @@ class PopularEventDetail extends StatelessWidget {
           child: ButtonPositionBottom(
             text: 'Register now',
             onPressed: () {
-              context.go('/home');
+              context.push(
+                '/web_view',
+                extra: {
+                  'title': 'Event Detail',
+                  'url': 'https://bizconnect.tceb.or.th/e/${event.event_id}/embed',
+                }
+              );
             }
           )
         )

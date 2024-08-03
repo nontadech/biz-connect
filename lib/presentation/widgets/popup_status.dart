@@ -93,7 +93,9 @@ Future<void> popupStatus(BuildContext context, PopupStatusType type, {
                 text: 'CLOSE',
                 onPressed: () {
                   Navigator.pop(context);
-                  onPressed!();
+                  if(onPressed != null){
+                    onPressed();
+                  }
                 },
               ),
             ),

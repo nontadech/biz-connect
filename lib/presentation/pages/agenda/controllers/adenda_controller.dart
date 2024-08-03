@@ -18,13 +18,20 @@ class AgendaController extends GetxController {
   final Rx<String> selectRoom = ''.obs;
   final Rx<int> selectSession = 0.obs;
   final Rx<int> eventId = 0.obs;
+  final RxBool isLoading = false.obs;
+  final RxBool isDataEmtpy = false.obs;
   
   getAgenda(JoinAgendaInput joinAgendaInput) async {
+    isDataEmtpy(false);
     try {
+      isLoading(false);
       eventId.value = joinAgendaInput.eventId;
       agenda.value = await _agendaUseCase.execute(joinAgendaInput);
+      log(agenda.value.toString());
       filterSession();
+      isLoading(true);
     } catch (error) {
+      isDataEmtpy(true);
       log('error ${error.toString()}');
     }
   }

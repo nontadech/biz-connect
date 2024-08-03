@@ -26,7 +26,7 @@ class QRContact with _$QRContact  {
 @freezed
 class QRPrivateEvent with _$QRPrivateEvent  {
   const factory QRPrivateEvent({
-    QRPrivateEventData? data,
+    List<QRPrivateEventData>? data,
   }) = _QRPrivateEvent;
   factory QRPrivateEvent.fromJson(Map<String, Object?> json)
       => _$QRPrivateEventFromJson(json);

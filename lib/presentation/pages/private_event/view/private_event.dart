@@ -1,9 +1,11 @@
+
 import 'package:biz_connect/app/config/themes/theme.dart';
 import 'package:biz_connect/presentation/pages/private_event/view/private_event_form.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 Future<void> privateEvent(BuildContext context) {
+
   return showDialog<void>(
     context: context,
     builder: (context) => AlertDialog(
@@ -22,7 +24,9 @@ Future<void> privateEvent(BuildContext context) {
             const SizedBox(
               height: 10.0,
             ),
-            const PrivateEventForm()
+            PrivateEventForm(
+              popppContext: context
+            )
           ],
         ),
       )

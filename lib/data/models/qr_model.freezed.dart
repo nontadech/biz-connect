@@ -303,7 +303,7 @@ QRPrivateEvent _$QRPrivateEventFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$QRPrivateEvent {
-  QRPrivateEventData? get data => throw _privateConstructorUsedError;
+  List<QRPrivateEventData>? get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -317,9 +317,7 @@ abstract class $QRPrivateEventCopyWith<$Res> {
           QRPrivateEvent value, $Res Function(QRPrivateEvent) then) =
       _$QRPrivateEventCopyWithImpl<$Res, QRPrivateEvent>;
   @useResult
-  $Res call({QRPrivateEventData? data});
-
-  $QRPrivateEventDataCopyWith<$Res>? get data;
+  $Res call({List<QRPrivateEventData>? data});
 }
 
 /// @nodoc
@@ -341,20 +339,8 @@ class _$QRPrivateEventCopyWithImpl<$Res, $Val extends QRPrivateEvent>
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as QRPrivateEventData?,
+              as List<QRPrivateEventData>?,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $QRPrivateEventDataCopyWith<$Res>? get data {
-    if (_value.data == null) {
-      return null;
-    }
-
-    return $QRPrivateEventDataCopyWith<$Res>(_value.data!, (value) {
-      return _then(_value.copyWith(data: value) as $Val);
-    });
   }
 }
 
@@ -366,10 +352,7 @@ abstract class _$$QRPrivateEventImplCopyWith<$Res>
       __$$QRPrivateEventImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({QRPrivateEventData? data});
-
-  @override
-  $QRPrivateEventDataCopyWith<$Res>? get data;
+  $Res call({List<QRPrivateEventData>? data});
 }
 
 /// @nodoc
@@ -387,9 +370,9 @@ class __$$QRPrivateEventImplCopyWithImpl<$Res>
   }) {
     return _then(_$QRPrivateEventImpl(
       data: freezed == data
-          ? _value.data
+          ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as QRPrivateEventData?,
+              as List<QRPrivateEventData>?,
     ));
   }
 }
@@ -397,13 +380,21 @@ class __$$QRPrivateEventImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$QRPrivateEventImpl implements _QRPrivateEvent {
-  const _$QRPrivateEventImpl({this.data});
+  const _$QRPrivateEventImpl({final List<QRPrivateEventData>? data})
+      : _data = data;
 
   factory _$QRPrivateEventImpl.fromJson(Map<String, dynamic> json) =>
       _$$QRPrivateEventImplFromJson(json);
 
+  final List<QRPrivateEventData>? _data;
   @override
-  final QRPrivateEventData? data;
+  List<QRPrivateEventData>? get data {
+    final value = _data;
+    if (value == null) return null;
+    if (_data is EqualUnmodifiableListView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
@@ -415,12 +406,13 @@ class _$QRPrivateEventImpl implements _QRPrivateEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$QRPrivateEventImpl &&
-            (identical(other.data, data) || other.data == data));
+            const DeepCollectionEquality().equals(other._data, _data));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, data);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
 
   @JsonKey(ignore: true)
   @override
@@ -438,14 +430,14 @@ class _$QRPrivateEventImpl implements _QRPrivateEvent {
 }
 
 abstract class _QRPrivateEvent implements QRPrivateEvent {
-  const factory _QRPrivateEvent({final QRPrivateEventData? data}) =
+  const factory _QRPrivateEvent({final List<QRPrivateEventData>? data}) =
       _$QRPrivateEventImpl;
 
   factory _QRPrivateEvent.fromJson(Map<String, dynamic> json) =
       _$QRPrivateEventImpl.fromJson;
 
   @override
-  QRPrivateEventData? get data;
+  List<QRPrivateEventData>? get data;
   @override
   @JsonKey(ignore: true)
   _$$QRPrivateEventImplCopyWith<_$QRPrivateEventImpl> get copyWith =>

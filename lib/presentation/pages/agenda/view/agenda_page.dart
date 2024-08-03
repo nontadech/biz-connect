@@ -57,6 +57,7 @@ class AgendaPage extends GetView<AgendaController> {
     return GetX(
       init: controller,
       initState: (_) {
+        controller.isLoading.value = false;
         controller.getAgenda(
           JoinAgendaInput(
             eventId: eventId,
@@ -65,7 +66,7 @@ class AgendaPage extends GetView<AgendaController> {
         );
       },
       builder: (_) {
-        if(controller.agenda.value.sessions.isEmpty) {
+        if(!controller.isLoading.value) {
           return Scaffold(
             resizeToAvoidBottomInset: false,
             appBar: AppBarAgenda(
@@ -73,13 +74,13 @@ class AgendaPage extends GetView<AgendaController> {
               title: 'Agenda',
               onSelectRoom: controller.onSelectRoom,
             ),
-            body: const Column(
+            body: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 200,
                 ),
                 Center(
-                  child: CircularProgressIndicator(),
+                  child: controller.isDataEmtpy.value ?  const SizedBox() : const CircularProgressIndicator(),
                 )
               ],
             )

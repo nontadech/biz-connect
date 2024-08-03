@@ -11,13 +11,13 @@ class QRRepositoryIml extends QRRepository {
   
   @override
   Future<QRContact> getQRContactInformation(String contactQRCode) async {
-     final response = await QRAPI.getQRContactInformation(contactQRCode).request();
+    final response = await QRAPI.getQRContactInformation(contactQRCode).request();
     return QRContact.fromJson(response);
   }
 
   @override
   Future<QRPrivateEvent> getQRPrivateEvent(String contactQRCode) async {
-     final response = await QRAPI.getQRContactInformation(contactQRCode).request();
+    final response = await QRAPI.getQRContactInformation(contactQRCode).request();
     return QRPrivateEvent.fromJson(response);
   }
 

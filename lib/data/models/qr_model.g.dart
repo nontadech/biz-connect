@@ -29,9 +29,9 @@ Map<String, dynamic> _$$QRContactImplToJson(_$QRContactImpl instance) =>
 
 _$QRPrivateEventImpl _$$QRPrivateEventImplFromJson(Map<String, dynamic> json) =>
     _$QRPrivateEventImpl(
-      data: json['data'] == null
-          ? null
-          : QRPrivateEventData.fromJson(json['data'] as Map<String, dynamic>),
+      data: (json['data'] as List<dynamic>?)
+          ?.map((e) => QRPrivateEventData.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$QRPrivateEventImplToJson(

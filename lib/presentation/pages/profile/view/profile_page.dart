@@ -1,4 +1,6 @@
 import 'package:biz_connect/app/config/themes/theme.dart';
+import 'package:biz_connect/domain/entities/event_entity.dart';
+import 'package:biz_connect/presentation/pages/private_event/controllers/controllers.dart';
 import 'package:biz_connect/presentation/pages/private_event/private_event.dart';
 import 'package:biz_connect/presentation/pages/profile/controllers/controllers.dart';
 import 'package:biz_connect/presentation/pages/profile/view/picture_profile.dart';
@@ -14,9 +16,11 @@ class ProfilePage extends GetView<ProfileController> {
 
   @override
    Widget build(BuildContext context) {
+     PrivateEventBinding().dependencies();
+     final privateEventc = PrivateEventController.call;
+       
+                      
     ProfileBinding().dependencies();
-    controller.fechData(controller.user!);
-    controller.context(context);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Padding(
@@ -24,6 +28,8 @@ class ProfilePage extends GetView<ProfileController> {
         child: GetX(
           init: controller,
           initState: (state) {
+            controller.fechData(controller.user!);
+            controller.context(context);
           },
           builder: (_) {
             return SingleChildScrollView(
@@ -112,6 +118,35 @@ class ProfilePage extends GetView<ProfileController> {
                     icon: SvgPicture.asset('assets/icons/check.svg'),
                     onTap: () async {
                       await privateEvent(context);
+                      WidgetsBinding.instance.addPostFrameCallback((_){
+                        try {
+                          if(!privateEventc.isLoading.value){
+                            context.push('/popular_event', extra: {
+                            'event': 
+                              EventList(
+                                event_id: privateEventc.qrPrivateEvent.value.data![0].event_id,
+                                title: privateEventc.qrPrivateEvent.value.data![0].title,
+                                description: privateEventc.qrPrivateEvent.value.data![0].description,
+                                date: privateEventc.qrPrivateEvent.value.data![0].date,
+                                start_time: privateEventc.qrPrivateEvent.value.data![0].start_time,
+                                date_end: privateEventc.qrPrivateEvent.value.data![0].date_end,
+                                end_time: privateEventc.qrPrivateEvent.value.data![0].end_time,
+                                location_name: privateEventc.qrPrivateEvent.value.data![0].location_name,
+                                venue_name: privateEventc.qrPrivateEvent.value.data![0].venue_name,
+                                venue_tel: privateEventc.qrPrivateEvent.value.data![0].venue_tel,
+                                venue_email: privateEventc.qrPrivateEvent.value.data![0].venue_email!,
+                                thumnail: privateEventc.qrPrivateEvent.value.data![0].image_display
+                              )
+                            }); 
+                          }
+                        } catch (error) {
+                          popupStatus(
+                            context, 
+                            PopupStatusType.error,
+                            message: 'No event found',
+                          );
+                        }
+                      });
                     },
                   ),
                   const SizedBox(
