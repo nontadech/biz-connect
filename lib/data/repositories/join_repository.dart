@@ -65,4 +65,10 @@ class JoinRepositoryIml extends JoinRepository {
     final response = await JoinAPI.getEventGallery(eventId).request();
     return Gallery.fromJson(response);
   }
+
+  @override
+  Future<SessionRating> getSessionRatingAll(SessionRateInput sessionRateInput) async {
+    final response = await JoinAPI.getEventSessionRating(sessionRateInput).request();
+    return SessionRating.fromJson(response);
+  }
 }

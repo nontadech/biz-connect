@@ -91,3 +91,11 @@ class Gallery with _$Gallery  {
       => _$GalleryFromJson(json);
 }
 
+@freezed
+class SessionRating with _$SessionRating  {
+  const factory SessionRating({
+    @Default([]) List<SessionRatingData>? data
+  }) = _SessionRating;
+  factory SessionRating.fromJson(Map<String, Object?> json)
+      => _$SessionRatingFromJson(json);
+}

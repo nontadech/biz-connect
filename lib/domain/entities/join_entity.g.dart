@@ -230,3 +230,50 @@ Map<String, dynamic> _$$GalleryDataImplToJson(_$GalleryDataImpl instance) =>
       'image_path': instance.image_path,
       'url': instance.url,
     };
+
+_$ChoiceItemImpl _$$ChoiceItemImplFromJson(Map<String, dynamic> json) =>
+    _$ChoiceItemImpl(
+      id: (json['id'] as num?)?.toInt(),
+      label: json['label'] as String? ?? '',
+    );
+
+Map<String, dynamic> _$$ChoiceItemImplToJson(_$ChoiceItemImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'label': instance.label,
+    };
+
+_$SessionRatingDataImpl _$$SessionRatingDataImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SessionRatingDataImpl(
+      id: (json['id'] as num?)?.toInt(),
+      title: json['title'] as String? ?? '',
+      quiestion_type_id: (json['quiestion_type_id'] as num?)?.toInt() ?? 0,
+      quiestion_type_name: $enumDecodeNullable(
+          _$QuiestionTypeNameEnumMap, json['quiestion_type_name']),
+      choice_item: (json['choice_item'] as List<dynamic>?)
+              ?.map((e) => ChoiceItem.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+    );
+
+Map<String, dynamic> _$$SessionRatingDataImplToJson(
+        _$SessionRatingDataImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'title': instance.title,
+      'quiestion_type_id': instance.quiestion_type_id,
+      'quiestion_type_name':
+          _$QuiestionTypeNameEnumMap[instance.quiestion_type_name],
+      'choice_item': instance.choice_item,
+    };
+
+const _$QuiestionTypeNameEnumMap = {
+  QuiestionTypeName.singleText: 'single_text',
+  QuiestionTypeName.longText: 'long_text',
+  QuiestionTypeName.singleChoice: 'single_choice',
+  QuiestionTypeName.multipleChoice: 'multiple_choice',
+  QuiestionTypeName.star: 'star',
+  QuiestionTypeName.attachImage: 'attach_image',
+  QuiestionTypeName.rateTen: 'rate_10',
+};

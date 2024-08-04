@@ -20,7 +20,7 @@ class CheckboxCustomState extends State<CheckboxCustom> {
     return InkWell(
       onTap: () {
         // setState(() => isChecked = !isChecked);
-        // widget.onChanged?.call(isChecked);
+        widget.onChanged(!widget.value);
       },
       child: Container(
         width: 22,

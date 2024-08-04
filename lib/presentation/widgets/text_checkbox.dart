@@ -29,9 +29,7 @@ class TextCheckboxState extends State<TextCheckbox> {
         CheckboxCustom(
           value: widget.value,
           onChanged: (bool? value) {
-            if (value == true) {
-              widget.onChanged(widget.value);
-            }
+            widget.onChanged(widget.value);
           },
         ),
         const SizedBox(width: 10,),

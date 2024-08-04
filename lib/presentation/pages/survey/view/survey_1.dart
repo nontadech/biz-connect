@@ -1,28 +1,30 @@
 import 'package:biz_connect/app/config/themes/theme.dart';
+import 'package:biz_connect/domain/entities/join_entity.dart';
+import 'package:biz_connect/presentation/pages/survey/controllers/controllers.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
-class Survey1 extends StatefulWidget {
-  const Survey1({super.key});
-
-  @override
-  State<Survey1> createState() => _Survey1State();
-}
-
-class _Survey1State extends State<Survey1> {
-  @override
-  void initState() {
-    // Initialize & inject UserController() using Get.put()
-    super.initState();
-  }
+class Survey1 extends StatelessWidget {
+  final SessionRatingData data;
+  final int page;
+  final SurveyController controller;
+  const Survey1({
+    super.key,
+    required this.data,
+    required this.page,
+    required this.controller,
+  });
 
   @override
   Widget build(BuildContext context) {
+    if(controller.answersController.length < page){
+      controller.answersController.add(TextEditingController());
+    }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TextCustom(
-          text: '1. Odio facilisis mauris sit amet massa vitaetortor condimentum lacinia?,',
+          text: '$page ${data.title}',
           fontSize: FontSize.h8, 
           fontWeight: FontWeight.w400, 
           height: 1.2,
@@ -34,6 +36,7 @@ class _Survey1State extends State<Survey1> {
         TextFormFieldCustom(
           context,
           hintText: 'Answer here...',
+          controller: controller.answersController[page - 1],
         ),
       ],
     );

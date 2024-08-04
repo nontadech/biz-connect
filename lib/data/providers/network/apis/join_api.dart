@@ -17,7 +17,8 @@ enum JoinType {
   getEventFile, 
   sendFileEmail, 
   getEventPartners, 
-  getEventGallery 
+  getEventGallery,
+  getEventSessionRating
 }
 
 class JoinAPI implements APIRequestRepresentable {
@@ -41,6 +42,7 @@ class JoinAPI implements APIRequestRepresentable {
   JoinAPI.sendFileEmail(FileEmailInput fileEmailInput) : this._(type: JoinType.sendFileEmail, fileEmailInput: fileEmailInput);
   JoinAPI.getEventPartners(int eventId) : this._(type: JoinType.getEventPartners, eventId: eventId);
   JoinAPI.getEventGallery(int eventId) : this._(type: JoinType.getEventGallery, eventId: eventId);
+  JoinAPI.getEventSessionRating(SessionRateInput sessionRateInput) : this._(type: JoinType.getEventSessionRating, sessionRateInput: sessionRateInput);
   
 
   @override
@@ -49,6 +51,8 @@ class JoinAPI implements APIRequestRepresentable {
   @override
   String get path {
     switch (type) {
+      case JoinType.getEventSessionRating:
+        return "/getEventSessionRating";
       case JoinType.getEventGallery:
         return "/getEventGallery";
       case JoinType.getEventPartners:
@@ -77,6 +81,7 @@ class JoinAPI implements APIRequestRepresentable {
   @override
   HTTPMethod get method {
     switch (type) {
+      case JoinType.getEventSessionRating:
       case JoinType.getEventGallery:
       case JoinType.getEventPartners:
       case JoinType.getEventFile:
@@ -118,6 +123,11 @@ class JoinAPI implements APIRequestRepresentable {
       case JoinType.getEventFloorPlan:
         return {
           'event_id': eventId.toString(),
+        };
+      case JoinType.getEventSessionRating:
+        return {
+          'event_id': sessionRateInput!.eventId.toString(),
+          'agenda_id': sessionRateInput!.agendaId.toString(),
         };
       case JoinType.getEventSessionRatingAnswers:
         return {
@@ -182,7 +192,7 @@ class JoinAPI implements APIRequestRepresentable {
           'is_session' : 1,
           'answers': sessionRateInput!.answers!.map((e) => {
             'answer': e.answer,
-            'question_type_id': 5,
+            'question_type_id': e.questionTypeId,
             'comment': e.comment
           }).toList()
         };

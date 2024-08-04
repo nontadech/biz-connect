@@ -26,7 +26,7 @@ class Rate extends StatefulWidget {
 class _RateState extends State<Rate> {
   int status = 0;
   setRate(BuildContext context, position){
-    double percent = (position/MediaQuery.of(context).size.width)*100;
+    double percent = widget.type == RateType.big ? (position/MediaQuery.of(context).size.width)*100 : (position/270)*100;
     if(widget.type == RateType.big){
       if(percent < 26.5){
         setState(() {
@@ -54,7 +54,7 @@ class _RateState extends State<Rate> {
         });
       }
     }else{
-      if(percent < 16){
+      if(percent < 18){
         setState(() {
           status = 0;
         });
@@ -81,7 +81,6 @@ class _RateState extends State<Rate> {
         
       }
     }
-    log(status.toString());
     widget.setRateCallBack!(status);
   }
   Widget getStart(BuildContext context){

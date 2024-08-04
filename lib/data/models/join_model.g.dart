@@ -132,3 +132,17 @@ Map<String, dynamic> _$$GalleryImplToJson(_$GalleryImpl instance) =>
     <String, dynamic>{
       'data': instance.data,
     };
+
+_$SessionRatingImpl _$$SessionRatingImplFromJson(Map<String, dynamic> json) =>
+    _$SessionRatingImpl(
+      data: (json['data'] as List<dynamic>?)
+              ?.map(
+                  (e) => SessionRatingData.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+    );
+
+Map<String, dynamic> _$$SessionRatingImplToJson(_$SessionRatingImpl instance) =>
+    <String, dynamic>{
+      'data': instance.data,
+    };

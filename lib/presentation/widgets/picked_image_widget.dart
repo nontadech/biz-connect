@@ -7,9 +7,11 @@ import 'package:image_picker/image_picker.dart';
 
 class PickedImageWidget extends GetView<ImageController> {
   final Function saveImage;
+  final int? page;
   const PickedImageWidget({
     super.key,
     required this.saveImage,
+    this.page,
   });
 
   @override
@@ -31,7 +33,7 @@ class PickedImageWidget extends GetView<ImageController> {
                     IconButton(
                       icon: const Icon(Icons.camera_alt),
                       onPressed: () async {
-                        saveImage(ImageSource.camera);
+                        saveImage(ImageSource.camera, page);
                       },
                     ),
                     Text('Camera', style: TextStyle(fontSize: FontSize.h12)),
@@ -42,7 +44,7 @@ class PickedImageWidget extends GetView<ImageController> {
                     IconButton(
                       icon: const Icon(Icons.photo),
                       onPressed: () async {
-                        saveImage(ImageSource.gallery);
+                        saveImage(ImageSource.gallery, page);
                       },
                     ),
                     Text('Gallery', style: TextStyle(fontSize: FontSize.h12)),

@@ -2677,3 +2677,392 @@ abstract class _GalleryData implements GalleryData {
   _$$GalleryDataImplCopyWith<_$GalleryDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+ChoiceItem _$ChoiceItemFromJson(Map<String, dynamic> json) {
+  return _ChoiceItem.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ChoiceItem {
+  int? get id => throw _privateConstructorUsedError;
+  String get label => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ChoiceItemCopyWith<ChoiceItem> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ChoiceItemCopyWith<$Res> {
+  factory $ChoiceItemCopyWith(
+          ChoiceItem value, $Res Function(ChoiceItem) then) =
+      _$ChoiceItemCopyWithImpl<$Res, ChoiceItem>;
+  @useResult
+  $Res call({int? id, String label});
+}
+
+/// @nodoc
+class _$ChoiceItemCopyWithImpl<$Res, $Val extends ChoiceItem>
+    implements $ChoiceItemCopyWith<$Res> {
+  _$ChoiceItemCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? label = null,
+  }) {
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      label: null == label
+          ? _value.label
+          : label // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ChoiceItemImplCopyWith<$Res>
+    implements $ChoiceItemCopyWith<$Res> {
+  factory _$$ChoiceItemImplCopyWith(
+          _$ChoiceItemImpl value, $Res Function(_$ChoiceItemImpl) then) =
+      __$$ChoiceItemImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int? id, String label});
+}
+
+/// @nodoc
+class __$$ChoiceItemImplCopyWithImpl<$Res>
+    extends _$ChoiceItemCopyWithImpl<$Res, _$ChoiceItemImpl>
+    implements _$$ChoiceItemImplCopyWith<$Res> {
+  __$$ChoiceItemImplCopyWithImpl(
+      _$ChoiceItemImpl _value, $Res Function(_$ChoiceItemImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? label = null,
+  }) {
+    return _then(_$ChoiceItemImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      label: null == label
+          ? _value.label
+          : label // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ChoiceItemImpl implements _ChoiceItem {
+  const _$ChoiceItemImpl({this.id, this.label = ''});
+
+  factory _$ChoiceItemImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ChoiceItemImplFromJson(json);
+
+  @override
+  final int? id;
+  @override
+  @JsonKey()
+  final String label;
+
+  @override
+  String toString() {
+    return 'ChoiceItem(id: $id, label: $label)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChoiceItemImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.label, label) || other.label == label));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, label);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChoiceItemImplCopyWith<_$ChoiceItemImpl> get copyWith =>
+      __$$ChoiceItemImplCopyWithImpl<_$ChoiceItemImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ChoiceItemImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ChoiceItem implements ChoiceItem {
+  const factory _ChoiceItem({final int? id, final String label}) =
+      _$ChoiceItemImpl;
+
+  factory _ChoiceItem.fromJson(Map<String, dynamic> json) =
+      _$ChoiceItemImpl.fromJson;
+
+  @override
+  int? get id;
+  @override
+  String get label;
+  @override
+  @JsonKey(ignore: true)
+  _$$ChoiceItemImplCopyWith<_$ChoiceItemImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+SessionRatingData _$SessionRatingDataFromJson(Map<String, dynamic> json) {
+  return _SessionRatingData.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SessionRatingData {
+  int? get id => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  int get quiestion_type_id => throw _privateConstructorUsedError;
+  QuiestionTypeName? get quiestion_type_name =>
+      throw _privateConstructorUsedError;
+  List<ChoiceItem> get choice_item => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SessionRatingDataCopyWith<SessionRatingData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SessionRatingDataCopyWith<$Res> {
+  factory $SessionRatingDataCopyWith(
+          SessionRatingData value, $Res Function(SessionRatingData) then) =
+      _$SessionRatingDataCopyWithImpl<$Res, SessionRatingData>;
+  @useResult
+  $Res call(
+      {int? id,
+      String title,
+      int quiestion_type_id,
+      QuiestionTypeName? quiestion_type_name,
+      List<ChoiceItem> choice_item});
+}
+
+/// @nodoc
+class _$SessionRatingDataCopyWithImpl<$Res, $Val extends SessionRatingData>
+    implements $SessionRatingDataCopyWith<$Res> {
+  _$SessionRatingDataCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? title = null,
+    Object? quiestion_type_id = null,
+    Object? quiestion_type_name = freezed,
+    Object? choice_item = null,
+  }) {
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      quiestion_type_id: null == quiestion_type_id
+          ? _value.quiestion_type_id
+          : quiestion_type_id // ignore: cast_nullable_to_non_nullable
+              as int,
+      quiestion_type_name: freezed == quiestion_type_name
+          ? _value.quiestion_type_name
+          : quiestion_type_name // ignore: cast_nullable_to_non_nullable
+              as QuiestionTypeName?,
+      choice_item: null == choice_item
+          ? _value.choice_item
+          : choice_item // ignore: cast_nullable_to_non_nullable
+              as List<ChoiceItem>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$SessionRatingDataImplCopyWith<$Res>
+    implements $SessionRatingDataCopyWith<$Res> {
+  factory _$$SessionRatingDataImplCopyWith(_$SessionRatingDataImpl value,
+          $Res Function(_$SessionRatingDataImpl) then) =
+      __$$SessionRatingDataImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int? id,
+      String title,
+      int quiestion_type_id,
+      QuiestionTypeName? quiestion_type_name,
+      List<ChoiceItem> choice_item});
+}
+
+/// @nodoc
+class __$$SessionRatingDataImplCopyWithImpl<$Res>
+    extends _$SessionRatingDataCopyWithImpl<$Res, _$SessionRatingDataImpl>
+    implements _$$SessionRatingDataImplCopyWith<$Res> {
+  __$$SessionRatingDataImplCopyWithImpl(_$SessionRatingDataImpl _value,
+      $Res Function(_$SessionRatingDataImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? title = null,
+    Object? quiestion_type_id = null,
+    Object? quiestion_type_name = freezed,
+    Object? choice_item = null,
+  }) {
+    return _then(_$SessionRatingDataImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      quiestion_type_id: null == quiestion_type_id
+          ? _value.quiestion_type_id
+          : quiestion_type_id // ignore: cast_nullable_to_non_nullable
+              as int,
+      quiestion_type_name: freezed == quiestion_type_name
+          ? _value.quiestion_type_name
+          : quiestion_type_name // ignore: cast_nullable_to_non_nullable
+              as QuiestionTypeName?,
+      choice_item: null == choice_item
+          ? _value._choice_item
+          : choice_item // ignore: cast_nullable_to_non_nullable
+              as List<ChoiceItem>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SessionRatingDataImpl implements _SessionRatingData {
+  const _$SessionRatingDataImpl(
+      {this.id,
+      this.title = '',
+      this.quiestion_type_id = 0,
+      this.quiestion_type_name,
+      final List<ChoiceItem> choice_item = const []})
+      : _choice_item = choice_item;
+
+  factory _$SessionRatingDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SessionRatingDataImplFromJson(json);
+
+  @override
+  final int? id;
+  @override
+  @JsonKey()
+  final String title;
+  @override
+  @JsonKey()
+  final int quiestion_type_id;
+  @override
+  final QuiestionTypeName? quiestion_type_name;
+  final List<ChoiceItem> _choice_item;
+  @override
+  @JsonKey()
+  List<ChoiceItem> get choice_item {
+    if (_choice_item is EqualUnmodifiableListView) return _choice_item;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_choice_item);
+  }
+
+  @override
+  String toString() {
+    return 'SessionRatingData(id: $id, title: $title, quiestion_type_id: $quiestion_type_id, quiestion_type_name: $quiestion_type_name, choice_item: $choice_item)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SessionRatingDataImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.quiestion_type_id, quiestion_type_id) ||
+                other.quiestion_type_id == quiestion_type_id) &&
+            (identical(other.quiestion_type_name, quiestion_type_name) ||
+                other.quiestion_type_name == quiestion_type_name) &&
+            const DeepCollectionEquality()
+                .equals(other._choice_item, _choice_item));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, title, quiestion_type_id,
+      quiestion_type_name, const DeepCollectionEquality().hash(_choice_item));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SessionRatingDataImplCopyWith<_$SessionRatingDataImpl> get copyWith =>
+      __$$SessionRatingDataImplCopyWithImpl<_$SessionRatingDataImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SessionRatingDataImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SessionRatingData implements SessionRatingData {
+  const factory _SessionRatingData(
+      {final int? id,
+      final String title,
+      final int quiestion_type_id,
+      final QuiestionTypeName? quiestion_type_name,
+      final List<ChoiceItem> choice_item}) = _$SessionRatingDataImpl;
+
+  factory _SessionRatingData.fromJson(Map<String, dynamic> json) =
+      _$SessionRatingDataImpl.fromJson;
+
+  @override
+  int? get id;
+  @override
+  String get title;
+  @override
+  int get quiestion_type_id;
+  @override
+  QuiestionTypeName? get quiestion_type_name;
+  @override
+  List<ChoiceItem> get choice_item;
+  @override
+  @JsonKey(ignore: true)
+  _$$SessionRatingDataImplCopyWith<_$SessionRatingDataImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

@@ -47,7 +47,6 @@ class ForgotController extends GetxController {
           message: result.message.toString(),
           onPressed:() {
             context.value.pop();
-            log('1');
           },
         );
       }

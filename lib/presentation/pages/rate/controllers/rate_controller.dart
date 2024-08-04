@@ -43,6 +43,7 @@ class RateController extends GetxController {
   setRate(int value) async {
     rate(value);
   }
+  
   rateAgenda(int agendaId, int eventId) async {
     LoadingBinding().dependencies();
     final loadingC = LoadingController.call;
@@ -62,7 +63,7 @@ class RateController extends GetxController {
           answers: [
             AnswersInput(
               questionTypeId: 5,
-              answer: 5,
+              answer: rate.value.toString(),
               comment: commentController.text,
             ),
           ],

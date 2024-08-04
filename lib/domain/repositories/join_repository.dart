@@ -13,4 +13,5 @@ abstract class JoinRepository {
   Future<Body> sendFileEmail(FileEmailInput fileEmailInput);
   Future<Partners> getPartners(int eventId);
   Future<Gallery> getGallery(int eventId);
+  Future<SessionRating> getSessionRatingAll(SessionRateInput sessionRateInput);
 }

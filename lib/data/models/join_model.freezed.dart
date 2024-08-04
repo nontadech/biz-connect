@@ -1423,3 +1423,150 @@ abstract class _Gallery implements Gallery {
   _$$GalleryImplCopyWith<_$GalleryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+SessionRating _$SessionRatingFromJson(Map<String, dynamic> json) {
+  return _SessionRating.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SessionRating {
+  List<SessionRatingData>? get data => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SessionRatingCopyWith<SessionRating> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SessionRatingCopyWith<$Res> {
+  factory $SessionRatingCopyWith(
+          SessionRating value, $Res Function(SessionRating) then) =
+      _$SessionRatingCopyWithImpl<$Res, SessionRating>;
+  @useResult
+  $Res call({List<SessionRatingData>? data});
+}
+
+/// @nodoc
+class _$SessionRatingCopyWithImpl<$Res, $Val extends SessionRating>
+    implements $SessionRatingCopyWith<$Res> {
+  _$SessionRatingCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_value.copyWith(
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<SessionRatingData>?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$SessionRatingImplCopyWith<$Res>
+    implements $SessionRatingCopyWith<$Res> {
+  factory _$$SessionRatingImplCopyWith(
+          _$SessionRatingImpl value, $Res Function(_$SessionRatingImpl) then) =
+      __$$SessionRatingImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<SessionRatingData>? data});
+}
+
+/// @nodoc
+class __$$SessionRatingImplCopyWithImpl<$Res>
+    extends _$SessionRatingCopyWithImpl<$Res, _$SessionRatingImpl>
+    implements _$$SessionRatingImplCopyWith<$Res> {
+  __$$SessionRatingImplCopyWithImpl(
+      _$SessionRatingImpl _value, $Res Function(_$SessionRatingImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_$SessionRatingImpl(
+      data: freezed == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<SessionRatingData>?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SessionRatingImpl implements _SessionRating {
+  const _$SessionRatingImpl({final List<SessionRatingData>? data = const []})
+      : _data = data;
+
+  factory _$SessionRatingImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SessionRatingImplFromJson(json);
+
+  final List<SessionRatingData>? _data;
+  @override
+  @JsonKey()
+  List<SessionRatingData>? get data {
+    final value = _data;
+    if (value == null) return null;
+    if (_data is EqualUnmodifiableListView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  String toString() {
+    return 'SessionRating(data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SessionRatingImpl &&
+            const DeepCollectionEquality().equals(other._data, _data));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SessionRatingImplCopyWith<_$SessionRatingImpl> get copyWith =>
+      __$$SessionRatingImplCopyWithImpl<_$SessionRatingImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SessionRatingImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SessionRating implements SessionRating {
+  const factory _SessionRating({final List<SessionRatingData>? data}) =
+      _$SessionRatingImpl;
+
+  factory _SessionRating.fromJson(Map<String, dynamic> json) =
+      _$SessionRatingImpl.fromJson;
+
+  @override
+  List<SessionRatingData>? get data;
+  @override
+  @JsonKey(ignore: true)
+  _$$SessionRatingImplCopyWith<_$SessionRatingImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

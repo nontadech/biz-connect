@@ -161,6 +161,47 @@ class GalleryData with _$GalleryData  {
       => _$GalleryDataFromJson(json);
 }
 
+@freezed
+class ChoiceItem with _$ChoiceItem  {
+  const factory ChoiceItem({
+    int? id,
+    @Default('') String label,
+  }) = _ChoiceItem;
+  factory ChoiceItem.fromJson(Map<String, Object?> json)
+      => _$ChoiceItemFromJson(json);
+}
+
+@JsonEnum(valueField: 'name')
+enum QuiestionTypeName {
+  singleText(name: "single_text"),
+  longText(name: "long_text"),
+  singleChoice(name: "single_choice"),
+  multipleChoice(name: "multiple_choice"),
+  star(name: "star"),
+  attachImage(name: "attach_image"),
+  rateTen(name: "rate_10");
+
+  final String name;
+
+  const QuiestionTypeName({
+    required this.name,
+  });
+}
+
+@freezed
+class SessionRatingData with _$SessionRatingData  {
+  const factory SessionRatingData({
+    int? id,
+    @Default('') String title,
+    @Default(0) int quiestion_type_id,
+    QuiestionTypeName? quiestion_type_name,
+    @Default([]) List<ChoiceItem> choice_item,
+  }) = _SessionRatingData;
+  factory SessionRatingData.fromJson(Map<String, Object?> json)
+      => _$SessionRatingDataFromJson(json);
+}
+
+
 class JoinAgendaInput {
   final int eventId;
   final int? speakerId;
@@ -174,12 +215,14 @@ class JoinAgendaInput {
 }
 
 class AnswersInput {
-  final int? answer;
+  final String? answer;
+  final int? questionId;
   final int? questionTypeId;
   final String? comment;
   
   AnswersInput({
     this.answer,
+    this.questionId,
     this.questionTypeId,
     this.comment,
   }); 

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 class RadioCustom extends StatefulWidget {
@@ -14,7 +16,6 @@ class RadioCustomState extends State<RadioCustom> {
   @override
   Widget build(BuildContext context) {
     bool selected = (widget.value == widget.groupValue);
-
     return InkWell(
       onTap: () => widget.onChanged(widget.value),
       child: Container(

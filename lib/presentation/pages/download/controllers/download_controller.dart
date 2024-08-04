@@ -25,9 +25,7 @@ class DownloadController extends GetxController {
   final RxBool isDataEmtpy = false.obs;
   Rx<BuildContext> context = NavigationService.navigatorKey.currentContext!.obs;
   GlobalKey<FormState> downloadPageFormKey = GlobalKey<FormState>();
-  final emailController = TextEditingController(
-    text:  'bank.nontadech@dept.email',
-  );
+  final emailController = TextEditingController();
   getEventFile(int eventId) async {
     isDataEmtpy(false);
     isLoading(false);
@@ -85,11 +83,10 @@ class DownloadController extends GetxController {
     try {
       if (downloadPageFormKey.currentState!.validate()) {
         popupLoading(context.value);
-        Body result = await _fileUseCase.sendFileEmail(FileEmailInput(
+        await _fileUseCase.sendFileEmail(FileEmailInput(
           email: emailController.text,
           eventId: eventId,
         ));
-        log(result.toString());
         Navigator.pop(loadingC.buildContext.value);
         popupStatus(
           NavigationService.navigatorKey.currentContext!, 
