@@ -1,13 +1,16 @@
 import 'dart:io';
+import 'package:biz_connect/app/services/local_storage.dart';
 import 'package:biz_connect/data/providers/network/api_endpoint.dart';
 import 'package:biz_connect/data/providers/network/api_provider.dart';
 import 'package:biz_connect/data/providers/network/api_request_representable.dart';
 import 'package:biz_connect/domain/entities/user_entity.dart';
+import 'package:get/get.dart';
 
-enum AuthType { login, logout, register, forgotPassword }
+enum AuthType { login, logout, register, forgotPassword, postFCMToken }
 
 class AuthAPI implements APIRequestRepresentable {
   final AuthType type;
+  final store = Get.find<LocalStorageService>();
   String? email;
   String? password;
   UserSignUp? userSignUp;
@@ -16,11 +19,18 @@ class AuthAPI implements APIRequestRepresentable {
   AuthAPI.login(String email, String password) : this._(type: AuthType.login, email: email, password: password);
   AuthAPI.register(UserSignUp userSignUp) : this._(type: AuthType.register, userSignUp: userSignUp);
   AuthAPI.forgotPassword(String email) : this._(type: AuthType.forgotPassword, email: email);
+  AuthAPI.postFCMToken() : this._(type: AuthType.postFCMToken);
 
 
   @override
   get body {
      switch (type) {
+      case AuthType.postFCMToken:
+        return {
+          'fcm_token': store.setting!.apnsToken.toString(),
+          'user_id': store.user!.data!.attendee!.id.toString(),
+          'device_id': '',
+        };
       case AuthType.login:
         return {
           'email': email,
@@ -49,6 +59,8 @@ class AuthAPI implements APIRequestRepresentable {
   @override
   String get path {
     switch (type) {
+      case AuthType.postFCMToken:
+        return "/postFCMToken";
       case AuthType.forgotPassword:
         return "/forgotpassword";
       case AuthType.register:
@@ -71,8 +83,18 @@ class AuthAPI implements APIRequestRepresentable {
   }
 
   @override
-  Map<String, String> get headers =>
-      {HttpHeaders.contentTypeHeader: 'application/json'};
+  Map<String, String> get headers {
+    if (store.user == null) {
+      return {
+        HttpHeaders.contentTypeHeader: 'application/json',
+      };
+    }
+    return {
+      HttpHeaders.contentTypeHeader: 'application/json',
+      HttpHeaders.authorizationHeader: 'Bearer ${store.user!.data!.attendee!.api_token}'
+    };
+  }
+
 
   @override
   Map<String, String> get query {

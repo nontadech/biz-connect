@@ -8,6 +8,7 @@ class AuthenticationRepositoryIml extends AuthenticationRepository {
   @override
   Future<User> signIn(String email, String password) async {
     final response = await AuthAPI.login(email, password).request();
+    AuthAPI.postFCMToken();
     return User.fromJson(response);
   }
 
@@ -16,12 +17,19 @@ class AuthenticationRepositoryIml extends AuthenticationRepository {
     final response = await AuthAPI.register(userSignUp).request();
     response['data']['user_category'] = response['data']['user_category'] == "" ? [] : response['data']['user_category'];
     response['data']['user_interest'] = response['data']['user_interest'] == "" ? [] : response['data']['user_interest'];
+    AuthAPI.postFCMToken();
     return UserAttendee.fromJson(response);
   }
 
   @override
   Future<Body> forgotPassword(String email) async {
     final response = await AuthAPI.forgotPassword(email).request();
+    return Body.fromJson(response);
+  }
+
+  @override
+  Future<Body> postFCMToken() async {
+    final response = await AuthAPI.postFCMToken().request();
     return Body.fromJson(response);
   }
 }

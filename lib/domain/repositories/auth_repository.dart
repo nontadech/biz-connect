@@ -6,4 +6,5 @@ abstract class AuthenticationRepository {
   Future<User> signIn(String email, String password);
   Future<UserAttendee> userSignUp(UserSignUp userSignUp);
   Future<Body> forgotPassword(String email);
+  Future<Body> postFCMToken();
 }

@@ -25,15 +25,20 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "386145539313-1r49hcb7t3c8jjc233hv5dtvn6bj4bg8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "386145539313-g6i42n3ii8kcu948ck0dgftpa3thg5hb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.jenosize.attendee"
+              }
+            }
+          ]
         }
       }
     }

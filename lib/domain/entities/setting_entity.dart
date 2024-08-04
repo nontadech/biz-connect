@@ -8,7 +8,8 @@ part 'setting_entity.g.dart';
 class Setting with _$Setting  {
   factory Setting({
     @Default(LangType.en) LangType language,
-    @Default(false) bool isNotification
+    @Default(false) bool isNotification,
+    @Default('') String apnsToken,
   }) = _Setting;
   
     factory Setting.fromJson(Map<String, Object?> json)

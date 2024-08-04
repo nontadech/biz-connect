@@ -20,6 +20,7 @@ class AppRouter {
             FlutterNativeSplash.remove();
             return const SignInPage();
           }else{
+            authC.postFCMToken();
             return const LayoutPage(AppBarPage.home);
           }
         })

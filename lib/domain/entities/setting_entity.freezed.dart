@@ -22,6 +22,7 @@ Setting _$SettingFromJson(Map<String, dynamic> json) {
 mixin _$Setting {
   LangType get language => throw _privateConstructorUsedError;
   bool get isNotification => throw _privateConstructorUsedError;
+  String get apnsToken => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +34,7 @@ abstract class $SettingCopyWith<$Res> {
   factory $SettingCopyWith(Setting value, $Res Function(Setting) then) =
       _$SettingCopyWithImpl<$Res, Setting>;
   @useResult
-  $Res call({LangType language, bool isNotification});
+  $Res call({LangType language, bool isNotification, String apnsToken});
 }
 
 /// @nodoc
@@ -51,6 +52,7 @@ class _$SettingCopyWithImpl<$Res, $Val extends Setting>
   $Res call({
     Object? language = null,
     Object? isNotification = null,
+    Object? apnsToken = null,
   }) {
     return _then(_value.copyWith(
       language: null == language
@@ -61,6 +63,10 @@ class _$SettingCopyWithImpl<$Res, $Val extends Setting>
           ? _value.isNotification
           : isNotification // ignore: cast_nullable_to_non_nullable
               as bool,
+      apnsToken: null == apnsToken
+          ? _value.apnsToken
+          : apnsToken // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -72,7 +78,7 @@ abstract class _$$SettingImplCopyWith<$Res> implements $SettingCopyWith<$Res> {
       __$$SettingImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({LangType language, bool isNotification});
+  $Res call({LangType language, bool isNotification, String apnsToken});
 }
 
 /// @nodoc
@@ -88,6 +94,7 @@ class __$$SettingImplCopyWithImpl<$Res>
   $Res call({
     Object? language = null,
     Object? isNotification = null,
+    Object? apnsToken = null,
   }) {
     return _then(_$SettingImpl(
       language: null == language
@@ -98,6 +105,10 @@ class __$$SettingImplCopyWithImpl<$Res>
           ? _value.isNotification
           : isNotification // ignore: cast_nullable_to_non_nullable
               as bool,
+      apnsToken: null == apnsToken
+          ? _value.apnsToken
+          : apnsToken // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -105,7 +116,10 @@ class __$$SettingImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$SettingImpl implements _Setting {
-  _$SettingImpl({this.language = LangType.en, this.isNotification = false});
+  _$SettingImpl(
+      {this.language = LangType.en,
+      this.isNotification = false,
+      this.apnsToken = ''});
 
   factory _$SettingImpl.fromJson(Map<String, dynamic> json) =>
       _$$SettingImplFromJson(json);
@@ -116,10 +130,13 @@ class _$SettingImpl implements _Setting {
   @override
   @JsonKey()
   final bool isNotification;
+  @override
+  @JsonKey()
+  final String apnsToken;
 
   @override
   String toString() {
-    return 'Setting(language: $language, isNotification: $isNotification)';
+    return 'Setting(language: $language, isNotification: $isNotification, apnsToken: $apnsToken)';
   }
 
   @override
@@ -130,12 +147,15 @@ class _$SettingImpl implements _Setting {
             (identical(other.language, language) ||
                 other.language == language) &&
             (identical(other.isNotification, isNotification) ||
-                other.isNotification == isNotification));
+                other.isNotification == isNotification) &&
+            (identical(other.apnsToken, apnsToken) ||
+                other.apnsToken == apnsToken));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, language, isNotification);
+  int get hashCode =>
+      Object.hash(runtimeType, language, isNotification, apnsToken);
 
   @JsonKey(ignore: true)
   @override
@@ -152,8 +172,10 @@ class _$SettingImpl implements _Setting {
 }
 
 abstract class _Setting implements Setting {
-  factory _Setting({final LangType language, final bool isNotification}) =
-      _$SettingImpl;
+  factory _Setting(
+      {final LangType language,
+      final bool isNotification,
+      final String apnsToken}) = _$SettingImpl;
 
   factory _Setting.fromJson(Map<String, dynamic> json) = _$SettingImpl.fromJson;
 
@@ -161,6 +183,8 @@ abstract class _Setting implements Setting {
   LangType get language;
   @override
   bool get isNotification;
+  @override
+  String get apnsToken;
   @override
   @JsonKey(ignore: true)
   _$$SettingImplCopyWith<_$SettingImpl> get copyWith =>

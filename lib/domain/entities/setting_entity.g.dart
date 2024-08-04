@@ -11,12 +11,14 @@ _$SettingImpl _$$SettingImplFromJson(Map<String, dynamic> json) =>
       language: $enumDecodeNullable(_$LangTypeEnumMap, json['language']) ??
           LangType.en,
       isNotification: json['isNotification'] as bool? ?? false,
+      apnsToken: json['apnsToken'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$SettingImplToJson(_$SettingImpl instance) =>
     <String, dynamic>{
       'language': _$LangTypeEnumMap[instance.language]!,
       'isNotification': instance.isNotification,
+      'apnsToken': instance.apnsToken,
     };
 
 const _$LangTypeEnumMap = {

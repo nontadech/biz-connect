@@ -4,8 +4,9 @@ import 'package:biz_connect/domain/entities/event_entity.dart';
 import 'package:biz_connect/domain/entities/setting_entity.dart';
 import 'package:biz_connect/presentation/controllers/auth/auth_binding.dart';
 import 'package:easy_localization/easy_localization.dart';
-// import 'package:firebase_core/firebase_core.dart';
-// import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 import 'package:biz_connect/app/config/router/app_router.dart';
@@ -14,7 +15,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:flutter/foundation.dart' show defaultTargetPlatform, kIsWeb;
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-// import 'firebase_options.dart';
+import 'firebase_options.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 // ignore: constant_identifier_names
@@ -28,16 +29,21 @@ void main() async {
   DependencyCreator.init();
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
-  // if (USE_DATABASE_EMULATOR) {
-  //   FirebaseDatabase.instance.useDatabaseEmulator(emulatorHost, emulatorPort);
-  // }
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  if (USE_DATABASE_EMULATOR) {
+    FirebaseDatabase.instance.useDatabaseEmulator(emulatorHost, emulatorPort);
+  }
   await initServices();
-  // runApp(const MyApp());
+  final apnsToken = await FirebaseMessaging.instance.getAPNSToken();
   final store = Get.find<LocalStorageService>();
-  store.setting ??= Setting(language: LangType.th);
+  store.setting = Setting(
+    apnsToken: apnsToken!
+  );
+  store.setting ??= Setting(
+    language: LangType.th,
+  );
   runApp(
     EasyLocalization(
         supportedLocales: const [
