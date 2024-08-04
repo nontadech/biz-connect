@@ -1,27 +1,31 @@
 import 'dart:async';
+import 'dart:developer';
 import 'dart:io';
 import 'package:biz_connect/data/models/body_model.dart';
 import 'package:biz_connect/data/providers/network/api_request_representable.dart';
 import 'package:biz_connect/main.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
-import 'package:dio/dio.dart' as dio;
+import 'package:get/get_connect/connect.dart';
 
 class APIProvider {
-  final api = dio.Dio();
+  static const requestTimeOut = Duration(seconds: 25);
+  final _client = GetConnect(
+    timeout: requestTimeOut,
+    allowAutoSignedCert: true,
+    withCredentials: true,
+  );
   static final _singleton = APIProvider();
   static APIProvider get instance => _singleton;
 
   Future request(APIRequestRepresentable request) async {
     try {
-      final response = await api.request(
+      final response = await _client.request(
         request.url,
-        queryParameters: request.query,
-        data: request.body,
-        options: dio.Options(
-          contentType: 'application/json',
-          method: request.method.string,
-          headers: request.headers
-        )
+        request.method.string,
+        headers: request.headers,
+        query: request.query,
+        body: request.body,
+        contentType: 'application/json'
       );
       return _returnResponse(response);
     } on TimeoutException catch (_) {
@@ -31,15 +35,15 @@ class APIProvider {
     }
   }
 
-  dynamic _returnResponse(dio.Response<dynamic> response) {
-    var body = Body.fromJson(response.data);
+  dynamic _returnResponse(Response<dynamic> response) {
+    var body = Body.fromJson(response.body);
     switch (body.status) {
       case true:
       case 200:
-        return response.data;
+        return response.body;
       default:
       if(body.success){
-         return response.data;
+         return response.body;
       }else{
         popupAPI(NavigationService.navigatorKey.currentContext!, body.message.toString());
         throw BadRequestException(body.message.toString());

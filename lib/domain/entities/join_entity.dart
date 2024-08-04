@@ -215,16 +215,18 @@ class JoinAgendaInput {
 }
 
 class AnswersInput {
-  final String? answer;
+  final dynamic answer;
   final int? questionId;
   final int? questionTypeId;
   final String? comment;
+  final bool? isImage;
   
   AnswersInput({
     this.answer,
     this.questionId,
     this.questionTypeId,
     this.comment,
+    this.isImage,
   }); 
 }
 

@@ -189,11 +189,12 @@ class JoinAPI implements APIRequestRepresentable {
           'event_id': sessionRateInput!.eventId.toString(),
           'user_id': store.user!.data!.attendee!.id.toString(),
           'agenda_id': sessionRateInput!.agendaId.toString(),
-          'is_session' : 1,
+          'is_session' : sessionRateInput!.isSession.toString(),
           'answers': sessionRateInput!.answers!.map((e) => {
-            'answer': e.answer,
+            'answer': e.isImage! ? e.answer.toList() : e.answer.toString(),
             'question_type_id': e.questionTypeId,
-            'comment': e.comment
+            'question_id': e.questionId,
+            'comment': e.comment.toString()
           }).toList()
         };
       default:

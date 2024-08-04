@@ -62,16 +62,29 @@ class SurveyController extends GetxController {
     int i = 0;
     LoadingBinding().dependencies();
     final loadingC = LoadingController.call;
+    answersInput.clear();
     try {
       popupLoading(context.value);
       for (var element in sessionRating.value.data!) {
-        answersInput.add(
-          AnswersInput(
-            questionId: element.id,
-            questionTypeId: element.quiestion_type_id,
-            answer: answersController[i].text,
-          )
-        );
+        if( element.quiestion_type_name != QuiestionTypeName.attachImage){
+          answersInput.add(
+            AnswersInput(
+              questionId: element.id,
+              questionTypeId: element.quiestion_type_id,
+              answer: answersController[i].text,
+              isImage: false,
+            )
+          );
+        }else{
+          answersInput.add(
+            AnswersInput(
+              questionId: element.id,
+              questionTypeId: element.quiestion_type_id,
+              answer: ['data:image/png;base64,${answersController[i].text}'],
+              isImage: true,
+            )
+          );
+        }
       i++;
       }
       await _sessionRatingUseCase.execute(SessionRateInput(
@@ -80,6 +93,7 @@ class SurveyController extends GetxController {
         answers: answersInput,
       ));
       Navigator.pop(loadingC.buildContext.value);
+      context.value.push('/join/survey_thank');
     } catch (error) {
       Navigator.pop(loadingC.buildContext.value);
       log('error ${error.toString()}');
@@ -93,8 +107,8 @@ class SurveyController extends GetxController {
     final loadingC = LoadingController.call;
     try {
       popupLoading(context.value);
-      String? image = await imageC.pickedImg(imageSource);
-      answersController[page-1].text = image!;
+      final image = await imageC.pickedImg(imageSource);
+      answersController[page-1].text = image.toString();
       Navigator.pop(loadingC.buildContext.value);
       context.value.pop();
     } catch (error) {

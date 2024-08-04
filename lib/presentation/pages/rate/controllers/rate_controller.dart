@@ -65,6 +65,7 @@ class RateController extends GetxController {
               questionTypeId: 5,
               answer: rate.value.toString(),
               comment: commentController.text,
+               isImage: false,
             ),
           ],
         ));

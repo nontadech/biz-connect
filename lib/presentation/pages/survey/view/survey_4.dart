@@ -25,7 +25,6 @@ class _Survey4State extends State<Survey4> {
   Widget build(BuildContext context) {
     if(widget.controller.answersController.length < widget.page){
       widget.controller.answersController.add(TextEditingController());
-      widget.controller.answersController[widget.page - 1].text = '0';
     }else{
       setState(() {
         selected = widget.controller.answersController[widget.page - 1].text != '' ? widget.controller.answersController[widget.page - 1].text.split(',') : [];
@@ -51,7 +50,7 @@ class _Survey4State extends State<Survey4> {
               const EdgeInsets.only(left: 5),
               child: TextCheckbox(
                 title: item.label, 
-                value: selected.firstWhere((element) => element == item.label, orElse: () => '') == item.label,
+                value: selected.firstWhere((element) => element == item.id.toString(), orElse: () => '') == item.id.toString(),
                 onChanged: (bool bool) { 
                   if (bool) {
                     setState(() {
@@ -62,7 +61,11 @@ class _Survey4State extends State<Survey4> {
                       selected.add(item.label);
                     });
                   }
-                  widget.controller.answersController[widget.page - 1].text = selected.join(',');
+                  if(widget.controller.answersController[widget.page - 1].text == ''){
+                    widget.controller.answersController[widget.page - 1].text = item.id.toString();
+                  }else{
+                    widget.controller.answersController[widget.page - 1].text = '${widget.controller.answersController[widget.page - 1].text},${item.id}';
+                  }
                 },
               ),
               ),
