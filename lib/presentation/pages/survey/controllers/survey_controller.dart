@@ -10,7 +10,6 @@ import 'package:biz_connect/presentation/controllers/auth/image_controller.dart'
 import 'package:biz_connect/presentation/controllers/auth/loading_binding.dart';
 import 'package:biz_connect/presentation/controllers/auth/loading_controller.dart';
 import 'package:biz_connect/presentation/widgets/popup_loading.dart';
-import 'package:biz_connect/presentation/widgets/popup_status.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';

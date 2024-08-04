@@ -1,7 +1,6 @@
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:biz_connect/data/models/body_model.dart';
 import 'package:biz_connect/data/models/join_model.dart';
 import 'package:biz_connect/domain/entities/join_entity.dart';
 import 'package:biz_connect/domain/usecases/file_use_case.dart';

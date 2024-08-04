@@ -11,7 +11,6 @@ import 'package:biz_connect/presentation/pages/survey/view/survey_7.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:go_router/go_router.dart';
 class SurveyPage extends GetView<SurveyController> {
   final int eventId;
   const SurveyPage({
