@@ -260,7 +260,7 @@ class AppRouter {
       ),
       GoRoute(
         path: '/join/live_poll',
-         builder: (context, state){
+        builder: (context, state){
           Map<String, dynamic> extra = state.extra as Map<String, dynamic>;
           return LivePollPage(
             eventId: extra['event_id'],
@@ -269,7 +269,13 @@ class AppRouter {
       ),
       GoRoute(
         path: '/join/live_poll/detail',
-        builder: (context, state) => const LivePollDetailPage(),
+        builder: (context, state){
+          Map<String, dynamic> extra = state.extra as Map<String, dynamic>;
+          return LivePollDetailPage(
+            eventId: extra['event_id'],
+            zoneId: extra['zone_id'],
+          );
+        },
       ),
       GoRoute(
         path: '/join/survey',

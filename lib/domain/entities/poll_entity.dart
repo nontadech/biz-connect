@@ -8,6 +8,7 @@ class Choice with _$Choice  {
   factory Choice({
     @Default("") String? id,
     @Default("") String? awnser,
+    @Default(false) bool? isSelect,
   }) = _Choice;
     factory Choice.fromJson(Map<String, Object?> json)
       => _$ChoiceFromJson(json);
@@ -31,4 +32,15 @@ class Poll with _$Poll  {
   }) = _Poll;
     factory Poll.fromJson(Map<String, Object?> json)
       => _$PollFromJson(json);
+}
+
+
+class PollInput {
+  final String? poll_id;
+  final String? choice_id;
+  
+  PollInput({
+    this.poll_id,
+    this.choice_id,
+  }); 
 }

@@ -9,12 +9,14 @@ part of 'poll_entity.dart';
 _$ChoiceImpl _$$ChoiceImplFromJson(Map<String, dynamic> json) => _$ChoiceImpl(
       id: json['id'] as String? ?? "",
       awnser: json['awnser'] as String? ?? "",
+      isSelect: json['isSelect'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$ChoiceImplToJson(_$ChoiceImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'awnser': instance.awnser,
+      'isSelect': instance.isSelect,
     };
 
 _$PollDataImpl _$$PollDataImplFromJson(Map<String, dynamic> json) =>

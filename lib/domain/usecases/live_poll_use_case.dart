@@ -13,11 +13,16 @@ class LivePollUseCase extends ParamUseCase<EventFromRegister, int> {
     return _repo.getEventFromRegister(params);
   }
 
-  Future<EventFromRegister> getZone(int eventId) {
-    return _repo.getEventFromRegister(eventId);
-  }
-
   Future getPoll(int eventId, int zoneId) {
     return _poll.getPoll(eventId, zoneId);
   }
+
+  Future addPoll(int eventId, int zoneId, String pollId, String key) {
+    return _poll.addPoll(eventId, zoneId, pollId, key);
+  }
+
+   Future removePoll(int eventId, int zoneId, String pollId, String key) {
+    return _poll.removePoll(eventId, zoneId, pollId, key);
+  }
+
 }

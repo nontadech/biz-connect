@@ -1,124 +1,108 @@
 import 'package:biz_connect/app/config/themes/theme.dart';
+import 'package:biz_connect/domain/entities/poll_entity.dart';
+import 'package:biz_connect/presentation/pages/live_poll/controllers/controllers.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class Poll extends StatefulWidget {
-  const Poll({super.key});
+class Poll extends GetView<LivePollController> {
+  final int eventId;
+  final int zoneId;
 
-  @override
-  State<Poll> createState() => _PollState();
-}
+  const Poll({
+    super.key,
+    required this.eventId,
+    required this.zoneId,
+  });
 
-class _PollState extends State<Poll> {
-  @override
-  void initState() {
-    // Initialize & inject UserController() using Get.put()
-    super.initState();
+  Widget getCard(BuildContext context, int index){ 
+    return Obx(() {
+      List<List<Widget>> widgetData = [];
+      for(PollData poll in controller.poll.value.data!){
+        List<Widget> widgetList = [];
+        widgetList.add(
+          TextCustom(
+            text: poll.question!,
+            fontSize: FontSize.h6, 
+            fontWeight: FontWeight.w400, 
+            height: 1.2,
+            color: const Color(0xff122D58)
+          ),
+        );
+        for(Choice choice in poll.choice_list!){
+          widgetList.add(
+            const SizedBox(
+              height: 10,
+            ),
+          );
+ 
+          widgetList.add(
+            TextRadio(
+              title: choice.awnser!, 
+              value: int.parse(choice.id ?? '0'), 
+              groupValue: int.parse(controller.pollInput.firstWhere((element) => element.choice_id == choice.id, orElse: () => PollInput()).choice_id ?? '0'), 
+              onChanged: (int int) {  
+                controller.addAwnser(eventId, zoneId, poll.id.toString(), int.toString());
+              },
+            ),
+          );
+        }
+        widgetData.add(widgetList);
+      }
+      return Column(
+        children: widgetData[index],
+      );
+    }
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [ 
-        Padding(
-          padding: const EdgeInsets.only(left: 25, right: 25, top: 10, bottom: 40),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+    LivePollBinding().dependencies();
+  
+    return GetX(
+      init: controller,
+      initState: (_){
+        controller.context(context);
+        controller.step(0);
+        controller.getPoll(eventId, zoneId);
+      },
+      builder: (_){
+        if(!controller.isLoadingPoll.value){
+          return Column(
             children: [
-              TextCustom(
-                text: '1. Odio facilisis mauris sit amet massa vitaetortor condimentum lacinia?,',
-                fontSize: FontSize.h6, 
-                fontWeight: FontWeight.w400, 
-                height: 1.2,
-                color: const Color(0xff122D58)
-              ),
               const SizedBox(
-                height: 10,
+                height: 200,
               ),
-              TextRadio(
-                title: 'At in tellus integer feugiat', 
-                value: 1, 
-                groupValue: 1, 
-                onChanged: (int int) {  },
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              TextRadio(
-                title: 'Vel fringilla est ullamcorper',
-                value: 3, 
-                groupValue: 1, 
-                onChanged: (int int) {  },
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              TextRadio(
-                title: 'Odio facilisis', 
-                value: 3, 
-                groupValue: 1, 
-                onChanged: (int int) {  },
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              TextRadio(
-                title: 'Dui ut ornare lectus sit amet', 
-                value: 3, 
-                groupValue: 1, 
-                onChanged: (int int) {  },
-              ),
-              Expanded(child: Container()),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  TextCustom(
-                    text: '2/3',
-                    fontSize: FontSize.h1, 
-                    fontWeight: FontWeight.w500, 
-                    color: const Color(0xff56BED6),
-                    height: 1.2,
-                  ),
-                  const SizedBox(width: 5,),
-                  TextCustom(
-                    text: 'COMPLETE',
-                    fontSize: FontSize.h10, 
-                    fontWeight: FontWeight.w400, 
-                    color: const Color(0xff56BED6),
-                    height: 1.7,
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 6,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  child: LinearProgressIndicator(
-                    value: 0.7,
-                    valueColor: AlwaysStoppedAnimation<Color>(Color(0xff56BED6)),
-                    backgroundColor: Color(0xffEAF4FF),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 90,
-              ),
+              Center(
+                child: controller.isDataEmtpyPoll.value ? const SizedBox() : const CircularProgressIndicator(),
+              )
             ],
-          )
-        ),
-        Positioned(
-          bottom: 0,
-          left: 0,
-          right: 0,
-          child: ButtonPositionTwoBottom(
-            text: 'Done',
-            onPressed: () {
-            },
-            onCancel: () {
-            }
-          )
-        )
-      ]
+          );
+        }
+        return Stack(
+          children: [ 
+            Padding(
+              padding: const EdgeInsets.only(left: 25, right: 25, top: 10, bottom: 40),
+              child: getCard(context, controller.step.value),
+            ),
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: ButtonPositionTwoBottom(
+                text: 'Done',
+                onPressed: () {
+                  controller.onNext();
+                },
+                onCancel: () {
+                  controller.onBack();
+                }
+              )
+            )
+          ]
+        );
+      }
     );
   }
 }

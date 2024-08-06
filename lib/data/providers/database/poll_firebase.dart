@@ -7,23 +7,26 @@ class PollFirebase {
   final store = Get.find<LocalStorageService>();
   int? eventId;
   int? zoneId;
-  int? pollId;
+  String? pollId;
   String? key;
-  PollFirebase._({this.eventId, this.zoneId, this.pollId});
+  PollFirebase._({this.eventId, this.zoneId, this.pollId, this.key});
   PollFirebase.poll(int eventId, int zoneId) : this._(eventId: eventId, zoneId: zoneId);
+  PollFirebase.saveAwnser(int eventId, int zoneId, String pollId, String key) : this._(eventId: eventId, zoneId: zoneId, pollId: pollId, key: key);
 
   PollFirebase.savePoll(
     int eventId, 
     int zoneId, 
-    int pollId
+    String pollId,
+    String key
   ) : this._(
     eventId: eventId, 
     zoneId: zoneId, 
-    pollId: pollId
+    pollId: pollId,
+    key: key
   );
 
-  Future<DataSnapshot> get() async {
-    return counterRef.child(eventId.toString()).child(zoneId.toString()).get();
+  Future<DatabaseEvent> get() async {
+    return await counterRef.child(eventId.toString()).child(zoneId.toString()).once(DatabaseEventType.value);
   }
 
   Future<void> add() async {

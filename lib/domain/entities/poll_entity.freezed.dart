@@ -22,6 +22,7 @@ Choice _$ChoiceFromJson(Map<String, dynamic> json) {
 mixin _$Choice {
   String? get id => throw _privateConstructorUsedError;
   String? get awnser => throw _privateConstructorUsedError;
+  bool? get isSelect => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +34,7 @@ abstract class $ChoiceCopyWith<$Res> {
   factory $ChoiceCopyWith(Choice value, $Res Function(Choice) then) =
       _$ChoiceCopyWithImpl<$Res, Choice>;
   @useResult
-  $Res call({String? id, String? awnser});
+  $Res call({String? id, String? awnser, bool? isSelect});
 }
 
 /// @nodoc
@@ -51,6 +52,7 @@ class _$ChoiceCopyWithImpl<$Res, $Val extends Choice>
   $Res call({
     Object? id = freezed,
     Object? awnser = freezed,
+    Object? isSelect = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -61,6 +63,10 @@ class _$ChoiceCopyWithImpl<$Res, $Val extends Choice>
           ? _value.awnser
           : awnser // ignore: cast_nullable_to_non_nullable
               as String?,
+      isSelect: freezed == isSelect
+          ? _value.isSelect
+          : isSelect // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -72,7 +78,7 @@ abstract class _$$ChoiceImplCopyWith<$Res> implements $ChoiceCopyWith<$Res> {
       __$$ChoiceImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? id, String? awnser});
+  $Res call({String? id, String? awnser, bool? isSelect});
 }
 
 /// @nodoc
@@ -88,6 +94,7 @@ class __$$ChoiceImplCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? awnser = freezed,
+    Object? isSelect = freezed,
   }) {
     return _then(_$ChoiceImpl(
       id: freezed == id
@@ -98,6 +105,10 @@ class __$$ChoiceImplCopyWithImpl<$Res>
           ? _value.awnser
           : awnser // ignore: cast_nullable_to_non_nullable
               as String?,
+      isSelect: freezed == isSelect
+          ? _value.isSelect
+          : isSelect // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -105,7 +116,7 @@ class __$$ChoiceImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ChoiceImpl implements _Choice {
-  _$ChoiceImpl({this.id = "", this.awnser = ""});
+  _$ChoiceImpl({this.id = "", this.awnser = "", this.isSelect = false});
 
   factory _$ChoiceImpl.fromJson(Map<String, dynamic> json) =>
       _$$ChoiceImplFromJson(json);
@@ -116,10 +127,13 @@ class _$ChoiceImpl implements _Choice {
   @override
   @JsonKey()
   final String? awnser;
+  @override
+  @JsonKey()
+  final bool? isSelect;
 
   @override
   String toString() {
-    return 'Choice(id: $id, awnser: $awnser)';
+    return 'Choice(id: $id, awnser: $awnser, isSelect: $isSelect)';
   }
 
   @override
@@ -128,12 +142,14 @@ class _$ChoiceImpl implements _Choice {
         (other.runtimeType == runtimeType &&
             other is _$ChoiceImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.awnser, awnser) || other.awnser == awnser));
+            (identical(other.awnser, awnser) || other.awnser == awnser) &&
+            (identical(other.isSelect, isSelect) ||
+                other.isSelect == isSelect));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, awnser);
+  int get hashCode => Object.hash(runtimeType, id, awnser, isSelect);
 
   @JsonKey(ignore: true)
   @override
@@ -150,7 +166,10 @@ class _$ChoiceImpl implements _Choice {
 }
 
 abstract class _Choice implements Choice {
-  factory _Choice({final String? id, final String? awnser}) = _$ChoiceImpl;
+  factory _Choice(
+      {final String? id,
+      final String? awnser,
+      final bool? isSelect}) = _$ChoiceImpl;
 
   factory _Choice.fromJson(Map<String, dynamic> json) = _$ChoiceImpl.fromJson;
 
@@ -158,6 +177,8 @@ abstract class _Choice implements Choice {
   String? get id;
   @override
   String? get awnser;
+  @override
+  bool? get isSelect;
   @override
   @JsonKey(ignore: true)
   _$$ChoiceImplCopyWith<_$ChoiceImpl> get copyWith =>

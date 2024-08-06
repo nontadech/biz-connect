@@ -4,7 +4,14 @@ import 'package:biz_connect/presentation/pages/live_poll/view/question.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 class LivePollDetailPage extends StatefulWidget {
-  const LivePollDetailPage({super.key});
+  final int eventId;
+  final int zoneId;
+
+  const LivePollDetailPage({
+    super.key,
+    required this.eventId,
+    required this.zoneId,
+  });
 
   @override
   State<LivePollDetailPage> createState() => _LivePollDetailPageState();
@@ -15,7 +22,7 @@ class _LivePollDetailPageState extends State<LivePollDetailPage> with SingleTick
 
   @override
   void initState() {
-    // Initialize & inject UserController() using Get.put()
+
     super.initState();
     tabController = TabController(length: 2, vsync: this);
   }
@@ -89,9 +96,12 @@ class _LivePollDetailPageState extends State<LivePollDetailPage> with SingleTick
           Expanded(
             child: TabBarView(
               controller: tabController,
-              children: const [
-                Poll(),
-                Question(),
+              children: [
+                Poll(
+                  eventId: widget.eventId,
+                  zoneId: widget.zoneId,
+                ),
+                const Question(),
               ]
             ),
           ),

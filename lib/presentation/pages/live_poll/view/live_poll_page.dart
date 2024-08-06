@@ -6,10 +6,11 @@ import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 class LivePollPage extends GetView<LivePollController> {
   final int eventId;
+
   const LivePollPage({
     super.key,
     required this.eventId,
-    });
+  });
 
   Widget getCard(BuildContext context){
     List<Widget> widgetList = [];
@@ -29,7 +30,13 @@ class LivePollPage extends GetView<LivePollController> {
             dateTime: '${zone.date!} ${zone.start_time!}',
             location: zone.location!,
             onTap: () {  
-              context.push('/join/live_poll/detail');
+              context.push(
+                '/join/live_poll/detail',
+                extra: {
+                  'event_id': eventId,
+                  'zone_id': zone.zone_id
+                }
+              );
             },
           ),
         );
