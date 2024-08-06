@@ -135,3 +135,72 @@ Map<String, dynamic> _$$EventStatDataImplToJson(_$EventStatDataImpl instance) =>
       'join_event_today': instance.join_event_today,
       'join_hist_event_data': instance.join_hist_event_data,
     };
+
+_$ZoneAvalibleImpl _$$ZoneAvalibleImplFromJson(Map<String, dynamic> json) =>
+    _$ZoneAvalibleImpl(
+      zone_name: json['zone_name'] as String? ?? '',
+      zone_description: json['zone_description'] as String? ?? '',
+      zone_id: (json['zone_id'] as num?)?.toInt() ?? 0,
+      date: json['date'] as String? ?? '',
+      start_time: json['start_time'] as String? ?? '',
+      end_time: json['end_time'] as String? ?? '',
+      location: json['location'] as String? ?? '',
+    );
+
+Map<String, dynamic> _$$ZoneAvalibleImplToJson(_$ZoneAvalibleImpl instance) =>
+    <String, dynamic>{
+      'zone_name': instance.zone_name,
+      'zone_description': instance.zone_description,
+      'zone_id': instance.zone_id,
+      'date': instance.date,
+      'start_time': instance.start_time,
+      'end_time': instance.end_time,
+      'location': instance.location,
+    };
+
+_$EventFromRegisterDataImpl _$$EventFromRegisterDataImplFromJson(
+        Map<String, dynamic> json) =>
+    _$EventFromRegisterDataImpl(
+      user_id: (json['user_id'] as num?)?.toInt() ?? 0,
+      event_id: (json['event_id'] as num?)?.toInt() ?? 0,
+      title: json['title'] as String? ?? '',
+      description: json['description'] as String? ?? '',
+      image_display: json['image_display'] as String? ?? '',
+      thumnail: json['thumnail'] as String? ?? '',
+      location_name: json['location_name'] as String? ?? '',
+      location_lat: json['location_lat'] as String? ?? '',
+      location_long: json['location_long'] as String? ?? '',
+      date: json['date'] as String? ?? '',
+      date_end: json['date_end'] as String? ?? '',
+      start_time: json['start_time'] as String? ?? '',
+      end_time: json['end_time'] as String? ?? '',
+      facebook_link: (json['facebook_link'] as num?)?.toInt() ?? 0,
+      intragrams_link: json['intragrams_link'] as String? ?? '',
+      twitter_link: (json['twitter_link'] as num?)?.toInt() ?? 0,
+      zone_avalible: (json['zone_avalible'] as List<dynamic>?)
+              ?.map((e) => ZoneAvalible.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+    );
+
+Map<String, dynamic> _$$EventFromRegisterDataImplToJson(
+        _$EventFromRegisterDataImpl instance) =>
+    <String, dynamic>{
+      'user_id': instance.user_id,
+      'event_id': instance.event_id,
+      'title': instance.title,
+      'description': instance.description,
+      'image_display': instance.image_display,
+      'thumnail': instance.thumnail,
+      'location_name': instance.location_name,
+      'location_lat': instance.location_lat,
+      'location_long': instance.location_long,
+      'date': instance.date,
+      'date_end': instance.date_end,
+      'start_time': instance.start_time,
+      'end_time': instance.end_time,
+      'facebook_link': instance.facebook_link,
+      'intragrams_link': instance.intragrams_link,
+      'twitter_link': instance.twitter_link,
+      'zone_avalible': instance.zone_avalible,
+    };

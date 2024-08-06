@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:biz_connect/app/services/local_storage.dart';
 import 'package:biz_connect/data/models/user_model.dart';
 import 'package:biz_connect/domain/usecases/fcm_token_use_case.dart';
@@ -18,7 +20,11 @@ class AuthController extends GetxController {
   }
 
   Future<void> postFCMToken() async {
-    await _fcmTokenUseCase.execute();
+    try {
+      await _fcmTokenUseCase.execute();
+    } catch (e) {
+      log(e.toString());
+    }
   }
   logout() {
     store.user = null;

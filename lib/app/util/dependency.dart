@@ -12,5 +12,7 @@ class DependencyCreator {
     Get.lazyPut(() => PolicyRepositoryIml());
     Get.lazyPut(() => QRRepositoryIml());
     Get.lazyPut(() => JoinRepositoryIml());
+    Get.lazyPut(() => PollRepositoryIml());
+    
   }
 }

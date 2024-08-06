@@ -260,7 +260,12 @@ class AppRouter {
       ),
       GoRoute(
         path: '/join/live_poll',
-        builder: (context, state) => const LivePollPage(),
+         builder: (context, state){
+          Map<String, dynamic> extra = state.extra as Map<String, dynamic>;
+          return LivePollPage(
+            eventId: extra['event_id'],
+          );
+        },
       ),
       GoRoute(
         path: '/join/live_poll/detail',

@@ -57,3 +57,18 @@ Map<String, dynamic> _$$FavoriteEventImplToJson(_$FavoriteEventImpl instance) =>
       'data': instance.data,
       'event_id': instance.event_id,
     };
+
+_$EventFromRegisterImpl _$$EventFromRegisterImplFromJson(
+        Map<String, dynamic> json) =>
+    _$EventFromRegisterImpl(
+      events: (json['events'] as List<dynamic>?)
+          ?.map(
+              (e) => EventFromRegisterData.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$EventFromRegisterImplToJson(
+        _$EventFromRegisterImpl instance) =>
+    <String, dynamic>{
+      'events': instance.events,
+    };

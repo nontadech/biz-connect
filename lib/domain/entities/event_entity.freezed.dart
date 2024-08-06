@@ -1400,3 +1400,798 @@ abstract class _EventStatData implements EventStatData {
   _$$EventStatDataImplCopyWith<_$EventStatDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+ZoneAvalible _$ZoneAvalibleFromJson(Map<String, dynamic> json) {
+  return _ZoneAvalible.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ZoneAvalible {
+  String? get zone_name => throw _privateConstructorUsedError;
+  String? get zone_description => throw _privateConstructorUsedError;
+  int? get zone_id => throw _privateConstructorUsedError;
+  String? get date => throw _privateConstructorUsedError;
+  String? get start_time => throw _privateConstructorUsedError;
+  String? get end_time => throw _privateConstructorUsedError;
+  String? get location => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ZoneAvalibleCopyWith<ZoneAvalible> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ZoneAvalibleCopyWith<$Res> {
+  factory $ZoneAvalibleCopyWith(
+          ZoneAvalible value, $Res Function(ZoneAvalible) then) =
+      _$ZoneAvalibleCopyWithImpl<$Res, ZoneAvalible>;
+  @useResult
+  $Res call(
+      {String? zone_name,
+      String? zone_description,
+      int? zone_id,
+      String? date,
+      String? start_time,
+      String? end_time,
+      String? location});
+}
+
+/// @nodoc
+class _$ZoneAvalibleCopyWithImpl<$Res, $Val extends ZoneAvalible>
+    implements $ZoneAvalibleCopyWith<$Res> {
+  _$ZoneAvalibleCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? zone_name = freezed,
+    Object? zone_description = freezed,
+    Object? zone_id = freezed,
+    Object? date = freezed,
+    Object? start_time = freezed,
+    Object? end_time = freezed,
+    Object? location = freezed,
+  }) {
+    return _then(_value.copyWith(
+      zone_name: freezed == zone_name
+          ? _value.zone_name
+          : zone_name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      zone_description: freezed == zone_description
+          ? _value.zone_description
+          : zone_description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      zone_id: freezed == zone_id
+          ? _value.zone_id
+          : zone_id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      date: freezed == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as String?,
+      start_time: freezed == start_time
+          ? _value.start_time
+          : start_time // ignore: cast_nullable_to_non_nullable
+              as String?,
+      end_time: freezed == end_time
+          ? _value.end_time
+          : end_time // ignore: cast_nullable_to_non_nullable
+              as String?,
+      location: freezed == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ZoneAvalibleImplCopyWith<$Res>
+    implements $ZoneAvalibleCopyWith<$Res> {
+  factory _$$ZoneAvalibleImplCopyWith(
+          _$ZoneAvalibleImpl value, $Res Function(_$ZoneAvalibleImpl) then) =
+      __$$ZoneAvalibleImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String? zone_name,
+      String? zone_description,
+      int? zone_id,
+      String? date,
+      String? start_time,
+      String? end_time,
+      String? location});
+}
+
+/// @nodoc
+class __$$ZoneAvalibleImplCopyWithImpl<$Res>
+    extends _$ZoneAvalibleCopyWithImpl<$Res, _$ZoneAvalibleImpl>
+    implements _$$ZoneAvalibleImplCopyWith<$Res> {
+  __$$ZoneAvalibleImplCopyWithImpl(
+      _$ZoneAvalibleImpl _value, $Res Function(_$ZoneAvalibleImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? zone_name = freezed,
+    Object? zone_description = freezed,
+    Object? zone_id = freezed,
+    Object? date = freezed,
+    Object? start_time = freezed,
+    Object? end_time = freezed,
+    Object? location = freezed,
+  }) {
+    return _then(_$ZoneAvalibleImpl(
+      zone_name: freezed == zone_name
+          ? _value.zone_name
+          : zone_name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      zone_description: freezed == zone_description
+          ? _value.zone_description
+          : zone_description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      zone_id: freezed == zone_id
+          ? _value.zone_id
+          : zone_id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      date: freezed == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as String?,
+      start_time: freezed == start_time
+          ? _value.start_time
+          : start_time // ignore: cast_nullable_to_non_nullable
+              as String?,
+      end_time: freezed == end_time
+          ? _value.end_time
+          : end_time // ignore: cast_nullable_to_non_nullable
+              as String?,
+      location: freezed == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ZoneAvalibleImpl implements _ZoneAvalible {
+  const _$ZoneAvalibleImpl(
+      {this.zone_name = '',
+      this.zone_description = '',
+      this.zone_id = 0,
+      this.date = '',
+      this.start_time = '',
+      this.end_time = '',
+      this.location = ''});
+
+  factory _$ZoneAvalibleImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ZoneAvalibleImplFromJson(json);
+
+  @override
+  @JsonKey()
+  final String? zone_name;
+  @override
+  @JsonKey()
+  final String? zone_description;
+  @override
+  @JsonKey()
+  final int? zone_id;
+  @override
+  @JsonKey()
+  final String? date;
+  @override
+  @JsonKey()
+  final String? start_time;
+  @override
+  @JsonKey()
+  final String? end_time;
+  @override
+  @JsonKey()
+  final String? location;
+
+  @override
+  String toString() {
+    return 'ZoneAvalible(zone_name: $zone_name, zone_description: $zone_description, zone_id: $zone_id, date: $date, start_time: $start_time, end_time: $end_time, location: $location)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ZoneAvalibleImpl &&
+            (identical(other.zone_name, zone_name) ||
+                other.zone_name == zone_name) &&
+            (identical(other.zone_description, zone_description) ||
+                other.zone_description == zone_description) &&
+            (identical(other.zone_id, zone_id) || other.zone_id == zone_id) &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.start_time, start_time) ||
+                other.start_time == start_time) &&
+            (identical(other.end_time, end_time) ||
+                other.end_time == end_time) &&
+            (identical(other.location, location) ||
+                other.location == location));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, zone_name, zone_description,
+      zone_id, date, start_time, end_time, location);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ZoneAvalibleImplCopyWith<_$ZoneAvalibleImpl> get copyWith =>
+      __$$ZoneAvalibleImplCopyWithImpl<_$ZoneAvalibleImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ZoneAvalibleImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ZoneAvalible implements ZoneAvalible {
+  const factory _ZoneAvalible(
+      {final String? zone_name,
+      final String? zone_description,
+      final int? zone_id,
+      final String? date,
+      final String? start_time,
+      final String? end_time,
+      final String? location}) = _$ZoneAvalibleImpl;
+
+  factory _ZoneAvalible.fromJson(Map<String, dynamic> json) =
+      _$ZoneAvalibleImpl.fromJson;
+
+  @override
+  String? get zone_name;
+  @override
+  String? get zone_description;
+  @override
+  int? get zone_id;
+  @override
+  String? get date;
+  @override
+  String? get start_time;
+  @override
+  String? get end_time;
+  @override
+  String? get location;
+  @override
+  @JsonKey(ignore: true)
+  _$$ZoneAvalibleImplCopyWith<_$ZoneAvalibleImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+EventFromRegisterData _$EventFromRegisterDataFromJson(
+    Map<String, dynamic> json) {
+  return _EventFromRegisterData.fromJson(json);
+}
+
+/// @nodoc
+mixin _$EventFromRegisterData {
+  int? get user_id => throw _privateConstructorUsedError;
+  int? get event_id => throw _privateConstructorUsedError;
+  String? get title => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  String? get image_display => throw _privateConstructorUsedError;
+  String? get thumnail => throw _privateConstructorUsedError;
+  String? get location_name => throw _privateConstructorUsedError;
+  String? get location_lat => throw _privateConstructorUsedError;
+  String? get location_long => throw _privateConstructorUsedError;
+  String? get date => throw _privateConstructorUsedError;
+  String? get date_end => throw _privateConstructorUsedError;
+  String? get start_time => throw _privateConstructorUsedError;
+  String? get end_time => throw _privateConstructorUsedError;
+  int? get facebook_link => throw _privateConstructorUsedError;
+  String? get intragrams_link => throw _privateConstructorUsedError;
+  int? get twitter_link => throw _privateConstructorUsedError;
+  List<ZoneAvalible>? get zone_avalible => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $EventFromRegisterDataCopyWith<EventFromRegisterData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EventFromRegisterDataCopyWith<$Res> {
+  factory $EventFromRegisterDataCopyWith(EventFromRegisterData value,
+          $Res Function(EventFromRegisterData) then) =
+      _$EventFromRegisterDataCopyWithImpl<$Res, EventFromRegisterData>;
+  @useResult
+  $Res call(
+      {int? user_id,
+      int? event_id,
+      String? title,
+      String? description,
+      String? image_display,
+      String? thumnail,
+      String? location_name,
+      String? location_lat,
+      String? location_long,
+      String? date,
+      String? date_end,
+      String? start_time,
+      String? end_time,
+      int? facebook_link,
+      String? intragrams_link,
+      int? twitter_link,
+      List<ZoneAvalible>? zone_avalible});
+}
+
+/// @nodoc
+class _$EventFromRegisterDataCopyWithImpl<$Res,
+        $Val extends EventFromRegisterData>
+    implements $EventFromRegisterDataCopyWith<$Res> {
+  _$EventFromRegisterDataCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user_id = freezed,
+    Object? event_id = freezed,
+    Object? title = freezed,
+    Object? description = freezed,
+    Object? image_display = freezed,
+    Object? thumnail = freezed,
+    Object? location_name = freezed,
+    Object? location_lat = freezed,
+    Object? location_long = freezed,
+    Object? date = freezed,
+    Object? date_end = freezed,
+    Object? start_time = freezed,
+    Object? end_time = freezed,
+    Object? facebook_link = freezed,
+    Object? intragrams_link = freezed,
+    Object? twitter_link = freezed,
+    Object? zone_avalible = freezed,
+  }) {
+    return _then(_value.copyWith(
+      user_id: freezed == user_id
+          ? _value.user_id
+          : user_id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      event_id: freezed == event_id
+          ? _value.event_id
+          : event_id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image_display: freezed == image_display
+          ? _value.image_display
+          : image_display // ignore: cast_nullable_to_non_nullable
+              as String?,
+      thumnail: freezed == thumnail
+          ? _value.thumnail
+          : thumnail // ignore: cast_nullable_to_non_nullable
+              as String?,
+      location_name: freezed == location_name
+          ? _value.location_name
+          : location_name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      location_lat: freezed == location_lat
+          ? _value.location_lat
+          : location_lat // ignore: cast_nullable_to_non_nullable
+              as String?,
+      location_long: freezed == location_long
+          ? _value.location_long
+          : location_long // ignore: cast_nullable_to_non_nullable
+              as String?,
+      date: freezed == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as String?,
+      date_end: freezed == date_end
+          ? _value.date_end
+          : date_end // ignore: cast_nullable_to_non_nullable
+              as String?,
+      start_time: freezed == start_time
+          ? _value.start_time
+          : start_time // ignore: cast_nullable_to_non_nullable
+              as String?,
+      end_time: freezed == end_time
+          ? _value.end_time
+          : end_time // ignore: cast_nullable_to_non_nullable
+              as String?,
+      facebook_link: freezed == facebook_link
+          ? _value.facebook_link
+          : facebook_link // ignore: cast_nullable_to_non_nullable
+              as int?,
+      intragrams_link: freezed == intragrams_link
+          ? _value.intragrams_link
+          : intragrams_link // ignore: cast_nullable_to_non_nullable
+              as String?,
+      twitter_link: freezed == twitter_link
+          ? _value.twitter_link
+          : twitter_link // ignore: cast_nullable_to_non_nullable
+              as int?,
+      zone_avalible: freezed == zone_avalible
+          ? _value.zone_avalible
+          : zone_avalible // ignore: cast_nullable_to_non_nullable
+              as List<ZoneAvalible>?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$EventFromRegisterDataImplCopyWith<$Res>
+    implements $EventFromRegisterDataCopyWith<$Res> {
+  factory _$$EventFromRegisterDataImplCopyWith(
+          _$EventFromRegisterDataImpl value,
+          $Res Function(_$EventFromRegisterDataImpl) then) =
+      __$$EventFromRegisterDataImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int? user_id,
+      int? event_id,
+      String? title,
+      String? description,
+      String? image_display,
+      String? thumnail,
+      String? location_name,
+      String? location_lat,
+      String? location_long,
+      String? date,
+      String? date_end,
+      String? start_time,
+      String? end_time,
+      int? facebook_link,
+      String? intragrams_link,
+      int? twitter_link,
+      List<ZoneAvalible>? zone_avalible});
+}
+
+/// @nodoc
+class __$$EventFromRegisterDataImplCopyWithImpl<$Res>
+    extends _$EventFromRegisterDataCopyWithImpl<$Res,
+        _$EventFromRegisterDataImpl>
+    implements _$$EventFromRegisterDataImplCopyWith<$Res> {
+  __$$EventFromRegisterDataImplCopyWithImpl(_$EventFromRegisterDataImpl _value,
+      $Res Function(_$EventFromRegisterDataImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user_id = freezed,
+    Object? event_id = freezed,
+    Object? title = freezed,
+    Object? description = freezed,
+    Object? image_display = freezed,
+    Object? thumnail = freezed,
+    Object? location_name = freezed,
+    Object? location_lat = freezed,
+    Object? location_long = freezed,
+    Object? date = freezed,
+    Object? date_end = freezed,
+    Object? start_time = freezed,
+    Object? end_time = freezed,
+    Object? facebook_link = freezed,
+    Object? intragrams_link = freezed,
+    Object? twitter_link = freezed,
+    Object? zone_avalible = freezed,
+  }) {
+    return _then(_$EventFromRegisterDataImpl(
+      user_id: freezed == user_id
+          ? _value.user_id
+          : user_id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      event_id: freezed == event_id
+          ? _value.event_id
+          : event_id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image_display: freezed == image_display
+          ? _value.image_display
+          : image_display // ignore: cast_nullable_to_non_nullable
+              as String?,
+      thumnail: freezed == thumnail
+          ? _value.thumnail
+          : thumnail // ignore: cast_nullable_to_non_nullable
+              as String?,
+      location_name: freezed == location_name
+          ? _value.location_name
+          : location_name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      location_lat: freezed == location_lat
+          ? _value.location_lat
+          : location_lat // ignore: cast_nullable_to_non_nullable
+              as String?,
+      location_long: freezed == location_long
+          ? _value.location_long
+          : location_long // ignore: cast_nullable_to_non_nullable
+              as String?,
+      date: freezed == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as String?,
+      date_end: freezed == date_end
+          ? _value.date_end
+          : date_end // ignore: cast_nullable_to_non_nullable
+              as String?,
+      start_time: freezed == start_time
+          ? _value.start_time
+          : start_time // ignore: cast_nullable_to_non_nullable
+              as String?,
+      end_time: freezed == end_time
+          ? _value.end_time
+          : end_time // ignore: cast_nullable_to_non_nullable
+              as String?,
+      facebook_link: freezed == facebook_link
+          ? _value.facebook_link
+          : facebook_link // ignore: cast_nullable_to_non_nullable
+              as int?,
+      intragrams_link: freezed == intragrams_link
+          ? _value.intragrams_link
+          : intragrams_link // ignore: cast_nullable_to_non_nullable
+              as String?,
+      twitter_link: freezed == twitter_link
+          ? _value.twitter_link
+          : twitter_link // ignore: cast_nullable_to_non_nullable
+              as int?,
+      zone_avalible: freezed == zone_avalible
+          ? _value._zone_avalible
+          : zone_avalible // ignore: cast_nullable_to_non_nullable
+              as List<ZoneAvalible>?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$EventFromRegisterDataImpl implements _EventFromRegisterData {
+  const _$EventFromRegisterDataImpl(
+      {this.user_id = 0,
+      this.event_id = 0,
+      this.title = '',
+      this.description = '',
+      this.image_display = '',
+      this.thumnail = '',
+      this.location_name = '',
+      this.location_lat = '',
+      this.location_long = '',
+      this.date = '',
+      this.date_end = '',
+      this.start_time = '',
+      this.end_time = '',
+      this.facebook_link = 0,
+      this.intragrams_link = '',
+      this.twitter_link = 0,
+      final List<ZoneAvalible>? zone_avalible = const []})
+      : _zone_avalible = zone_avalible;
+
+  factory _$EventFromRegisterDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EventFromRegisterDataImplFromJson(json);
+
+  @override
+  @JsonKey()
+  final int? user_id;
+  @override
+  @JsonKey()
+  final int? event_id;
+  @override
+  @JsonKey()
+  final String? title;
+  @override
+  @JsonKey()
+  final String? description;
+  @override
+  @JsonKey()
+  final String? image_display;
+  @override
+  @JsonKey()
+  final String? thumnail;
+  @override
+  @JsonKey()
+  final String? location_name;
+  @override
+  @JsonKey()
+  final String? location_lat;
+  @override
+  @JsonKey()
+  final String? location_long;
+  @override
+  @JsonKey()
+  final String? date;
+  @override
+  @JsonKey()
+  final String? date_end;
+  @override
+  @JsonKey()
+  final String? start_time;
+  @override
+  @JsonKey()
+  final String? end_time;
+  @override
+  @JsonKey()
+  final int? facebook_link;
+  @override
+  @JsonKey()
+  final String? intragrams_link;
+  @override
+  @JsonKey()
+  final int? twitter_link;
+  final List<ZoneAvalible>? _zone_avalible;
+  @override
+  @JsonKey()
+  List<ZoneAvalible>? get zone_avalible {
+    final value = _zone_avalible;
+    if (value == null) return null;
+    if (_zone_avalible is EqualUnmodifiableListView) return _zone_avalible;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  String toString() {
+    return 'EventFromRegisterData(user_id: $user_id, event_id: $event_id, title: $title, description: $description, image_display: $image_display, thumnail: $thumnail, location_name: $location_name, location_lat: $location_lat, location_long: $location_long, date: $date, date_end: $date_end, start_time: $start_time, end_time: $end_time, facebook_link: $facebook_link, intragrams_link: $intragrams_link, twitter_link: $twitter_link, zone_avalible: $zone_avalible)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EventFromRegisterDataImpl &&
+            (identical(other.user_id, user_id) || other.user_id == user_id) &&
+            (identical(other.event_id, event_id) ||
+                other.event_id == event_id) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.image_display, image_display) ||
+                other.image_display == image_display) &&
+            (identical(other.thumnail, thumnail) ||
+                other.thumnail == thumnail) &&
+            (identical(other.location_name, location_name) ||
+                other.location_name == location_name) &&
+            (identical(other.location_lat, location_lat) ||
+                other.location_lat == location_lat) &&
+            (identical(other.location_long, location_long) ||
+                other.location_long == location_long) &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.date_end, date_end) ||
+                other.date_end == date_end) &&
+            (identical(other.start_time, start_time) ||
+                other.start_time == start_time) &&
+            (identical(other.end_time, end_time) ||
+                other.end_time == end_time) &&
+            (identical(other.facebook_link, facebook_link) ||
+                other.facebook_link == facebook_link) &&
+            (identical(other.intragrams_link, intragrams_link) ||
+                other.intragrams_link == intragrams_link) &&
+            (identical(other.twitter_link, twitter_link) ||
+                other.twitter_link == twitter_link) &&
+            const DeepCollectionEquality()
+                .equals(other._zone_avalible, _zone_avalible));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      user_id,
+      event_id,
+      title,
+      description,
+      image_display,
+      thumnail,
+      location_name,
+      location_lat,
+      location_long,
+      date,
+      date_end,
+      start_time,
+      end_time,
+      facebook_link,
+      intragrams_link,
+      twitter_link,
+      const DeepCollectionEquality().hash(_zone_avalible));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EventFromRegisterDataImplCopyWith<_$EventFromRegisterDataImpl>
+      get copyWith => __$$EventFromRegisterDataImplCopyWithImpl<
+          _$EventFromRegisterDataImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$EventFromRegisterDataImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _EventFromRegisterData implements EventFromRegisterData {
+  const factory _EventFromRegisterData(
+      {final int? user_id,
+      final int? event_id,
+      final String? title,
+      final String? description,
+      final String? image_display,
+      final String? thumnail,
+      final String? location_name,
+      final String? location_lat,
+      final String? location_long,
+      final String? date,
+      final String? date_end,
+      final String? start_time,
+      final String? end_time,
+      final int? facebook_link,
+      final String? intragrams_link,
+      final int? twitter_link,
+      final List<ZoneAvalible>? zone_avalible}) = _$EventFromRegisterDataImpl;
+
+  factory _EventFromRegisterData.fromJson(Map<String, dynamic> json) =
+      _$EventFromRegisterDataImpl.fromJson;
+
+  @override
+  int? get user_id;
+  @override
+  int? get event_id;
+  @override
+  String? get title;
+  @override
+  String? get description;
+  @override
+  String? get image_display;
+  @override
+  String? get thumnail;
+  @override
+  String? get location_name;
+  @override
+  String? get location_lat;
+  @override
+  String? get location_long;
+  @override
+  String? get date;
+  @override
+  String? get date_end;
+  @override
+  String? get start_time;
+  @override
+  String? get end_time;
+  @override
+  int? get facebook_link;
+  @override
+  String? get intragrams_link;
+  @override
+  int? get twitter_link;
+  @override
+  List<ZoneAvalible>? get zone_avalible;
+  @override
+  @JsonKey(ignore: true)
+  _$$EventFromRegisterDataImplCopyWith<_$EventFromRegisterDataImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}

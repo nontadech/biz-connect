@@ -5,9 +5,15 @@ import 'package:flutter_svg/svg.dart';
 
 class CardLivePoll extends StatelessWidget {
   final VoidCallback onTap;
+  final String title;
+  final String dateTime;
+  final String location;
   const CardLivePoll({
     super.key,
     required this.onTap,
+    required this.title,
+    required this.dateTime,
+    required this.location,
   });
 
   @override
@@ -28,7 +34,7 @@ class CardLivePoll extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextCustom(
-              text: 'B2GC: Blockchain 2 Government Conference', 
+              text: title, 
               fontSize: FontSize.h7, 
               fontWeight: FontWeight.w600, 
               height: 1.2,
@@ -38,7 +44,7 @@ class CardLivePoll extends StatelessWidget {
               height: 10,
             ),
             TextIcon(
-              title: '17 Jan 2024 14:00', 
+              title: dateTime, 
               fontSize: FontSize.h9,
               icon: SvgPicture.asset(
                 'assets/icons/agenda_join.svg',
@@ -49,7 +55,7 @@ class CardLivePoll extends StatelessWidget {
               height: 10,
             ),
             TextIcon(
-              title: 'Blockchain Technology Center (BTC) Phuket', 
+              title: location, 
               fontSize: FontSize.h9,
               icon: SvgPicture.asset(
                 'assets/icons/location.svg',

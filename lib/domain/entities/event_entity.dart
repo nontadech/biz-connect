@@ -80,4 +80,44 @@ class EventStatData with _$EventStatData  {
       => _$EventStatDataFromJson(json);
 }
 
+@freezed
+class ZoneAvalible with _$ZoneAvalible  {
+  const factory ZoneAvalible({
+    @Default('') String? zone_name,
+    @Default('') String? zone_description,
+    @Default(0) int? zone_id,
+    @Default('') String? date,
+    @Default('') String? start_time,
+    @Default('') String? end_time,
+    @Default('') String? location
+  }) = _ZoneAvalible;
+  factory ZoneAvalible.fromJson(Map<String, Object?> json)
+      => _$ZoneAvalibleFromJson(json);
+}
 
+
+@freezed
+class EventFromRegisterData with _$EventFromRegisterData  {
+  const factory EventFromRegisterData({
+    @Default(0) int? user_id,
+    @Default(0) int? event_id,
+    @Default('') String? title,
+    @Default('') String? description,
+    @Default('') String? image_display,
+    @Default('') String? thumnail,
+    @Default('') String? location_name,
+    @Default('') String? location_lat,
+    @Default('') String? location_long,
+    @Default('') String? date,
+    @Default('') String? date_end,
+    @Default('') String? start_time,
+    @Default('') String? end_time,
+    @Default(0) int? facebook_link,
+    @Default('') String? intragrams_link,
+    @Default(0) int? twitter_link,
+    @Default([]) List<ZoneAvalible>? zone_avalible
+
+  }) = _EventFromRegisterData;
+  factory EventFromRegisterData.fromJson(Map<String, Object?> json)
+      => _$EventFromRegisterDataFromJson(json);
+}

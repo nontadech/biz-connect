@@ -12,8 +12,8 @@ class GalleryController extends GetxController {
   final RxBool isDataEmtpy = false.obs;
 
    getGallery(int eventId) async {
-     isLoading(false);
-     isDataEmtpy(false);
+    isLoading(false);
+    isDataEmtpy(false);
     try {
       gallery.value = await _galleryUseCase.execute(eventId);
       isLoading(true);

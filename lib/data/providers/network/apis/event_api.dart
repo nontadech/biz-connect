@@ -6,13 +6,23 @@ import 'package:biz_connect/data/providers/network/api_request_representable.dar
 import 'package:biz_connect/domain/entities/event_entity.dart';
 import 'package:get/get.dart';
 
-enum EventType { getMyEventHome, getEvent, chkFavoriteEvent, getMyEventStat, getFavoriteEvent, setFavoriteEvent, getMyEventTickets, getMyEventTicket }
+enum EventType { 
+    getMyEventHome, 
+    getEvent, 
+    chkFavoriteEvent, 
+    getMyEventStat, 
+    getFavoriteEvent, 
+    setFavoriteEvent, 
+    getMyEventTickets, 
+    getMyEventTicket,
+    getEventFromRegister
+  }
 
 class EventAPI implements APIRequestRepresentable {
   final EventType type;
   int? eventId;
   EventAPI._({required this.type, this.eventId});
- final store = Get.find<LocalStorageService>();
+  final store = Get.find<LocalStorageService>();
 
   EventAPI.getFavoriteEvent() : this._(type: EventType.getFavoriteEvent);
   EventAPI.getMyEventHome() : this._(type: EventType.getMyEventHome);
@@ -22,6 +32,7 @@ class EventAPI implements APIRequestRepresentable {
   EventAPI.getMyEventTicket(int eventId) : this._(type: EventType.getMyEventTicket, eventId: eventId);
   EventAPI.chkFavoriteEvent(int eventId) : this._(type: EventType.chkFavoriteEvent, eventId: eventId);
   EventAPI.setFavoriteEvent(int eventId) : this._(type: EventType.setFavoriteEvent, eventId: eventId);
+  EventAPI.getEventFromRegister(int eventId) : this._(type: EventType.getEventFromRegister, eventId: eventId);
   
 
   @override
@@ -30,6 +41,8 @@ class EventAPI implements APIRequestRepresentable {
   @override
   String get path {
     switch (type) {
+      case EventType.getEventFromRegister:
+        return "/getEventFromRegister";
       case EventType.getMyEventTickets:
       case EventType.getMyEventTicket:
         return "/getMyEventTickets";
@@ -53,6 +66,7 @@ class EventAPI implements APIRequestRepresentable {
   @override
   HTTPMethod get method {
     switch (type) {
+      case EventType.getEventFromRegister:
       case EventType.getFavoriteEvent:
       case EventType.getMyEventHome:
       case EventType.getMyEventStat:
@@ -72,6 +86,7 @@ class EventAPI implements APIRequestRepresentable {
     switch (type) {
       case EventType.getMyEventTickets:
       case EventType.getMyEventTicket:
+      case EventType.getEventFromRegister:
          if (store.user == null) {
           return {
             HttpHeaders.contentTypeHeader: 'application/json',
@@ -98,7 +113,9 @@ class EventAPI implements APIRequestRepresentable {
   @override
   Map<String, String> get query {
      switch (type) {
+      case EventType.getEventFromRegister:
       case EventType.getMyEventTicket:
+      case EventType.getMyEventTickets:
        return {
           HttpHeaders.contentTypeHeader: 'application/json',
           'event_id': eventId.toString(),

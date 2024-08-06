@@ -10,4 +10,5 @@ abstract class EventRepository {
   Future<Ticket> getMyEventTicket(int eventId);
   Future<bool> favoriteEvent(int eventId);
   Future<bool> setFavoriteEvent(int eventId);
+  Future<EventFromRegister> getEventFromRegister(int eventId);
 }

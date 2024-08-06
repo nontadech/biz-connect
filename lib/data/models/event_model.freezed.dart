@@ -623,3 +623,150 @@ abstract class _FavoriteEvent implements FavoriteEvent {
   _$$FavoriteEventImplCopyWith<_$FavoriteEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+EventFromRegister _$EventFromRegisterFromJson(Map<String, dynamic> json) {
+  return _EventFromRegister.fromJson(json);
+}
+
+/// @nodoc
+mixin _$EventFromRegister {
+  List<EventFromRegisterData>? get events => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $EventFromRegisterCopyWith<EventFromRegister> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EventFromRegisterCopyWith<$Res> {
+  factory $EventFromRegisterCopyWith(
+          EventFromRegister value, $Res Function(EventFromRegister) then) =
+      _$EventFromRegisterCopyWithImpl<$Res, EventFromRegister>;
+  @useResult
+  $Res call({List<EventFromRegisterData>? events});
+}
+
+/// @nodoc
+class _$EventFromRegisterCopyWithImpl<$Res, $Val extends EventFromRegister>
+    implements $EventFromRegisterCopyWith<$Res> {
+  _$EventFromRegisterCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? events = freezed,
+  }) {
+    return _then(_value.copyWith(
+      events: freezed == events
+          ? _value.events
+          : events // ignore: cast_nullable_to_non_nullable
+              as List<EventFromRegisterData>?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$EventFromRegisterImplCopyWith<$Res>
+    implements $EventFromRegisterCopyWith<$Res> {
+  factory _$$EventFromRegisterImplCopyWith(_$EventFromRegisterImpl value,
+          $Res Function(_$EventFromRegisterImpl) then) =
+      __$$EventFromRegisterImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<EventFromRegisterData>? events});
+}
+
+/// @nodoc
+class __$$EventFromRegisterImplCopyWithImpl<$Res>
+    extends _$EventFromRegisterCopyWithImpl<$Res, _$EventFromRegisterImpl>
+    implements _$$EventFromRegisterImplCopyWith<$Res> {
+  __$$EventFromRegisterImplCopyWithImpl(_$EventFromRegisterImpl _value,
+      $Res Function(_$EventFromRegisterImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? events = freezed,
+  }) {
+    return _then(_$EventFromRegisterImpl(
+      events: freezed == events
+          ? _value._events
+          : events // ignore: cast_nullable_to_non_nullable
+              as List<EventFromRegisterData>?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$EventFromRegisterImpl implements _EventFromRegister {
+  const _$EventFromRegisterImpl({final List<EventFromRegisterData>? events})
+      : _events = events;
+
+  factory _$EventFromRegisterImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EventFromRegisterImplFromJson(json);
+
+  final List<EventFromRegisterData>? _events;
+  @override
+  List<EventFromRegisterData>? get events {
+    final value = _events;
+    if (value == null) return null;
+    if (_events is EqualUnmodifiableListView) return _events;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  String toString() {
+    return 'EventFromRegister(events: $events)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EventFromRegisterImpl &&
+            const DeepCollectionEquality().equals(other._events, _events));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_events));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EventFromRegisterImplCopyWith<_$EventFromRegisterImpl> get copyWith =>
+      __$$EventFromRegisterImplCopyWithImpl<_$EventFromRegisterImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$EventFromRegisterImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _EventFromRegister implements EventFromRegister {
+  const factory _EventFromRegister(
+      {final List<EventFromRegisterData>? events}) = _$EventFromRegisterImpl;
+
+  factory _EventFromRegister.fromJson(Map<String, dynamic> json) =
+      _$EventFromRegisterImpl.fromJson;
+
+  @override
+  List<EventFromRegisterData>? get events;
+  @override
+  @JsonKey(ignore: true)
+  _$$EventFromRegisterImplCopyWith<_$EventFromRegisterImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

@@ -46,12 +46,16 @@ class EventRepositoryIml extends EventRepository {
     final response = await EventAPI.getMyEventTickets().request();
     return Ticket.fromJson(response);
   }
-
   
-   @override
+  @override
   Future<Ticket> getMyEventTicket(int eventId) async {
     final response = await EventAPI.getMyEventTicket(eventId).request();
     return Ticket.fromJson(response);
   }
-  
+
+  @override
+  Future<EventFromRegister> getEventFromRegister(int eventId) async {
+    final response = await EventAPI.getEventFromRegister(eventId).request();
+    return EventFromRegister.fromJson(response);
+  }
 }

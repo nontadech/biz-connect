@@ -43,3 +43,11 @@ class FavoriteEvent with _$FavoriteEvent  {
       => _$FavoriteEventFromJson(json);
 }
 
+@freezed
+class EventFromRegister with _$EventFromRegister  {
+  const factory EventFromRegister({
+    List<EventFromRegisterData>? events
+  }) = _EventFromRegister;
+  factory EventFromRegister.fromJson(Map<String, Object?> json)
+      => _$EventFromRegisterFromJson(json);
+}

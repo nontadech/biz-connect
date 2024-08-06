@@ -19,7 +19,7 @@ import 'firebase_options.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 // ignore: constant_identifier_names
-const USE_DATABASE_EMULATOR = true;
+const USE_DATABASE_EMULATOR = false;
 const emulatorPort = 9000;
 final emulatorHost =
     (!kIsWeb && defaultTargetPlatform == TargetPlatform.android)
