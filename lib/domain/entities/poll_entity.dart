@@ -34,6 +34,20 @@ class Poll with _$Poll  {
       => _$PollFromJson(json);
 }
 
+@freezed
+class QuestionData with _$QuestionData  {
+  factory QuestionData({
+     @Default('') String? status,
+     @Default('') String? create_date,
+     @Default('') String? user_name,
+     @Default(0) int? user_id,
+     @Default('') String? user_profile,
+     @Default('') String? text,
+  }) = _QuestionData;
+    factory QuestionData.fromJson(Map<String, Object?> json)
+      => _$QuestionDataFromJson(json);
+}
+
 
 class PollInput {
   final String? poll_id;

@@ -101,7 +101,10 @@ class _LivePollDetailPageState extends State<LivePollDetailPage> with SingleTick
                   eventId: widget.eventId,
                   zoneId: widget.zoneId,
                 ),
-                const Question(),
+                Question(
+                  eventId: widget.eventId,
+                  zoneId: widget.zoneId,
+                ),
               ]
             ),
           ),

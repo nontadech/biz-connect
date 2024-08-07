@@ -12,16 +12,27 @@ class LivePollController extends GetxController {
   LivePollController(this._livePollUseCase);
   static LivePollController get call => Get.find();
   final LivePollUseCase _livePollUseCase;
+  GlobalKey<FormState> questionFormKey = GlobalKey<FormState>();
+  final msgController = TextEditingController();
   final Rx<EventFromRegister> eventFromRegister = const EventFromRegister().obs;
   Rx<BuildContext> context = NavigationService.navigatorKey.currentContext!.obs;
   final RxBool isLoading = false.obs;
   final RxBool isDataEmtpy = false.obs;
   final RxBool isLoadingPoll = false.obs;
+  final RxBool isLoadingQuestion = false.obs;
   final RxBool isDataEmtpyPoll = false.obs;
+  final RxBool isDataEmtpyQuestion = false.obs;
   final Rx<Poll> poll = Poll().obs;
+  final RxList<QuestionData> question = [QuestionData()].obs;
   final RxInt step = 0.obs;
   final RxInt maxPage = 0.obs;
   final RxList<PollInput> pollInput = [PollInput()].obs;
+
+  @override
+  void onClose() {
+    msgController.dispose();
+    super.onClose();
+  }
 
   onNext() {
     if(step.value >= maxPage.value) {
@@ -63,7 +74,7 @@ class LivePollController extends GetxController {
     }
   }
 
-  getPoll(int eventId, int zoneId) async{
+  getPoll(int eventId, int zoneId){
     isLoadingPoll(false);
     isDataEmtpyPoll(false);
     try {
@@ -158,6 +169,45 @@ class LivePollController extends GetxController {
       await _livePollUseCase.addPoll(
           eventId, zoneId, pollId, 'choice$choiceId'
       );
+    } catch (error) {
+      log('error $error');
+    }
+  }
+
+  getQuestion(int eventId, int zoneId){
+    isLoadingQuestion(false);
+    isDataEmtpyQuestion(false);
+    try {
+      _livePollUseCase.getQuestion(eventId, zoneId).listen((event) {
+        question.clear();
+        if(event.snapshot.value != null){
+          Object? values = event.snapshot.value;
+           (values as Map<dynamic, dynamic>?)?.forEach((key1, value1) {
+              question.add(QuestionData.fromJson( Map<String, dynamic>.from (value1 as Map)));
+           });
+        }
+        isLoadingQuestion(true);
+      });
+    } catch (error) {
+      isDataEmtpyQuestion(true);
+      log('error $error');
+    }
+  }
+
+  addQuestion(int eventId, int zoneId) async{
+     try {
+      if (questionFormKey.currentState!.validate()) {
+        await _livePollUseCase.addQuestion(
+          eventId, zoneId, msgController.text
+        );
+        // popupThank(context.value);
+        popupStatus(
+          NavigationService.navigatorKey.currentContext!, 
+          PopupStatusType.sucess, 
+          message: 'Your question is submitted. Please wait for the approval from organizer before publish display.',
+        );
+        msgController.clear();
+      }
     } catch (error) {
       log('error $error');
     }

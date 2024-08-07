@@ -14,24 +14,9 @@ class PollFirebase {
   PollFirebase.poll(int eventId, int zoneId) : this._(eventId: eventId, zoneId: zoneId);
   PollFirebase.saveAwnser(int eventId, int zoneId, String pollId, String key) : this._(eventId: eventId, zoneId: zoneId, pollId: pollId, key: key);
 
-  PollFirebase.savePoll(
-    int eventId, 
-    int zoneId, 
-    String pollId,
-    String key
-  ) : this._(
-    eventId: eventId, 
-    zoneId: zoneId, 
-    pollId: pollId,
-    key: key
-  );
 
   Stream<DatabaseEvent> get() {
     return counterRef.child(eventId.toString()).child(zoneId.toString()).onValue;
-    // return await counterRef.child(eventId.toString()).child(zoneId.toString()).once(DatabaseEventType.value).then((event) {
-    //   // log(event.toString());
-    //   return event;
-    // });
   }
 
   Future<void> add() async {

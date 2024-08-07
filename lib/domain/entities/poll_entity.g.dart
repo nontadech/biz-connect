@@ -47,3 +47,23 @@ Map<String, dynamic> _$$PollImplToJson(_$PollImpl instance) =>
     <String, dynamic>{
       'data': instance.data,
     };
+
+_$QuestionDataImpl _$$QuestionDataImplFromJson(Map<String, dynamic> json) =>
+    _$QuestionDataImpl(
+      status: json['status'] as String? ?? '',
+      create_date: json['create_date'] as String? ?? '',
+      user_name: json['user_name'] as String? ?? '',
+      user_id: (json['user_id'] as num?)?.toInt() ?? 0,
+      user_profile: json['user_profile'] as String? ?? '',
+      text: json['text'] as String? ?? '',
+    );
+
+Map<String, dynamic> _$$QuestionDataImplToJson(_$QuestionDataImpl instance) =>
+    <String, dynamic>{
+      'status': instance.status,
+      'create_date': instance.create_date,
+      'user_name': instance.user_name,
+      'user_id': instance.user_id,
+      'user_profile': instance.user_profile,
+      'text': instance.text,
+    };

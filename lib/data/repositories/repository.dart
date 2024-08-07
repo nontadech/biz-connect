@@ -8,3 +8,4 @@ export 'policy_repository.dart';
 export 'qr_repository.dart';
 export 'join_repository.dart';
 export 'poll_repository.dart';
+export 'question_repository.dart';

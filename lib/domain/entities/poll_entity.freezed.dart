@@ -511,3 +511,253 @@ abstract class _Poll implements Poll {
   _$$PollImplCopyWith<_$PollImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+QuestionData _$QuestionDataFromJson(Map<String, dynamic> json) {
+  return _QuestionData.fromJson(json);
+}
+
+/// @nodoc
+mixin _$QuestionData {
+  String? get status => throw _privateConstructorUsedError;
+  String? get create_date => throw _privateConstructorUsedError;
+  String? get user_name => throw _privateConstructorUsedError;
+  int? get user_id => throw _privateConstructorUsedError;
+  String? get user_profile => throw _privateConstructorUsedError;
+  String? get text => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $QuestionDataCopyWith<QuestionData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $QuestionDataCopyWith<$Res> {
+  factory $QuestionDataCopyWith(
+          QuestionData value, $Res Function(QuestionData) then) =
+      _$QuestionDataCopyWithImpl<$Res, QuestionData>;
+  @useResult
+  $Res call(
+      {String? status,
+      String? create_date,
+      String? user_name,
+      int? user_id,
+      String? user_profile,
+      String? text});
+}
+
+/// @nodoc
+class _$QuestionDataCopyWithImpl<$Res, $Val extends QuestionData>
+    implements $QuestionDataCopyWith<$Res> {
+  _$QuestionDataCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = freezed,
+    Object? create_date = freezed,
+    Object? user_name = freezed,
+    Object? user_id = freezed,
+    Object? user_profile = freezed,
+    Object? text = freezed,
+  }) {
+    return _then(_value.copyWith(
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+      create_date: freezed == create_date
+          ? _value.create_date
+          : create_date // ignore: cast_nullable_to_non_nullable
+              as String?,
+      user_name: freezed == user_name
+          ? _value.user_name
+          : user_name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      user_id: freezed == user_id
+          ? _value.user_id
+          : user_id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      user_profile: freezed == user_profile
+          ? _value.user_profile
+          : user_profile // ignore: cast_nullable_to_non_nullable
+              as String?,
+      text: freezed == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$QuestionDataImplCopyWith<$Res>
+    implements $QuestionDataCopyWith<$Res> {
+  factory _$$QuestionDataImplCopyWith(
+          _$QuestionDataImpl value, $Res Function(_$QuestionDataImpl) then) =
+      __$$QuestionDataImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String? status,
+      String? create_date,
+      String? user_name,
+      int? user_id,
+      String? user_profile,
+      String? text});
+}
+
+/// @nodoc
+class __$$QuestionDataImplCopyWithImpl<$Res>
+    extends _$QuestionDataCopyWithImpl<$Res, _$QuestionDataImpl>
+    implements _$$QuestionDataImplCopyWith<$Res> {
+  __$$QuestionDataImplCopyWithImpl(
+      _$QuestionDataImpl _value, $Res Function(_$QuestionDataImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = freezed,
+    Object? create_date = freezed,
+    Object? user_name = freezed,
+    Object? user_id = freezed,
+    Object? user_profile = freezed,
+    Object? text = freezed,
+  }) {
+    return _then(_$QuestionDataImpl(
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+      create_date: freezed == create_date
+          ? _value.create_date
+          : create_date // ignore: cast_nullable_to_non_nullable
+              as String?,
+      user_name: freezed == user_name
+          ? _value.user_name
+          : user_name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      user_id: freezed == user_id
+          ? _value.user_id
+          : user_id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      user_profile: freezed == user_profile
+          ? _value.user_profile
+          : user_profile // ignore: cast_nullable_to_non_nullable
+              as String?,
+      text: freezed == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$QuestionDataImpl implements _QuestionData {
+  _$QuestionDataImpl(
+      {this.status = '',
+      this.create_date = '',
+      this.user_name = '',
+      this.user_id = 0,
+      this.user_profile = '',
+      this.text = ''});
+
+  factory _$QuestionDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$QuestionDataImplFromJson(json);
+
+  @override
+  @JsonKey()
+  final String? status;
+  @override
+  @JsonKey()
+  final String? create_date;
+  @override
+  @JsonKey()
+  final String? user_name;
+  @override
+  @JsonKey()
+  final int? user_id;
+  @override
+  @JsonKey()
+  final String? user_profile;
+  @override
+  @JsonKey()
+  final String? text;
+
+  @override
+  String toString() {
+    return 'QuestionData(status: $status, create_date: $create_date, user_name: $user_name, user_id: $user_id, user_profile: $user_profile, text: $text)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$QuestionDataImpl &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.create_date, create_date) ||
+                other.create_date == create_date) &&
+            (identical(other.user_name, user_name) ||
+                other.user_name == user_name) &&
+            (identical(other.user_id, user_id) || other.user_id == user_id) &&
+            (identical(other.user_profile, user_profile) ||
+                other.user_profile == user_profile) &&
+            (identical(other.text, text) || other.text == text));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, status, create_date, user_name, user_id, user_profile, text);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$QuestionDataImplCopyWith<_$QuestionDataImpl> get copyWith =>
+      __$$QuestionDataImplCopyWithImpl<_$QuestionDataImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$QuestionDataImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _QuestionData implements QuestionData {
+  factory _QuestionData(
+      {final String? status,
+      final String? create_date,
+      final String? user_name,
+      final int? user_id,
+      final String? user_profile,
+      final String? text}) = _$QuestionDataImpl;
+
+  factory _QuestionData.fromJson(Map<String, dynamic> json) =
+      _$QuestionDataImpl.fromJson;
+
+  @override
+  String? get status;
+  @override
+  String? get create_date;
+  @override
+  String? get user_name;
+  @override
+  int? get user_id;
+  @override
+  String? get user_profile;
+  @override
+  String? get text;
+  @override
+  @JsonKey(ignore: true)
+  _$$QuestionDataImplCopyWith<_$QuestionDataImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

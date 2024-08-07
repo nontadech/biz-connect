@@ -1,56 +1,73 @@
+import 'package:biz_connect/domain/entities/poll_entity.dart';
+import 'package:biz_connect/presentation/pages/live_poll/controllers/live_poll_controller.dart';
 import 'package:biz_connect/presentation/pages/live_poll/view/chat_box.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-class Question extends StatefulWidget {
-  const Question({super.key});
+import 'package:get/get.dart';
+class Question extends GetView<LivePollController> {
+  final int eventId;
+  final int zoneId;
 
-  @override
-  State<Question> createState() => _QuestionState();
-}
+  const Question({
+    super.key,
+    required this.eventId,
+    required this.zoneId,
+  });
 
-class _QuestionState extends State<Question> {
-  @override
-  void initState() {
-    // Initialize & inject UserController() using Get.put()
-    super.initState();
-  }
- 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        const SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.only(left: 25, right: 25, top: 10, bottom: 40),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ChatBox(
-                  name: 'John Doe',
-                  avatar: 'assets/demo/profile_1.png',
-                  msg: 'What is the best way to start a business?',
+    return GetX(
+      init: controller,
+      initState: (_){
+        controller.context(context);
+        controller.getQuestion(eventId, zoneId);
+      },
+      builder: (_){ 
+        if(!controller.isLoadingQuestion.value){
+          return Column(
+            children: [
+              const SizedBox(
+                height: 200,
+              ),
+              Center(
+                child: controller.isDataEmtpyQuestion.value ? const SizedBox() : const CircularProgressIndicator(),
+              )
+            ],
+          );
+        }
+        return Stack(
+          children: [
+            SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 25, right: 25, top: 10, bottom: 40),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    for(QuestionData question in controller.question)
+                    ChatBox(
+                      name: question.user_name!,
+                      avatar: question.user_profile!,
+                      msg: question.text!,
+                    ),
+                  ]
                 ),
-                ChatBox(
-                  name: 'New DEV',
-                  msg: 'Sit amet tellus cras adipiscing enim. Velit euismod in pellentesque massa placerat. ',
-                ),
-              ],
+              ),
             ),
-          ),
-        ),
-        Positioned(
-          bottom: 0,
-          left: 0,
-          right: 0,
-          child: ButtonPositionChat(
-            onTap: () {
-              popupThank(context);
-            }
-          )
-        )
-      ]
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: ButtonPositionChat(
+                questionFormKey: controller.questionFormKey,
+                msgController: controller.msgController,
+                onTap: () {
+                  controller.addQuestion(eventId, zoneId);
+                }
+              )
+            )
+          ]
+        );
+      }
     );
   }
 }

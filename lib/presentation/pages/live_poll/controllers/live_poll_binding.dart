@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 class LivePollBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => LivePollUseCase(Get.find<EventRepositoryIml>(), Get.find<PollRepositoryIml>()));
+    Get.lazyPut(() => LivePollUseCase(Get.find<EventRepositoryIml>(), Get.find<PollRepositoryIml>(), Get.find<QuestionRepositoryIml>()));
     Get.put(LivePollController(Get.find()), permanent: true);
   }
 }
