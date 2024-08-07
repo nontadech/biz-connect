@@ -38,9 +38,11 @@ class Poll with _$Poll  {
 class PollInput {
   final String? poll_id;
   final String? choice_id;
+  final int? page;
   
   PollInput({
     this.poll_id,
     this.choice_id,
+    this.page
   }); 
 }

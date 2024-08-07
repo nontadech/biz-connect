@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:biz_connect/app/services/local_storage.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:get/get.dart';
@@ -25,8 +26,12 @@ class PollFirebase {
     key: key
   );
 
-  Future<DatabaseEvent> get() async {
-    return await counterRef.child(eventId.toString()).child(zoneId.toString()).once(DatabaseEventType.value);
+  Stream<DatabaseEvent> get() {
+    return counterRef.child(eventId.toString()).child(zoneId.toString()).onValue;
+    // return await counterRef.child(eventId.toString()).child(zoneId.toString()).once(DatabaseEventType.value).then((event) {
+    //   // log(event.toString());
+    //   return event;
+    // });
   }
 
   Future<void> add() async {

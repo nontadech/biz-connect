@@ -18,6 +18,7 @@ class Poll extends GetView<LivePollController> {
   Widget getCard(BuildContext context, int index){ 
     return Obx(() {
       List<List<Widget>> widgetData = [];
+      int page = 0;
       for(PollData poll in controller.poll.value.data!){
         List<Widget> widgetList = [];
         widgetList.add(
@@ -42,11 +43,12 @@ class Poll extends GetView<LivePollController> {
               value: int.parse(choice.id ?? '0'), 
               groupValue: int.parse(controller.pollInput.firstWhere((element) => element.choice_id == choice.id, orElse: () => PollInput()).choice_id ?? '0'), 
               onChanged: (int int) {  
-                controller.addAwnser(eventId, zoneId, poll.id.toString(), int.toString());
+                controller.addAwnser(eventId, zoneId, poll.id.toString(), int.toString(), page);
               },
             ),
           );
         }
+        page++;
         widgetData.add(widgetList);
       }
       return Column(
