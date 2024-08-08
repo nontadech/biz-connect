@@ -26,7 +26,7 @@ class Poll extends GetView<LivePollController> {
             text: poll.question!,
             fontSize: FontSize.h6, 
             fontWeight: FontWeight.w400, 
-            height: 1.2,
+            height: 1,
             color: const Color(0xff122D58)
           ),
         );

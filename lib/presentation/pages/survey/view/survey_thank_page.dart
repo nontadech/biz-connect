@@ -35,9 +35,9 @@ class _SurveyThankPageState extends State<SurveyThankPage> {
               child: TextGradient(
                 'Thank you!',
                 style: TextStyle(
-                  height: 1.2,
+                  height: 1,
                   fontSize: FontSize.h1,
-                  fontFamily: 'LINESeedSansTH',
+                  fontFamily: 'FC_Iconic',
                   fontWeight: FontWeight.w500,
                 ),
                 gradient: const LinearGradient(colors: [
@@ -52,7 +52,7 @@ class _SurveyThankPageState extends State<SurveyThankPage> {
               text: 'for your cooperation',
               fontSize: FontSize.h7,
               fontWeight: FontWeight.w400,
-              height: 1.2,
+              height: 1,
               color: const Color(0xff122D58),
             ),
             const SizedBox(height: 70),

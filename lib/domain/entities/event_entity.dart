@@ -26,6 +26,7 @@ class EventList with _$EventList  {
     String? show_information,
     String? show_register,
     String? event_url,
+    String? link_url,
     @Default("") String? venue_name,
     @Default("") String? venue_tel,
     @Default("-") String venue_email,

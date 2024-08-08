@@ -122,7 +122,7 @@ class MyTicketDetail extends GetView<MyTicketController> {
                                             color: const Color(0xff13315F),
                                             fontSize: FontSize.h6,
                                             fontWeight: FontWeight.w400,
-                                            height: 1.2,
+                                            height: 1,
                                           ),
                                         ),
                                         const SizedBox(
@@ -189,7 +189,7 @@ class MyTicketDetail extends GetView<MyTicketController> {
                                           text: ticket.event_title!, 
                                           fontSize: FontSize.h6, 
                                           fontWeight: FontWeight.w600, 
-                                          height: 1.2,
+                                          height: 1,
                                           color: const Color(0xff13315F),
                                         ),
                                         const SizedBox(
@@ -235,14 +235,14 @@ class MyTicketDetail extends GetView<MyTicketController> {
                                                     fontSize: FontSize.h8,
                                                     fontWeight: FontWeight.w500,
                                                     color: const Color(0xff13315F),
-                                                    height: 1.2,
+                                                    height: 1,
                                                   ),
                                                   TextCustom(
                                                     text: ticket.fullname!,
                                                     fontSize: FontSize.h8,
                                                     fontWeight: FontWeight.w400,
                                                     color: const Color(0xff6481A9),
-                                                    height: 1.2,
+                                                    height: 1,
                                                   ),
                                                   const SizedBox(
                                                     height: 5,
@@ -252,14 +252,14 @@ class MyTicketDetail extends GetView<MyTicketController> {
                                                     fontSize: FontSize.h8,
                                                     fontWeight: FontWeight.w500,
                                                     color: const Color(0xff13315F),
-                                                    height: 1.2,
+                                                    height: 1,
                                                   ),
                                                   TextCustom(
                                                     text: ticket.email!,
                                                     fontSize: FontSize.h8,
                                                     fontWeight: FontWeight.w400,
                                                     color: const Color(0xff6481A9),
-                                                    height: 1.2,
+                                                    height: 1,
                                                   ),
                                                   const SizedBox(
                                                     height: 5,
@@ -269,14 +269,14 @@ class MyTicketDetail extends GetView<MyTicketController> {
                                                     fontSize: FontSize.h8,
                                                     fontWeight: FontWeight.w500,
                                                     color: const Color(0xff13315F),
-                                                    height: 1.2,
+                                                    height: 1,
                                                   ),
                                                   TextCustom(
                                                     text: ticket.tel!,
                                                     fontSize: FontSize.h8,
                                                     fontWeight: FontWeight.w400,
                                                     color: const Color(0xff6481A9),
-                                                    height: 1.2,
+                                                    height: 1,
                                                   ),
                                                 ],  
                                               )

@@ -37,7 +37,7 @@ class ZonePage extends GetView<ZoneController> {
       resizeToAvoidBottomInset: false,
       appBar: AppBarCustom(
         context,
-        title: 'Zone',
+        title: 'Floor plan',
         type: AppBarType.back,
       ),
       body: Padding(

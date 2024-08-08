@@ -14,6 +14,7 @@ import 'package:biz_connect/presentation/pages/my_account/controllers/controller
 import 'package:biz_connect/presentation/pages/profile/controllers/controllers.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -59,6 +60,7 @@ class SignUpController extends GetxController {
   final Rx<bool> isNotification = false.obs;
   final Rx<bool> isContact = false.obs;
   final authC = AuthController.call;
+  final Rx<bool> checkDisabled = true.obs;
 
   clear() {
     firstNameController.clear();
@@ -86,6 +88,24 @@ class SignUpController extends GetxController {
     passwordController.dispose();
     confirmPasswordController.dispose();
     super.onClose();
+  }
+
+  checkFrom() async {
+    if(
+      emailController.value.text.isNotEmpty 
+      && EmailValidator.validate(emailController.value.text)
+      && firstNameController.text.isNotEmpty
+      && lastNameController.text.isNotEmpty
+      && mobilePhoneController.text.isNotEmpty
+      && positionController.text.isNotEmpty
+      && companyController.text.isNotEmpty
+      && passwordController.text.isNotEmpty
+      && confirmPasswordController.text.isNotEmpty
+    ){
+      checkDisabled(false);
+    }else{
+      checkDisabled(true);
+    }
   }
   
   Future<void> userSignUp() async {

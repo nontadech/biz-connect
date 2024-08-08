@@ -76,12 +76,10 @@ class HomeList extends StatelessWidget {
                     context.push('/events_calendar');
                   },
                   child: TextCustom(
-                    text: 'View all',
+                    text: 'See more',
                     fontSize: FontSize.h8,
                     fontWeight: FontWeight.w600,
-                    color: const Color(0xff56BED6),
-                    decoration: TextDecoration.underline, 
-                    decorationColor: const Color(0xff56BED6),
+                    color: const Color(0xff56BED6)
                   ),
                 ),
               ],

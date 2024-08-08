@@ -37,7 +37,7 @@ class _DropdownButtonFormFieldCustomState extends State<DropdownButtonFormFieldC
         fontSize: FontSize.h9, 
         color: const Color(0xff122D58),
         fontWeight: FontWeight.w400,
-        fontFamily: 'LINESeedSansTH',
+        fontFamily: 'FC_Iconic',
       ),
       value: dropdownValue,
       onChanged: (String? newValue) {

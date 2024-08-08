@@ -8,6 +8,7 @@ import 'package:biz_connect/presentation/controllers/auth/auth_controller.dart';
 import 'package:biz_connect/presentation/controllers/auth/loading_binding.dart';
 import 'package:biz_connect/presentation/controllers/auth/loading_controller.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
@@ -21,9 +22,9 @@ class ForgotController extends GetxController {
   User? get user => store.user;
   GlobalKey<FormState> forgotPageFormKey = GlobalKey<FormState>();
   Rx<BuildContext> context = NavigationService.navigatorKey.currentContext!.obs;
-  final emailController = TextEditingController(
-    text: 'new@jenosize.com'
-  );
+  final emailController = TextEditingController();
+
+  final Rx<bool> checkDisabled = true.obs;
 
   final authC = AuthController.call;
   
@@ -31,6 +32,14 @@ class ForgotController extends GetxController {
   void onClose() {
     emailController.dispose();
     super.onClose();
+  }
+
+  checkFrom() async {
+    if(emailController.value.text.isNotEmpty &&  EmailValidator.validate(emailController.value.text)){
+      checkDisabled(false);
+    }else{
+      checkDisabled(true);
+    }
   }
 
   forgotPassword() async {

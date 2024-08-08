@@ -32,44 +32,29 @@ class CardDownload extends StatelessWidget {
                   children: [
                     TextCustom(
                       text: title, 
-                      fontSize: FontSize.h7,
+                      fontSize: FontSize.h8,
                       fontWeight: FontWeight.w600, 
-                      color: const Color(0xff13315F),
-                      height: 1.2,
+                      color: const Color(0xff56BED6),
+                      height: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
                     TextCustom(
                       text: size, 
-                      fontSize: FontSize.h8,
+                      fontSize: FontSize.h9,
                       fontWeight: FontWeight.w400, 
-                      color: const Color(0xff6481A9),
-                      height: 1.2,
+                      color: const Color(0xff91A6C4),
+                      height: 1,
                     ),
                   ],
-              )
+                )
               ),
-              Container(
-                height: 43,
+              SizedBox(
                 width: 43,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.white,
-                  border: Border.all(
-                    width: 0.74, 
-                    color:const Color(0xffEAF4FF)
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: const Color(0xff13B4FF).withOpacity(0.1),
-                      blurRadius: 7
-                    ),
-                  ],
-                ),
                 child: Center(
                   child: SvgPicture.asset(
                     'assets/icons/download.svg',
-                    width: 24,
-                    height: 24,
+                    width: 28,
+                    height: 28,
                   )
                 ),
               ),

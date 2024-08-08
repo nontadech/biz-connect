@@ -59,7 +59,7 @@ class TermConditionDetail extends StatelessWidget {
                   fontSize: FontSize.h7, 
                   fontWeight: FontWeight.w400, 
                   color: const Color(0xff122D58),
-                  height: 1.2,
+                  height: 1,
                 ),
                 const SizedBox(height: 20),
                 InkWell(
@@ -73,7 +73,7 @@ class TermConditionDetail extends StatelessWidget {
                           fontSize: FontSize.h8, 
                           fontWeight: FontWeight.w400, 
                           color: const Color(0xff56BED6),
-                          height: 1.2,
+                          height: 1,
                           decoration: TextDecoration.underline,
                           decorationColor: const Color(0xff56BED6),
                         ) : TextCustom(
@@ -81,7 +81,7 @@ class TermConditionDetail extends StatelessWidget {
                           fontSize: FontSize.h8, 
                           fontWeight: FontWeight.w400, 
                           color: const Color(0xffFF3A44),
-                          height: 1.2,
+                          height: 1,
                           decoration: TextDecoration.underline,
                           decorationColor: const Color(0xffFF3A44),
                         ),

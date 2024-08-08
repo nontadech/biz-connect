@@ -60,6 +60,7 @@ class DownloadController extends GetxController {
         savedDir.create();
       }
       String fullPath = "${savedDir.path}/${eventFile.path_file!.split('/').last}";
+      log(fullPath.toString());
       dio.Dio().download(eventFile.path_file!, fullPath).then((value) {
         OpenFilex.open(fullPath);
       });

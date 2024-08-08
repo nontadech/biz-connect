@@ -33,7 +33,7 @@ Future<void> popupLoading(BuildContext context) {
                 fontSize: FontSize.h5, 
                 fontWeight: FontWeight.w600,
                 color: const Color(0xff1D1D1B),
-                height: 1.2,
+                height: 1,
               ),
             ],
           ),

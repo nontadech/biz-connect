@@ -33,7 +33,7 @@ Future<void> popupStatus(BuildContext context, PopupStatusType type, {
               fontSize: FontSize.h5, 
               fontWeight: FontWeight.w600,
               color: const Color(0xff1D1D1B),
-              height: 1.2,
+              height: 1,
             ),
           ],
         ) :  Container(
@@ -72,17 +72,18 @@ Future<void> popupStatus(BuildContext context, PopupStatusType type, {
               fontSize: FontSize.h5, 
               fontWeight: FontWeight.w600,
               color: const Color(0xff1D1D1B),
-              height: 1.2,
+              height: 1,
             ),
             const SizedBox(
               height: 10.0,
             ),
             TextCustom(
+              textAlign: TextAlign.center,
               text: message!, 
               fontSize: FontSize.h9, 
               fontWeight: FontWeight.w400,
               color: const Color(0xff1D1D1B),
-              height: 1.2,
+              height: 1,
             ),
             const SizedBox(
               height: 20.0,

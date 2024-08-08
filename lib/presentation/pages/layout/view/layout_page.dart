@@ -1,7 +1,6 @@
-import 'package:biz_connect/presentation/pages/my_event/my_event.dart';
 import 'package:biz_connect/presentation/pages/my_favorite/my_favorite.dart';
 import 'package:biz_connect/presentation/pages/home/home.dart';
-import 'package:biz_connect/presentation/pages/layout/controllers/controllers.dart';
+import 'package:biz_connect/presentation/pages/pages.dart';
 import 'package:biz_connect/presentation/pages/profile/profile.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';

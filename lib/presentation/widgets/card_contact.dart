@@ -61,7 +61,7 @@ class CardContact extends StatelessWidget {
                       fontWeight: FontWeight.w600, 
                       color: const Color(0xff122D58),
                       maxLines: 1,
-                      height: 1.2,
+                      height: 1,
                     ),
                     TextCustom(
                       text: position, 
@@ -69,7 +69,7 @@ class CardContact extends StatelessWidget {
                       fontWeight: FontWeight.w400, 
                       color: const Color(0xff122D58),
                       maxLines: 1,
-                      height: 1.2,
+                      height: 1,
                     ),
                   ],
                 ),

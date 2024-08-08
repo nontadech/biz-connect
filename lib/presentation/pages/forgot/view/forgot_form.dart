@@ -11,13 +11,13 @@ class ForgotPageForm extends GetView<ForgotController> {
   @override
   Widget build(BuildContext context) {
     ForgotBinding().dependencies();
-    return  GetX(
+    return GetX(
       init: controller,
       initState: (state) {
       },
       builder: (_) {
         controller.context(context);
-        return  Form(
+        return Form(
           key: controller.forgotPageFormKey,
           child: Stack(
             children: [
@@ -38,6 +38,9 @@ class ForgotPageForm extends GetView<ForgotController> {
                       autofocus: true,
                       hintText: 'Email',
                       controller: controller.emailController,
+                      onChanged: (val) {
+                        controller.checkFrom();
+                      },
                       validator: (val) {
                         if (val!.isEmpty) {
                           return 'Please enter your email';
@@ -58,6 +61,7 @@ class ForgotPageForm extends GetView<ForgotController> {
                 right: 0,
                 child: ButtonPositionBottom(
                   text: 'ENTER',
+                  isDisabled: controller.checkDisabled.value,
                   onPressed: () {
                     controller.forgotPassword();
                   }

@@ -115,7 +115,6 @@ class EventAPI implements APIRequestRepresentable {
      switch (type) {
       case EventType.getEventFromRegister:
       case EventType.getMyEventTicket:
-      case EventType.getMyEventTickets:
        return {
           HttpHeaders.contentTypeHeader: 'application/json',
           'event_id': eventId.toString(),

@@ -28,8 +28,9 @@ class _EventCalendarPageState extends State<EventCalendarPage> {
       resizeToAvoidBottomInset: false,
       appBar: AppBarCustom(
         context,
-        title: '',
+        title: 'Events Calendar',
         type: AppBarType.share,
+        url: widget.news.link_url,
       ),
       body: EventCalendarDetail(
         news: widget.news,

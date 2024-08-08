@@ -62,17 +62,17 @@ class TermConditionPage extends GetView<TermConditionController> {
                       });
                     },
                   ),
-                  TermConditionDetail(
-                    subject: 'Terms and conditions for applying for membership in using Face Recondition',
-                    isSuccess: controller.policy.value.data!.is_recondition == 1 ? true : false,
-                    onTap: () {
-                      context.push('/profile/term_condition/accept', extra: {
-                        'isAccept': controller.policy.value.data!.is_recondition == 1 ? true : false,
-                        'policyType': TermConditionType.recondition,
-                        'title': 'Terms and conditions for applying for membership in using Face Recondition',
-                      });
-                    },
-                  ),
+                  // TermConditionDetail(
+                  //   subject: 'Terms and conditions for applying for membership in using Face Recondition',
+                  //   isSuccess: controller.policy.value.data!.is_recondition == 1 ? true : false,
+                  //   onTap: () {
+                  //     context.push('/profile/term_condition/accept', extra: {
+                  //       'isAccept': controller.policy.value.data!.is_recondition == 1 ? true : false,
+                  //       'policyType': TermConditionType.recondition,
+                  //       'title': 'Terms and conditions for applying for membership in using Face Recondition',
+                  //     });
+                  //   },
+                  // ),
                 ]
               );
             }

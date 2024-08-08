@@ -20,7 +20,7 @@ Future<void> popupThank(BuildContext context) {
               fontSize: FontSize.h5, 
               fontWeight: FontWeight.w600,
               color: const Color(0xff1D1D1B),
-              height: 1.2,
+              height: 1,
             ),
             const SizedBox(
               height: 10.0,
@@ -30,7 +30,7 @@ Future<void> popupThank(BuildContext context) {
               fontSize: FontSize.h9, 
               fontWeight: FontWeight.w400,
               color: const Color(0xff1D1D1B),
-              height: 1.2,
+              height: 1,
             ),
             const SizedBox(
               height: 20.0,

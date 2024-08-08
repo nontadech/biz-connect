@@ -16,13 +16,10 @@ class AppRouter {
         builder: (context, state) =>
         Obx(() {
           final authC = AuthController.call;
-          if(!authC.isLoggedIn.value){
-            FlutterNativeSplash.remove();
-            return const SignInPage();
-          }else{
+          if(authC.isLoggedIn.value){
             authC.postFCMToken();
-            return const LayoutPage(AppBarPage.home);
           }
+          return const LayoutPage(AppBarPage.home);
         })
       ),
       GoRoute(
@@ -73,7 +70,15 @@ class AppRouter {
       ),
       GoRoute(
         path: '/forgot',
-        builder: (context, state) => const ForgotPage(),
+        builder: (context, state) => 
+         Obx(() {
+          final authC = AuthController.call;
+          if(!authC.isLoggedIn.value){
+            return const ForgotPage();
+          }else{
+            return const LayoutPage(AppBarPage.home);
+          }
+        }),
       ),
       GoRoute(
         path: '/scan',

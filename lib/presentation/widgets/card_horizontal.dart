@@ -61,23 +61,6 @@ class CardHorizontal extends StatelessWidget {
                   height: 254,
                   fit: BoxFit.cover,
                 ),
-                showFavorite ? Positioned(
-                  top: 5,
-                  right: 5,
-                  child: isFavorite == true ? InkWell(
-                      onTap: onTapHeart,
-                      child: SvgPicture.asset(
-                      'assets/icons/heart_active_1.svg',
-                      width: 50,
-                    ) 
-                  ) : InkWell(
-                      onTap: onTapHeart,
-                      child:SvgPicture.asset(
-                      'assets/icons/heart_border.svg',
-                      width: 50,
-                    )
-                  ),
-                ): const SizedBox(),
               ],
             ),
             Padding(
@@ -91,7 +74,7 @@ class CardHorizontal extends StatelessWidget {
                       text: date,
                       fontSize: FontSize.h11,
                       fontWeight: FontWeight.w500,
-                      height: 1.4,
+                      height: 1,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       color: const Color(0xff56BED6),
@@ -104,7 +87,7 @@ class CardHorizontal extends StatelessWidget {
                       text: title,
                       fontSize: FontSize.h10,
                       fontWeight: FontWeight.w700,
-                      height: 1.4,
+                      height: 1,
                       color: const Color(0xff122D58),
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
@@ -112,7 +95,7 @@ class CardHorizontal extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   SizedBox(
-                    height: 30,
+                    height: 36,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -129,7 +112,7 @@ class CardHorizontal extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                             maxLines: 2,
                             fontSize: FontSize.h10,
-                            height: 1.2,
+                            height: 1,
                             fontWeight: FontWeight.w500,
                             color: const Color(0xff91A6C4),
                           ),

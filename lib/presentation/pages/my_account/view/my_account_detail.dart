@@ -1,6 +1,8 @@
 import 'package:biz_connect/app/config/themes/theme.dart';
 import 'package:biz_connect/domain/entities/event_entity.dart';
 import 'package:biz_connect/presentation/controllers/auth/auth_controller.dart';
+import 'package:biz_connect/presentation/pages/layout/controllers/controllers.dart';
+import 'package:biz_connect/presentation/pages/layout/view/layout_page.dart';
 import 'package:biz_connect/presentation/pages/my_account/controllers/controllers.dart';
 import 'package:biz_connect/presentation/pages/my_account/view/language_widget.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
@@ -218,7 +220,9 @@ class MyAccountDetail extends GetView<MyAccountController>{
                 InkWell(
                   onTap: () {
                     authC.logout();
+                    final layoutC =  LayoutController.call;
                     context.go('/home');
+                    layoutC.onItemTapped(AppBarPage.home);
                   },
                   child: TextCustom(
                     text: 'Logout', 

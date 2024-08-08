@@ -21,7 +21,7 @@ class TextDisplay extends StatelessWidget {
           child: TextCustom(
             text: title, 
             fontSize: FontSize.h7, 
-            fontWeight: FontWeight.w500, 
+            fontWeight: FontWeight.w600, 
             color: const Color(0xff13315F),
             height: 1.2,
           ),
@@ -29,7 +29,7 @@ class TextDisplay extends StatelessWidget {
         TextCustom(
           text:  ': ', 
           fontSize: FontSize.h7, 
-          fontWeight: FontWeight.w500, 
+          fontWeight: FontWeight.w600, 
           color: const Color(0xff13315F),
           height: 1.2,
         ),
@@ -38,7 +38,7 @@ class TextDisplay extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             text: text, 
             fontSize: FontSize.h7, 
-            fontWeight: FontWeight.w300, 
+            fontWeight: FontWeight.w400, 
             color: const Color(0xff13315F),
             height: 1.2,
           ),

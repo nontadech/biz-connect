@@ -1,5 +1,6 @@
 import 'package:biz_connect/app/config/themes/theme.dart';
 import 'package:biz_connect/domain/entities/join_entity.dart';
+import 'package:biz_connect/presentation/controllers/auth/auth_controller.dart';
 import 'package:biz_connect/presentation/pages/session/view/session_detail.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,7 @@ class SessionPage extends StatelessWidget {
  
   @override
   Widget build(BuildContext context) {
+    final authC = AuthController.call;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBarCustom(
@@ -45,7 +47,7 @@ class SessionPage extends StatelessWidget {
               session: session,
             ),
             Expanded(child: Container()),
-            Padding(
+            authC.isLoggedIn.value ? Padding(
               padding: const EdgeInsets.only(left: 25, right: 25, bottom: 40),
               child: ButtonRate(
                 onPressed: () {
@@ -58,7 +60,7 @@ class SessionPage extends StatelessWidget {
                   );
                 },
               )
-            )
+            ) : const SizedBox(),
           ],
         ),
     );

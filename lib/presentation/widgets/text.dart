@@ -41,7 +41,7 @@ class TextCustom extends StatelessWidget {
             fontSize: fontSize, 
             fontWeight: fontWeight, 
             color: color,
-            fontFamily: 'LINESeedSansTH',
+            fontFamily: 'FC_Iconic',
           ),
           children: [
             TextSpan(
@@ -50,7 +50,7 @@ class TextCustom extends StatelessWidget {
                 fontSize: FontSize.h9, 
                 fontWeight: FontWeight.w400, 
                 color: const Color(0xffFF3A44),
-                fontFamily: 'LINESeedSansTH',
+                fontFamily: 'FC_Iconic',
               ),
             ),
           ],
@@ -67,7 +67,7 @@ class TextCustom extends StatelessWidget {
         fontWeight: fontWeight,
         color: color,
         decoration: decoration,
-        fontFamily: 'LINESeedSansTH',
+        fontFamily: 'FC_Iconic',
         decorationColor: decorationColor,
         height: height,
       )

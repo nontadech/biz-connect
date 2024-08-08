@@ -23,8 +23,7 @@ class APIProvider {
         request.method.string,
         headers: request.headers,
         query: request.query,
-        body: request.body,
-        contentType: 'application/json'
+        body: request.body
       );
       return _returnResponse(response);
     } on TimeoutException catch (_) {

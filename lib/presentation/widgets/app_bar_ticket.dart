@@ -72,7 +72,7 @@ class AppBarTicket extends StatelessWidget implements PreferredSizeWidget{
                   color: Colors.white,
                   fontSize: FontSize.h6,
                   fontWeight: FontWeight.w400,
-                  height: 1.2,
+                  height: 1,
                 ),
               ),
             ),

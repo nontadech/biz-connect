@@ -1,5 +1,6 @@
 import 'package:biz_connect/app/config/themes/theme.dart';
 import 'package:biz_connect/domain/entities/event_entity.dart';
+import 'package:biz_connect/presentation/controllers/auth/auth_controller.dart';
 import 'package:biz_connect/presentation/pages/private_event/controllers/controllers.dart';
 import 'package:biz_connect/presentation/pages/private_event/private_event.dart';
 import 'package:biz_connect/presentation/pages/profile/controllers/controllers.dart';
@@ -16,10 +17,30 @@ class ProfilePage extends GetView<ProfileController> {
 
   @override
    Widget build(BuildContext context) {
-     PrivateEventBinding().dependencies();
-     final privateEventc = PrivateEventController.call;
-       
-                      
+    final authC = AuthController.call;
+    if(!authC.isLoggedIn.value){
+       return Center(
+         child: Column(
+           mainAxisAlignment: MainAxisAlignment.center,
+           children: [
+              Image.asset(
+                'assets/icons/logo.png',
+                width: 123,
+              ),
+              Padding(padding: const EdgeInsets.only(left: 25.0, right: 25.0, top: 50.0),
+                child: ElevatedButtonCustom(
+                  onPressed: () {
+                    context.push('/sign_in');
+                  },
+                  text: 'Sign In',
+                )
+              )
+           ],
+         ),
+       );
+    }
+    PrivateEventBinding().dependencies();
+    final privateEventc = PrivateEventController.call;               
     ProfileBinding().dependencies();
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -53,14 +74,14 @@ class ProfilePage extends GetView<ProfileController> {
                       fontSize: FontSize.h6, 
                       fontWeight: FontWeight.w600, 
                       color: const Color(0xff13315F),
-                      height: 1.2,
+                      height: 1,
                     ),
                   ),
                   Center(
                     child: TextCustom(
                       text: controller.profile.value.email!, 
                       fontSize: FontSize.h8, 
-                      height: 1.2,
+                      height: 1,
                       fontWeight: FontWeight.w400,
                       color: const Color(0xff6481A9),
                     ),

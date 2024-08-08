@@ -46,16 +46,16 @@ class AppTheme {
   }
 }
 class FontSize {
-  static double h12 = 12.0;
-  static double h11 = 12.0;
-  static double h10 = 14.0;
-  static double h9 = 14.0;
-  static double h8 = 16.0;
-  static double h7 = 18.0;
-  static double h6 = 20.0;
-  static double h5 = 22.0;
-  static double h4 = 24.0;
-  static double h3 = 26.0;
-  static double h2 = 28.0;
-  static double h1 = 30.0;
+  static double h12 = 16.0;
+  static double h11 = 18.0;
+  static double h10 = 20.0;
+  static double h9 = 22.0;
+  static double h8 = 24.0;
+  static double h7 = 26.0;
+  static double h6 = 28.0;
+  static double h5 = 30.0;
+  static double h4 = 32.0;
+  static double h3 = 34.0;
+  static double h2 = 36.0;
+  static double h1 = 38.0;
 }

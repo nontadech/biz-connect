@@ -21,7 +21,7 @@ class JoinPage extends GetView<JoinController> {
       'key': 'agenda'
     },
     {
-      'title': 'Zone',
+      'title': 'Floor plan',
       'icon': 'assets/icons/zone.svg',
       'page': '/join/zone',
       'key': 'floor_plan'

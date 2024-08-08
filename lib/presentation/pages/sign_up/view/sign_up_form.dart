@@ -41,6 +41,9 @@ class SignUpPageForm extends GetView<SignUpController>{
                         autofocus: true,
                         controller: controller.emailController,
                         hintText: 'Email',
+                        onChanged: (val) {
+                          controller.checkFrom();
+                        },
                         validator: (val) {
                           if(val!.isEmpty) {
                             return 'Please enter your email'.tr();
@@ -62,6 +65,9 @@ class SignUpPageForm extends GetView<SignUpController>{
                       TextFormFieldCustom(
                         context,
                         hintText: 'Password',
+                        onChanged: (val) {
+                          controller.checkFrom();
+                        },
                         controller: controller.passwordController,
                         obscureText: true,
                         validator: (val) {
@@ -82,6 +88,9 @@ class SignUpPageForm extends GetView<SignUpController>{
                       TextFormFieldCustom(
                         context,
                         hintText: 'Confirm Password',
+                        onChanged: (val) {
+                          controller.checkFrom();
+                        },
                         obscureText: true,
                         controller: controller.confirmPasswordController,
                         validator: (val){
@@ -106,6 +115,9 @@ class SignUpPageForm extends GetView<SignUpController>{
                         context,
                         controller: controller.firstNameController,
                         hintText: 'First name',
+                        onChanged: (val) {
+                          controller.checkFrom();
+                        },
                         validator: (val) {
                           if(val!.isEmpty) {
                             return 'Please enter your first name'.tr();
@@ -125,6 +137,9 @@ class SignUpPageForm extends GetView<SignUpController>{
                         context,
                         controller: controller.lastNameController,
                         hintText: 'Last name',
+                        onChanged: (val) {
+                          controller.checkFrom();
+                        },
                         validator: (val) {
                           if(val!.isEmpty) {
                             return 'Please enter your last name'.tr();
@@ -145,6 +160,9 @@ class SignUpPageForm extends GetView<SignUpController>{
                         controller: controller.mobilePhoneController,
                         hintText: 'Mobile phone',
                         isNumber: true,
+                        onChanged: (val) {
+                          controller.checkFrom();
+                        },
                         validator: (val) {
                           if(val!.isEmpty) {
                             return 'Please enter your mobile phone'.tr();
@@ -164,6 +182,9 @@ class SignUpPageForm extends GetView<SignUpController>{
                         context,
                         controller: controller.companyController,
                         hintText: 'Company',
+                        onChanged: (val) {
+                          controller.checkFrom();
+                        },
                         validator: (val) {
                           if(val!.isEmpty) {
                             return 'Please enter your company'.tr();
@@ -183,6 +204,9 @@ class SignUpPageForm extends GetView<SignUpController>{
                         context,
                         controller: controller.positionController,
                         hintText: 'Position',
+                        onChanged: (val) {
+                          controller.checkFrom();
+                        },
                         validator: (val) {
                           if(val!.isEmpty) {
                             return 'Please enter your position'.tr();
@@ -231,6 +255,7 @@ class SignUpPageForm extends GetView<SignUpController>{
                 right: 0,
                 child: ButtonPositionBottom(
                   text: 'Done',
+                  isDisabled: controller.checkDisabled.value,
                   onPressed: () {
                     controller.userSignUp();
                   }

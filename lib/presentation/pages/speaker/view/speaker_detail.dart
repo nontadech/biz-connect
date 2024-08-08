@@ -1,3 +1,4 @@
+
 import 'package:biz_connect/domain/entities/join_entity.dart';
 import 'package:biz_connect/presentation/pages/agenda/view/adenda_slide_date.dart';
 import 'package:biz_connect/presentation/pages/speaker/controllers/controllers.dart';
@@ -26,6 +27,7 @@ class SpeakerDetail extends StatelessWidget {
    Widget getCardCustum(BuildContext context,List<SessionList> sessions) {
     List<Widget> widgetList = [];
     for (var session in sessions) {
+      List<Files> files = session.speakers!.firstWhere((element) => element.speaker_id == speaker.speaker_id, orElse: () => const SpeakersData()).files ?? [];
       widgetList.add(
         Padding(
           padding: const EdgeInsets.only(left: 25, right: 25),
@@ -33,7 +35,7 @@ class SpeakerDetail extends StatelessWidget {
             title: session.title!,
             location: session.location!,
             time: '${session.start_time} - ${session.end_time}',
-            files:  const [],
+            files: files,
             onTap: () {
               context.push(
                 '/join/agenda/session', 
@@ -60,26 +62,26 @@ class SpeakerDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(
-          height: 15,
-        ),
-        Center(
-          child: CardSpeaker(
-          image: speaker.image_url!,
-            fullname: speaker.fullname!,
-            position: speaker.position!,
-            company: speaker.company!,
-            onTap: () {
+        // const SizedBox(
+        //   height: 15,
+        // ),
+        // Center(
+        //   child: CardSpeaker(
+        //   image: speaker.image_url!,
+        //     fullname: speaker.fullname!,
+        //     position: speaker.position!,
+        //     company: speaker.company!,
+        //     onTap: () {
             
-            },
-          ),
-        ),
-        const SizedBox(
-          height: 15,
-        ),
-        const TitleSession(
-          title: 'Session',
-        ),
+        //     },
+        //   ),
+        // ),
+        // const SizedBox(
+        //   height: 15,
+        // ),
+        // const TitleSession(
+        //   title: 'Session',
+        // ),
         const SizedBox(
           height: 5,
         ),

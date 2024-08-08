@@ -25,7 +25,7 @@ Future<void> popupAPI(BuildContext context, String message) {
                 fontSize: FontSize.h5, 
                 fontWeight: FontWeight.w600,
                 color: const Color(0xff1D1D1B),
-                height: 1.2,
+                height: 1,
               ),
               const SizedBox(
                 height: 10.0,
@@ -36,7 +36,7 @@ Future<void> popupAPI(BuildContext context, String message) {
                 textAlign: TextAlign.center,
                 fontWeight: FontWeight.w400,
                 color: const Color(0xff1D1D1B),
-                height: 1.2,
+                height: 1,
               ),
               const SizedBox(
                 height: 20.0,

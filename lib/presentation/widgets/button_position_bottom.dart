@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 class ButtonPositionBottom extends StatelessWidget {
   final String text;
   final void Function() onPressed;
+  final bool isDisabled;
   const ButtonPositionBottom({
     super.key,
     required this.text,
     required this.onPressed,
+    this.isDisabled = false,
   });
 
   @override
@@ -32,7 +34,8 @@ class ButtonPositionBottom extends StatelessWidget {
       ),
       child: ElevatedButtonCustom(
         text: text,
-        onPressed: onPressed
+        onPressed: onPressed,
+        isDisabled: isDisabled,
       ),
     );
   }

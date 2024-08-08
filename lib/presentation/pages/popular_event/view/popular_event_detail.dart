@@ -1,11 +1,14 @@
 import 'package:biz_connect/app/config/themes/theme.dart';
 import 'package:biz_connect/domain/entities/event_entity.dart';
+import 'package:biz_connect/presentation/controllers/auth/auth_controller.dart';
+import 'package:biz_connect/presentation/pages/popular_event/controllers/controllers.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:go_router/go_router.dart';
 import "package:latlong2/latlong.dart";
 import 'package:maps_launcher/maps_launcher.dart';
@@ -21,6 +24,10 @@ class PopularEventDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authC = AuthController.call;
+    PopularEventBinding().dependencies();
+    final popularEventC = PopularEventController.call;
+    popularEventC.isFavorite(event.is_favorite);
     return Stack(
       children: [
         Container(
@@ -29,9 +36,9 @@ class PopularEventDetail extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
-                padding: const EdgeInsets.only(left: 20, top: 80),
+                // padding: const EdgeInsets.only(left: 20, top: 80, right: 20),
                 alignment: Alignment.topLeft,
-                height: 280,
+                height: 450,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.only(
@@ -48,12 +55,57 @@ class PopularEventDetail extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-                child:  IconButton(
-                  icon: SvgPicture.asset('assets/icons/back.svg'),
-                  onPressed: () {
-                    context.pop();
-                  },
-                ),
+                child: Stack(
+                  children: [
+                    Positioned(
+                      child: Container(
+                        width: double.infinity,
+                        height: 450,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Colors.black.withOpacity(0.7),
+                              Colors.black.withOpacity(0.4),
+                              Colors.transparent,
+                            ],
+                          ),
+                        ),
+                      )
+                    ),
+                    Obx(() {
+                      return Padding(padding: const EdgeInsets.only(left: 20, top: 80, right: 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            IconButton(
+                              icon: SvgPicture.asset('assets/icons/back.svg'),
+                              onPressed: () {
+                                context.pop();
+                              },
+                            ),
+                            authC.isLoggedIn.value ? IconButton(
+                              icon: popularEventC.isFavorite.value ? 
+                              SvgPicture.asset(
+                                'assets/icons/favorite_active.svg',
+                                width: 16,
+                                height: 18,
+                              ) :
+                              SvgPicture.asset('assets/icons/favorite.svg',
+                                width: 16,
+                                height: 18,
+                              ),
+                              onPressed: () async {
+                              await popularEventC.setFavoriteEventDetail(event.event_id!);
+                              },
+                            ) : const SizedBox(),
+                          ],
+                        )
+                      );
+                    }),
+                  ],
+                )
               ),
               Expanded(
                 child: SingleChildScrollView(
@@ -70,7 +122,7 @@ class PopularEventDetail extends StatelessWidget {
                               text: event.title!, 
                               fontSize: FontSize.h7, 
                               fontWeight: FontWeight.w600, 
-                              height: 1.2,
+                              height: 1,
                               color: const Color(0xff13315F),
                             ),
                             const SizedBox(height: 15),
@@ -234,7 +286,7 @@ class PopularEventDetail extends StatelessWidget {
           bottom: 0,
           left: 0,
           right: 0,
-          child: ButtonPositionBottom(
+          child: authC.isLoggedIn.value ?  ButtonPositionBottom(
             text: 'Register now',
             onPressed: () {
               context.push(
@@ -245,8 +297,15 @@ class PopularEventDetail extends StatelessWidget {
                 }
               );
             }
+          ) : ButtonPositionBottom(
+            text: 'Sign in',
+            onPressed: () {
+              context.push(
+                '/sign_in',
+              );
+            }
           )
-        )
+        ) ,
       ]
     );
   }

@@ -7,6 +7,7 @@ import 'package:biz_connect/data/models/event_model.dart';
 import 'package:biz_connect/domain/entities/event_entity.dart';
 import 'package:biz_connect/domain/usecases/favorite_use_case.dart';
 import 'package:biz_connect/domain/usecases/home_event_use_case.dart';
+import 'package:biz_connect/presentation/controllers/auth/auth_controller.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 
@@ -55,21 +56,26 @@ class HomeController extends GetxController {
   }
 
   Future<void> waitConstructor(data) async {
-    List<EventData> evantData = [];
-    for (EventData elements in data.data) {
-      List<EventList> evantList = [];
-      for (EventList element in elements.list!) {
-        if(element.event_id != null){
-            bool status = (await _favoriteUseCase.chkFavoriteEvent(
-              element.event_id!
-            ));
-            evantList.add(element.copyWith(is_favorite : status));
-        }else{
-            evantList.add(element);
-        }        
-      } 
-      evantData.add(elements.copyWith(list: evantList));   
+    final authC = AuthController.call;
+    if(authC.isLoggedIn.value){
+      List<EventData> evantData = [];
+      for (EventData elements in data.data) {
+        List<EventList> evantList = [];
+        for (EventList element in elements.list!) {
+          if(element.event_id != null){
+              bool status = (await _favoriteUseCase.chkFavoriteEvent(
+                element.event_id!
+              ));
+              evantList.add(element.copyWith(is_favorite : status));
+          }else{
+              evantList.add(element);
+          }        
+        } 
+        evantData.add(elements.copyWith(list: evantList));   
+      }
+      evant(data.copyWith(data: evantData));
+    }else{
+      evant(data);
     }
-    evant(data.copyWith(data: evantData));
   }
 }

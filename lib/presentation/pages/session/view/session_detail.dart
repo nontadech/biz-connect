@@ -35,9 +35,19 @@ class SessionDetail extends StatelessWidget {
           TextCustom(
             text: session.title!, 
             fontSize: FontSize.h7, 
-            height: 1.2,
-            fontWeight: FontWeight.w400, 
+            height: 1,
+            fontWeight: FontWeight.w600, 
             color: const Color(0xff13315F)
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          TextCustom(
+            text: session.detail!, 
+            fontSize: FontSize.h8, 
+            fontWeight: FontWeight.w500, 
+            color: const Color(0xff122D58),
+            height: 1,
           ),
           const SizedBox(
             height: 10,
@@ -52,43 +62,6 @@ class SessionDetail extends StatelessWidget {
           ),
           const SizedBox(
             height: 10,
-          ),
-          TextIcon(
-            title: '${session.start_time} - ${session.end_time}', 
-            fontSize: FontSize.h9,
-            icon: SvgPicture.asset(
-              'assets/icons/clock.svg',
-              width: 24,
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          TextCustom(
-            text: session.detail!, 
-            fontSize: FontSize.h8, 
-            fontWeight: FontWeight.w500, 
-            color: const Color(0xff122D58),
-            height: 1.2,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          TextCustom(
-            text: 'Download', 
-            fontSize: FontSize.h9, 
-            fontWeight: FontWeight.w500, 
-            color: const Color(0xff122D58),
-            height: 1.2,
-          ),
-          TextCustom(
-            text: 'Sample file.pdf', 
-            fontSize: FontSize.h9, 
-            height: 1.2,
-            fontWeight: FontWeight.w500, 
-            color: const Color(0xff56BED6),
-            decoration: TextDecoration.underline,
-            decorationColor: const Color(0xff56BED6),
           ),
         ],
       ),

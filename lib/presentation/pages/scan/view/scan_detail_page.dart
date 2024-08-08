@@ -75,7 +75,7 @@ class ScanDetailPage extends GetView<ScanController> {
                         fontSize: FontSize.h6, 
                         fontWeight: FontWeight.w600, 
                         color: const Color(0xff13315F),
-                        height: 1.2,
+                        height: 1,
                       ),
                     ),
                     const SizedBox(

@@ -12,7 +12,6 @@ class DownloadsPage extends GetView<DownloadController> {
   });
 
   
-
   Widget getCard(BuildContext context){
     List<Widget> widgetList = [];
     for (var eventFile in controller.eventFile.value.data){
@@ -28,27 +27,6 @@ class DownloadsPage extends GetView<DownloadController> {
       widgetList.add(const SizedBox(height: 10));
     }
     widgetList.add(const SizedBox(height: 20));
-    if(controller.eventFile.value.data.isNotEmpty){
-      widgetList.add(
-        ElevatedButtonCustom(
-          text: 'SEND ALL FILES TO YOUR EMAIL',
-          onPressed: () {
-            sendEmail(context, eventId);
-            WidgetsBinding.instance.addPostFrameCallback((_){
-              try {
-                
-              } catch (error) {
-                popupStatus(
-                  context, 
-                  PopupStatusType.error,
-                  message: 'Error: ${error.toString()}',
-                );
-              }
-            });
-          }
-        )
-      );
-    }
     return Column(
       children: widgetList,
     );
@@ -57,6 +35,7 @@ class DownloadsPage extends GetView<DownloadController> {
   @override
    Widget build(BuildContext context) {
     DownloadBinding().dependencies();
+   
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBarCustom(
@@ -64,32 +43,61 @@ class DownloadsPage extends GetView<DownloadController> {
         title: 'Download',
         type: AppBarType.back,
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(left: 25, right: 25, top: 10, bottom: 10),
-        child: SingleChildScrollView(
-          child: GetX(
-            init: controller,
-            initState: (_){
-              controller.isDataEmtpy(false);
-              controller.isLoading(false);
-              controller.getEventFile(eventId);
-            },
-            builder: (_){
-              if(!controller.isLoading.value){
-                return Column(
-                  children: [
-                    const SizedBox(
-                      height: 200,
-                    ),
-                    Center(
-                      child: controller.isDataEmtpy.value ? const SizedBox() : const CircularProgressIndicator(),
-                    )
-                  ],
-                );
+      body: Stack(
+        children: [
+          SizedBox(
+            height: double.infinity,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 25, right: 25, top: 10, bottom: 10),
+              child: SingleChildScrollView(
+                child: GetX(
+                  init: controller,
+                  initState: (_){
+                    controller.isDataEmtpy(false);
+                    controller.isLoading(false);
+                    controller.getEventFile(eventId);
+                  },
+                  builder: (_){
+                    if(!controller.isLoading.value){
+                      return Column(
+                        children: [
+                          const SizedBox(
+                            height: 200,
+                          ),
+                          Center(
+                            child: controller.isDataEmtpy.value ? const SizedBox() : const CircularProgressIndicator(),
+                          )
+                        ],
+                      );
+                    }
+                  return getCard(context);
+                })
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 40,
+            left: 25,
+            right: 25,
+            child: ElevatedButtonCustom(
+              text: 'SEND ALL FILES TO YOUR EMAIL',
+              onPressed: () {
+                sendEmail(context, eventId);
+                WidgetsBinding.instance.addPostFrameCallback((_){
+                  try {
+                    
+                  } catch (error) {
+                    popupStatus(
+                      context, 
+                      PopupStatusType.error,
+                      message: 'Error: ${error.toString()}',
+                    );
+                  }
+                });
               }
-              return getCard(context);
-          })
-        ),
+            ),
+          )
+        ],
       )
     );
   }

@@ -66,7 +66,7 @@ class ImgFormFieldCustom extends StatelessWidget {
           fontSize: FontSize.h9, 
           color: const Color(0xff91A6C4).withOpacity(0.8),
           fontWeight: FontWeight.w400,
-          fontFamily: 'LINESeedSansTH',
+          fontFamily: 'FC_Iconic',
         ),
         fillColor: Colors.white,
         focusedBorder: OutlineInputBorder(

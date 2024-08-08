@@ -38,7 +38,7 @@ class _Survey3State extends State<Survey3> {
           text: '${widget.page} ${widget.data.title}',
           fontSize: FontSize.h8, 
           fontWeight: FontWeight.w400, 
-          height: 1.2,
+          height: 1,
           color: const Color(0xff122D58)
         ),
         const SizedBox(

@@ -51,7 +51,7 @@ class MenuIcon extends StatelessWidget {
                 text: title, 
                 fontSize: FontSize.h9, 
                 fontWeight: FontWeight.w400, 
-                height: 1.2,
+                height: 1,
                 color: const Color(0xff13315F)
               )
             )

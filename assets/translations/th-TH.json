@@ -1,10 +1,10 @@
 {
     "Home": "หน้าแรก",
-    "View all": "ดูทั้งหมด",
+    "See more": "ดูทั้งหมด",
     "Today Event": "อีเว้นท์วันนี้",
     "My Event": "อีเว้นท์",
-    "My Favourite": "รายการโปรด",
-    "Profile": "ข้อมูลส่วนตัว",
+    "Saved": "รายการโปรด",
+    "Account": "ข้อมูลส่วนตัว",
     "Upcoming Event": "เข้าร่วมกิจกรรม",
     "Past Event": "ประวัติกิจกรรม",
     "Agenda": "กำหนดการ",
@@ -36,8 +36,8 @@
     "Password": "รหัสผ่าน",
     "Forgot Password": "ลืมรหัสผ่าน",
     "LOG IN": "เข้าสู่ระบบ",
-    "DON`T HAVE AN ACCOUNT? ": "ยังไม่มีบัญชีผู้ใช้? ",
-    "SIGN UP HERE": "สมัครสมาชิกที่นี่",
+    "Don`t have an account? ": "ยังไม่มีบัญชีผู้ใช้? ",
+    "Register here": "สมัครสมาชิกที่นี่",
     "ENTER": "ส่ง",
     "Forgot Password?": "ลืมรหัสผ่าน?",
     "Create Account": "สร้างบัญชีผู้ใช้",
@@ -68,5 +68,8 @@
     "Event Detail": "รายละเอียดกิจกรรม",
     "SEND ALL FILES TO YOUR EMAIL": "ส่งไฟล์ทั้งหมดไปที่อีเมลของคุณ",
     "Success: send email": "สำเร็จ: ส่งอีเมล",
-    "Your question is submitted. Please wait for the approval from organizer before publish display.": "คำถามของคุณถูกส่งแล้ว กรุณารอการอนุมัติจากผู้จัดก่อนที่จะเผยแพร่"
+    "Your question is submitted. Please wait for the approval from organizer before publish display.": "คำถามของคุณถูกส่งแล้ว กรุณารอการอนุมัติจากผู้จัดก่อนที่จะเผยแพร่",
+    "Sign In": "เข้าสู่ระบบ",
+    "You don`t have any event": "คุณไม่มีกิจกรรมใดๆ",
+    "You don`t have any saved": "คุณไม่มีรายการโปรดใดๆ"
 }

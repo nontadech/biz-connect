@@ -46,16 +46,16 @@ class _BottomNavigationBarCustomState extends State<BottomNavigationBarCustom> {
           ],
         ),
         child: BottomNavigationBar(
-          selectedFontSize: FontSize.h10,
-          unselectedFontSize: FontSize.h10,
+          selectedFontSize: FontSize.h11,
+          unselectedFontSize: FontSize.h11,
           selectedLabelStyle: const TextStyle(
             fontWeight: FontWeight.w500,
-            fontFamily: 'LINESeedSansTH',
+            fontFamily: 'FC_Iconic',
             color: Color(0xff56BED6)
           ),
           unselectedLabelStyle: const TextStyle(
             fontWeight: FontWeight.w500,
-            fontFamily: 'LINESeedSansTH',
+            fontFamily: 'FC_Iconic',
             color: Color(0xff56BED6)
           ),
           backgroundColor: Colors.white,
@@ -64,54 +64,54 @@ class _BottomNavigationBarCustomState extends State<BottomNavigationBarCustom> {
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 'assets/icons/home.svg',
-                height: 32,
-                width: 32,
+                height: 26,
+                width: 26,
               ),
               activeIcon: SvgPicture.asset(
                 'assets/icons/home_active.svg',
-                height: 32,
-                width: 32,
+                height: 26,
+                width: 26,
               ),
               label: 'Home'.tr(),
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 'assets/icons/note.svg',
-                height: 32,
-                width: 32,
+                height: 26,
+                width: 26,
               ),
               activeIcon: SvgPicture.asset(
                 'assets/icons/note_active.svg',
-                height: 32,
-                width: 32,
+                height: 26,
+                width: 26,
               ),
               label: 'My Event'.tr(),
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
-                'assets/icons/heart.svg',
-                height: 32,
-                width: 32,
+                'assets/icons/favorite.svg',
+                height: 26,
+                width: 26,
               ),
               activeIcon: SvgPicture.asset(
-                'assets/icons/heart_active.svg',
-                height: 32,
-                width: 32,
+                'assets/icons/favorite_active.svg',
+                height: 26,
+                width: 26,
               ),
-              label: 'My Favourite'.tr(),
+              label: 'Saved'.tr(),
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 'assets/icons/profile.svg',
-                height: 32,
-                width: 32,
+                height: 26,
+                width: 26,
               ),
               activeIcon: SvgPicture.asset(
                 'assets/icons/profile_active.svg',
-                height: 32,
-                width: 32,
+                height: 26,
+                width: 26,
               ),
-              label: 'Profile'.tr(),
+              label: 'Account'.tr(),
             ),
           ],
           currentIndex: layoutC.selectedPage.value.index,

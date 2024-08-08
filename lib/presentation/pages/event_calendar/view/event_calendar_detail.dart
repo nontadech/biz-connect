@@ -44,7 +44,7 @@ class EventCalendarDetail extends StatelessWidget {
                 fontSize: FontSize.h7, 
                 fontWeight: FontWeight.w600, 
                 color: const Color(0xff13315F),
-                height: 1.4,
+                height: 1.2,
               ),
               const SizedBox(height: 10),
               HtmlWidget(
@@ -66,12 +66,12 @@ class EventCalendarDetail extends StatelessWidget {
                 fontSize: FontSize.h7, 
                 fontWeight: FontWeight.w400, 
                 color: const Color(0xff6481A9),
-                height: 1.2,
+                height: 1,
               ),
               TextCustom(
                 text: '${news.date}', 
                 fontSize: FontSize.h7, 
-                height: 1.2,
+                height: 1,
                 fontWeight: FontWeight.w400, 
                 color: const Color(0xff6481A9),
               ),

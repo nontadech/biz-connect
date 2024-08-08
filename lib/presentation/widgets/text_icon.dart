@@ -26,7 +26,7 @@ class TextIcon extends StatelessWidget {
             text: title, 
             fontSize: FontSize.h8, 
             fontWeight: FontWeight.w500, 
-            height: 1.2,
+            height: 1,
             color: const Color(0xff122D58),
           ),
         )

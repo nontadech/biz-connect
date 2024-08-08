@@ -47,7 +47,7 @@ class _ChatBoxState extends State<ChatBox> {
                 fontSize: FontSize.h7, 
                 fontWeight: FontWeight.w500, 
                 color: const Color(0xff13315F),
-                height: 1.2,
+                height: 1,
               ),
               Container(
                 margin: const EdgeInsets.only(top: 10),
@@ -65,7 +65,7 @@ class _ChatBoxState extends State<ChatBox> {
                   fontSize: FontSize.h9, 
                   fontWeight: FontWeight.w400, 
                   color: const Color(0xff13315F),
-                  height: 1.2,
+                  height: 1,
                 ),
               )
             ],

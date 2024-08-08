@@ -37,7 +37,7 @@ class SpeakerList extends StatelessWidget {
     return GridView.count(
       shrinkWrap: true,
       crossAxisCount: 2,
-      childAspectRatio: 0.43,
+      childAspectRatio: 0.42,
       mainAxisSpacing: 10,
       children: widgetList
     );

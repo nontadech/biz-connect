@@ -15,6 +15,7 @@ class TextFormFieldCustom extends StatelessWidget {
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final TextInputType? keyboardType;
+  final void Function(String)? onChanged;
 
   TextFormFieldCustom(
     this.context,
@@ -30,6 +31,7 @@ class TextFormFieldCustom extends StatelessWidget {
     this.borderRadius = 8.0,
     this.validator,
     this.keyboardType,
+    this.onChanged,
   });
 
 
@@ -40,6 +42,7 @@ class TextFormFieldCustom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: onChanged,
       controller: controller,
       maxLines: maxLines,
       readOnly: readOnly,
@@ -55,7 +58,7 @@ class TextFormFieldCustom extends StatelessWidget {
           fontSize: FontSize.h9, 
           color: const Color(0xff91A6C4).withOpacity(0.8),
           fontWeight: FontWeight.w400,
-          fontFamily: 'LINESeedSansTH',
+          fontFamily: 'FC_Iconic',
         ),
         fillColor: Colors.white,
         focusedBorder: OutlineInputBorder(

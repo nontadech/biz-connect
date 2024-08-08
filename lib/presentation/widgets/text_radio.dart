@@ -37,7 +37,7 @@ class TextRadioState extends State<TextRadio> {
         const SizedBox(width: 10,),
         Flexible(
           child: TextCustom(
-            height: 1.2,
+            height: 1,
             text: widget.title, 
             fontSize: FontSize.h8, 
             fontWeight: FontWeight.w400, 

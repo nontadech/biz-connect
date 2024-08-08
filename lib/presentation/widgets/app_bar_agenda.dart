@@ -82,13 +82,13 @@ class AppBarAgenda extends StatelessWidget implements PreferredSizeWidget{
                   fontSize: FontSize.h9, 
                   fontWeight: FontWeight.w400, 
                   color: const Color(0xff6481A9),
-                  height: 1.2,
+                  height: 1,
                 ),
                 style: TextStyle(
                   fontSize: FontSize.h9, 
                   color: const Color(0xff122D58),
                   fontWeight: FontWeight.w400,
-                  fontFamily: 'LINESeedSansTH',
+                  fontFamily: 'FC_Iconic',
                 ),
                 // value: selectRoom.value,
                 onChanged: (String? room) {
@@ -125,7 +125,7 @@ class AppBarAgenda extends StatelessWidget implements PreferredSizeWidget{
                       fontSize: FontSize.h9, 
                       fontWeight: FontWeight.w400, 
                       color: const Color(0xff6481A9),
-                      height: 1.2,
+                      height: 1,
                     ),
                   );
                 }).toList() : [],

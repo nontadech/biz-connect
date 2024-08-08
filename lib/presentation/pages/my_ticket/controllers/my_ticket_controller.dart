@@ -18,6 +18,7 @@ class MyTicketController extends GetxController {
   fetchData() async {
     try {
       ticket.value = await _ticketUseCase.execute();
+      log(ticket.value.tickets.toString());
     } catch (error) {
       log('error ${error.toString()}');
     }

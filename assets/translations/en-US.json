@@ -1,10 +1,10 @@
 {
     "Home": "Home",
-    "View all": "View all",
+    "See more": "See more",
     "Today Event": "Today Event",
     "My Event": "My Event",
-    "My Favourite": "My Favourite",
-    "Profile": "Profile",
+    "Saved": "Saved",
+    "Account": "Account",
     "Upcoming Event": "Upcoming Event",
     "Past Event": "Past Event",
     "Agenda": "Agenda",
@@ -36,8 +36,8 @@
     "Password": "Password",
     "Forgot Password": "Forgot Password",
     "LOG IN": "LOG IN",
-    "DON`T HAVE AN ACCOUNT? ": "DON`T HAVE AN ACCOUNT? ",
-    "SIGN UP HERE": "SIGN UP HERE",
+    "Don`t have an account? ": "Don`t have an account? ",
+    "Register here": "Register here",
     "Forgot Password?": "Forgot Password?",
     "Create Account": "Create Account",
     "Confirm Password": "Confirm Password",
@@ -67,5 +67,8 @@
     "Event Detail": "Event Detail",
     "SEND ALL FILES TO YOUR EMAIL": "SEND ALL FILES TO YOUR EMAIL",
     "Success: send email": "Success: send email",
-    "Your question is submitted. Please wait for the approval from organizer before publish display.": "Your question is submitted. Please wait for the approval from organizer before publish display."
+    "Your question is submitted. Please wait for the approval from organizer before publish display.": "Your question is submitted. Please wait for the approval from organizer before publish display.",
+    "Sign In": "Sign In",
+    "You don`t have any event": "You don`t have any event",
+    "You don`t have any saved": "You don`t have any saved"
 }

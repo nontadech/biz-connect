@@ -37,7 +37,7 @@ class CardLivePoll extends StatelessWidget {
               text: title, 
               fontSize: FontSize.h7, 
               fontWeight: FontWeight.w600, 
-              height: 1.2,
+              height: 1,
               color: const Color(0xff13315F)
             ),
             const SizedBox(

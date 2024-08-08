@@ -64,7 +64,7 @@ class HomeSlide extends StatelessWidget {
                   child: TextCustom(
                     text: title,
                     fontSize: FontSize.h8,
-                    height: 1.2,
+                    height: 1,
                     fontWeight: FontWeight.w700,
                     color: const Color(0xff122D58),
                   ),
@@ -74,12 +74,10 @@ class HomeSlide extends StatelessWidget {
                     context.push('/popular_events');
                   },
                   child: TextCustom(
-                    text: 'View all',
+                    text: 'See more',
                     fontSize: FontSize.h8,
                     fontWeight: FontWeight.w600,
-                    color: const Color(0xff56BED6),
-                    decoration: TextDecoration.underline, 
-                    decorationColor: const Color(0xff56BED6),
+                    color: const Color(0xff56BED6)
                   ),
                 ) : Container(),
               ],

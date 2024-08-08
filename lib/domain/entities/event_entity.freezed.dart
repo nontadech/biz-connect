@@ -37,6 +37,7 @@ mixin _$EventList {
   String? get show_information => throw _privateConstructorUsedError;
   String? get show_register => throw _privateConstructorUsedError;
   String? get event_url => throw _privateConstructorUsedError;
+  String? get link_url => throw _privateConstructorUsedError;
   String? get venue_name => throw _privateConstructorUsedError;
   String? get venue_tel => throw _privateConstructorUsedError;
   String get venue_email => throw _privateConstructorUsedError;
@@ -77,6 +78,7 @@ abstract class $EventListCopyWith<$Res> {
       String? show_information,
       String? show_register,
       String? event_url,
+      String? link_url,
       String? venue_name,
       String? venue_tel,
       String venue_email,
@@ -119,6 +121,7 @@ class _$EventListCopyWithImpl<$Res, $Val extends EventList>
     Object? show_information = freezed,
     Object? show_register = freezed,
     Object? event_url = freezed,
+    Object? link_url = freezed,
     Object? venue_name = freezed,
     Object? venue_tel = freezed,
     Object? venue_email = null,
@@ -199,6 +202,10 @@ class _$EventListCopyWithImpl<$Res, $Val extends EventList>
           ? _value.event_url
           : event_url // ignore: cast_nullable_to_non_nullable
               as String?,
+      link_url: freezed == link_url
+          ? _value.link_url
+          : link_url // ignore: cast_nullable_to_non_nullable
+              as String?,
       venue_name: freezed == venue_name
           ? _value.venue_name
           : venue_name // ignore: cast_nullable_to_non_nullable
@@ -269,6 +276,7 @@ abstract class _$$EventListImplCopyWith<$Res>
       String? show_information,
       String? show_register,
       String? event_url,
+      String? link_url,
       String? venue_name,
       String? venue_tel,
       String venue_email,
@@ -309,6 +317,7 @@ class __$$EventListImplCopyWithImpl<$Res>
     Object? show_information = freezed,
     Object? show_register = freezed,
     Object? event_url = freezed,
+    Object? link_url = freezed,
     Object? venue_name = freezed,
     Object? venue_tel = freezed,
     Object? venue_email = null,
@@ -389,6 +398,10 @@ class __$$EventListImplCopyWithImpl<$Res>
           ? _value.event_url
           : event_url // ignore: cast_nullable_to_non_nullable
               as String?,
+      link_url: freezed == link_url
+          ? _value.link_url
+          : link_url // ignore: cast_nullable_to_non_nullable
+              as String?,
       venue_name: freezed == venue_name
           ? _value.venue_name
           : venue_name // ignore: cast_nullable_to_non_nullable
@@ -454,6 +467,7 @@ class _$EventListImpl implements _EventList {
       this.show_information,
       this.show_register,
       this.event_url,
+      this.link_url,
       this.venue_name = "",
       this.venue_tel = "",
       this.venue_email = "-",
@@ -508,6 +522,8 @@ class _$EventListImpl implements _EventList {
   @override
   final String? event_url;
   @override
+  final String? link_url;
+  @override
   @JsonKey()
   final String? venue_name;
   @override
@@ -536,7 +552,7 @@ class _$EventListImpl implements _EventList {
 
   @override
   String toString() {
-    return 'EventList(event_id: $event_id, news_id: $news_id, category_title: $category_title, title: $title, description: $description, thumnail: $thumnail, image_display: $image_display, location_name: $location_name, location_lat: $location_lat, location_lng: $location_lng, date: $date, date_end: $date_end, start_time: $start_time, end_time: $end_time, show_information: $show_information, show_register: $show_register, event_url: $event_url, venue_name: $venue_name, venue_tel: $venue_tel, venue_email: $venue_email, direction_taxi: $direction_taxi, direction_bts: $direction_bts, direction_foot: $direction_foot, company_info: $company_info, company: $company, location: $location, is_favorite: $is_favorite)';
+    return 'EventList(event_id: $event_id, news_id: $news_id, category_title: $category_title, title: $title, description: $description, thumnail: $thumnail, image_display: $image_display, location_name: $location_name, location_lat: $location_lat, location_lng: $location_lng, date: $date, date_end: $date_end, start_time: $start_time, end_time: $end_time, show_information: $show_information, show_register: $show_register, event_url: $event_url, link_url: $link_url, venue_name: $venue_name, venue_tel: $venue_tel, venue_email: $venue_email, direction_taxi: $direction_taxi, direction_bts: $direction_bts, direction_foot: $direction_foot, company_info: $company_info, company: $company, location: $location, is_favorite: $is_favorite)';
   }
 
   @override
@@ -575,6 +591,8 @@ class _$EventListImpl implements _EventList {
                 other.show_register == show_register) &&
             (identical(other.event_url, event_url) ||
                 other.event_url == event_url) &&
+            (identical(other.link_url, link_url) ||
+                other.link_url == link_url) &&
             (identical(other.venue_name, venue_name) ||
                 other.venue_name == venue_name) &&
             (identical(other.venue_tel, venue_tel) ||
@@ -617,6 +635,7 @@ class _$EventListImpl implements _EventList {
         show_information,
         show_register,
         event_url,
+        link_url,
         venue_name,
         venue_tel,
         venue_email,
@@ -662,6 +681,7 @@ abstract class _EventList implements EventList {
       final String? show_information,
       final String? show_register,
       final String? event_url,
+      final String? link_url,
       final String? venue_name,
       final String? venue_tel,
       final String venue_email,
@@ -710,6 +730,8 @@ abstract class _EventList implements EventList {
   String? get show_register;
   @override
   String? get event_url;
+  @override
+  String? get link_url;
   @override
   String? get venue_name;
   @override

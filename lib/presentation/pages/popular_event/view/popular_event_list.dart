@@ -36,7 +36,7 @@ class PopularEventList extends StatelessWidget {
     return GridView.count(
         shrinkWrap: true,
         crossAxisCount: 2,
-        childAspectRatio: 0.46,
+        childAspectRatio: 0.44,
         mainAxisSpacing: 10,
         children: widgetList
     );

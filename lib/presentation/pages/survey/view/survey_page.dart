@@ -121,7 +121,7 @@ class SurveyPage extends GetView<SurveyController> {
                           fontSize: FontSize.h1, 
                           fontWeight: FontWeight.w500, 
                           color: const Color(0xff56BED6),
-                          height: 1.2,
+                          height: 1,
                         ),
                         const SizedBox(width: 5,),
                         TextCustom(

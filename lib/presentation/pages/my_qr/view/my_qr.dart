@@ -54,7 +54,7 @@ class MyQrPage extends GetView<MyQRController> {
                         textAlign: TextAlign.center,
                         text: 'Please allow the  other party to use the QR Code scan code reader. To display your information',
                         fontSize: FontSize.h8,
-                        height: 1.2,
+                        height: 1,
                         fontWeight: FontWeight.w400,
                         color: const Color(0xff6481A9)
                       )

@@ -23,7 +23,7 @@ class TextIconVertical extends StatelessWidget {
           color: const Color(0xff122D58),
           fontSize: FontSize.h8,
           fontWeight: FontWeight.w400,
-          height: 1.2,
+          height: 1,
         ),
       ],
     );
