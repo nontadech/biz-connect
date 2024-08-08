@@ -1,10 +1,10 @@
 import 'package:biz_connect/app/config/themes/theme.dart';
 import 'package:biz_connect/domain/entities/join_entity.dart';
-import 'package:biz_connect/presentation/pages/download/controllers/controllers.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:expand_widget/expand_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 class CardAgenda extends StatelessWidget {
   final VoidCallback onTap;
@@ -33,16 +33,12 @@ class CardAgenda extends StatelessWidget {
             title: file.title!,
             size: file.size!,
             onTap: () {
-              DownloadBinding().dependencies();
-              final downloadC = DownloadController.call;
-              downloadC.context(context);
-              downloadC.downloadFile(
-                EventFileData(
-                  id: file.id,
-                  name: file.title,
-                  size_file: file.size,
-                  path_file: file.file
-                )
+              context.push(
+                '/pdf', 
+                extra: {
+                  'url': file.file,
+                  'title': file.title
+                }
               );
             },
           )
@@ -53,16 +49,12 @@ class CardAgenda extends StatelessWidget {
             title: file.title!,
             size: file.size!,
             onTap: () {
-              DownloadBinding().dependencies();
-              final downloadC = DownloadController.call;
-              downloadC.context(context);
-              downloadC.downloadFile(
-                EventFileData(
-                  id: file.id,
-                  name: file.title,
-                  size_file: file.size,
-                  path_file: file.file
-                )
+              context.push(
+                '/pdf', 
+                extra: {
+                  'url': file.file,
+                  'title': file.title
+                }
               );
             },
           )

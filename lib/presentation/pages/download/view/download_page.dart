@@ -3,6 +3,7 @@ import 'package:biz_connect/presentation/pages/download/view/send_email.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class DownloadsPage extends GetView<DownloadController> {
   final int eventId;
@@ -19,8 +20,14 @@ class DownloadsPage extends GetView<DownloadController> {
         CardDownload(
           title: eventFile.name!,
           size: 'Size: ${eventFile.size_file}',
-          onTap: ()  {
-            controller.downloadFile(eventFile);
+          onTap: () {
+            context.push(
+              '/pdf', 
+              extra: {
+              'url': eventFile.path_file,
+              'title': eventFile.name
+              }
+            );
           },
         )
       );
@@ -70,7 +77,7 @@ class DownloadsPage extends GetView<DownloadController> {
                         ],
                       );
                     }
-                  return getCard(context);
+                    return getCard(context);
                 })
               ),
             ),

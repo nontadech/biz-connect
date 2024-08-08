@@ -23,49 +23,51 @@ class _SignInPageState extends State<SignInPage> {
    Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      body: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              InkWell(
-                onTap: () {
-                  context.pop();
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 25.0, right: 25.0, top: 90.0),
-                  child: SvgPicture.asset(
-                    'assets/icons/back.svg',
-                    colorFilter: const ColorFilter.mode(
-                      Color(0xff13315F),
-                      BlendMode.srcIn,
-                    ),
-                  )
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                InkWell(
+                  onTap: () {
+                    context.pop();
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 25.0, right: 25.0, top: 90.0),
+                    child: SvgPicture.asset(
+                      'assets/icons/back.svg',
+                      colorFilter: const ColorFilter.mode(
+                        Color(0xff13315F),
+                        BlendMode.srcIn,
+                      ),
+                    )
+                  ),
                 ),
+              ],
+            ),  
+            Center(
+              child: Image.asset(
+                'assets/icons/logo.png',
+                width: 123,
               ),
-            ],
-          ),  
-          Center(
-            child: Image.asset(
-              'assets/icons/logo.png',
-              width: 123,
             ),
-          ),
-          const SizedBox(height: 15.0),
-          TextCustom(
-            text: 'BizConnect', 
-            fontSize: FontSize.h1, 
-            fontWeight: FontWeight.w600, 
-            color: const Color(0xff13315F)
-          ),
-          const Padding(
-            padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 20.0),
-            child: SignInPageForm(),
-          ),
-          const SizedBox(
-            height: 50,
-          ),
-        ],
+            const SizedBox(height: 15.0),
+            TextCustom(
+              text: 'BizConnect', 
+              fontSize: FontSize.h1, 
+              fontWeight: FontWeight.w600, 
+              color: const Color(0xff13315F)
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 20.0),
+              child: SignInPageForm(),
+            ),
+            const SizedBox(
+              height: 50,
+            ),
+          ],
+        )
       )
     );
   }

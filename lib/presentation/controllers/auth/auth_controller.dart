@@ -12,6 +12,7 @@ class AuthController extends GetxController {
   final store = Get.find<LocalStorageService>();
   var isLoggedIn = false.obs;
   User? get user => store.user;
+  String? get apnsToken => store.setting!.apnsToken;
 
   @override
   void onInit() async {
@@ -21,7 +22,10 @@ class AuthController extends GetxController {
 
   Future<void> postFCMToken() async {
     try {
-      await _fcmTokenUseCase.execute();
+      log('apnsToken $apnsToken');
+      if(apnsToken != '' && apnsToken != null){
+        await _fcmTokenUseCase.execute();
+      }
     } catch (e) {
       log(e.toString());
     }

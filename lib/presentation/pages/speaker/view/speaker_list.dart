@@ -12,33 +12,40 @@ class SpeakerList extends StatelessWidget {
     required this.eventId
   });
 
-  getCard(BuildContext context) {
+  Widget getCardWidgets(BuildContext context) {
     List<Widget> widgetList = [];
     for (var speaker in speakers) {
       widgetList.add(
-        CardSpeaker(
-          image: speaker.image_url!,
-          fullname: speaker.fullname!,
-          position: speaker.position!,
-          company: speaker.company!,
-          onTap: () {
-            context.push(
-              '/join/speaker',
-              extra: {
-                'speaker': speaker,
-                'event_id': eventId
-              }
-            );
-          },
+        Padding(
+          padding: const EdgeInsets.only(bottom: 10),
+          child: CardSpeaker(
+            image: speaker.image_url!,
+            fullname: speaker.fullname!,
+            position: speaker.position!,
+            company: speaker.company!,
+            onTap: () {
+              context.push(
+                '/join/speaker',
+                extra: {
+                  'speaker': speaker,
+                  'event_id': eventId
+                }
+              );
+            },
+          )
         )
       );
     }
 
-    return GridView.count(
-      shrinkWrap: true,
-      crossAxisCount: 2,
-      childAspectRatio: 0.42,
-      mainAxisSpacing: 10,
+    if(widgetList.length % 2 != 0){
+      widgetList.add(
+        const SizedBox(
+          width: 179,
+        )
+      );
+    }
+    return Wrap(
+      spacing: 10,
       children: widgetList
     );
   }
@@ -46,8 +53,13 @@ class SpeakerList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 25, right: 25, top: 10, bottom: 10),
-      child: getCard(context), 
+      padding: const EdgeInsets.only(top: 10, bottom: 10),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Center(
+          child: getCardWidgets(context),
+        )
+      )
     );
   }
 }

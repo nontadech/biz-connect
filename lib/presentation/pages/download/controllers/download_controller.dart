@@ -1,5 +1,4 @@
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:biz_connect/data/models/join_model.dart';
 import 'package:biz_connect/domain/entities/join_entity.dart';
@@ -10,9 +9,6 @@ import 'package:biz_connect/presentation/controllers/auth/loading_controller.dar
 import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:open_filex/open_filex.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:dio/dio.dart' as dio;
 
 class DownloadController extends GetxController {
   DownloadController(this._fileUseCase);
@@ -38,44 +34,6 @@ class DownloadController extends GetxController {
  
   }
 
-  Future<String?> _findLocalPath() async {
-    if (Platform.isAndroid) {
-      return "/sdcard/download/";
-    } else {
-      var directory = await getApplicationDocumentsDirectory();
-      return '${directory.path}${Platform.pathSeparator}Download';
-    }
-  }
-
-
-  downloadFile(EventFileData eventFile) async {
-    LoadingBinding().dependencies();
-    final loadingC = LoadingController.call;
-    try {
-      popupLoading(loadingC.buildContext.value);
-      String? localPath = await _findLocalPath();
-      final savedDir = Directory(localPath!);
-      bool hasExisted = await savedDir.exists();
-      if (!hasExisted) {
-        savedDir.create();
-      }
-      String fullPath = "${savedDir.path}/${eventFile.path_file!.split('/').last}";
-      log(fullPath.toString());
-      dio.Dio().download(eventFile.path_file!, fullPath).then((value) {
-        OpenFilex.open(fullPath);
-      });
-      Navigator.pop(loadingC.buildContext.value);
-    } catch (e) {
-      Navigator.pop(loadingC.buildContext.value);
-      Get.snackbar(
-        'Download',
-        'Download Failed',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red,
-        colorText: Colors.white,
-      );
-    }
-  }
 
   sendFileEmail(int eventId) async {
     LoadingBinding().dependencies();

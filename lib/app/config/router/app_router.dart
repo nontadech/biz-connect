@@ -310,6 +310,16 @@ class AppRouter {
           );
         },
       ),
+      GoRoute(
+        path: '/pdf',
+        builder: (context, state){
+          Map<String, dynamic> extra = state.extra as Map<String, dynamic>;
+          return PDFPage(
+            url: extra['url'],
+            title: extra['title'],
+          );
+        },
+      ),
       
     ]
   );

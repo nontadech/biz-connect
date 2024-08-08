@@ -14,7 +14,8 @@ class MyTicketList extends StatelessWidget {
    Widget getCardWidgets(BuildContext context){
     List<Widget> widgetList = [];
     for(var i = 0; i < tickets.length; i++){
-      widgetList.add(Center(
+      widgetList.add(Padding(
+          padding: const EdgeInsets.only(bottom: 10),
           child: CardHorizontal(
             showFavorite: false,
             title: tickets[i].event_title!,
@@ -28,21 +29,30 @@ class MyTicketList extends StatelessWidget {
         )
       );
     }
-    return GridView.count(
-        shrinkWrap: true,
-        crossAxisCount: 2,
-        childAspectRatio: 0.44,
-        mainAxisSpacing: 10,
-        children: widgetList
+    if(widgetList.length % 2 != 0){
+      widgetList.add(
+        const SizedBox(
+          width: 179,
+        )
+      );
+    }
+    return Wrap(
+      spacing: 10,
+      children: widgetList
     );
   }
 
   @override
   Widget build(BuildContext context) {
     MyTicketBinding().dependencies();
-    return Padding(padding: const EdgeInsets.only(left: 25, right: 25, top: 10, bottom: 10),
-      child: getCardWidgets(context),
+    return Padding(
+      padding: const EdgeInsets.only(top: 10, bottom: 10),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Center(
+          child: getCardWidgets(context),
+        )
+      )
     );
-      
   }
 }

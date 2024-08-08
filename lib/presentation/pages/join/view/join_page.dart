@@ -104,7 +104,7 @@ class JoinPage extends GetView<JoinController> {
                    for (var setting in settings) {
                     if(setting.menu_name == item['key'].toString().toLowerCase() && setting.menu_status == 'Y'){
                       return Padding(
-                        padding: const EdgeInsets.only(left: 5, right: 5, top: 5),
+                        padding: const EdgeInsets.only(top: 5),
                         child: MenuIcon(
                           onTap: () => {
                             context.push(item['page'] as String, extra: {'event_id': event.event_id})

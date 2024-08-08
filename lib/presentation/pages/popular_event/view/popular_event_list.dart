@@ -15,7 +15,8 @@ class PopularEventList extends StatelessWidget {
     List<Widget> widgetList = [];
     for(var i = 0; i < evant.length; i++){
       widgetList.add(
-        Center(
+        Padding(
+          padding: const EdgeInsets.only(bottom: 10),
           child: CardHorizontal(
             title: evant[i].title!,
             isFavorite: evant[i].is_favorite,
@@ -33,19 +34,29 @@ class PopularEventList extends StatelessWidget {
         )
       );
     }
-    return GridView.count(
-        shrinkWrap: true,
-        crossAxisCount: 2,
-        childAspectRatio: 0.44,
-        mainAxisSpacing: 10,
-        children: widgetList
+    if(widgetList.length % 2 != 0){
+      widgetList.add(
+        const SizedBox(
+          width: 179,
+        )
+      );
+    }
+    return Wrap(
+      spacing: 10,
+      children: widgetList
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(padding: const EdgeInsets.only(left: 25, right: 25, top: 10, bottom: 10),
-      child: getCardWidgets(context),
+    return Padding(
+      padding: const EdgeInsets.only(top: 10, bottom: 10),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Center(
+          child: getCardWidgets(context),
+        )
+      )
     );
   }
 }

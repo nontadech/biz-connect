@@ -1,3 +1,6 @@
+import 'dart:developer';
+import 'dart:io';
+
 import 'package:biz_connect/app/services/local_storage.dart';
 import 'package:biz_connect/app/util/dependency.dart';
 import 'package:biz_connect/domain/entities/event_entity.dart';
@@ -36,11 +39,17 @@ void main() async {
     FirebaseDatabase.instance.useDatabaseEmulator(emulatorHost, emulatorPort);
   }
   await initServices();
-  final apnsToken = await FirebaseMessaging.instance.getAPNSToken();
+  if (Platform.isIOS) {
+    await FirebaseMessaging.instance.getAPNSToken();
+  }
+  final apnsToken = await FirebaseMessaging.instance.getToken();
   final store = Get.find<LocalStorageService>();
-  store.setting = Setting(
-    apnsToken: apnsToken!
-  );
+  log('apnsToken $apnsToken');
+  if(apnsToken != null) {
+    store.setting = Setting(
+      apnsToken: apnsToken,
+    );
+  }
   store.setting ??= Setting(
     language: LangType.th,
   );

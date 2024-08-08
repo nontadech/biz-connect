@@ -82,7 +82,7 @@ class CardHorizontal extends StatelessWidget {
                   ),
                   const SizedBox(height: 5),
                   SizedBox(
-                    height: 55,
+                    height: 60,
                     child: TextCustom(
                       text: title,
                       fontSize: FontSize.h10,

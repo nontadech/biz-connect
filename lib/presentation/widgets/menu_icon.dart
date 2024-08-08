@@ -19,7 +19,7 @@ class MenuIcon extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 5),
+        padding: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
         child: Column(
           children: [
             Container(
