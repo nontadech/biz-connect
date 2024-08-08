@@ -1,9 +1,12 @@
+import 'dart:convert';
 import 'package:biz_connect/app/config/themes/theme.dart';
 import 'package:biz_connect/domain/entities/join_entity.dart';
 import 'package:biz_connect/presentation/pages/survey/controllers/survey_controller.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+
 
 class Survey6 extends StatelessWidget {
   final SessionRatingData data;
@@ -52,20 +55,29 @@ class Survey6 extends StatelessWidget {
           child: Container(
             alignment: Alignment.center,
             margin: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 10),
-            width: 82.0,
-            height: 22,
             decoration: BoxDecoration(
               color: const Color(0xff56BED6),
               borderRadius: BorderRadius.circular(50),
             ),
-            child: const TextCustom(
+            child: TextCustom(
               text: 'UPLOAD FILE', 
-              fontSize: 8, 
+              fontSize: FontSize.h8, 
               fontWeight: FontWeight.w600, 
               color: Colors.white
             )
           )
         ),
+        Obx(() {
+          return controller.img.value != '' ? 
+          Center(
+            child: SizedBox(
+              height: 400,
+              child: Image.memory(base64Decode(controller.img.value.split(',').last))
+            ),
+          ) :
+          const SizedBox();
+        })
+       
       ],
     );
   }

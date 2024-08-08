@@ -3,19 +3,12 @@ import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class SurveyThankPage extends StatefulWidget {
-  const SurveyThankPage({super.key});
-
-  @override
-  State<SurveyThankPage> createState() => _SurveyThankPageState();
-}
-
-class _SurveyThankPageState extends State<SurveyThankPage> {
-  @override
-  void initState() {
-    // Initialize & inject UserController() using Get.put()
-    super.initState();
-  }
+class SurveyThankPage extends StatelessWidget {
+  final int eventId;
+  const SurveyThankPage({
+    super.key,
+    required this.eventId,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +28,7 @@ class _SurveyThankPageState extends State<SurveyThankPage> {
               child: TextGradient(
                 'Thank you!',
                 style: TextStyle(
-                  height: 1,
+                  height: 1.2,
                   fontSize: FontSize.h1,
                   fontFamily: 'FC_Iconic',
                   fontWeight: FontWeight.w500,
@@ -52,7 +45,7 @@ class _SurveyThankPageState extends State<SurveyThankPage> {
               text: 'for your cooperation',
               fontSize: FontSize.h7,
               fontWeight: FontWeight.w400,
-              height: 1,
+              height: 1.2,
               color: const Color(0xff122D58),
             ),
             const SizedBox(height: 70),

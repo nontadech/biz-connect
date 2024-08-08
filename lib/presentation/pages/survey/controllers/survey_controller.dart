@@ -25,6 +25,7 @@ class SurveyController extends GetxController {
   final RxBool isDataEmtpy = false.obs;
   final List<AnswersInput> answersInput = [];
   final List<TextEditingController> answersController = [];
+  final Rx<String> img = ''.obs;
   static SurveyController get call => Get.find();
   final Rx<int> numberPage = 1.obs;
   final int maxPage = 7;
@@ -93,7 +94,7 @@ class SurveyController extends GetxController {
         answers: answersInput,
       ));
       Navigator.pop(loadingC.buildContext.value);
-      context.value.push('/join/survey_thank');
+      context.value.push('/join/survey_thank', extra: {'event_id': eventId});
     } catch (error) {
       Navigator.pop(loadingC.buildContext.value);
       log('error ${error.toString()}');
@@ -108,6 +109,7 @@ class SurveyController extends GetxController {
     try {
       popupLoading(context.value);
       final image = await imageC.pickedImg(imageSource);
+      img.value = image.toString();
       answersController[page-1].text = image.toString();
       Navigator.pop(loadingC.buildContext.value);
       context.value.pop();

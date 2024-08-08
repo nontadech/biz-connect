@@ -87,6 +87,7 @@ class SurveyPage extends GetView<SurveyController> {
           for(int i = 0; i < controller.answersController.length; i++){
             controller.answersController[i] = TextEditingController();
           }
+          controller.img.value = '';
           controller.numberPage.value = 1;
           controller.getSurvey(eventId);
         },
@@ -162,7 +163,6 @@ class SurveyPage extends GetView<SurveyController> {
                       if (controller.numberPage.value == controller.maxPage) {
                         controller.context(context);
                         await controller.saveSurvey(eventId);
-                        // context.push('/join/survey_thank');
                       }
                       controller.onNext();
                     }else{
