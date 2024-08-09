@@ -3,7 +3,7 @@
     image: assets/images/ic_logo.png
 
     android_12:
-      image: assets/images/ic_logo.png
+      image: assets/images/logo.png
       icon_background_color: "#061e43"
 
     web: false
