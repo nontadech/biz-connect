@@ -5,30 +5,30 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class PopularEventList extends StatelessWidget {
-  final List<EventList> evant;
+  final List<EventList> event;
   const PopularEventList({
     super.key,
-    required this.evant
+    required this.event
   });
 
   Widget getCardWidgets(BuildContext context){
     List<Widget> widgetList = [];
-    for(var i = 0; i < evant.length; i++){
+    for(var i = 0; i < event.length; i++){
       widgetList.add(
         Padding(
           padding: const EdgeInsets.only(bottom: 10),
           child: CardHorizontal(
-            title: evant[i].title!,
-            isFavorite: evant[i].is_favorite,
-            thumnail: evant[i].image_display,
-            location: evant[i].location_name,
-            date: evant[i].start_time != '' ? '${evant[i].date!} / ${evant[i].start_time!} - ${evant[i].end_time!}' : evant[i].date!,
+            title: event[i].title!,
+            isFavorite: event[i].is_favorite,
+            thumnail: event[i].image_display,
+            location: event[i].location_name,
+            date: event[i].start_time != '' ? '${event[i].date!} / ${event[i].start_time!} - ${event[i].end_time!}' : event[i].date!,
             onTap: () {
-              context.push('/popular_event', extra: {'event' :evant[i]});
+              context.push('/popular_event', extra: {'event' :event[i]});
             },
             onTapHeart: () {
               final popularEventC = PopularEventController.call;
-              popularEventC.setFavoriteEvent(evant[i].event_id!);
+              popularEventC.setFavoriteEvent(event[i].event_id!);
             },
           )
         )

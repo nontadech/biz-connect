@@ -13,7 +13,7 @@ class PopularEventController extends GetxController {
   final EventUseCase _eventUseCase;
   final FavoriteUseCase _favoriteUseCase;
   final store = Get.find<LocalStorageService>();
-  var evant = Rx<PopularEvent?>(null);
+  var event = Rx<PopularEvent?>(null);
   final Rx<bool> isFavorite = false.obs;
   
   @override
@@ -28,15 +28,15 @@ class PopularEventController extends GetxController {
 
   setFavoriteEvent(int eventId) async{
     bool status = await _favoriteUseCase.setFavoriteEvent(eventId);
-    List<EventList> evantList = [];
-    for (EventList element in evant.value!.data) {
+    List<EventList> eventList = [];
+    for (EventList element in event.value!.data) {
       if(element.event_id == eventId){
-          evantList.add(element.copyWith(is_favorite : status));
+          eventList.add(element.copyWith(is_favorite : status));
       }else{
-          evantList.add(element);
+          eventList.add(element);
       }        
     } 
-    evant(evant.value!.copyWith(data: evantList));  
+    event(event.value!.copyWith(data: eventList));  
   }
 
   setFavoriteEventDetail(int eventId) async{
@@ -57,20 +57,20 @@ class PopularEventController extends GetxController {
   Future<void> waitConstructor(data) async {
     final authC = AuthController.call;
     if(authC.isLoggedIn.value){
-      List<EventList> evantList = [];
+      List<EventList> eventList = [];
       for (EventList element in data.data!) {
         if(element.event_id != null){
             bool status = (await _favoriteUseCase.chkFavoriteEvent(
               element.event_id!
             ));
-            evantList.add(element.copyWith(is_favorite : status));
+            eventList.add(element.copyWith(is_favorite : status));
         }else{
-            evantList.add(element);
+            eventList.add(element);
         }        
       } 
-      evant(data.copyWith(data: evantList));  
+      event(data.copyWith(data: eventList));  
     }else{
-      evant(data);
+      event(data);
     }
   }
 }

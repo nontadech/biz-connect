@@ -17,7 +17,7 @@ class HomeController extends GetxController {
   final HomeEventUseCase _homeUseCase;
   final FavoriteUseCase _favoriteUseCase;
   final store = Get.find<LocalStorageService>();
-  var evant = Rx<Event?>(null);
+  var event = Rx<Event?>(null);
   
   @override
   void onInit() async {
@@ -40,42 +40,42 @@ class HomeController extends GetxController {
 
   setFavoriteEvent(int eventId) async{
     bool status = await _favoriteUseCase.setFavoriteEvent(eventId);
-    List<EventData> evantData = [];
-    for (EventData elements in evant.value!.data) {
-      List<EventList> evantList = [];
+    List<EventData> eventData = [];
+    for (EventData elements in event.value!.data) {
+      List<EventList> eventList = [];
       for (EventList element in elements.list!) {
         if(element.event_id == eventId){
-            evantList.add(element.copyWith(is_favorite : status));
+            eventList.add(element.copyWith(is_favorite : status));
         }else{
-            evantList.add(element);
+            eventList.add(element);
         }        
       } 
-      evantData.add(elements.copyWith(list: evantList));   
+      eventData.add(elements.copyWith(list: eventList));   
     }
-    evant(evant.value!.copyWith(data: evantData));
+    event(event.value!.copyWith(data: eventData));
   }
 
   Future<void> waitConstructor(data) async {
     final authC = AuthController.call;
     if(authC.isLoggedIn.value){
-      List<EventData> evantData = [];
+      List<EventData> eventData = [];
       for (EventData elements in data.data) {
-        List<EventList> evantList = [];
+        List<EventList> eventList = [];
         for (EventList element in elements.list!) {
           if(element.event_id != null){
               bool status = (await _favoriteUseCase.chkFavoriteEvent(
                 element.event_id!
               ));
-              evantList.add(element.copyWith(is_favorite : status));
+              eventList.add(element.copyWith(is_favorite : status));
           }else{
-              evantList.add(element);
+              eventList.add(element);
           }        
         } 
-        evantData.add(elements.copyWith(list: evantList));   
+        eventData.add(elements.copyWith(list: eventList));   
       }
-      evant(data.copyWith(data: evantData));
+      event(data.copyWith(data: eventData));
     }else{
-      evant(data);
+      event(data);
     }
   }
 }

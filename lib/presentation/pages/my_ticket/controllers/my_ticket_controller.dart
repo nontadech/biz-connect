@@ -24,9 +24,9 @@ class MyTicketController extends GetxController {
     }
   }
 
-  fetchDataDetail(int evantId) async {
+  fetchDataDetail(int eventId) async {
     try {
-      ticketDetail.value = await _ticketDetailUseCase.execute(evantId);
+      ticketDetail.value = await _ticketDetailUseCase.execute(eventId);
     } catch (error) {
       log('error ${error.toString()}');
     }

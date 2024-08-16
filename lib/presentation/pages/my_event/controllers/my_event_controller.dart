@@ -10,7 +10,7 @@ class MyEventController extends GetxController {
   MyEventController(this._eventUseCase);
   final EventUseCase _eventUseCase;
   final store = Get.find<LocalStorageService>();
-  final evant = Rx<EventStat?>(null);
+  final event = Rx<EventStat?>(null);
   final isLoad = Rx<bool?>(true);
   
   @override
@@ -22,7 +22,7 @@ class MyEventController extends GetxController {
   getMyEventStat() async {
     try {
       final data = await _eventUseCase.getMyEventStat();
-      evant(data);
+      event(data);
       isLoad(false);
     } catch (error) {
       log('error ${error.toString()}');

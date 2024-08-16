@@ -34,29 +34,29 @@ class MyFavoriteController extends GetxController {
 
   setFavoriteEvent(int eventId) async{
     bool status = await _favoriteUseCase.setFavoriteEvent(eventId);
-    List<EventList> evantList = [];
+    List<EventList> eventList = [];
     for (EventList element in favorite.value!.data) {
       if(element.event_id == eventId){
-          evantList.add(element.copyWith(is_favorite : status));
+          eventList.add(element.copyWith(is_favorite : status));
       }else{
-          evantList.add(element);
+          eventList.add(element);
       }        
     } 
-    favorite(favorite.value!.copyWith(data: evantList));  
+    favorite(favorite.value!.copyWith(data: eventList));  
   }
 
   Future<void> waitConstructor(data) async {
-      List<EventList> evantList = [];
+      List<EventList> eventList = [];
       for (EventList element in data.data!) {
         if(element.event_id != null){
             bool status = (await _favoriteUseCase.chkFavoriteEvent(
               element.event_id!
             ));
-            evantList.add(element.copyWith(is_favorite : status));
+            eventList.add(element.copyWith(is_favorite : status));
         }else{
-            evantList.add(element);
+            eventList.add(element);
         }        
       } 
-      favorite(data.copyWith(data: evantList));  
+      favorite(data.copyWith(data: eventList));  
   }
 }

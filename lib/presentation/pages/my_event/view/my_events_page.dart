@@ -69,7 +69,7 @@ class MyEventsPage extends GetView<MyEventController> {
             initState: (state) {
             },
             builder: (_) {
-              if(controller.evant.value == null){
+              if(controller.event.value == null){
                 return const Column(
                   children: [
                     SizedBox(
@@ -81,7 +81,7 @@ class MyEventsPage extends GetView<MyEventController> {
                   ],
                 );
               }
-              final myEventStat = controller.evant.value?.my_event_stat;
+              final myEventStat = controller.event.value?.my_event_stat;
               return Column(
                 children: [
                   CardEvent(

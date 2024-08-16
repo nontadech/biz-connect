@@ -22,10 +22,10 @@ class SignInController extends GetxController {
   User? get user => store.user;
   GlobalKey<FormState> signInPageFormKey = GlobalKey<FormState>();
   final Rx<TextEditingController> emailController = TextEditingController(
-    text: 'new@jenosize.com'
+    // text: 'new@jenosize.com'
   ).obs;
   final Rx<TextEditingController> passwordController = TextEditingController(
-    text: '123456'
+    // text: '123456'
   ).obs;
   final authC = AuthController.call;
   final Rx<bool> checkDisabled = true.obs;

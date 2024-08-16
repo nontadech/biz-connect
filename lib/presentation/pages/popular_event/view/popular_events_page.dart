@@ -29,7 +29,7 @@ class PopularEventsPage extends GetView<PopularEventController> {
           initState: (state) {
           },
           builder: (_) {
-            if(controller.evant.value == null){
+            if(controller.event.value == null){
               return const Column(
                 children: [
                   SizedBox(
@@ -42,7 +42,7 @@ class PopularEventsPage extends GetView<PopularEventController> {
               );
             }
             return PopularEventList(
-              evant: controller.evant.value!.data,
+              event: controller.event.value!.data,
             );
           }
         )      

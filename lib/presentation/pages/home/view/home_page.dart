@@ -36,21 +36,21 @@ class HomePage extends GetView<HomeController>  {
             builder: (_) {
               List<Widget>  widget = [];
               var x = 0;
-              if(controller.evant.value != null){
-                for (EventData evant in controller.evant.value!.data) {
-                  if(evant.list!.isNotEmpty){
-                    if (evant.type == EventType.events) {
+              if(controller.event.value != null){
+                for (EventData event in controller.event.value!.data) {
+                  if(event.list!.isNotEmpty){
+                    if (event.type == EventType.events) {
                       widget = [...widget, HomeSlide(
-                        title: evant.title!,
-                        isMore: evant.is_more == 'N' ? false : true,
-                        list: evant.list!,
+                        title: event.title!,
+                        isMore: event.is_more == 'N' ? false : true,
+                        list: event.list!,
                         bgColor: x % 2 == 0 ? const Color(0xffffffff) : const Color(0xffF5F5F5),
                       )];
                       x++;
                     } else {
                       widget = [...widget, HomeList(
-                        title: evant.title!,
-                        list: evant.list!,
+                        title: event.title!,
+                        list: event.list!,
                         bgColor: x % 2 == 0 ? const Color(0xffffffff) : const Color(0xffF5F5F5),
                       )];
                       x++;
