@@ -1,9 +1,11 @@
   flutter_native_splash:
     color: "#061e43"
     image: assets/images/ic_logo.png
-
+    branding: assets/images/ic_branding.png
+    branding_bottom_padding: 100
     android_12:
       image: assets/images/logo.png
       icon_background_color: "#061e43"
+      branding_android: assets/images/branding.png
 
     web: false
