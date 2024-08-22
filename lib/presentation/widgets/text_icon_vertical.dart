@@ -17,6 +17,7 @@ class TextIconVertical extends StatelessWidget {
     return Column(
       children: [
         icon,
+        const SizedBox(height: 10),
         TextCustom(
           textAlign: TextAlign.center,
           text: text,

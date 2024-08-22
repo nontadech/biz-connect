@@ -64,52 +64,52 @@ class _BottomNavigationBarCustomState extends State<BottomNavigationBarCustom> {
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 'assets/icons/home.svg',
-                height: 26,
-                width: 26,
+                height: 24,
+                width: 24,
               ),
               activeIcon: SvgPicture.asset(
                 'assets/icons/home_active.svg',
-                height: 26,
-                width: 26,
+                height: 24,
+                width: 24,
               ),
               label: 'Home'.tr(),
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 'assets/icons/note.svg',
-                height: 26,
-                width: 26,
+                height: 24,
+                width: 24,
               ),
               activeIcon: SvgPicture.asset(
                 'assets/icons/note_active.svg',
-                height: 26,
-                width: 26,
+                height: 24,
+                width: 24,
               ),
               label: 'My Event'.tr(),
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 'assets/icons/favorite.svg',
-                height: 26,
-                width: 26,
+                height: 24,
+                width: 24,
               ),
               activeIcon: SvgPicture.asset(
                 'assets/icons/favorite_active.svg',
-                height: 26,
-                width: 26,
+                height: 24,
+                width: 24,
               ),
               label: 'Saved'.tr(),
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 'assets/icons/profile.svg',
-                height: 26,
-                width: 26,
+                height: 24,
+                width: 24,
               ),
               activeIcon: SvgPicture.asset(
                 'assets/icons/profile_active.svg',
-                height: 26,
-                width: 26,
+                height: 24,
+                width: 24,
               ),
               label: 'Account'.tr(),
             ),

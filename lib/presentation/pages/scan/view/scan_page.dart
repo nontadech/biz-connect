@@ -37,8 +37,8 @@ class _ScanPageState extends State<ScanPage> {
           borderRadius: 10,
           borderLength: 30,
           borderWidth: 10,
-          cutOutWidth: MediaQuery.of(context).size.width-50,
-          cutOutHeight: 220,
+          cutOutWidth: 266,
+          cutOutHeight: 266,
           ),
       onPermissionSet: (ctrl, p) => _onPermissionSet(context, ctrl, p),
     );
@@ -125,17 +125,18 @@ class _ScanPageState extends State<ScanPage> {
             ),
           ),
           Positioned(
-            bottom: 200,
+            bottom: 220,
             left: 0,
             right: 0,
             child: Padding(
               padding: const EdgeInsets.all(20), 
               child: TextCustom(
                   textAlign: TextAlign.center,
-                  text: 'Hold the QR code inside the frame. It will be scanned automatically or',
+                  text: 'Hold the QR code inside the frame. It will be scanned automatically',
                   color: Colors.white,
-                  fontSize: FontSize.h5,
+                  fontSize: FontSize.h7,
                   fontWeight: FontWeight.w500,
+                  height: 1,
                 ),
               
             ),

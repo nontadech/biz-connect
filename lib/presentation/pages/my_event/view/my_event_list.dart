@@ -17,12 +17,11 @@ class MyEventList extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(bottom: 10),
           child: CardHorizontal(
-            showFavorite: false,
             title: events[i].title!,
             isFavorite: events[i].is_favorite,
             thumnail: events[i].image_display,
             location: events[i].venue_name,
-            date: events[i].start_time != '' ? '${events[i].date!} / ${events[i].start_time!} - ${events[i].end_time!}' : events[i].date!,
+            date: events[i].date!,
             onTap: () {
               context.push('/join', extra: {'event' :events[i]});
             },

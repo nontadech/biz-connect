@@ -63,7 +63,7 @@
     "Accept": "ยอมรับ",
     "Scan Detail": "รายละเอียดการสแกน",
     "Scan": "สแกน",
-    "Hold the QR code inside the frame. It will be scanned automatically or": "วางรหัส QR ในกรอบ ระบบจะสแกนโดยอัตโนมัติ",
+    "Hold the QR code inside the frame. It will be scanned automatically": "วางรหัส QR ในกรอบ ระบบจะสแกนโดยอัตโนมัติ",
     "Choose where you want to display the Agenda": "เลือกที่จะแสดงกำหนดการที่ไหน",
     "Event Detail": "รายละเอียดกิจกรรม",
     "SEND ALL FILES TO YOUR EMAIL": "ส่งไฟล์ทั้งหมดไปที่อีเมลของคุณ",
@@ -71,5 +71,9 @@
     "Your question is submitted. Please wait for the approval from organizer before publish display.": "คำถามของคุณถูกส่งแล้ว กรุณารอการอนุมัติจากผู้จัดก่อนที่จะเผยแพร่",
     "Sign In": "เข้าสู่ระบบ",
     "You don`t have any event": "คุณไม่มีกิจกรรมใดๆ",
-    "You don`t have any saved": "คุณไม่มีรายการโปรดใดๆ"
+    "You don`t have any saved": "คุณไม่มีรายการโปรดใดๆ",
+    "Popular Events": "กิจกรรมยอดนิยม",
+    "Special Event for You": "กิจกรรมพิเศษสำหรับคุณ",
+    "(Private Event)": "(กิจกรรมส่วนตัว)",
+    "Events Calendar": "ปฏิทินกิจกรรม"
 }

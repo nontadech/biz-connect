@@ -5,9 +5,11 @@ import 'package:flutter/material.dart';
 
 class PopularEventPage extends StatefulWidget {
   final EventList event;
+  final bool isPrivate;
   const PopularEventPage({
     super.key,
-    required this.event
+    required this.event,
+    this.isPrivate = false,
   });
 
   @override
@@ -27,6 +29,7 @@ class _PopularEventPageState extends State<PopularEventPage> {
       resizeToAvoidBottomInset: false,
       body: PopularEventDetail(
         event: widget.event,
+        isPrivate: widget.isPrivate,
       )
     );
   }

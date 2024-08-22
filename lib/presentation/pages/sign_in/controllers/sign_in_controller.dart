@@ -6,6 +6,7 @@ import 'package:biz_connect/domain/entities/user_entity.dart';
 import 'package:biz_connect/domain/usecases/signin_use_case.dart';
 import 'package:biz_connect/main.dart';
 import 'package:biz_connect/presentation/controllers/auth/auth_controller.dart';
+import 'package:biz_connect/presentation/pages/home/controllers/controllers.dart';
 import 'package:biz_connect/presentation/pages/layout/controllers/layout_controller.dart';
 import 'package:biz_connect/presentation/pages/layout/view/layout_page.dart';
 import 'package:flutter/material.dart';
@@ -54,8 +55,11 @@ class SignInController extends GetxController {
         ));
         store.user = user;
         authC.isLoggedIn.value = true;
+        refresh();
         final layoutC = LayoutController.call;
         context.value.pop();
+        final homeC = HomeController.call;
+        homeC.fetchData();
         layoutC.onItemTapped(AppBarPage.home);
       }
     } catch (error) {

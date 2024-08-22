@@ -32,44 +32,55 @@ class HomePage extends GetView<HomeController>  {
           child: GetX(
             init: controller,
             initState: (state) {
+              controller.fetchData();
             },
             builder: (_) {
               List<Widget>  widget = [];
               var x = 0;
-              if(controller.event.value != null){
-                for (EventData event in controller.event.value!.data) {
-                  if(event.list!.isNotEmpty){
-                    if (event.type == EventType.events) {
-                      widget = [...widget, HomeSlide(
-                        title: event.title!,
-                        isMore: event.is_more == 'N' ? false : true,
-                        list: event.list!,
-                        bgColor: x % 2 == 0 ? const Color(0xffffffff) : const Color(0xffF5F5F5),
-                      )];
-                      x++;
-                    } else {
-                      widget = [...widget, HomeList(
-                        title: event.title!,
-                        list: event.list!,
-                        bgColor: x % 2 == 0 ? const Color(0xffffffff) : const Color(0xffF5F5F5),
-                      )];
-                      x++;
-                    }
-                  }
-                }
-                return Column(
-                  children: widget,
+              if(!controller.isLoading.value){
+                return const Column(
+                  children: [
+                    SizedBox(
+                      height: 200,
+                    ),
+                    Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  ],
                 );
               }
-              return const Column(
-                children: [
-                  SizedBox(
-                    height: 200,
-                  ),
-                  Center(
-                    child: CircularProgressIndicator(),
-                  )
-                ],
+              for (EventData event in controller.event.value!.data) {
+                if(event.list!.isNotEmpty){
+                  if (event.type == EventType.events) {
+                    if(x == 0){
+                      widget = [...widget, HomeSlide(
+                        title: 'Popular Events',
+                        isMore: event.is_more == 'N' ? false : true,
+                        list: event.list!,
+                        bgColor: x % 2 == 0 ? const Color(0xffffffff) : const Color(0xffF5F5F5)
+                      )];
+                    }else if(x == 1){
+                      widget = [...widget, HomeSlide(
+                        title: 'Special Event for You',
+                        subTitle: '(Private Event)',
+                        showPrivate: true,
+                        isMore: event.is_more == 'N' ? false : true,
+                        list: event.list!,
+                        bgColor: x % 2 == 0 ? const Color(0xffffffff) : const Color(0xffF5F5F5)
+                      )];
+                    }
+                  } else {
+                    widget = [...widget, HomeList(
+                      title: 'Events Calendar',
+                      list: event.list!,
+                      bgColor: x % 2 == 0 ? const Color(0xffffffff) : const Color(0xffF5F5F5),
+                    )];
+                  }
+                  x++;
+                }
+              }
+              return Column(
+                children: widget,
               );
             }
           )

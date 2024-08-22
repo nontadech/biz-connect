@@ -27,7 +27,7 @@ class TextDisplay extends StatelessWidget {
           ),
         ),
         TextCustom(
-          text:  ': ', 
+          text: ' :   ', 
           fontSize: FontSize.h7, 
           fontWeight: FontWeight.w600, 
           color: const Color(0xff13315F),

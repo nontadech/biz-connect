@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:biz_connect/app/services/local_storage.dart';
 import 'package:biz_connect/data/models/user_model.dart';
 import 'package:biz_connect/domain/usecases/fcm_token_use_case.dart';
+import 'package:biz_connect/presentation/pages/home/controllers/controllers.dart';
 import 'package:get/get.dart';
 
 class AuthController extends GetxController {
@@ -33,5 +34,7 @@ class AuthController extends GetxController {
   logout() {
     store.user = null;
     isLoggedIn.value = false;
+    final homeC = HomeController.call;
+    homeC.fetchData();
   }
 }

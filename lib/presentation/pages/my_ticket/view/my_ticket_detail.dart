@@ -204,21 +204,13 @@ class MyTicketDetail extends GetView<MyTicketController> {
                                                   clipBehavior: Clip.hardEdge,
                                                   decoration: const BoxDecoration(
                                                     color: Color(0xffEAF4FF),
-                                                    borderRadius: BorderRadius.all(Radius.circular(16)),
+                                                    borderRadius: BorderRadius.all(Radius.circular(8)),
                                                   ),
                                                   child: Image.asset(
                                                     'assets/demo/home_slide_1.png',
                                                     width: 120,
                                                     height: 170,
                                                     fit: BoxFit.cover,
-                                                  ),
-                                                ),
-                                                Positioned(
-                                                  top: 5,
-                                                  right: 5,
-                                                  child: SvgPicture.asset(
-                                                    'assets/icons/heart_border.svg',
-                                                    width: 30,
                                                   ),
                                                 ),
                                               ],

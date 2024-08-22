@@ -62,7 +62,7 @@
     "Accept": "Accept",
     "Scan Detail": "Scan Detail",
     "Scan": "Scan",
-    "Hold the QR code inside the frame. It will be scanned automatically or": "Hold the QR code inside the frame. It will be scanned automatically or",
+    "Hold the QR code inside the frame. It will be scanned automatically": "Hold the QR code inside the frame. It will be scanned automatically",
     "Choose where you want to display the Agenda": "Choose where you want to display the Agenda",
     "Event Detail": "Event Detail",
     "SEND ALL FILES TO YOUR EMAIL": "SEND ALL FILES TO YOUR EMAIL",
@@ -70,5 +70,9 @@
     "Your question is submitted. Please wait for the approval from organizer before publish display.": "Your question is submitted. Please wait for the approval from organizer before publish display.",
     "Sign In": "Sign In",
     "You don`t have any event": "You don`t have any event",
-    "You don`t have any saved": "You don`t have any saved"
+    "You don`t have any saved": "You don`t have any saved",
+    "Popular Events": "Popular Events",
+    "Special Event for You": "Special Event for You",
+    "(Private Event)": "(Private Event)",
+    "Events Calendar": "Events Calendar"
 }

@@ -143,6 +143,7 @@ class ProfilePage extends GetView<ProfileController> {
                         try {
                           if(!privateEventc.isLoading.value){
                             context.push('/popular_event', extra: {
+                            'is_private': true,
                             'event': 
                               EventList(
                                 event_id: privateEventc.qrPrivateEvent.value.data![0].event_id,

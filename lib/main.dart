@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:biz_connect/app/services/local_storage.dart';
@@ -44,7 +43,6 @@ void main() async {
   }
   final apnsToken = await FirebaseMessaging.instance.getToken();
   final store = Get.find<LocalStorageService>();
-  log('apnsToken $apnsToken');
   if(apnsToken != null) {
     store.setting = Setting(
       apnsToken: apnsToken,

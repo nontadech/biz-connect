@@ -17,11 +17,10 @@ class MyTicketList extends StatelessWidget {
       widgetList.add(Padding(
           padding: const EdgeInsets.only(bottom: 10),
           child: CardHorizontal(
-            showFavorite: false,
             title: tickets[i].event_title!,
             thumnail: tickets[i].image_display,
             location: tickets[i].venue_name,
-            date: tickets[i].event_start_time != '' ? '${tickets[i].event_date!} / ${tickets[i].event_start_time!} - ${tickets[i].event_date_end!}' : tickets[i].event_end_time!,
+            date: tickets[i].event_date!,
             onTap: () {
               context.push('/my_ticket', extra: {'event_id' :tickets[i].event_id});
             },

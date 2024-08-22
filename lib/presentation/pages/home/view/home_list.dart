@@ -24,7 +24,7 @@ class HomeList extends StatelessWidget {
         title: list[i].title!,
         thumnail: list[i].thumnail!,
         location: list[i].location!,
-        date: list[i].start_time != '' ? '${list[i].date!} / ${list[i].start_time!} - ${list[i].end_time!}' : list[i].date!,
+        date: list[i].date!,
         onTap: () {
           context.push('/event_calendar', extra: {'news' :list[i]});
         },

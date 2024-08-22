@@ -17,7 +17,7 @@ class EventCalendarList extends StatelessWidget {
         title: news.data[i].title!,
         thumnail: news.data[i].thumnail!,
         location: news.data[i].location!,
-        date: news.data[i].start_time != '' ? '${news.data[i].date!} / ${news.data[i].start_time!} - ${news.data[i].end_time!}' : news.data[i].date!,
+        date: news.data[i].date!,
         onTap: () {
           context.push('/event_calendar', extra: {'news' :news.data[i]});
         },

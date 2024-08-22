@@ -22,7 +22,7 @@ class PopularEventList extends StatelessWidget {
             isFavorite: event[i].is_favorite,
             thumnail: event[i].image_display,
             location: event[i].location_name,
-            date: event[i].start_time != '' ? '${event[i].date!} / ${event[i].start_time!} - ${event[i].end_time!}' : event[i].date!,
+            date: event[i].date!,
             onTap: () {
               context.push('/popular_event', extra: {'event' :event[i]});
             },

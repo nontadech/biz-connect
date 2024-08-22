@@ -11,6 +11,7 @@ class HomeSlide extends StatelessWidget {
   final String? subTitle;
   final Color bgColor;
   final bool isMore;
+  final bool showPrivate;
   const HomeSlide({
     super.key,
     required this.title,
@@ -18,6 +19,7 @@ class HomeSlide extends StatelessWidget {
     required this.bgColor,
     this.subTitle,
     this.isMore = true,
+    this.showPrivate = false,
   });
 
   Widget getCardWidgets(BuildContext context){
@@ -29,9 +31,16 @@ class HomeSlide extends StatelessWidget {
         isFavorite: list[i].is_favorite,
         thumnail: list[i].thumnail,
         location: list[i].venue_name,
-        date: list[i].start_time != '' ? '${list[i].date!} / ${list[i].start_time!} - ${list[i].end_time!}' : list[i].date!,
+        date: list[i].date!,
+        showPrivate: showPrivate,
         onTap: () {
-          context.push('/popular_event', extra: {'event' :list[i]});
+          context.push(
+            '/popular_event', 
+            extra: {
+              'event' :list[i],
+              'is_private': showPrivate
+            }
+          );
         },
         onTapHeart: () {
           final homeC = HomeController.call;
@@ -59,15 +68,29 @@ class HomeSlide extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SizedBox(
-                  width: 200,
-                  child: TextCustom(
-                    text: title,
-                    fontSize: FontSize.h8,
-                    height: 1,
-                    fontWeight: FontWeight.w700,
-                    color: const Color(0xff122D58),
-                  ),
+                Column(
+                  children: [
+                    SizedBox(
+                      width: 200,
+                      child: TextCustom(
+                        text: title,
+                        fontSize: FontSize.h8,
+                        height: 1,
+                        fontWeight: FontWeight.w700,
+                        color: const Color(0xff122D58),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 200,
+                      child: TextCustom(
+                        text: subTitle ?? '',
+                        fontSize: FontSize.h8,
+                        height: 1,
+                        fontWeight: FontWeight.w400,
+                        color: const Color(0xff122D58),
+                      ),
+                    ),
+                  ],
                 ),
                 isMore ? InkWell(
                   onTap: () {

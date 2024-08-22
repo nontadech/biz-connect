@@ -15,12 +15,15 @@ import 'package:maps_launcher/maps_launcher.dart';
 
 
 class PopularEventDetail extends StatelessWidget {
+  final EventList event;
+  final bool isPrivate;
 
   const PopularEventDetail({
     super.key,
-    required this.event
+    required this.event,
+    this.isPrivate = false,
   });
-  final EventList event;
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -38,13 +41,9 @@ class PopularEventDetail extends StatelessWidget {
               Container(
                 // padding: const EdgeInsets.only(left: 20, top: 80, right: 20),
                 alignment: Alignment.topLeft,
-                height: 450,
+                height: 400,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(20),
-                    bottomRight: Radius.circular(20),
-                  ),
                   image: event.thumnail != '' ? DecorationImage(
                     image: CachedNetworkImageProvider(
                       event.thumnail!
@@ -118,6 +117,26 @@ class PopularEventDetail extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const SizedBox(height: 20),
+                            isPrivate? Container(
+                              padding: const EdgeInsets.only(left: 10, right: 10),
+                              decoration: BoxDecoration(
+                                gradient: const LinearGradient(
+                                  begin: Alignment.centerLeft,
+                                  end: Alignment.centerRight,
+                                  colors: [
+                                    Color(0xff0FD8AA),
+                                    Color(0xff13B4FF),
+                                  ],
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: TextCustom(
+                                text: 'Private Event',
+                                fontSize: FontSize.h10,
+                                fontWeight: FontWeight.w600,
+                                color: const Color(0xffffffff),
+                              ),
+                            ) : const SizedBox(),
                             TextCustom(
                               text: event.title!, 
                               fontSize: FontSize.h7, 

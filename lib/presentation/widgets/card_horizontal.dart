@@ -12,7 +12,7 @@ class CardHorizontal extends StatelessWidget {
   final String date;
   final String? thumnail;
   final bool? isFavorite;
-  final bool showFavorite;
+  final bool showPrivate;
 
   const CardHorizontal({
     super.key,
@@ -22,7 +22,7 @@ class CardHorizontal extends StatelessWidget {
     this.date = '',
     this.thumnail = '',
     this.isFavorite = false,
-    this.showFavorite = true,
+    this.showPrivate = false,
     this.onTapHeart,
   });
 
@@ -61,6 +61,34 @@ class CardHorizontal extends StatelessWidget {
                   height: 254,
                   fit: BoxFit.cover,
                 ),
+                showPrivate ? Positioned(
+                  top: 0,
+                  left: 0,
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      color: Color(0xffFF6C00),
+                      gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [
+                          Color(0xff0FD8AA),
+                          Color(0xff13B4FF),
+                        ],
+                      ),
+                      borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(8.0),
+                      ),
+                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    child: TextCustom(
+                      text: 'Private Event',
+                      fontSize: FontSize.h10,
+                      fontWeight: FontWeight.w700,
+                      height: 1,
+                      color: const Color(0xffFFFFFF),
+                    ),
+                  )
+                ) : const SizedBox(),
               ],
             ),
             Padding(
@@ -82,14 +110,14 @@ class CardHorizontal extends StatelessWidget {
                   ),
                   const SizedBox(height: 5),
                   SizedBox(
-                    height: 60,
+                    height: 40,
                     child: TextCustom(
                       text: title,
                       fontSize: FontSize.h10,
                       fontWeight: FontWeight.w700,
                       height: 1,
                       color: const Color(0xff122D58),
-                      maxLines: 3,
+                      maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),

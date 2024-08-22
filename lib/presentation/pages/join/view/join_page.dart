@@ -21,17 +21,18 @@ class JoinPage extends GetView<JoinController> {
       'key': 'agenda'
     },
     {
-      'title': 'Floor plan',
-      'icon': 'assets/icons/zone.svg',
-      'page': '/join/zone',
-      'key': 'floor_plan'
-    },
-    {
       'title': 'Speaker',
       'icon': 'assets/icons/speaker.svg',
       'page': '/join/speakers',
       'key': 'speakers'
     },
+    {
+      'title': 'Floor plan',
+      'icon': 'assets/icons/zone.svg',
+      'page': '/join/zone',
+      'key': 'floor_plan'
+    },
+    
     {
       'title': 'Download',
       'icon': 'assets/icons/download.svg',
@@ -72,7 +73,7 @@ class JoinPage extends GetView<JoinController> {
         context,
         title: 'Joining',
         subject: event.title!,
-        date: '${event.date!} ${event.start_time!} - ${event.date_end!} ${event.end_time!}',
+        date: event.date!,
         location: event.location_name!,
         eventId: event.event_id!
       ),
@@ -99,6 +100,7 @@ class JoinPage extends GetView<JoinController> {
             scrollDirection: Axis.vertical,
             child: Center(
               child: Wrap(
+                spacing: 5,
                 children: items.asMap().entries.map((entry) {
                   final item = entry.value;
                    for (var setting in settings) {

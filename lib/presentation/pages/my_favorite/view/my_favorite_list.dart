@@ -23,7 +23,7 @@ class MyFavoriteList extends StatelessWidget {
             isFavorite: favorite[i].is_favorite,
             thumnail: favorite[i].image_display,
             location: favorite[i].location_name,
-            date: favorite[i].start_time != '' ? '${favorite[i].date!} / ${favorite[i].start_time!} - ${favorite[i].end_time!}' : favorite[i].date!,
+            date: favorite[i].date!,
             onTap: () {
               context.push('/popular_event', extra: {'event' :favorite[i]});
             },
