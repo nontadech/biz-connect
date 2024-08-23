@@ -11,23 +11,22 @@ class MyFavoriteController extends GetxController {
   final FavoriteUseCase _favoriteUseCase;
   final store = Get.find<LocalStorageService>();
   var favorite = Rx<PopularEvent?>(null);
+  final RxBool isLoading = false.obs;
+  final RxBool isDataEmtpy = false.obs;
   
-  @override
-  void onInit() async {
-    getFavorite();
-    super.onInit();
-  }
 
   fetchData() async {
     await getFavorite();
   }
   
   getFavorite() async {
+    isLoading(false);
+    isDataEmtpy(false);
     try {
-      final data = await _favoriteUseCase.execute();
-      Future.wait([waitConstructor(data)]);
-   
+      favorite.value = await _favoriteUseCase.execute();
+      isLoading(true);
     } catch (error) {
+      isDataEmtpy(true);
       log('error ${error.toString()}');
     }
   }
@@ -45,18 +44,4 @@ class MyFavoriteController extends GetxController {
     favorite(favorite.value!.copyWith(data: eventList));  
   }
 
-  Future<void> waitConstructor(data) async {
-      List<EventList> eventList = [];
-      for (EventList element in data.data!) {
-        if(element.event_id != null){
-            bool status = (await _favoriteUseCase.chkFavoriteEvent(
-              element.event_id!
-            ));
-            eventList.add(element.copyWith(is_favorite : status));
-        }else{
-            eventList.add(element);
-        }        
-      } 
-      favorite(data.copyWith(data: eventList));  
-  }
 }

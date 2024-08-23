@@ -8,7 +8,7 @@ import 'package:injectable/injectable.dart';
 @singleton
 class AppRouter {
   final GoRouter _router = GoRouter(
-    debugLogDiagnostics: true,
+    debugLogDiagnostics: false,
     initialLocation: '/home',
     routes: [
       GoRoute(

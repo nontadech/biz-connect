@@ -31,16 +31,9 @@ class CardEvent extends StatelessWidget {
                 fontWeight: FontWeight.w600, 
                 color: const Color(0xff13315F)
               ),
-              Container(
+              SizedBox(
                 height: 58,
                 width: 58,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    width: 1, color: 
-                    const Color(0xffEAF4FF)
-                  ),
-                ),
                 child: Center(
                   child: isLoad ? 
                   const CircularProgressIndicator() :

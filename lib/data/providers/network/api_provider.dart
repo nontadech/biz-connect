@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'dart:io';
 import 'package:biz_connect/data/models/body_model.dart';
 import 'package:biz_connect/data/providers/network/api_request_representable.dart';
@@ -25,6 +26,7 @@ class APIProvider {
         query: request.query,
         body: request.body
       );
+      log(request.url);
       return _returnResponse(response);
     } on TimeoutException catch (_) {
       throw TimeOutException(null);

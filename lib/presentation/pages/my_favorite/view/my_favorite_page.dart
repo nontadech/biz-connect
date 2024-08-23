@@ -6,6 +6,7 @@ import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class MyFavoritePage extends GetView<MyFavoriteController> {
   const MyFavoritePage({super.key});
@@ -45,10 +46,28 @@ class MyFavoritePage extends GetView<MyFavoriteController> {
   @override
    Widget build(BuildContext context) {
     final authC = AuthController.call;
-    if(!authC.isLoggedIn.value){
-      return getWidgetEmpty(context);
-    }
     MyFavoriteBinding().dependencies();
+    if(!authC.isLoggedIn.value){
+       return Center(
+         child: Column(
+           mainAxisAlignment: MainAxisAlignment.center,
+           children: [
+              Image.asset(
+                'assets/icons/logo.png',
+                width: 123,
+              ),
+              Padding(padding: const EdgeInsets.only(left: 25.0, right: 25.0, top: 50.0),
+                child: ElevatedButtonCustom(
+                  onPressed: () {
+                    context.push('/sign_in');
+                  },
+                  text: 'Sign In',
+                )
+              )
+           ],
+         ),
+       );
+    }
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBarCustom(
@@ -65,9 +84,10 @@ class MyFavoritePage extends GetView<MyFavoriteController> {
         child: GetX(
           init: controller,
           initState: (state) {
+            controller.fetchData();
           },
           builder: (_) {             
-            if(controller.favorite.value == null){
+            if(!controller.isLoading.value){
               return const Column(
                 children: [
                   SizedBox(
@@ -78,6 +98,9 @@ class MyFavoritePage extends GetView<MyFavoriteController> {
                   )
                 ],
               );
+            }
+            if(controller.favorite.value!.data.isEmpty){
+              return getWidgetEmpty(context);
             }
             return MyFavoriteList(
               favorite: controller.favorite.value!.data,

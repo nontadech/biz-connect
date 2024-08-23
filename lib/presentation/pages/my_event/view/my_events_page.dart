@@ -46,10 +46,28 @@ class MyEventsPage extends GetView<MyEventController> {
   @override
    Widget build(BuildContext context) {
     final authC = AuthController.call;
-    if(!authC.isLoggedIn.value){
-      return getWidgetEmpty(context);
-    }
     MyEventBinding().dependencies();
+    if(!authC.isLoggedIn.value){
+       return Center(
+         child: Column(
+           mainAxisAlignment: MainAxisAlignment.center,
+           children: [
+              Image.asset(
+                'assets/icons/logo.png',
+                width: 123,
+              ),
+              Padding(padding: const EdgeInsets.only(left: 25.0, right: 25.0, top: 50.0),
+                child: ElevatedButtonCustom(
+                  onPressed: () {
+                    context.push('/sign_in');
+                  },
+                  text: 'Sign In',
+                )
+              )
+           ],
+         ),
+       );
+    }
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBarCustom(
@@ -67,9 +85,11 @@ class MyEventsPage extends GetView<MyEventController> {
           child: GetX(
             init: controller,
             initState: (state) {
+              controller.isLoading(false);
+              controller.getMyEventStat();
             },
             builder: (_) {
-              if(controller.event.value == null){
+              if(!controller.isLoading.value){
                 return const Column(
                   children: [
                     SizedBox(
@@ -81,6 +101,7 @@ class MyEventsPage extends GetView<MyEventController> {
                   ],
                 );
               }
+          
               final myEventStat = controller.event.value?.my_event_stat;
               return Column(
                 children: [

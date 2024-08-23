@@ -11,20 +11,19 @@ class MyEventController extends GetxController {
   final EventUseCase _eventUseCase;
   final store = Get.find<LocalStorageService>();
   final event = Rx<EventStat?>(null);
+  final RxBool isLoading = false.obs;
+  final RxBool isDataEmtpy = false.obs;
   final isLoad = Rx<bool?>(true);
-  
-  @override
-  void onInit() async {
-    getMyEventStat();
-    super.onInit();
-  }
 
   getMyEventStat() async {
+    isDataEmtpy(false);
     try {
       final data = await _eventUseCase.getMyEventStat();
       event(data);
+      isLoading(true);
       isLoad(false);
     } catch (error) {
+      isDataEmtpy(true);
       log('error ${error.toString()}');
     }
   }
