@@ -72,3 +72,17 @@ Map<String, dynamic> _$$EventFromRegisterImplToJson(
     <String, dynamic>{
       'events': instance.events,
     };
+
+_$EventPermissionImpl _$$EventPermissionImplFromJson(
+        Map<String, dynamic> json) =>
+    _$EventPermissionImpl(
+      data: json['data'] == null
+          ? null
+          : EventPermissionData.fromJson(json['data'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$EventPermissionImplToJson(
+        _$EventPermissionImpl instance) =>
+    <String, dynamic>{
+      'data': instance.data,
+    };

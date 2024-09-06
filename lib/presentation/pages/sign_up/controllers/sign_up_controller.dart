@@ -25,28 +25,28 @@ class SignUpController extends GetxController {
   final store = Get.find<LocalStorageService>();
   GlobalKey<FormState> signUpPageFormKey = GlobalKey<FormState>();
   final firstNameController = TextEditingController(
-    // text:  'นนทเดช'
+    text:  'นนทเดช'
   );
   final lastNameController = TextEditingController(
-    // text:  'จูประเสริฐ'
+    text:  'จูประเสริฐ'
   );
   final emailController = TextEditingController(
-    // text:  'non_tadech@hotmail.com'
+    text:  'non_tadech@hotmail.com'
   );
   final mobilePhoneController = TextEditingController(
-    // text:  '0812345678'
+    text:  '0812345678'
   );
   final positionController = TextEditingController(
-    // text:  'Developer'
+    text:  'Developer'
   );
   final companyController = TextEditingController(
-    // text:  'Biz Connect'
+    text:  'Biz Connect'
   );
   final passwordController = TextEditingController(
-    // text:  '123456'
+    text:  '123456'
   );
   final confirmPasswordController = TextEditingController(
-    // text:  '123456'
+    text:  '123456'
   );
   RxList<dynamic> userCategory = [].obs;
   RxList<dynamic> userInterest = [].obs;

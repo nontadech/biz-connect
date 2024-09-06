@@ -25,14 +25,26 @@ class MyContactsPage extends GetView<MyContactController> {
             controller.getMyContactList();
           },
           builder: (_){
-            if(controller.contact.value.contact_list.isEmpty){
+            if(!controller.isLoading.value){
               return const Column(
                 children: [
                   SizedBox(
                     height: 200,
                   ),
                   Center(
-                    child: CircularProgressIndicator(),
+                    child:  CircularProgressIndicator(),
+                  )
+                ],
+              );
+            }
+            if(controller.isDataEmtpy.value){
+              return const Column(
+                children: [
+                  SizedBox(
+                    height: 200,
+                  ),
+                  Center(
+                    child: EmptyPage() ,
                   )
                 ],
               );

@@ -14,12 +14,18 @@ class MyTicketController extends GetxController {
   final Rx<Ticket> ticketDetail = const Ticket().obs;
   final Rx<int> index = 0.obs;
   final CarouselController carouselController = CarouselController();
+  final RxBool isLoading = false.obs;
+  final RxBool isDataEmtpy = false.obs;
     
   fetchData() async {
+    isLoading(false);
+    isDataEmtpy(false);
     try {
       ticket.value = await _ticketUseCase.execute();
-      log(ticket.value.tickets.toString());
+      isDataEmtpy(ticket.value.tickets.isEmpty);
+      isLoading(true);
     } catch (error) {
+      isDataEmtpy(true);
       log('error ${error.toString()}');
     }
   }
@@ -27,6 +33,7 @@ class MyTicketController extends GetxController {
   fetchDataDetail(int eventId) async {
     try {
       ticketDetail.value = await _ticketDetailUseCase.execute(eventId);
+
     } catch (error) {
       log('error ${error.toString()}');
     }

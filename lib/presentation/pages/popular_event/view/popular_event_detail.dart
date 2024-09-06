@@ -6,6 +6,7 @@ import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
@@ -30,6 +31,7 @@ class PopularEventDetail extends StatelessWidget {
     final authC = AuthController.call;
     PopularEventBinding().dependencies();
     final popularEventC = PopularEventController.call;
+    popularEventC.eventPermission.value = null;
     popularEventC.isFavorite(event.is_favorite);
     return Stack(
       children: [
@@ -41,7 +43,7 @@ class PopularEventDetail extends StatelessWidget {
               Container(
                 // padding: const EdgeInsets.only(left: 20, top: 80, right: 20),
                 alignment: Alignment.topLeft,
-                height: 400,
+                height: 300.w,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   image: event.thumnail != '' ? DecorationImage(
@@ -175,7 +177,7 @@ class PopularEventDetail extends StatelessWidget {
                                   },
                                   text: 'Agenda',
                                 ),
-                                const SizedBox(width: 10),
+                                SizedBox(width: 8.w),
                                 ButtonIcon(
                                   icon: SvgPicture.asset('assets/icons/people.svg'),
                                   onPressed: () { 
@@ -301,30 +303,47 @@ class PopularEventDetail extends StatelessWidget {
             ]
           ),
         ),
-        Positioned(
-          bottom: 0,
-          left: 0,
-          right: 0,
-          child: authC.isLoggedIn.value ?  ButtonPositionBottom(
-            text: 'Register now',
-            onPressed: () {
-              context.push(
-                '/web_view',
-                extra: {
-                  'title': 'Event Detail',
-                  'url': 'https://bizconnect.tceb.or.th/e/${event.event_id}/embed',
+        Obx(() {
+          popularEventC.getEventPermission(event.event_id!);
+          if(popularEventC.eventPermission.value == null){
+            return const SizedBox();
+          }
+          return Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: authC.isLoggedIn.value ? !popularEventC.eventPermission.value!.data!.attendee_has_ticket! ? ButtonPositionBottom(
+              text: 'Register now',
+              onPressed: () {
+                context.push(
+                  '/web_view',
+                  extra: {
+                    'title': 'Event Detail',
+                    'url': 'https://bizconnect.tceb.or.th/e/${event.event_id}/embed',
+                  }
+                );
+              }
+            ) : ButtonPositionBottom(
+              text: 'View Ticket',
+              onPressed: () {
+                context.push(
+                  '/my_ticket',
+                  extra: {
+                    'event_id': event.event_id,
+                  }
+                );
+              }
+            ) : ButtonPositionBottom(
+                text: 'Sign in',
+                onPressed: () {
+                  context.push(
+                    '/sign_in',
+                  );
                 }
-              );
-            }
-          ) : ButtonPositionBottom(
-            text: 'Sign in',
-            onPressed: () {
-              context.push(
-                '/sign_in',
-              );
-            }
-          )
-        ) ,
+              )
+            ); 
+          }
+        )
       ]
     );
   }

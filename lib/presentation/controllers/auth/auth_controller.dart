@@ -23,7 +23,6 @@ class AuthController extends GetxController {
 
   Future<void> postFCMToken() async {
     try {
-      log('apnsToken $apnsToken');
       if(apnsToken != '' && apnsToken != null){
         await _fcmTokenUseCase.execute();
       }

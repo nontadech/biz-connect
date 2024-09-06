@@ -29,14 +29,26 @@ class MyTicketsPage extends GetView<MyTicketController> {
             controller.fetchData();
           },
           builder: (_) {
-            if(controller.ticket.value.tickets.isEmpty){
+            if(!controller.isLoading.value){
               return const Column(
                 children: [
                   SizedBox(
                     height: 200,
                   ),
                   Center(
-                    child: CircularProgressIndicator(),
+                    child:  CircularProgressIndicator(),
+                  )
+                ],
+              );
+            }
+            if(controller.isDataEmtpy.value){
+              return const Column(
+                children: [
+                  SizedBox(
+                    height: 200,
+                  ),
+                  Center(
+                    child:  EmptyPage() ,
                   )
                 ],
               );

@@ -40,7 +40,7 @@ class QuestionData with _$QuestionData  {
      @Default('') String? status,
      @Default('') String? create_date,
      @Default('') String? user_name,
-     @Default(0) int? user_id,
+     @Default('') String? user_id,
      @Default('') String? user_profile,
      @Default('') String? text,
   }) = _QuestionData;

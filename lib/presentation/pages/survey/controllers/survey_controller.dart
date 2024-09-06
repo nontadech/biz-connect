@@ -28,9 +28,9 @@ class SurveyController extends GetxController {
   final Rx<String> img = ''.obs;
   static SurveyController get call => Get.find();
   final Rx<int> numberPage = 1.obs;
-  final int maxPage = 7;
+  final Rx<int> maxPage = 7.obs;
   onNext() {
-    if(numberPage.value >= maxPage) {
+    if(numberPage.value >= maxPage.value) {
       return;
     }
     numberPage.value = numberPage.value + 1;
@@ -52,6 +52,8 @@ class SurveyController extends GetxController {
           agendaId: 0
         )
       );
+      log(sessionRating.value.data!.length.toString());
+      maxPage.value = sessionRating.value.data!.length;
       isLoading(true);
     } catch (error) {
       isDataEmtpy(true);

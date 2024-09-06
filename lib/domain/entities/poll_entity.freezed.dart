@@ -521,7 +521,7 @@ mixin _$QuestionData {
   String? get status => throw _privateConstructorUsedError;
   String? get create_date => throw _privateConstructorUsedError;
   String? get user_name => throw _privateConstructorUsedError;
-  int? get user_id => throw _privateConstructorUsedError;
+  String? get user_id => throw _privateConstructorUsedError;
   String? get user_profile => throw _privateConstructorUsedError;
   String? get text => throw _privateConstructorUsedError;
 
@@ -541,7 +541,7 @@ abstract class $QuestionDataCopyWith<$Res> {
       {String? status,
       String? create_date,
       String? user_name,
-      int? user_id,
+      String? user_id,
       String? user_profile,
       String? text});
 }
@@ -582,7 +582,7 @@ class _$QuestionDataCopyWithImpl<$Res, $Val extends QuestionData>
       user_id: freezed == user_id
           ? _value.user_id
           : user_id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       user_profile: freezed == user_profile
           ? _value.user_profile
           : user_profile // ignore: cast_nullable_to_non_nullable
@@ -607,7 +607,7 @@ abstract class _$$QuestionDataImplCopyWith<$Res>
       {String? status,
       String? create_date,
       String? user_name,
-      int? user_id,
+      String? user_id,
       String? user_profile,
       String? text});
 }
@@ -646,7 +646,7 @@ class __$$QuestionDataImplCopyWithImpl<$Res>
       user_id: freezed == user_id
           ? _value.user_id
           : user_id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       user_profile: freezed == user_profile
           ? _value.user_profile
           : user_profile // ignore: cast_nullable_to_non_nullable
@@ -666,7 +666,7 @@ class _$QuestionDataImpl implements _QuestionData {
       {this.status = '',
       this.create_date = '',
       this.user_name = '',
-      this.user_id = 0,
+      this.user_id = '',
       this.user_profile = '',
       this.text = ''});
 
@@ -684,7 +684,7 @@ class _$QuestionDataImpl implements _QuestionData {
   final String? user_name;
   @override
   @JsonKey()
-  final int? user_id;
+  final String? user_id;
   @override
   @JsonKey()
   final String? user_profile;
@@ -737,7 +737,7 @@ abstract class _QuestionData implements QuestionData {
       {final String? status,
       final String? create_date,
       final String? user_name,
-      final int? user_id,
+      final String? user_id,
       final String? user_profile,
       final String? text}) = _$QuestionDataImpl;
 
@@ -751,7 +751,7 @@ abstract class _QuestionData implements QuestionData {
   @override
   String? get user_name;
   @override
-  int? get user_id;
+  String? get user_id;
   @override
   String? get user_profile;
   @override

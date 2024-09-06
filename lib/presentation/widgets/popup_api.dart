@@ -46,7 +46,9 @@ Future<void> popupAPI(BuildContext context, String message) {
                 child: ElevatedButtonCustom(
                   text: 'CLOSE',
                   onPressed: () {
-                    // Navigator.pop(context);
+                    if(message == 'This email already exists.') {
+                      Navigator.pop(context);
+                    }
                     Navigator.pop(loadingC.buildContext.value);
                   },
                 ),

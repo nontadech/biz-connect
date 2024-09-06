@@ -122,3 +122,15 @@ class EventFromRegisterData with _$EventFromRegisterData  {
   factory EventFromRegisterData.fromJson(Map<String, Object?> json)
       => _$EventFromRegisterDataFromJson(json);
 }
+
+@freezed
+class EventPermissionData with _$EventPermissionData  {
+  const factory EventPermissionData({
+    @Default(false) bool? event_register,
+    @Default(false) bool? attendee_has_ticket,
+  }) = _EventPermissionData;
+  factory EventPermissionData.fromJson(Map<String, Object?> json)
+      => _$EventPermissionDataFromJson(json);
+}
+
+

@@ -84,9 +84,12 @@ class SurveyPage extends GetView<SurveyController> {
       body: GetX(
         init: controller,
         initState: (_){
+
+      
           for(int i = 0; i < controller.answersController.length; i++){
             controller.answersController[i] = TextEditingController();
           }
+  
           controller.img.value = '';
           controller.numberPage.value = 1;
           controller.getSurvey(eventId);
@@ -118,7 +121,7 @@ class SurveyPage extends GetView<SurveyController> {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         TextCustom(
-                          text: '${controller.numberPage.value}/${controller.maxPage}',
+                          text: '${controller.numberPage.value}/${controller.maxPage.value}',
                           fontSize: FontSize.h1, 
                           fontWeight: FontWeight.w500, 
                           color: const Color(0xff56BED6),
@@ -139,7 +142,7 @@ class SurveyPage extends GetView<SurveyController> {
                       child: ClipRRect(
                         borderRadius: const BorderRadius.all(Radius.circular(10)),
                         child: Obx(() => LinearProgressIndicator(
-                          value: controller.numberPage.value/controller.maxPage,
+                          value: controller.numberPage.value/controller.maxPage.value,
                           valueColor: const AlwaysStoppedAnimation<Color>(Color(0xff56BED6)),
                           backgroundColor: const Color(0xffEAF4FF),
                           ),
@@ -160,7 +163,7 @@ class SurveyPage extends GetView<SurveyController> {
                   text: 'Done',
                   onPressed: () async {
                     if(controller.answersController[controller.numberPage.value-1].text != ''){
-                      if (controller.numberPage.value == controller.maxPage) {
+                      if (controller.numberPage.value == controller.maxPage.value) {
                         controller.context(context);
                         await controller.saveSurvey(eventId);
                       }

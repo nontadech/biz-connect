@@ -105,7 +105,7 @@ class AppRouter {
           Map<String, dynamic> extra = state.extra as Map<String, dynamic>;
           return PopularEventPage(
             event: extra['event'],
-            isPrivate: extra['is_private'],
+            isPrivate: extra['is_private'] ?? false,
           );
         },
       ),

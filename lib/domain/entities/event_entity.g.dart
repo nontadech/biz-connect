@@ -206,3 +206,17 @@ Map<String, dynamic> _$$EventFromRegisterDataImplToJson(
       'twitter_link': instance.twitter_link,
       'zone_avalible': instance.zone_avalible,
     };
+
+_$EventPermissionDataImpl _$$EventPermissionDataImplFromJson(
+        Map<String, dynamic> json) =>
+    _$EventPermissionDataImpl(
+      event_register: json['event_register'] as bool? ?? false,
+      attendee_has_ticket: json['attendee_has_ticket'] as bool? ?? false,
+    );
+
+Map<String, dynamic> _$$EventPermissionDataImplToJson(
+        _$EventPermissionDataImpl instance) =>
+    <String, dynamic>{
+      'event_register': instance.event_register,
+      'attendee_has_ticket': instance.attendee_has_ticket,
+    };

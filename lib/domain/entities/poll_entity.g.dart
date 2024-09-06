@@ -53,7 +53,7 @@ _$QuestionDataImpl _$$QuestionDataImplFromJson(Map<String, dynamic> json) =>
       status: json['status'] as String? ?? '',
       create_date: json['create_date'] as String? ?? '',
       user_name: json['user_name'] as String? ?? '',
-      user_id: (json['user_id'] as num?)?.toInt() ?? 0,
+      user_id: json['user_id'] as String? ?? '',
       user_profile: json['user_profile'] as String? ?? '',
       text: json['text'] as String? ?? '',
     );

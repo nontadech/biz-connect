@@ -770,3 +770,158 @@ abstract class _EventFromRegister implements EventFromRegister {
   _$$EventFromRegisterImplCopyWith<_$EventFromRegisterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+EventPermission _$EventPermissionFromJson(Map<String, dynamic> json) {
+  return _EventPermission.fromJson(json);
+}
+
+/// @nodoc
+mixin _$EventPermission {
+  EventPermissionData? get data => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $EventPermissionCopyWith<EventPermission> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EventPermissionCopyWith<$Res> {
+  factory $EventPermissionCopyWith(
+          EventPermission value, $Res Function(EventPermission) then) =
+      _$EventPermissionCopyWithImpl<$Res, EventPermission>;
+  @useResult
+  $Res call({EventPermissionData? data});
+
+  $EventPermissionDataCopyWith<$Res>? get data;
+}
+
+/// @nodoc
+class _$EventPermissionCopyWithImpl<$Res, $Val extends EventPermission>
+    implements $EventPermissionCopyWith<$Res> {
+  _$EventPermissionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_value.copyWith(
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as EventPermissionData?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EventPermissionDataCopyWith<$Res>? get data {
+    if (_value.data == null) {
+      return null;
+    }
+
+    return $EventPermissionDataCopyWith<$Res>(_value.data!, (value) {
+      return _then(_value.copyWith(data: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$EventPermissionImplCopyWith<$Res>
+    implements $EventPermissionCopyWith<$Res> {
+  factory _$$EventPermissionImplCopyWith(_$EventPermissionImpl value,
+          $Res Function(_$EventPermissionImpl) then) =
+      __$$EventPermissionImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({EventPermissionData? data});
+
+  @override
+  $EventPermissionDataCopyWith<$Res>? get data;
+}
+
+/// @nodoc
+class __$$EventPermissionImplCopyWithImpl<$Res>
+    extends _$EventPermissionCopyWithImpl<$Res, _$EventPermissionImpl>
+    implements _$$EventPermissionImplCopyWith<$Res> {
+  __$$EventPermissionImplCopyWithImpl(
+      _$EventPermissionImpl _value, $Res Function(_$EventPermissionImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_$EventPermissionImpl(
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as EventPermissionData?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$EventPermissionImpl implements _EventPermission {
+  const _$EventPermissionImpl({this.data});
+
+  factory _$EventPermissionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EventPermissionImplFromJson(json);
+
+  @override
+  final EventPermissionData? data;
+
+  @override
+  String toString() {
+    return 'EventPermission(data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EventPermissionImpl &&
+            (identical(other.data, data) || other.data == data));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, data);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EventPermissionImplCopyWith<_$EventPermissionImpl> get copyWith =>
+      __$$EventPermissionImplCopyWithImpl<_$EventPermissionImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$EventPermissionImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _EventPermission implements EventPermission {
+  const factory _EventPermission({final EventPermissionData? data}) =
+      _$EventPermissionImpl;
+
+  factory _EventPermission.fromJson(Map<String, dynamic> json) =
+      _$EventPermissionImpl.fromJson;
+
+  @override
+  EventPermissionData? get data;
+  @override
+  @JsonKey(ignore: true)
+  _$$EventPermissionImplCopyWith<_$EventPermissionImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

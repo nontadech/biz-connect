@@ -2,9 +2,11 @@ import 'dart:async';
 
 import 'package:biz_connect/presentation/pages/pdf/controllers/controllers.dart';
 import 'package:biz_connect/presentation/widgets/app_bar.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:get/get.dart';
+import 'package:mime/mime.dart';
 
 
 
@@ -53,16 +55,25 @@ class _PDFPageState extends State<PDFPage> with WidgetsBindingObserver {
               ],
             );
           }
-          return PDFView(
-            filePath: pdfC.path.value,
-            enableSwipe: true,
-            swipeHorizontal: true,
-            autoSpacing: false,
-            pageFling: true,
-            pageSnap: true,
-            onViewCreated: (PDFViewController pdfViewController) {
-              _controller.complete(pdfViewController);
-            },
+          final mimeType = lookupMimeType(pdfC.path.value); 
+          if(mimeType == 'application/pdf'){
+            return PDFView(
+              filePath: pdfC.path.value,
+              enableSwipe: true,
+              swipeHorizontal: true,
+              autoSpacing: false,
+              pageFling: true,
+              pageSnap: true,
+              onViewCreated: (PDFViewController pdfViewController) {
+                _controller.complete(pdfViewController);
+              },
+            );
+          }
+          return Center(
+            child: CachedNetworkImage(
+              imageUrl: widget.url,
+              errorWidget: (context, url, error) => const Icon(Icons.error),
+            )
           );
         }
       )

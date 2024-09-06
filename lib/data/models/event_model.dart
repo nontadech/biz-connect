@@ -51,3 +51,14 @@ class EventFromRegister with _$EventFromRegister  {
   factory EventFromRegister.fromJson(Map<String, Object?> json)
       => _$EventFromRegisterFromJson(json);
 }
+
+
+@freezed
+class EventPermission with _$EventPermission  {
+  const factory EventPermission({
+    EventPermissionData? data
+  }) = _EventPermission;
+  factory EventPermission.fromJson(Map<String, Object?> json)
+      => _$EventPermissionFromJson(json);
+}
+

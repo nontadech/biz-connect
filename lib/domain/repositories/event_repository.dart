@@ -11,4 +11,5 @@ abstract class EventRepository {
   Future<bool> favoriteEvent(int eventId);
   Future<bool> setFavoriteEvent(int eventId);
   Future<EventFromRegister> getEventFromRegister(int eventId);
+  Future<EventPermission> getEventPermission(int eventId);
 }

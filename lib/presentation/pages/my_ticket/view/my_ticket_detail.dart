@@ -2,6 +2,7 @@ import 'package:biz_connect/app/config/themes/theme.dart';
 import 'package:biz_connect/data/models/ticket_model.dart';
 import 'package:biz_connect/presentation/pages/my_ticket/controllers/controllers.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -206,12 +207,12 @@ class MyTicketDetail extends GetView<MyTicketController> {
                                                     color: Color(0xffEAF4FF),
                                                     borderRadius: BorderRadius.all(Radius.circular(8)),
                                                   ),
-                                                  child: Image.asset(
-                                                    'assets/demo/home_slide_1.png',
+                                                  child: CachedNetworkImage(
+                                                    imageUrl: ticket.image_display!,
                                                     width: 120,
                                                     height: 170,
                                                     fit: BoxFit.cover,
-                                                  ),
+                                                  )
                                                 ),
                                               ],
                                             ),

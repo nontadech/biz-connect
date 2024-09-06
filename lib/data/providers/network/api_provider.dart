@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:biz_connect/data/models/body_model.dart';
 import 'package:biz_connect/data/providers/network/api_request_representable.dart';
 import 'package:biz_connect/main.dart';
+import 'package:biz_connect/presentation/controllers/auth/auth_controller.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:get/get_connect/connect.dart';
 
@@ -46,6 +47,10 @@ class APIProvider {
          return response.body;
       }else{
         popupAPI(NavigationService.navigatorKey.currentContext!, body.message.toString());
+        if(body.status == 401){
+          final authC = AuthController.call;
+          authC.logout();
+        }
         throw BadRequestException(body.message.toString());
       }
     }

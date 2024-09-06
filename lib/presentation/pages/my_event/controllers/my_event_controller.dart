@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 class MyEventController extends GetxController {
   MyEventController(this._eventUseCase);
   final EventUseCase _eventUseCase;
+  
   final store = Get.find<LocalStorageService>();
   final event = Rx<EventStat?>(null);
   final RxBool isLoading = false.obs;

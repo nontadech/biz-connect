@@ -15,7 +15,8 @@ enum EventType {
     setFavoriteEvent, 
     getMyEventTickets, 
     getMyEventTicket,
-    getEventFromRegister
+    getEventFromRegister,
+    getEventPermission
   }
 
 class EventAPI implements APIRequestRepresentable {
@@ -33,6 +34,7 @@ class EventAPI implements APIRequestRepresentable {
   EventAPI.chkFavoriteEvent(int eventId) : this._(type: EventType.chkFavoriteEvent, eventId: eventId);
   EventAPI.setFavoriteEvent(int eventId) : this._(type: EventType.setFavoriteEvent, eventId: eventId);
   EventAPI.getEventFromRegister(int eventId) : this._(type: EventType.getEventFromRegister, eventId: eventId);
+  EventAPI.getEventPermission(int eventId) : this._(type: EventType.getEventPermission, eventId: eventId);
   
 
   @override
@@ -58,6 +60,8 @@ class EventAPI implements APIRequestRepresentable {
         return "/getEvent";
       case EventType.chkFavoriteEvent:
         return "/chkFavoriteEvent";
+      case EventType.getEventPermission:
+        return "/event-permission/list";
       default:
         return "";
     }
@@ -74,6 +78,7 @@ class EventAPI implements APIRequestRepresentable {
       case EventType.chkFavoriteEvent:
       case EventType.getMyEventTickets:
       case EventType.getMyEventTicket:
+      case EventType.getEventPermission:
         return HTTPMethod.get;
       case EventType.setFavoriteEvent:
       default:
@@ -115,6 +120,7 @@ class EventAPI implements APIRequestRepresentable {
      switch (type) {
       case EventType.getEventFromRegister:
       case EventType.getMyEventTicket:
+      case EventType.getEventPermission:
        return {
           HttpHeaders.contentTypeHeader: 'application/json',
           'event_id': eventId.toString(),

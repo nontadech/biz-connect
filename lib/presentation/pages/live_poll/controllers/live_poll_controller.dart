@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:biz_connect/app/services/local_storage.dart';
 import 'package:biz_connect/data/models/event_model.dart';
 import 'package:biz_connect/domain/entities/poll_entity.dart';
 import 'package:biz_connect/domain/usecases/live_poll_use_case.dart';
@@ -27,6 +28,7 @@ class LivePollController extends GetxController {
   final RxInt step = 0.obs;
   final RxInt maxPage = 0.obs;
   final RxList<PollInput> pollInput = [PollInput()].obs;
+  final store = Get.find<LocalStorageService>();
 
   @override
   void onClose() {
@@ -104,13 +106,19 @@ class LivePollController extends GetxController {
                           );
                         }
                       }else{
-                        choice = Choice(
-                          id: choice.id.toString(),
-                          awnser: choice.awnser.toString(),
-                          isSelect: true
-                        );
+                        //  values[key1][key2][key3][key4].forEach((key5, value5) {
+                          // if(key5 == store.user!.data!.attendee!.id.toString()){
+              
+                            choice = Choice(
+                              id: choice.id.toString(),
+                              awnser: choice.awnser.toString(),
+                              isSelect: true
+                            );
+                          // }
+                        //  });
                       }
                     });
+                    log(choice.toString());
                     choiceList.add(choice);
                   });
                   choiceList.sort((a, b) => a.id!.compareTo(b.id!));
@@ -141,7 +149,7 @@ class LivePollController extends GetxController {
           isLoadingPoll(true);
         }
       });
-    
+
     } catch (error) {
       isDataEmtpyPoll(true);
       log('error $error');
@@ -182,9 +190,9 @@ class LivePollController extends GetxController {
         question.clear();
         if(event.snapshot.value != null){
           Object? values = event.snapshot.value;
-           (values as Map<dynamic, dynamic>?)?.forEach((key1, value1) {
-              question.add(QuestionData.fromJson( Map<String, dynamic>.from (value1 as Map)));
-           });
+          (values as Map<dynamic, dynamic>?)?.forEach((key1, value1) {
+            question.add(QuestionData.fromJson(Map<String, dynamic>.from(value1)));
+          });
         }
         isLoadingQuestion(true);
       });

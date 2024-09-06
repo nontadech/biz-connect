@@ -12,12 +12,19 @@ class MyContactController extends GetxController {
   MyContactController(this._contactsUseCase);
   final ContactsUseCase _contactsUseCase;
   final Rx<Contact> contact = const Contact().obs;
+  final RxBool isLoading = false.obs;
+  final RxBool isDataEmtpy = false.obs;
   Rx<BuildContext> context = NavigationService.navigatorKey.currentContext!.obs;
 
   getMyContactList() async {
+    isLoading(false);
+    isDataEmtpy(false);
     try {
       contact.value = await _contactsUseCase.execute();
+      isDataEmtpy(contact.value.contact_list.isEmpty);
+      isLoading(true);
     } catch (error) {
+      isDataEmtpy(true);
       log('error ${error.toString()}');
     }
   }

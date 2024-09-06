@@ -2,19 +2,22 @@ import 'dart:developer';
 import 'package:biz_connect/app/services/local_storage.dart';
 import 'package:biz_connect/data/models/event_model.dart';
 import 'package:biz_connect/domain/entities/event_entity.dart';
+import 'package:biz_connect/domain/usecases/event_permission_use_case.dart';
 import 'package:biz_connect/domain/usecases/event_use_case.dart';
 import 'package:biz_connect/domain/usecases/favorite_use_case.dart';
 import 'package:biz_connect/presentation/controllers/auth/auth_controller.dart';
 import 'package:get/get.dart';
 
 class PopularEventController extends GetxController {
-  PopularEventController(this._eventUseCase, this._favoriteUseCase);
+  PopularEventController(this._eventUseCase, this._favoriteUseCase, this._eventPermissionUseCase);
   static PopularEventController get call => Get.find();
   final EventUseCase _eventUseCase;
   final FavoriteUseCase _favoriteUseCase;
+  final EventPermissionUseCase _eventPermissionUseCase;
   final store = Get.find<LocalStorageService>();
   var event = Rx<PopularEvent?>(null);
   final Rx<bool> isFavorite = false.obs;
+  final eventPermission = Rx<EventPermission?>(null);
   
   @override
   void onInit() async {
@@ -26,6 +29,13 @@ class PopularEventController extends GetxController {
     await getEvent();
   }
 
+  getEventPermission(int eventId) async{
+    try {
+      eventPermission.value = await _eventPermissionUseCase.execute(eventId);
+    } catch (error) {
+      log('error ${error.toString()}');
+    }
+  }
   setFavoriteEvent(int eventId) async{
     bool status = await _favoriteUseCase.setFavoriteEvent(eventId);
     List<EventList> eventList = [];
