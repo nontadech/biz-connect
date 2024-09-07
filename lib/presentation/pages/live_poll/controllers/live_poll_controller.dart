@@ -118,7 +118,6 @@ class LivePollController extends GetxController {
                         //  });
                       }
                     });
-                    log(choice.toString());
                     choiceList.add(choice);
                   });
                   choiceList.sort((a, b) => a.id!.compareTo(b.id!));
