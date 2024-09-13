@@ -2,6 +2,7 @@ import 'package:biz_connect/domain/entities/event_entity.dart';
 import 'package:biz_connect/presentation/pages/join/controllers/controllers.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
@@ -100,7 +101,7 @@ class JoinPage extends GetView<JoinController> {
             scrollDirection: Axis.vertical,
             child: Center(
               child: Wrap(
-                spacing: 5,
+                spacing: 10.w,
                 children: items.asMap().entries.map((entry) {
                   final item = entry.value;
                    for (var setting in settings) {
