@@ -14,7 +14,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 class ProfileController extends GetxController {
   static ProfileController get call => Get.find();
@@ -34,39 +33,30 @@ class ProfileController extends GetxController {
     final imageC = ImageController.call;
     LoadingBinding().dependencies();
     final loadingC = LoadingController.call;
-    var status = await Permission.camera.status;
-    if(status.isDenied) {
-      popupConfirm(
-        context.value, 
-        topic: 'Permission',
-        message: 'You need to allow the camera permission to take a picture',
-        onPressed:() {
-          openAppSettings();
-        },
-      );
-    }else{
-      try {
-      
-        popupLoading(context.value);
+      // try {
+
         String? image = await imageC.pickedImg(imageSource);
         if(image != '' && image != null){
-          UserAttendee user = await _profileUseCase.setImageProfile(image);
-          Attendee attendee = store.user!.data!.attendee!.copyWith(
-            profile: user.data!.profile
-          );      
-          store.user = store.user!.copyWith(data: store.user!.data!.copyWith(attendee: attendee));
-          fechData(attendee);
-          Navigator.pop(loadingC.buildContext.value);
-          popupStatus(
-            context.value, 
-            PopupStatusType.sucess, 
-            message: user.message.toString(),
-            onPressed:() {
-              context.value.pop();
-            },
-          );
+          if(image != 'permission_denied') {
+            popupLoading(context.value);
+            UserAttendee user = await _profileUseCase.setImageProfile(image);
+            Attendee attendee = store.user!.data!.attendee!.copyWith(
+              profile: user.data!.profile
+            );      
+            store.user = store.user!.copyWith(data: store.user!.data!.copyWith(attendee: attendee));
+            fechData(attendee);
+            Navigator.pop(loadingC.buildContext.value);
+            popupStatus(
+              context.value, 
+              PopupStatusType.sucess, 
+              message: user.message.toString(),
+              onPressed:() {
+                context.value.pop();
+              },
+            );
+          }
         }else{
-          Navigator.pop(loadingC.buildContext.value);
+          // Navigator.pop(loadingC.buildContext.value);
           popupStatus(
             context.value, 
             PopupStatusType.error, 
@@ -76,10 +66,11 @@ class ProfileController extends GetxController {
             },
           );
         }
-      } catch (error) {
-        Navigator.pop(loadingC.buildContext.value);
-        log('error ${error.toString()}');
-      }
-    }
+      // } catch (error) {
+      //   Navigator.pop(loadingC.buildContext.value);
+      //   context.value.pop();
+      //   log('error ${error.toString()}');
+      // }
+    // }
   }
 }

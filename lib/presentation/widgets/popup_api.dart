@@ -1,6 +1,5 @@
 import 'package:biz_connect/app/config/themes/theme.dart';
 import 'package:biz_connect/presentation/controllers/auth/loading_binding.dart';
-import 'package:biz_connect/presentation/controllers/auth/loading_controller.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +8,6 @@ Future<void> popupAPI(BuildContext context, String message) {
   return showDialog<void>(
     context: context,
     builder: (context) {
-      final loadingC = LoadingController.call;
       return AlertDialog(
         content: Container(
           width: MediaQuery.of(context).size.width,
@@ -49,7 +47,7 @@ Future<void> popupAPI(BuildContext context, String message) {
                     if(message == 'This email already exists.') {
                       Navigator.pop(context);
                     }
-                    Navigator.pop(loadingC.buildContext.value);
+                    Navigator.pop(context);
                   },
                 ),
               ),

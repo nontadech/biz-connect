@@ -312,10 +312,6 @@ class PopularEventDetail extends StatelessWidget {
           ),
         ),
         Obx(() {
-          popularEventC.getEventPermission(event.event_id!);
-          if(popularEventC.eventPermission.value == null){
-            return const SizedBox();
-          }
           return Positioned(
             bottom: 0,
             left: 0,
