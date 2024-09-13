@@ -42,18 +42,11 @@ class _WebViewPageState extends State<WebViewPage> {
         onNavigationRequest: (NavigationRequest request) {
           return NavigationDecision.navigate;
         },
-        onPageFinished: (String url) {
-          // if(status){
-          //   context.push('/my_ticket', extra: {'event_id': widget.eventId});
-          // }
-        },
         onUrlChange: (UrlChange url) {
           if (url.url!.contains("order") && !url.url!.contains("checkout")) {
-            setState(() {
-              status = true;
-            });
             popupThank(context, onPressed: () {
               context.pop();
+              context.push('/my_ticket', extra: {'event_id': widget.eventId});
             });
           }
         },
