@@ -8,6 +8,7 @@ import 'package:biz_connect/main.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class LivePollController extends GetxController {
   LivePollController(this._livePollUseCase);
@@ -41,7 +42,10 @@ class LivePollController extends GetxController {
       popupStatus(
         context.value, 
         PopupStatusType.sucess, 
-        message: 'Thank you!'
+        message: 'Thank you!',
+        onPressed: () {
+          context.value.pop();
+        }
       );
       return;
     }

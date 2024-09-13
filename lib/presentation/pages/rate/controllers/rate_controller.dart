@@ -27,6 +27,7 @@ class RateController extends GetxController {
   }
   
   getSessionRating(int agendaId, int eventId) async {
+    sessionAnswer.value = const SessionAnswer();
     try {
       sessionAnswer.value = await _sessionRatingUseCase.getSessionRating(
         SessionRateInput(
@@ -35,6 +36,7 @@ class RateController extends GetxController {
           questionTypeId: 5
         )
       );
+      log(sessionAnswer.value.toString());
     } catch (error) {
       log('error ${error.toString()}');
     }

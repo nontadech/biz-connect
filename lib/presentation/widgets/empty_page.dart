@@ -4,8 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class EmptyPage extends StatelessWidget {
+  final SvgPicture? icon;
+  final String text;
   const EmptyPage({
     super.key,
+    this.icon,
+    this.text = 'You don`t have any data'
   });
 
   @override
@@ -22,16 +26,14 @@ class EmptyPage extends StatelessWidget {
             borderRadius: BorderRadius.circular(100),
            
           ),
-          child: SvgPicture.asset(
-            'assets/icons/empty_event.svg'
-          ),
+          child: icon ?? SvgPicture.asset('assets/icons/empty_event.svg')
         ),
         const SizedBox(
           height: 20,
         ),
         Center(
           child: TextCustom(
-            text: 'You don`t have any data', 
+            text: text, 
             fontSize: FontSize.h8, 
             fontWeight: FontWeight.w600, 
             color: const Color(0xff122D58)

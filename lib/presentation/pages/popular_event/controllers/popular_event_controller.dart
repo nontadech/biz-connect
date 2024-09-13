@@ -18,7 +18,8 @@ class PopularEventController extends GetxController {
   var event = Rx<PopularEvent?>(null);
   final Rx<bool> isFavorite = false.obs;
   final eventPermission = Rx<EventPermission?>(null);
-  
+   final Rx<bool> isLoading = true.obs;
+
   @override
   void onInit() async {
     getEvent();
@@ -53,7 +54,15 @@ class PopularEventController extends GetxController {
     bool status = await _favoriteUseCase.setFavoriteEvent(eventId);
     isFavorite(status);
   }
-  
+
+  getFavoriteEventDetail(int eventId) async{
+    isLoading(true);
+    bool status = await _favoriteUseCase.chkFavoriteEvent(eventId);
+    isFavorite(status);
+    isLoading(false);
+  }
+
+
   getEvent() async {
     try {
       final data = await _eventUseCase.execute();
@@ -73,6 +82,7 @@ class PopularEventController extends GetxController {
             bool status = (await _favoriteUseCase.chkFavoriteEvent(
               element.event_id!
             ));
+            
             eventList.add(element.copyWith(is_favorite : status));
         }else{
             eventList.add(element);

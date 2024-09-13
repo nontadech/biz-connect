@@ -76,5 +76,12 @@
     "(Private Event)": "(Private Event)",
     "Events Calendar": "Events Calendar",
     "You don`t have any data": "You don`t have any data",
-    "View Ticket": "View Ticket"
+    "View Ticket": "View Ticket",
+    "Password must be at least 8 characters": "Password must be at least 8 characters",
+    "Permission": "Permission",
+    "You need to allow the camera permission to take a picture": "You need to allow the camera permission to take a picture",
+    "Popular Event": "Popular Event",
+    "You don`t have any speaker": "You don`t have any speaker",
+    "You don`t have any contact": "You don`t have any contact",
+    "You don`t have any ticket": "You don`t have any ticket"
 }

@@ -1,8 +1,9 @@
 import 'package:biz_connect/app/config/themes/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
-class TextFormFieldCustom extends StatelessWidget {
+class TextFormFieldCustom extends StatefulWidget {
   final FocusNode inputNode = FocusNode();
   final String hintText;
   final bool obscureText;
@@ -34,26 +35,46 @@ class TextFormFieldCustom extends StatelessWidget {
     this.onChanged,
   });
 
+  @override
+  TextFormFieldCustomState createState() => TextFormFieldCustomState();
+}
+
+class TextFormFieldCustomState extends State<TextFormFieldCustom> {
+
+
+  late bool hidden;
+  @override
+  void initState() {
+    widget.obscureText ? hidden = false : hidden = true;
+    super.initState();
+  }
 
   void openKeyboard(){
-    FocusScope.of(context).requestFocus(inputNode);
+    FocusScope.of(context).requestFocus(widget.inputNode);
   }
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      onChanged: onChanged,
-      controller: controller,
-      maxLines: maxLines,
-      readOnly: readOnly,
-      autofocus: autofocus,
-      focusNode: inputNode,
-      validator: validator,
-      keyboardType: keyboardType ?? (isNumber ? TextInputType.number : TextInputType.text),
-      obscureText: obscureText,
+      onChanged: widget.onChanged,
+      controller: widget.controller,
+      maxLines: widget.maxLines,
+      readOnly: widget.readOnly,
+      autofocus: widget.autofocus,
+      focusNode: widget.inputNode,
+      validator: widget.validator,
+      keyboardType: widget.keyboardType ?? (widget.isNumber ? TextInputType.number : TextInputType.text),
+      obscureText: hidden ? false : true,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),
-        hintText: hintText.tr(),
+        hintText: widget.hintText.tr(),
+         suffixIcon: widget.obscureText ? IconButton(
+          onPressed: () => setState(() {
+            hidden = !hidden;
+          }),
+          icon: hidden ? SvgPicture.asset('assets/icons/eye.svg') : SvgPicture.asset('assets/icons/eye-slash.svg'),
+        ) : null,
+        
         hintStyle: TextStyle(
           fontSize: FontSize.h9, 
           color: const Color(0xff91A6C4).withOpacity(0.8),
@@ -62,25 +83,25 @@ class TextFormFieldCustom extends StatelessWidget {
         ),
         fillColor: Colors.white,
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(borderRadius),
+          borderRadius: BorderRadius.circular(widget.borderRadius),
           borderSide: const BorderSide(
             color: Color(0xffEAF4FF),
           ),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(borderRadius),
+          borderRadius: BorderRadius.circular(widget.borderRadius),
           borderSide: const BorderSide(
             color: Colors.red,
           ),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(borderRadius),
+          borderRadius: BorderRadius.circular(widget.borderRadius),
           borderSide: const BorderSide(
             color: Color(0xffEAF4FF),
           ),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(borderRadius),
+          borderRadius: BorderRadius.circular(widget.borderRadius),
           borderSide: const BorderSide(
             color: Colors.red,
           ),

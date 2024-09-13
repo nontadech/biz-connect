@@ -2,6 +2,7 @@ import 'package:biz_connect/presentation/pages/my_ticket/controllers/controllers
 import 'package:biz_connect/presentation/pages/my_ticket/view/my_ticket_list.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class MyTicketsPage extends GetView<MyTicketController> {
@@ -36,19 +37,22 @@ class MyTicketsPage extends GetView<MyTicketController> {
                     height: 200,
                   ),
                   Center(
-                    child:  CircularProgressIndicator(),
+                    child: CircularProgressIndicator(),
                   )
                 ],
               );
             }
             if(controller.isDataEmtpy.value){
-              return const Column(
+              return Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 200,
                   ),
                   Center(
-                    child:  EmptyPage() ,
+                    child: EmptyPage(
+                      icon: SvgPicture.asset('assets/icons/ticket_empty.svg'),
+                      text: "You don`t have any ticket",
+                    ) ,
                   )
                 ],
               );

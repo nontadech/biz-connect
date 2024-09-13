@@ -9,11 +9,13 @@ import 'package:biz_connect/presentation/controllers/auth/image_binding.dart';
 import 'package:biz_connect/presentation/controllers/auth/image_controller.dart';
 import 'package:biz_connect/presentation/controllers/auth/loading_binding.dart';
 import 'package:biz_connect/presentation/controllers/auth/loading_controller.dart';
+import 'package:biz_connect/presentation/widgets/popup_confirm.dart';
 import 'package:biz_connect/presentation/widgets/popup_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class SurveyController extends GetxController {
    SurveyController(this._surveyUseCase, this._sessionRatingUseCase);
@@ -108,15 +110,27 @@ class SurveyController extends GetxController {
     final imageC = ImageController.call;
     LoadingBinding().dependencies();
     final loadingC = LoadingController.call;
-    try {
-      popupLoading(context.value);
-      final image = await imageC.pickedImg(imageSource);
-      img.value = image.toString();
-      answersController[page-1].text = image.toString();
-      Navigator.pop(loadingC.buildContext.value);
-      context.value.pop();
-    } catch (error) {
-      log('error ${error.toString()}');
+    var status = await Permission.camera.status;
+    if(status.isDenied) {
+      popupConfirm(
+        context.value, 
+        topic: 'Permission',
+        message: 'You need to allow the camera permission to take a picture',
+        onPressed:() {
+          openAppSettings();
+        },
+      );
+    }else{
+      try {
+        popupLoading(context.value);
+        final image = await imageC.pickedImg(imageSource);
+        img.value = image.toString();
+        answersController[page-1].text = image.toString();
+        Navigator.pop(loadingC.buildContext.value);
+        context.value.pop();
+      } catch (error) {
+        log('error ${error.toString()}');
+      }
     }
   }
 }

@@ -74,6 +74,9 @@ class SignUpPageForm extends GetView<SignUpController>{
                           if(val!.isEmpty) {
                             return 'Please enter your password'.tr();
                           }
+                          if(val.length < 8) {
+                            return 'Password must be at least 8 characters'.tr();
+                          }
                           return null;
                         }
                       ),

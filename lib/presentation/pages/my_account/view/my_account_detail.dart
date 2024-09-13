@@ -43,14 +43,6 @@ class MyAccountDetail extends GetView<MyAccountController>{
                   color: const Color(0xff13315F)
                 ),
                 const SizedBox(height: 10.0),
-                SwitchCustom(
-                  value: controller.isContact.value,
-                  onToggle: (value) {
-                    controller.isContact(value);
-                  },
-                  title: 'Share ny contact to others',
-                ),
-                const SizedBox(height: 10.0),
                 TextCustom(
                   text: 'First name',
                   fontSize: FontSize.h9, 
@@ -216,11 +208,19 @@ class MyAccountDetail extends GetView<MyAccountController>{
                   title: 'Notification',
                 ),
                 const SizedBox(height: 10.0),
+                SwitchCustom(
+                  value: controller.isContact.value,
+                  onToggle: (value) {
+                    controller.isContact(value);
+                  },
+                  title: 'Share ny contact to others',
+                ),
+                const SizedBox(height: 10.0),
                 
                 InkWell(
                   onTap: () {
                     authC.logout();
-                    final layoutC =  LayoutController.call;
+                    final layoutC = LayoutController.call;
                     context.go('/home');
                     layoutC.onItemTapped(AppBarPage.home);
                   },

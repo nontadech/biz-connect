@@ -85,7 +85,51 @@ class Poll extends GetView<LivePollController> {
           children: [ 
             Padding(
               padding: const EdgeInsets.only(left: 25, right: 25, top: 10, bottom: 40),
-              child: getCard(context, controller.step.value),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: getCard(context, controller.step.value),
+                    )
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      TextCustom(
+                        text: '${controller.step.value+1}/${(controller.maxPage.value+1)}',
+                        fontSize: FontSize.h1, 
+                        fontWeight: FontWeight.w500, 
+                        color: const Color(0xff56BED6),
+                        height: 1,
+                      ),
+                      const SizedBox(width: 5,),
+                      TextCustom(
+                        text: 'COMPLETE',
+                        fontSize: FontSize.h10, 
+                        fontWeight: FontWeight.w400, 
+                        color: const Color(0xff56BED6),
+                        height: 1.7,
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 6,
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.all(Radius.circular(10)),
+                      child: Obx(() => LinearProgressIndicator(
+                        value: (controller.step.value+1)/(controller.maxPage.value+1),
+                        valueColor: const AlwaysStoppedAnimation<Color>(Color(0xff56BED6)),
+                        backgroundColor: const Color(0xffEAF4FF),
+                        ),
+                      )
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 90,
+                  )
+                ],
+              )
             ),
             Positioned(
               bottom: 0,

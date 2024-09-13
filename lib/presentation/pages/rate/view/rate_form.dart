@@ -17,11 +17,12 @@ class RateForm extends GetView<RateController> {
   @override
   Widget build(BuildContext context) {
     RateBinding().dependencies();
-        controller.context.value = context;
-
+    controller.context.value = context;
     return GetX(
       init: controller,
       initState: (_) {
+        controller.rate.value = 0;
+        controller.commentController.clear();
         controller.getSessionRating(agendaId, eventId);
       },
       builder: (_) {

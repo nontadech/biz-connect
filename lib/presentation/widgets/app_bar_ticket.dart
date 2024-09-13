@@ -65,7 +65,7 @@ class AppBarTicket extends StatelessWidget implements PreferredSizeWidget{
             SizedBox(
               width: 300,
               child: Padding(
-                padding: const EdgeInsets.only(left: 20, bottom: 10),
+                padding: const EdgeInsets.only(left: 20, bottom: 10, top: 60),
                 child: TextCustom(
                   textAlign: TextAlign.center,
                   text: subject,
@@ -73,6 +73,8 @@ class AppBarTicket extends StatelessWidget implements PreferredSizeWidget{
                   fontSize: FontSize.h6,
                   fontWeight: FontWeight.w400,
                   height: 1,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
             ),
@@ -99,6 +101,9 @@ class AppBarTicket extends StatelessWidget implements PreferredSizeWidget{
                   textAlign: TextAlign.center,
                   fontSize: FontSize.h10,
                   fontWeight: FontWeight.w400,
+                  height: 1,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
             ),

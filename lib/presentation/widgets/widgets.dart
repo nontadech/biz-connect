@@ -48,3 +48,4 @@ export 'popup_api.dart';
 export 'picked_image_widget.dart';
 export 'popup_loading.dart';
 export 'empty_page.dart';
+export 'popup_confirm.dart';

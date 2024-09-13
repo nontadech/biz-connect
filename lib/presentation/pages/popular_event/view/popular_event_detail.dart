@@ -33,6 +33,9 @@ class PopularEventDetail extends StatelessWidget {
     final popularEventC = PopularEventController.call;
     popularEventC.eventPermission.value = null;
     popularEventC.isFavorite(event.is_favorite);
+    if(authC.isLoggedIn.value){
+       popularEventC.getFavoriteEventDetail(event.event_id!);
+    }
     return Stack(
       children: [
         Container(
@@ -41,7 +44,6 @@ class PopularEventDetail extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
-                // padding: const EdgeInsets.only(left: 20, top: 80, right: 20),
                 alignment: Alignment.topLeft,
                 height: 300.w,
                 width: double.infinity,
@@ -86,7 +88,7 @@ class PopularEventDetail extends StatelessWidget {
                                 context.pop();
                               },
                             ),
-                            authC.isLoggedIn.value ? IconButton(
+                            !popularEventC.isLoading.value && authC.isLoggedIn.value ? IconButton(
                               icon: popularEventC.isFavorite.value ? 
                               SvgPicture.asset(
                                 'assets/icons/favorite_active.svg',
@@ -169,11 +171,13 @@ class PopularEventDetail extends StatelessWidget {
                                 ButtonIcon(
                                   icon: SvgPicture.asset('assets/icons/agenda.svg'),
                                   onPressed: () {
-                                    context.push('/join/agenda', 
-                                      extra: {
-                                        'event_id': event.event_id,
-                                      }
-                                    );
+                                    if(popularEventC.eventPermission.value!.data!.attendee_has_ticket!){
+                                      context.push('/join/agenda', 
+                                        extra: {
+                                          'event_id': event.event_id,
+                                        }
+                                      );
+                                    }
                                   },
                                   text: 'Agenda',
                                 ),
@@ -181,11 +185,13 @@ class PopularEventDetail extends StatelessWidget {
                                 ButtonIcon(
                                   icon: SvgPicture.asset('assets/icons/people.svg'),
                                   onPressed: () { 
-                                    context.push('/join/speakers', 
-                                      extra: {
-                                        'event_id': event.event_id,
-                                      }
-                                    );
+                                    if(popularEventC.eventPermission.value!.data!.attendee_has_ticket!){
+                                      context.push('/join/speakers', 
+                                        extra: {
+                                          'event_id': event.event_id,
+                                        }
+                                      );
+                                    }
                                   },
                                   text: 'Speaker',
                                 ),

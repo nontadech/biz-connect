@@ -77,5 +77,12 @@
     "(Private Event)": "(กิจกรรมส่วนตัว)",
     "Events Calendar": "ปฏิทินกิจกรรม",
     "You don`t have any data": "คุณไม่มีข้อมูลใดๆ",
-    "View Ticket": "ดูบัตร"
+    "View Ticket": "ดูบัตร",
+    "Password must be at least 8 characters": "รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร",
+    "Permission": "การอนุญาต",
+    "You need to allow the camera permission to take a picture": "คุณต้องอนุญาตให้กล้องถ่ายภาพ",
+    "Popular Event": "กิจกรรมยอดนิยม",
+    "You don`t have any speaker": "คุณไม่มีวิทยากร",
+    "You don`t have any contact": "คุณไม่มีข้อมูลผู้ติดต่อ",
+    "You don`t have any ticket": "คุณไม่มีบัตรเข้าร่วมงาน"
 }

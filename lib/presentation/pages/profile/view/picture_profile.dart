@@ -17,6 +17,7 @@ class PictureProfile extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     ProfileBinding().dependencies();
+    final profileC  = ProfileController.call;
     return Stack(  
       children: [
         Container(
@@ -55,13 +56,14 @@ class PictureProfile extends GetView<ProfileController> {
             ),
             child: InkWell( 
               onTap: () {
+  
                 showBarModalBottomSheet(
                   expand: false,
                   context: context,
                   builder: (context) => SizedBox(
                     height: 200,
                     child: PickedImageWidget(
-                      saveImage: controller.saveImageProfile
+                      saveImage: profileC.saveImageProfile
                     ),
                   ),
                 );
