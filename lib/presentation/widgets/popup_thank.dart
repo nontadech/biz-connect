@@ -2,7 +2,9 @@ import 'package:biz_connect/app/config/themes/theme.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
-Future<void> popupThank(BuildContext context) {
+Future<void> popupThank(BuildContext context,{
+  Function? onPressed,
+  }) {
   return showDialog<void>(
     context: context,
     builder: (context) => AlertDialog(
@@ -41,6 +43,7 @@ Future<void> popupThank(BuildContext context) {
                 text: 'CLOSE',
                 onPressed: () {
                   Navigator.pop(context);
+                  onPressed!();
                 },
               ),
             ),

@@ -308,6 +308,7 @@ class AppRouter {
           return WebViewPage(
             title: extra['title'],
             url: extra['url'],
+            eventId: extra['event_id'],
           );
         },
       ),

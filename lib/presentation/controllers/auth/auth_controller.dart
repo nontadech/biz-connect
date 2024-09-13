@@ -14,11 +14,15 @@ class AuthController extends GetxController {
   var isLoggedIn = false.obs;
   User? get user => store.user;
   String? get apnsToken => store.setting!.apnsToken;
+  final RxString apiToken = ''.obs;
 
   @override
   void onInit() async {
     super.onInit();
     isLoggedIn.value = store.user != null;
+    if(store.user != null){
+       apiToken.value = store.user!.data!.attendee!.api_token!;
+    }
   }
 
   Future<void> postFCMToken() async {

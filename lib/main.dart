@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
-
+// ignore: library_prefixes
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:biz_connect/app/services/local_storage.dart';
 import 'package:biz_connect/app/util/dependency.dart';
 import 'package:biz_connect/domain/entities/event_entity.dart';
@@ -29,6 +30,7 @@ final emulatorHost =
         ? '10.0.2.2'
         : 'localhost';
 void main() async {
+  await dotenv.load(fileName: ".env");
   DependencyCreator.init();
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);

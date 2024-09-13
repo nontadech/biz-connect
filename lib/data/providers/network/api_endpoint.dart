@@ -1,4 +1,4 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 class APIEndpoint {
-  static String get api => "https://bizconnect-uat.jenosize.dev/api/v1/attendee";
-  // static String get api => "https://bizconnect.tceb.or.th/api/v1/attendee";
+  static String get api => '${dotenv.get('BASE_URL')}/api/v1/attendee';
 }

@@ -1,3 +1,4 @@
+
 import 'package:biz_connect/app/config/themes/theme.dart';
 import 'package:biz_connect/domain/entities/event_entity.dart';
 import 'package:biz_connect/presentation/controllers/auth/auth_controller.dart';
@@ -5,6 +6,7 @@ import 'package:biz_connect/presentation/pages/popular_event/controllers/control
 import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -325,7 +327,8 @@ class PopularEventDetail extends StatelessWidget {
                   '/web_view',
                   extra: {
                     'title': 'Event Detail',
-                    'url': 'https://bizconnect.tceb.or.th/e/${event.event_id}/embed',
+                    'url': '${dotenv.get('BASE_URL')}/e/${event.event_id}/embed',
+                    'event_id': event.event_id,
                   }
                 );
               }
