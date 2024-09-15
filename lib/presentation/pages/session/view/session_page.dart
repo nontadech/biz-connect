@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:biz_connect/app/config/themes/theme.dart';
 import 'package:biz_connect/domain/entities/join_entity.dart';
 import 'package:biz_connect/presentation/controllers/auth/auth_controller.dart';
