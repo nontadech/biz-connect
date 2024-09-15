@@ -33,35 +33,36 @@ class PopularEventDetail extends GetView<PopularEventController> {
   Widget build(BuildContext context) {
     final authC = AuthController.call;
     PopularEventBinding().dependencies();
-    final popularEventC = PopularEventController.call;
 
     return GetX(
       init: controller,
       initState: (_) {
-        popularEventC.eventPermission.value = null;
-        popularEventC.isFavorite(event.is_favorite);
+        controller.eventPermission.value = null;
+        controller.isFavorite(event.is_favorite);
         if(authC.isLoggedIn.value){
-          popularEventC.getFavoriteEventDetail(event.event_id!);
+          controller.getFavoriteEventDetail(event.event_id!);
         }
       },
       builder: (_) {
-        popularEventC.getEventPermission(event.event_id!);
-        if(authC.isLoggedIn.value && popularEventC.eventPermission.value == null){
-          return const Column(
-            children: [
-              SizedBox(
-                height: 200,
-              ),
-              Center(
-                child: CircularProgressIndicator(),
-              )
-            ],
-          );
-        }
-        if(popularEventC.eventPermission.value!.data!.attendee_has_ticket!){
-          return JoinPage(
-            event: event,
-          );
+        controller.getEventPermission(event.event_id!);
+        if(authC.isLoggedIn.value){
+          if(controller.eventPermission.value == null){
+            return const Column(
+              children: [
+                SizedBox(
+                  height: 200,
+                ),
+                Center(
+                  child: CircularProgressIndicator(),
+                )
+              ],
+            );
+          }
+          if(controller.eventPermission.value!.data!.attendee_has_ticket!){
+            return JoinPage(
+              event: event,
+            );
+          }
         }
         return Stack(
           children: [
@@ -114,8 +115,8 @@ class PopularEventDetail extends GetView<PopularEventController> {
                                   context.pop();
                                 },
                               ),
-                              !popularEventC.isLoading.value && authC.isLoggedIn.value ? IconButton(
-                                icon: popularEventC.isFavorite.value ? 
+                              !controller.isLoading.value && authC.isLoggedIn.value ? IconButton(
+                                icon: controller.isFavorite.value ? 
                                 SvgPicture.asset(
                                   'assets/icons/favorite_active.svg',
                                   width: 16,
@@ -126,7 +127,7 @@ class PopularEventDetail extends GetView<PopularEventController> {
                                   height: 18,
                                 ),
                                 onPressed: () async {
-                                await popularEventC.setFavoriteEventDetail(event.event_id!);
+                                await controller.setFavoriteEventDetail(event.event_id!);
                                 },
                               ) : const SizedBox(),
                             ],
@@ -195,30 +196,30 @@ class PopularEventDetail extends GetView<PopularEventController> {
                                   children: [
                                     ButtonIcon(
                                       icon: SvgPicture.asset('assets/icons/agenda.svg'),
-                                      isDisabled: authC.isLoggedIn.value ? popularEventC.eventPermission.value!.data!.attendee_has_ticket! ? false : true : true,
+                                      // isDisabled: authC.isLoggedIn.value ? controller.eventPermission.value!.data!.attendee_has_ticket! ? false : true : true,
                                       onPressed: () {
-                                        if(popularEventC.eventPermission.value!.data!.attendee_has_ticket!){
+                                        // if(controller.eventPermission.value!.data!.attendee_has_ticket!){
                                           context.push('/join/agenda', 
                                             extra: {
                                               'event_id': event.event_id,
                                             }
                                           );
-                                        }
+                                        // }
                                       },
                                       text: 'Agenda',
                                     ),
                                     SizedBox(width: 8.w),
                                     ButtonIcon(
                                       icon: SvgPicture.asset('assets/icons/people.svg'),
-                                      isDisabled: authC.isLoggedIn.value ? popularEventC.eventPermission.value!.data!.attendee_has_ticket! ? false : true : true,
+                                      // isDisabled: authC.isLoggedIn.value ? controller.eventPermission.value!.data!.attendee_has_ticket! ? false : true : true,
                                       onPressed: () { 
-                                        if(popularEventC.eventPermission.value!.data!.attendee_has_ticket!){
+                                        // if(controller.eventPermission.value!.data!.attendee_has_ticket!){
                                           context.push('/join/speakers', 
                                             extra: {
                                               'event_id': event.event_id,
                                             }
                                           );
-                                        }
+                                        // }
                                       },
                                       text: 'Speaker',
                                     ),
@@ -340,7 +341,7 @@ class PopularEventDetail extends GetView<PopularEventController> {
               bottom: 0,
               left: 0,
               right: 0,
-              child: !popularEventC.eventPermission.value!.data!.attendee_has_ticket! ? ButtonPositionBottom(
+              child: !controller.eventPermission.value!.data!.attendee_has_ticket! ? ButtonPositionBottom(
                 text: 'Register now',
                 onPressed: () {
                   context.push(
