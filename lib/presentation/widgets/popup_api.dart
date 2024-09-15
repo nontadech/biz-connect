@@ -2,7 +2,7 @@ import 'package:biz_connect/app/config/themes/theme.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
-Future<void> popupAPI(BuildContext context, String message) {
+Future<void> popupAPI(BuildContext context, String message, String method, String url) {
   return showDialog<void>(
     context: context,
     builder: (context) {
@@ -42,7 +42,7 @@ Future<void> popupAPI(BuildContext context, String message) {
                 child: ElevatedButtonCustom(
                   text: 'CLOSE',
                   onPressed: () {
-                    if(message == 'This email already exists.' || message == "We can't find a user with that e-mail address."){
+                    if(url == '/UserSignup' || url == '/forgotpassword'){
                       Navigator.pop(context);
                     }
                     Navigator.pop(context);

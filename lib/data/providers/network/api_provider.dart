@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:biz_connect/data/models/body_model.dart';
+import 'package:biz_connect/data/providers/network/api_endpoint.dart';
 import 'package:biz_connect/data/providers/network/api_request_representable.dart';
 import 'package:biz_connect/main.dart';
 import 'package:biz_connect/presentation/controllers/auth/auth_controller.dart';
@@ -8,6 +9,7 @@ import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:get/get_connect/connect.dart';
 
 class APIProvider {
+   String get endpoint => APIEndpoint.api;
   static const requestTimeOut = Duration(seconds: 25);
   final _client = GetConnect(
     timeout: requestTimeOut,
@@ -26,7 +28,7 @@ class APIProvider {
         query: request.query,
         body: request.body
       );
-      return _returnResponse(response);
+      return _returnResponse(response, request.method.string, request.url.replaceAll(endpoint, ''));
     } on TimeoutException catch (_) {
       throw TimeOutException(null);
     } on SocketException {
@@ -34,7 +36,7 @@ class APIProvider {
     }
   }
 
-  dynamic _returnResponse(Response<dynamic> response) {
+  dynamic _returnResponse(Response<dynamic> response, String method, String url) {
     var body = Body.fromJson(response.body);
     switch (body.status) {
       case true:
@@ -48,7 +50,7 @@ class APIProvider {
           final authC = AuthController.call;
           authC.logout();
         }else{
-          popupAPI(NavigationService.navigatorKey.currentContext!, body.message.toString());
+          popupAPI(NavigationService.navigatorKey.currentContext!, body.message.toString(), method, url);
         }
         throw BadRequestException(body.message.toString());
       }

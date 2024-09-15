@@ -16,6 +16,10 @@ class SignInPageForm extends GetView<SignInController>  {
     SignInBinding().dependencies();
     return GetX(
       init: controller,
+      initState: (_) {
+        controller.emailController.value.clear();
+        controller.passwordController.value.clear();
+      },
       builder: (_){
         controller.context(context);
         return Column(

@@ -16,6 +16,7 @@ class SignUpPageForm extends GetView<SignUpController>{
     return GetX(
       init: controller,
       initState: (state) {
+        controller.clear();
       },
       builder: (_) {
         controller.context(context);

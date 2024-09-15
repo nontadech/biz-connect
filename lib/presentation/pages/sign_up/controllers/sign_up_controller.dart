@@ -10,6 +10,9 @@ import 'package:biz_connect/main.dart';
 import 'package:biz_connect/presentation/controllers/auth/auth_controller.dart';
 import 'package:biz_connect/presentation/controllers/auth/loading_binding.dart';
 import 'package:biz_connect/presentation/controllers/auth/loading_controller.dart';
+import 'package:biz_connect/presentation/pages/home/controllers/home_controller.dart';
+import 'package:biz_connect/presentation/pages/layout/controllers/layout_controller.dart';
+import 'package:biz_connect/presentation/pages/layout/view/layout_page.dart';
 import 'package:biz_connect/presentation/pages/my_account/controllers/controllers.dart';
 import 'package:biz_connect/presentation/pages/profile/controllers/controllers.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
@@ -17,6 +20,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class SignUpController extends GetxController {
   static SignUpController get call => Get.find();
@@ -138,18 +142,15 @@ class SignUpController extends GetxController {
         final myAccountC = MyAccountController.call;        
         myAccountC.getProfile();
         Navigator.pop(loadingC.buildContext.value);
-        popupStatus(
-          NavigationService.navigatorKey.currentContext!, 
-          PopupStatusType.sucess, 
-          message: user.message.toString(),
-          onPressed:() {
-            authC.isLoggedIn.value = true;
-            authC.isLoggedIn.refresh();
-          },
-        );
+        authC.isLoggedIn.value = true;
+        refresh();
+        final layoutC = LayoutController.call;
+        context.value.pop();
+        final homeC = HomeController.call;
+        homeC.fetchData();
+        layoutC.onItemTapped(AppBarPage.home);
       }
     } catch (error) {
-      // Navigator.pop(loadingC.buildContext.value);
       log('error ${error.toString()}');
     }
   }

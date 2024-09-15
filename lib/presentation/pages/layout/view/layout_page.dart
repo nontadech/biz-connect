@@ -13,40 +13,33 @@ enum AppBarPage {
   profile
 }
 
-class LayoutPage extends StatefulWidget {
+class LayoutPage extends GetView<LayoutController>  {
   final AppBarPage page;
   const LayoutPage(
     this.page,
     {super.key,});
 
   @override
-  State<LayoutPage> createState() => _LayoutPageState();
-}
-
-class _LayoutPageState extends State<LayoutPage> {
-  @override
-  void initState() {
-    super.initState();
-    Get.put<LayoutController>(LayoutController(AppBarPage.home), permanent: true);
-  }
-
-  @override
    Widget build(BuildContext context) {
-    final layoutC = LayoutController.call;
-    layoutC.onItemTapped(widget.page);
+    LayoutBinding().dependencies();
     return Scaffold(
-      body: Obx(() {        
-        switch (layoutC.selectedPage.value) {
-          case AppBarPage.myEvent:
-            return const MyEventsPage();
-          case AppBarPage.myFavorite:
-            return const MyFavoritePage();
-          case AppBarPage.profile:
-            return const ProfilePage();
-          case AppBarPage.home:
-          default:
-            return const HomePage();
-        }
+      body: GetX(
+        init: controller,
+        initState: (_){
+          controller.onItemTapped(page);
+        },
+        builder: (_){
+          switch (controller.selectedPage.value) {
+            case AppBarPage.myEvent:
+              return const MyEventsPage();
+            case AppBarPage.myFavorite:
+              return const MyFavoritePage();
+            case AppBarPage.profile:
+              return const ProfilePage();
+            case AppBarPage.home:
+            default:
+              return const HomePage();
+          }
       }),
       bottomNavigationBar: const BottomNavigationBarCustom(),
     );

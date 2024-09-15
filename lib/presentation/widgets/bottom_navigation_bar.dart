@@ -4,8 +4,6 @@ import 'package:biz_connect/presentation/pages/layout/view/layout_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
 class BottomNavigationBarCustom extends StatefulWidget {
@@ -26,7 +24,7 @@ class _BottomNavigationBarCustomState extends State<BottomNavigationBarCustom> {
   @override
   void initState() {
     super.initState();
-    Get.put<LayoutController>(LayoutController(AppBarPage.home), permanent: true);
+    // Get.put<LayoutController>(LayoutController(AppBarPage.home), permanent: true);
   }
   
   void _onItemTapped(int index) {
