@@ -14,6 +14,7 @@ class ForgotPageForm extends GetView<ForgotController> {
     return GetX(
       init: controller,
       initState: (state) {
+        controller.emailController.clear();
       },
       builder: (_) {
         controller.context(context);

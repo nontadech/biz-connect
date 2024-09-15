@@ -49,19 +49,18 @@ class ZonePage extends GetView<ZoneController> {
               controller.getFloorPlan(eventId);
             },
             builder: (_){
-              if(controller.floorPlan.value.data.isEmpty){
-                return const Column(
+              if(!controller.isLoading.value || controller.isDataEmtpy.value){
+                return Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 200,
                     ),
                     Center(
-                      child: CircularProgressIndicator(),
+                      child: controller.isDataEmtpy.value ? const EmptyPage() : const CircularProgressIndicator(),
                     )
                   ],
                 );
               }
-         
               return getCard(context);
             }
           )

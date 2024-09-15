@@ -26,6 +26,9 @@ class DownloadController extends GetxController {
     isLoading(false);
     try {
       eventFile.value = await _fileUseCase.execute(eventId);
+      if(eventFile.value.data.isEmpty){
+        isDataEmtpy(true);
+      }
       isLoading(true);
     } catch (error) {
       isDataEmtpy(true);

@@ -1,10 +1,8 @@
 import 'package:biz_connect/app/config/themes/theme.dart';
-import 'package:biz_connect/presentation/controllers/auth/loading_binding.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 Future<void> popupAPI(BuildContext context, String message) {
-  LoadingBinding().dependencies();
   return showDialog<void>(
     context: context,
     builder: (context) {
@@ -44,7 +42,7 @@ Future<void> popupAPI(BuildContext context, String message) {
                 child: ElevatedButtonCustom(
                   text: 'CLOSE',
                   onPressed: () {
-                    if(message == 'This email already exists.') {
+                    if(message == 'This email already exists.' || message == "We can't find a user with that e-mail address."){
                       Navigator.pop(context);
                     }
                     Navigator.pop(context);

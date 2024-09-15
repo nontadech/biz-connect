@@ -12,6 +12,8 @@ _$SettingImpl _$$SettingImplFromJson(Map<String, dynamic> json) =>
           LangType.en,
       isNotification: json['isNotification'] as bool? ?? false,
       apnsToken: json['apnsToken'] as String? ?? '',
+      photoAccessDenied: json['photoAccessDenied'] as bool? ?? false,
+      cameraAccessDenied: json['cameraAccessDenied'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$SettingImplToJson(_$SettingImpl instance) =>
@@ -19,6 +21,8 @@ Map<String, dynamic> _$$SettingImplToJson(_$SettingImpl instance) =>
       'language': _$LangTypeEnumMap[instance.language]!,
       'isNotification': instance.isNotification,
       'apnsToken': instance.apnsToken,
+      'photoAccessDenied': instance.photoAccessDenied,
+      'cameraAccessDenied': instance.cameraAccessDenied,
     };
 
 const _$LangTypeEnumMap = {

@@ -84,25 +84,24 @@ class SurveyPage extends GetView<SurveyController> {
       body: GetX(
         init: controller,
         initState: (_){
-
-      
+          controller.isLoading(false);
+          controller.isDataEmtpy(false);
           for(int i = 0; i < controller.answersController.length; i++){
             controller.answersController[i] = TextEditingController();
           }
-  
           controller.img.value = '';
           controller.numberPage.value = 1;
           controller.getSurvey(eventId);
         },
         builder: (_){
-          if(!controller.isLoading.value || controller.sessionRating.value.data!.isEmpty){
+          if(!controller.isLoading.value || controller.isDataEmtpy.value ){
             return Column(
               children: [
                 const SizedBox(
                   height: 200,
                 ),
                 Center(
-                  child: controller.isDataEmtpy.value || controller.sessionRating.value.data!.isEmpty ? const SizedBox() : const CircularProgressIndicator(),
+                  child: controller.isDataEmtpy.value ? const EmptyPage() : const CircularProgressIndicator(),
                 )
               ],
             );

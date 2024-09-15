@@ -10,6 +10,8 @@ class Setting with _$Setting  {
     @Default(LangType.en) LangType language,
     @Default(false) bool isNotification,
     @Default('') String apnsToken,
+    @Default(false) bool photoAccessDenied,
+    @Default(false) bool cameraAccessDenied,
   }) = _Setting;
   
     factory Setting.fromJson(Map<String, Object?> json)

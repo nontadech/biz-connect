@@ -34,13 +34,24 @@ class HomeSlide extends StatelessWidget {
         date: list[i].date!,
         showPrivate: showPrivate,
         onTap: () {
-          context.push(
-            '/popular_event', 
-            extra: {
-              'event' :list[i],
-              'is_private': showPrivate
-            }
-          );
+          if(list[i].is_register == "Y"){
+            context.push(
+              '/join', 
+              extra: {
+                'event' :list[i]
+              }
+            );
+            return;
+          }else{
+            context.push(
+              '/popular_event', 
+              extra: {
+                'event' :list[i],
+                'is_private': showPrivate
+              }
+            );
+          }
+      
         },
         onTapHeart: () {
           final homeC = HomeController.call;

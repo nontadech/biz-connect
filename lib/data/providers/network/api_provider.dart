@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 import 'dart:io';
 import 'package:biz_connect/data/models/body_model.dart';
 import 'package:biz_connect/data/providers/network/api_request_representable.dart';
@@ -45,7 +44,6 @@ class APIProvider {
       if(body.success){
          return response.body;
       }else{
-
         if(body.status == 401){
           final authC = AuthController.call;
           authC.logout();

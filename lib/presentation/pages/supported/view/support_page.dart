@@ -1,3 +1,4 @@
+
 import 'package:biz_connect/presentation/pages/supported/controllers/controllers.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -28,17 +29,18 @@ class SupportPage extends GetView<SupportController> {
           child: GetX(
             init: controller,
             initState: (_){
+              controller.isLoading(false);
               controller.getPartners(eventId);
             },
             builder: (_){
-              if(!controller.isLoading.value){
+              if(!controller.isLoading.value || controller.isDataEmtpy.value){
                 return Column(
                   children: [
                     const SizedBox(
                       height: 200,
                     ),
                     Center(
-                      child: controller.isDataEmtpy.value ? const SizedBox() : const CircularProgressIndicator(),
+                      child: controller.isDataEmtpy.value ? const EmptyPage() : const CircularProgressIndicator(),
                     )
                   ],
                 );

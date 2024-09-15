@@ -33,44 +33,42 @@ class ProfileController extends GetxController {
     final imageC = ImageController.call;
     LoadingBinding().dependencies();
     final loadingC = LoadingController.call;
-      // try {
-
-        String? image = await imageC.pickedImg(imageSource);
-        if(image != '' && image != null){
-          if(image != 'permission_denied') {
-            popupLoading(context.value);
-            UserAttendee user = await _profileUseCase.setImageProfile(image);
-            Attendee attendee = store.user!.data!.attendee!.copyWith(
-              profile: user.data!.profile
-            );      
-            store.user = store.user!.copyWith(data: store.user!.data!.copyWith(attendee: attendee));
-            fechData(attendee);
-            Navigator.pop(loadingC.buildContext.value);
-            popupStatus(
-              context.value, 
-              PopupStatusType.sucess, 
-              message: user.message.toString(),
-              onPressed:() {
-                context.value.pop();
-              },
-            );
-          }
-        }else{
-          // Navigator.pop(loadingC.buildContext.value);
+    try {
+      String? image = await imageC.pickedImg(imageSource);
+      if(image != '' && image != null){
+        if(image != 'permission_denied') {
+          popupLoading(context.value);
+          UserAttendee user = await _profileUseCase.setImageProfile(image);
+          Attendee attendee = store.user!.data!.attendee!.copyWith(
+            profile: user.data!.profile
+          );      
+          store.user = store.user!.copyWith(data: store.user!.data!.copyWith(attendee: attendee));
+          fechData(attendee);
+          Navigator.pop(loadingC.buildContext.value);
           popupStatus(
             context.value, 
-            PopupStatusType.error, 
-            message: 'Error to save image',
+            PopupStatusType.sucess, 
+            message: user.message.toString(),
             onPressed:() {
               context.value.pop();
             },
           );
         }
-      // } catch (error) {
-      //   Navigator.pop(loadingC.buildContext.value);
-      //   context.value.pop();
-      //   log('error ${error.toString()}');
-      // }
-    // }
+      }else{
+        // Navigator.pop(loadingC.buildContext.value);
+        popupStatus(
+          context.value, 
+          PopupStatusType.error, 
+          message: 'Error to save image',
+          onPressed:() {
+            context.value.pop();
+          },
+        );
+      }
+    } catch (error) {
+      Navigator.pop(loadingC.buildContext.value);
+      context.value.pop();
+      log('error ${error.toString()}');
+    }
   }
 }

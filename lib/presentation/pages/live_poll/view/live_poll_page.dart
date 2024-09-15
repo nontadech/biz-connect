@@ -67,14 +67,14 @@ class LivePollPage extends GetView<LivePollController> {
               controller.getZone(eventId);
             },
             builder: (_){
-               if(!controller.isLoading.value){
+               if(!controller.isLoading.value || controller.isDataEmtpy.value){
                 return Column(
                   children: [
                     const SizedBox(
                       height: 200,
                     ),
                     Center(
-                      child: controller.isDataEmtpy.value ? const SizedBox() : const CircularProgressIndicator(),
+                      child: controller.isDataEmtpy.value ? const EmptyPage() : const CircularProgressIndicator(),
                     )
                   ],
                 );

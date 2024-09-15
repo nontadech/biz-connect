@@ -36,7 +36,7 @@ class PopularEventDetail extends StatelessWidget {
     popularEventC.eventPermission.value = null;
     popularEventC.isFavorite(event.is_favorite);
     if(authC.isLoggedIn.value){
-       popularEventC.getFavoriteEventDetail(event.event_id!);
+      popularEventC.getFavoriteEventDetail(event.event_id!);
     }
     return Stack(
       children: [
@@ -167,38 +167,45 @@ class PopularEventDetail extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(height: 20),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                ButtonIcon(
-                                  icon: SvgPicture.asset('assets/icons/agenda.svg'),
-                                  onPressed: () {
-                                    if(popularEventC.eventPermission.value!.data!.attendee_has_ticket!){
-                                      context.push('/join/agenda', 
-                                        extra: {
-                                          'event_id': event.event_id,
-                                        }
-                                      );
-                                    }
-                                  },
-                                  text: 'Agenda',
-                                ),
-                                SizedBox(width: 8.w),
-                                ButtonIcon(
-                                  icon: SvgPicture.asset('assets/icons/people.svg'),
-                                  onPressed: () { 
-                                    if(popularEventC.eventPermission.value!.data!.attendee_has_ticket!){
-                                      context.push('/join/speakers', 
-                                        extra: {
-                                          'event_id': event.event_id,
-                                        }
-                                      );
-                                    }
-                                  },
-                                  text: 'Speaker',
-                                ),
-                              ],
-                            ),
+                            Obx(() {
+                              if(popularEventC.eventPermission.value == null){
+                                return const SizedBox();
+                              }
+                              return Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  ButtonIcon(
+                                    icon: SvgPicture.asset('assets/icons/agenda.svg'),
+                                    isDisabled: popularEventC.eventPermission.value!.data!.attendee_has_ticket! ? false : true,
+                                    onPressed: () {
+                                      if(popularEventC.eventPermission.value!.data!.attendee_has_ticket!){
+                                        context.push('/join/agenda', 
+                                          extra: {
+                                            'event_id': event.event_id,
+                                          }
+                                        );
+                                      }
+                                    },
+                                    text: 'Agenda',
+                                  ),
+                                  SizedBox(width: 8.w),
+                                  ButtonIcon(
+                                    icon: SvgPicture.asset('assets/icons/people.svg'),
+                                    isDisabled: popularEventC.eventPermission.value!.data!.attendee_has_ticket! ? false : true,
+                                    onPressed: () { 
+                                      if(popularEventC.eventPermission.value!.data!.attendee_has_ticket!){
+                                        context.push('/join/speakers', 
+                                          extra: {
+                                            'event_id': event.event_id,
+                                          }
+                                        );
+                                      }
+                                    },
+                                    text: 'Speaker',
+                                  ),
+                                ],
+                              );
+                            }),
                             const SizedBox(height: 25),
                             TextCustom(
                               text: 'Information', 
@@ -312,33 +319,45 @@ class PopularEventDetail extends StatelessWidget {
           ),
         ),
         Obx(() {
-          return Positioned(
+          if(authC.isLoggedIn.value){
+            popularEventC.getEventPermission(event.event_id!);
+            if(popularEventC.eventPermission.value == null){
+              return const SizedBox();
+            }
+            return Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: !popularEventC.eventPermission.value!.data!.attendee_has_ticket! ? ButtonPositionBottom(
+                text: 'Register now',
+                onPressed: () {
+                  context.push(
+                    '/web_view',
+                    extra: {
+                      'title': 'Event Detail',
+                      'url': '${dotenv.get('BASE_URL')}/e/${event.event_id}/embed',
+                      'event_id': event.event_id,
+                    }
+                  );
+                }
+              ) : ButtonPositionBottom(
+                text: 'View Ticket',
+                onPressed: () {
+                  context.push(
+                    '/my_ticket',
+                    extra: {
+                      'event_id': event.event_id,
+                    }
+                  );
+                }
+              )
+            );
+          }else{
+            return  Positioned(
             bottom: 0,
             left: 0,
             right: 0,
-            child: authC.isLoggedIn.value ? !popularEventC.eventPermission.value!.data!.attendee_has_ticket! ? ButtonPositionBottom(
-              text: 'Register now',
-              onPressed: () {
-                context.push(
-                  '/web_view',
-                  extra: {
-                    'title': 'Event Detail',
-                    'url': '${dotenv.get('BASE_URL')}/e/${event.event_id}/embed',
-                    'event_id': event.event_id,
-                  }
-                );
-              }
-            ) : ButtonPositionBottom(
-              text: 'View Ticket',
-              onPressed: () {
-                context.push(
-                  '/my_ticket',
-                  extra: {
-                    'event_id': event.event_id,
-                  }
-                );
-              }
-            ) : ButtonPositionBottom(
+            child: ButtonPositionBottom(
                 text: 'Sign in',
                 onPressed: () {
                   context.push(
@@ -346,9 +365,10 @@ class PopularEventDetail extends StatelessWidget {
                   );
                 }
               )
-            ); 
+            );
           }
-        )
+        }
+        ),
       ]
     );
   }

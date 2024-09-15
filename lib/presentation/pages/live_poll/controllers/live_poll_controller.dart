@@ -149,7 +149,13 @@ class LivePollController extends GetxController {
             page++;
           }
           maxPage(poll.value.data!.length-1);
+        
           isLoadingPoll(true);
+        }else{
+           isDataEmtpyPoll(true);
+        }
+        if(poll.value.data!.isEmpty){
+          isDataEmtpyPoll(true);
         }
       });
 

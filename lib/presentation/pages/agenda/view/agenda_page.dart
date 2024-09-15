@@ -66,7 +66,7 @@ class AgendaPage extends GetView<AgendaController> {
         );
       },
       builder: (_) {
-        if(!controller.isLoading.value) {
+        if(!controller.isLoading.value || controller.isDataEmtpy.value) {
           return Scaffold(
             resizeToAvoidBottomInset: false,
             appBar: AppBarAgenda(
@@ -80,7 +80,7 @@ class AgendaPage extends GetView<AgendaController> {
                   height: 200,
                 ),
                 Center(
-                  child: controller.isDataEmtpy.value ?  const SizedBox() : const CircularProgressIndicator(),
+                  child: controller.isDataEmtpy.value ?  const EmptyPage() : const CircularProgressIndicator(),
                 )
               ],
             )

@@ -16,6 +16,9 @@ class GalleryController extends GetxController {
     isDataEmtpy(false);
     try {
       gallery.value = await _galleryUseCase.execute(eventId);
+      if(gallery.value.data!.isEmpty){
+        isDataEmtpy(true);
+      }
       isLoading(true);
     } catch (error) {
       isDataEmtpy(true);

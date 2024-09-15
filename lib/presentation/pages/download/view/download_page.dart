@@ -65,44 +65,47 @@ class DownloadsPage extends GetView<DownloadController> {
                     controller.getEventFile(eventId);
                   },
                   builder: (_){
-                    if(!controller.isLoading.value){
+                    if(!controller.isLoading.value || controller.isDataEmtpy.value){
                       return Column(
                         children: [
                           const SizedBox(
                             height: 200,
                           ),
                           Center(
-                            child: controller.isDataEmtpy.value ? const SizedBox() : const CircularProgressIndicator(),
+                            child: controller.isDataEmtpy.value ? const EmptyPage() : const CircularProgressIndicator(),
                           )
                         ],
                       );
                     }
-                    return getCard(context);
+                    return  getCard(context);
                 })
               ),
             ),
           ),
-          Positioned(
-            bottom: 40,
-            left: 25,
-            right: 25,
-            child: ElevatedButtonCustom(
-              text: 'SEND ALL FILES TO YOUR EMAIL',
-              onPressed: () {
-                sendEmail(context, eventId);
-                WidgetsBinding.instance.addPostFrameCallback((_){
-                  try {
-                    
-                  } catch (error) {
-                    popupStatus(
-                      context, 
-                      PopupStatusType.error,
-                      message: 'Error: ${error.toString()}',
-                    );
-                  }
-                });
-              }
-            ),
+          Obx(() => !controller.isLoading.value ? 
+            const SizedBox() : 
+            !controller.isDataEmtpy.value ? Positioned(
+              bottom: 40,
+              left: 25,
+              right: 25,
+              child: ElevatedButtonCustom(
+                text: 'SEND ALL FILES TO YOUR EMAIL',
+                onPressed: () {
+                  sendEmail(context, eventId);
+                  WidgetsBinding.instance.addPostFrameCallback((_){
+                    try {
+                      
+                    } catch (error) {
+                      popupStatus(
+                        context, 
+                        PopupStatusType.error,
+                        message: 'Error: ${error.toString()}',
+                      );
+                    }
+                  });
+                }
+              )
+            ) : const SizedBox()
           )
         ],
       )

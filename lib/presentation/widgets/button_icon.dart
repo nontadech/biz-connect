@@ -6,12 +6,15 @@ class ButtonIcon extends StatelessWidget {
   final Widget icon;
   final VoidCallback onPressed;
   final String text;
+  final bool isDisabled;
 
   const ButtonIcon({
     super.key,
     required this.icon,
     required this.onPressed,
     required this.text,
+    this.isDisabled = false
+
   });
 
   @override
@@ -19,11 +22,11 @@ class ButtonIcon extends StatelessWidget {
     return ElevatedButton(
       style: ButtonStyle(
         foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
-        backgroundColor: WidgetStateProperty.all<Color>(const Color(0xff56BED6)),
+        backgroundColor:  isDisabled ? WidgetStateProperty.all<Color>(const Color(0xffEAF4FF)) : WidgetStateProperty.all<Color>(const Color(0xff56BED6)),
         shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-          const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(100)),
-            side: BorderSide(color: Color(0xff56BED6))
+          RoundedRectangleBorder(
+            borderRadius: const BorderRadius.all(Radius.circular(100)),
+            side: isDisabled ? const BorderSide(color: Color(0xffEAF4FF)) :const BorderSide(color: Color(0xff56BED6))
           )
         )
       ),

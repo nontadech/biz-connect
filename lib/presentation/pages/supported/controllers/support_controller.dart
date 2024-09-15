@@ -16,6 +16,9 @@ class SupportController extends GetxController {
      isDataEmtpy(false);
     try {
       partners.value = await _supportUseCase.execute(eventId);
+      if(partners.value.data!.group_left!.member_list.isEmpty){
+        isDataEmtpy(true);
+      }
       isLoading(true);
     } catch (error) {
       isDataEmtpy(true);

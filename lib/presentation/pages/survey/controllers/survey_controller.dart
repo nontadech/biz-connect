@@ -52,7 +52,9 @@ class SurveyController extends GetxController {
           agendaId: 0
         )
       );
-      log(sessionRating.value.data!.length.toString());
+     if(sessionRating.value.data!.isEmpty){
+        isDataEmtpy(true);
+      }
       maxPage.value = sessionRating.value.data!.length;
       isLoading(true);
     } catch (error) {

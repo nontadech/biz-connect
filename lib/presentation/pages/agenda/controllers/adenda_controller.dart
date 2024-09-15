@@ -27,6 +27,9 @@ class AgendaController extends GetxController {
     try {
       eventId.value = joinAgendaInput.eventId;
       agenda.value = await _agendaUseCase.execute(joinAgendaInput);
+      if(agenda.value.sessions.isEmpty){
+        isDataEmtpy(true);
+      }
       filterSession();
       isLoading(true);
     } catch (error) {

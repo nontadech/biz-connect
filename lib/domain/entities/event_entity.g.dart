@@ -36,6 +36,7 @@ _$EventListImpl _$$EventListImplFromJson(Map<String, dynamic> json) =>
       company: json['company'] as String? ?? "",
       location: json['location'] as String? ?? "",
       is_favorite: json['is_favorite'] as bool? ?? false,
+      is_register: json['is_register'] as String? ?? "N",
     );
 
 Map<String, dynamic> _$$EventListImplToJson(_$EventListImpl instance) =>
@@ -68,6 +69,7 @@ Map<String, dynamic> _$$EventListImplToJson(_$EventListImpl instance) =>
       'company': instance.company,
       'location': instance.location,
       'is_favorite': instance.is_favorite,
+      'is_register': instance.is_register,
     };
 
 _$EventDataImpl _$$EventDataImplFromJson(Map<String, dynamic> json) =>

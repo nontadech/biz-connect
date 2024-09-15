@@ -23,6 +23,8 @@ mixin _$Setting {
   LangType get language => throw _privateConstructorUsedError;
   bool get isNotification => throw _privateConstructorUsedError;
   String get apnsToken => throw _privateConstructorUsedError;
+  bool get photoAccessDenied => throw _privateConstructorUsedError;
+  bool get cameraAccessDenied => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +36,12 @@ abstract class $SettingCopyWith<$Res> {
   factory $SettingCopyWith(Setting value, $Res Function(Setting) then) =
       _$SettingCopyWithImpl<$Res, Setting>;
   @useResult
-  $Res call({LangType language, bool isNotification, String apnsToken});
+  $Res call(
+      {LangType language,
+      bool isNotification,
+      String apnsToken,
+      bool photoAccessDenied,
+      bool cameraAccessDenied});
 }
 
 /// @nodoc
@@ -53,6 +60,8 @@ class _$SettingCopyWithImpl<$Res, $Val extends Setting>
     Object? language = null,
     Object? isNotification = null,
     Object? apnsToken = null,
+    Object? photoAccessDenied = null,
+    Object? cameraAccessDenied = null,
   }) {
     return _then(_value.copyWith(
       language: null == language
@@ -67,6 +76,14 @@ class _$SettingCopyWithImpl<$Res, $Val extends Setting>
           ? _value.apnsToken
           : apnsToken // ignore: cast_nullable_to_non_nullable
               as String,
+      photoAccessDenied: null == photoAccessDenied
+          ? _value.photoAccessDenied
+          : photoAccessDenied // ignore: cast_nullable_to_non_nullable
+              as bool,
+      cameraAccessDenied: null == cameraAccessDenied
+          ? _value.cameraAccessDenied
+          : cameraAccessDenied // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -78,7 +95,12 @@ abstract class _$$SettingImplCopyWith<$Res> implements $SettingCopyWith<$Res> {
       __$$SettingImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({LangType language, bool isNotification, String apnsToken});
+  $Res call(
+      {LangType language,
+      bool isNotification,
+      String apnsToken,
+      bool photoAccessDenied,
+      bool cameraAccessDenied});
 }
 
 /// @nodoc
@@ -95,6 +117,8 @@ class __$$SettingImplCopyWithImpl<$Res>
     Object? language = null,
     Object? isNotification = null,
     Object? apnsToken = null,
+    Object? photoAccessDenied = null,
+    Object? cameraAccessDenied = null,
   }) {
     return _then(_$SettingImpl(
       language: null == language
@@ -109,6 +133,14 @@ class __$$SettingImplCopyWithImpl<$Res>
           ? _value.apnsToken
           : apnsToken // ignore: cast_nullable_to_non_nullable
               as String,
+      photoAccessDenied: null == photoAccessDenied
+          ? _value.photoAccessDenied
+          : photoAccessDenied // ignore: cast_nullable_to_non_nullable
+              as bool,
+      cameraAccessDenied: null == cameraAccessDenied
+          ? _value.cameraAccessDenied
+          : cameraAccessDenied // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -119,7 +151,9 @@ class _$SettingImpl implements _Setting {
   _$SettingImpl(
       {this.language = LangType.en,
       this.isNotification = false,
-      this.apnsToken = ''});
+      this.apnsToken = '',
+      this.photoAccessDenied = false,
+      this.cameraAccessDenied = false});
 
   factory _$SettingImpl.fromJson(Map<String, dynamic> json) =>
       _$$SettingImplFromJson(json);
@@ -133,10 +167,16 @@ class _$SettingImpl implements _Setting {
   @override
   @JsonKey()
   final String apnsToken;
+  @override
+  @JsonKey()
+  final bool photoAccessDenied;
+  @override
+  @JsonKey()
+  final bool cameraAccessDenied;
 
   @override
   String toString() {
-    return 'Setting(language: $language, isNotification: $isNotification, apnsToken: $apnsToken)';
+    return 'Setting(language: $language, isNotification: $isNotification, apnsToken: $apnsToken, photoAccessDenied: $photoAccessDenied, cameraAccessDenied: $cameraAccessDenied)';
   }
 
   @override
@@ -149,13 +189,17 @@ class _$SettingImpl implements _Setting {
             (identical(other.isNotification, isNotification) ||
                 other.isNotification == isNotification) &&
             (identical(other.apnsToken, apnsToken) ||
-                other.apnsToken == apnsToken));
+                other.apnsToken == apnsToken) &&
+            (identical(other.photoAccessDenied, photoAccessDenied) ||
+                other.photoAccessDenied == photoAccessDenied) &&
+            (identical(other.cameraAccessDenied, cameraAccessDenied) ||
+                other.cameraAccessDenied == cameraAccessDenied));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, language, isNotification, apnsToken);
+  int get hashCode => Object.hash(runtimeType, language, isNotification,
+      apnsToken, photoAccessDenied, cameraAccessDenied);
 
   @JsonKey(ignore: true)
   @override
@@ -175,7 +219,9 @@ abstract class _Setting implements Setting {
   factory _Setting(
       {final LangType language,
       final bool isNotification,
-      final String apnsToken}) = _$SettingImpl;
+      final String apnsToken,
+      final bool photoAccessDenied,
+      final bool cameraAccessDenied}) = _$SettingImpl;
 
   factory _Setting.fromJson(Map<String, dynamic> json) = _$SettingImpl.fromJson;
 
@@ -185,6 +231,10 @@ abstract class _Setting implements Setting {
   bool get isNotification;
   @override
   String get apnsToken;
+  @override
+  bool get photoAccessDenied;
+  @override
+  bool get cameraAccessDenied;
   @override
   @JsonKey(ignore: true)
   _$$SettingImplCopyWith<_$SettingImpl> get copyWith =>

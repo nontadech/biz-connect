@@ -37,6 +37,7 @@ class EventList with _$EventList  {
     @Default("") String? company,
     @Default("") String? location,
     @Default(false) bool is_favorite,
+    @Default("N") String? is_register,  
   }) = _EventList;
     factory EventList.fromJson(Map<String, Object?> json)
       => _$EventListFromJson(json);

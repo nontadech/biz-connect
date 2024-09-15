@@ -48,6 +48,7 @@ mixin _$EventList {
   String? get company => throw _privateConstructorUsedError;
   String? get location => throw _privateConstructorUsedError;
   bool get is_favorite => throw _privateConstructorUsedError;
+  String? get is_register => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -88,7 +89,8 @@ abstract class $EventListCopyWith<$Res> {
       String? company_info,
       String? company,
       String? location,
-      bool is_favorite});
+      bool is_favorite,
+      String? is_register});
 }
 
 /// @nodoc
@@ -132,6 +134,7 @@ class _$EventListCopyWithImpl<$Res, $Val extends EventList>
     Object? company = freezed,
     Object? location = freezed,
     Object? is_favorite = null,
+    Object? is_register = freezed,
   }) {
     return _then(_value.copyWith(
       event_id: freezed == event_id
@@ -246,6 +249,10 @@ class _$EventListCopyWithImpl<$Res, $Val extends EventList>
           ? _value.is_favorite
           : is_favorite // ignore: cast_nullable_to_non_nullable
               as bool,
+      is_register: freezed == is_register
+          ? _value.is_register
+          : is_register // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -286,7 +293,8 @@ abstract class _$$EventListImplCopyWith<$Res>
       String? company_info,
       String? company,
       String? location,
-      bool is_favorite});
+      bool is_favorite,
+      String? is_register});
 }
 
 /// @nodoc
@@ -328,6 +336,7 @@ class __$$EventListImplCopyWithImpl<$Res>
     Object? company = freezed,
     Object? location = freezed,
     Object? is_favorite = null,
+    Object? is_register = freezed,
   }) {
     return _then(_$EventListImpl(
       event_id: freezed == event_id
@@ -442,6 +451,10 @@ class __$$EventListImplCopyWithImpl<$Res>
           ? _value.is_favorite
           : is_favorite // ignore: cast_nullable_to_non_nullable
               as bool,
+      is_register: freezed == is_register
+          ? _value.is_register
+          : is_register // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -477,7 +490,8 @@ class _$EventListImpl implements _EventList {
       this.company_info,
       this.company = "",
       this.location = "",
-      this.is_favorite = false});
+      this.is_favorite = false,
+      this.is_register = "N"});
 
   factory _$EventListImpl.fromJson(Map<String, dynamic> json) =>
       _$$EventListImplFromJson(json);
@@ -549,10 +563,13 @@ class _$EventListImpl implements _EventList {
   @override
   @JsonKey()
   final bool is_favorite;
+  @override
+  @JsonKey()
+  final String? is_register;
 
   @override
   String toString() {
-    return 'EventList(event_id: $event_id, news_id: $news_id, category_title: $category_title, title: $title, description: $description, thumnail: $thumnail, image_display: $image_display, location_name: $location_name, location_lat: $location_lat, location_lng: $location_lng, date: $date, date_end: $date_end, start_time: $start_time, end_time: $end_time, show_information: $show_information, show_register: $show_register, event_url: $event_url, link_url: $link_url, venue_name: $venue_name, venue_tel: $venue_tel, venue_email: $venue_email, direction_taxi: $direction_taxi, direction_bts: $direction_bts, direction_foot: $direction_foot, company_info: $company_info, company: $company, location: $location, is_favorite: $is_favorite)';
+    return 'EventList(event_id: $event_id, news_id: $news_id, category_title: $category_title, title: $title, description: $description, thumnail: $thumnail, image_display: $image_display, location_name: $location_name, location_lat: $location_lat, location_lng: $location_lng, date: $date, date_end: $date_end, start_time: $start_time, end_time: $end_time, show_information: $show_information, show_register: $show_register, event_url: $event_url, link_url: $link_url, venue_name: $venue_name, venue_tel: $venue_tel, venue_email: $venue_email, direction_taxi: $direction_taxi, direction_bts: $direction_bts, direction_foot: $direction_foot, company_info: $company_info, company: $company, location: $location, is_favorite: $is_favorite, is_register: $is_register)';
   }
 
   @override
@@ -611,7 +628,9 @@ class _$EventListImpl implements _EventList {
             (identical(other.location, location) ||
                 other.location == location) &&
             (identical(other.is_favorite, is_favorite) ||
-                other.is_favorite == is_favorite));
+                other.is_favorite == is_favorite) &&
+            (identical(other.is_register, is_register) ||
+                other.is_register == is_register));
   }
 
   @JsonKey(ignore: true)
@@ -645,7 +664,8 @@ class _$EventListImpl implements _EventList {
         company_info,
         company,
         location,
-        is_favorite
+        is_favorite,
+        is_register
       ]);
 
   @JsonKey(ignore: true)
@@ -691,7 +711,8 @@ abstract class _EventList implements EventList {
       final String? company_info,
       final String? company,
       final String? location,
-      final bool is_favorite}) = _$EventListImpl;
+      final bool is_favorite,
+      final String? is_register}) = _$EventListImpl;
 
   factory _EventList.fromJson(Map<String, dynamic> json) =
       _$EventListImpl.fromJson;
@@ -752,6 +773,8 @@ abstract class _EventList implements EventList {
   String? get location;
   @override
   bool get is_favorite;
+  @override
+  String? get is_register;
   @override
   @JsonKey(ignore: true)
   _$$EventListImplCopyWith<_$EventListImpl> get copyWith =>
