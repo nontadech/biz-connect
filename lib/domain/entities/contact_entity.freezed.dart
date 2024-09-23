@@ -30,7 +30,7 @@ mixin _$ContactData {
   String? get profile_image => throw _privateConstructorUsedError;
   List<UserInterest>? get user_interest => throw _privateConstructorUsedError;
   String? get industry_sector => throw _privateConstructorUsedError;
-  int? get attendee_id => throw _privateConstructorUsedError;
+  dynamic get attendee_id => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -55,7 +55,7 @@ abstract class $ContactDataCopyWith<$Res> {
       String? profile_image,
       List<UserInterest>? user_interest,
       String? industry_sector,
-      int? attendee_id});
+      dynamic attendee_id});
 }
 
 /// @nodoc
@@ -127,7 +127,7 @@ class _$ContactDataCopyWithImpl<$Res, $Val extends ContactData>
       attendee_id: freezed == attendee_id
           ? _value.attendee_id
           : attendee_id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as dynamic,
     ) as $Val);
   }
 }
@@ -151,7 +151,7 @@ abstract class _$$ContactDataImplCopyWith<$Res>
       String? profile_image,
       List<UserInterest>? user_interest,
       String? industry_sector,
-      int? attendee_id});
+      dynamic attendee_id});
 }
 
 /// @nodoc
@@ -221,7 +221,7 @@ class __$$ContactDataImplCopyWithImpl<$Res>
       attendee_id: freezed == attendee_id
           ? _value.attendee_id
           : attendee_id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as dynamic,
     ));
   }
 }
@@ -240,7 +240,7 @@ class _$ContactDataImpl implements _ContactData {
       this.profile_image = '',
       final List<UserInterest>? user_interest = const [],
       this.industry_sector = '',
-      this.attendee_id})
+      this.attendee_id = 0})
       : _user_interest = user_interest;
 
   factory _$ContactDataImpl.fromJson(Map<String, dynamic> json) =>
@@ -284,7 +284,8 @@ class _$ContactDataImpl implements _ContactData {
   @JsonKey()
   final String? industry_sector;
   @override
-  final int? attendee_id;
+  @JsonKey()
+  final dynamic attendee_id;
 
   @override
   String toString() {
@@ -312,8 +313,8 @@ class _$ContactDataImpl implements _ContactData {
                 .equals(other._user_interest, _user_interest) &&
             (identical(other.industry_sector, industry_sector) ||
                 other.industry_sector == industry_sector) &&
-            (identical(other.attendee_id, attendee_id) ||
-                other.attendee_id == attendee_id));
+            const DeepCollectionEquality()
+                .equals(other.attendee_id, attendee_id));
   }
 
   @JsonKey(ignore: true)
@@ -330,7 +331,7 @@ class _$ContactDataImpl implements _ContactData {
       profile_image,
       const DeepCollectionEquality().hash(_user_interest),
       industry_sector,
-      attendee_id);
+      const DeepCollectionEquality().hash(attendee_id));
 
   @JsonKey(ignore: true)
   @override
@@ -358,7 +359,7 @@ abstract class _ContactData implements ContactData {
       final String? profile_image,
       final List<UserInterest>? user_interest,
       final String? industry_sector,
-      final int? attendee_id}) = _$ContactDataImpl;
+      final dynamic attendee_id}) = _$ContactDataImpl;
 
   factory _ContactData.fromJson(Map<String, dynamic> json) =
       _$ContactDataImpl.fromJson;
@@ -384,7 +385,7 @@ abstract class _ContactData implements ContactData {
   @override
   String? get industry_sector;
   @override
-  int? get attendee_id;
+  dynamic get attendee_id;
   @override
   @JsonKey(ignore: true)
   _$$ContactDataImplCopyWith<_$ContactDataImpl> get copyWith =>

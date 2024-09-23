@@ -24,6 +24,7 @@ class MyContactController extends GetxController {
       isDataEmtpy(contact.value.contact_list.isEmpty);
       isLoading(true);
     } catch (error) {
+      isLoading(true);
       isDataEmtpy(true);
       log('error ${error.toString()}');
     }

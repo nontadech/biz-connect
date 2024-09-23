@@ -18,7 +18,7 @@ class ContactData with _$ContactData  {
     @Default('') String? profile_image,
     @Default([]) List<UserInterest>? user_interest,
     @Default('') String? industry_sector,
-    int? attendee_id
+    @Default(0) dynamic attendee_id
   }) = _ContactData;
   factory ContactData.fromJson(Map<String, Object?> json)
       => _$ContactDataFromJson(json);

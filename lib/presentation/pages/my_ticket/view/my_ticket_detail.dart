@@ -72,7 +72,7 @@ class MyTicketDetail extends GetView<MyTicketController> {
                                   Center(
                                     child: TextCustom(
                                       textAlign: TextAlign.center,
-                                      text: 'Bizconnect',
+                                      text: 'BizConnect',
                                       color: const Color(0xff13315F),
                                       fontSize: FontSize.h4,
                                       fontWeight: FontWeight.w600,

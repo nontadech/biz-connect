@@ -21,7 +21,7 @@ _$ContactDataImpl _$$ContactDataImplFromJson(Map<String, dynamic> json) =>
               .toList() ??
           const [],
       industry_sector: json['industry_sector'] as String? ?? '',
-      attendee_id: (json['attendee_id'] as num?)?.toInt(),
+      attendee_id: json['attendee_id'] ?? 0,
     );
 
 Map<String, dynamic> _$$ContactDataImplToJson(_$ContactDataImpl instance) =>
