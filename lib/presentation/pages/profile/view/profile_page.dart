@@ -157,7 +157,9 @@ class ProfilePage extends GetView<ProfileController> {
                                 venue_name: privateEventc.qrPrivateEvent.value.data![0].venue_name,
                                 venue_tel: privateEventc.qrPrivateEvent.value.data![0].venue_tel,
                                 venue_email: privateEventc.qrPrivateEvent.value.data![0].venue_email!,
-                                thumnail: privateEventc.qrPrivateEvent.value.data![0].image_display
+                                thumnail: privateEventc.qrPrivateEvent.value.data![0].image_display,
+                                location_lat: privateEventc.qrPrivateEvent.value.data![0].location_lat,
+                                location_lng: privateEventc.qrPrivateEvent.value.data![0].location_lng,
                               )
                             }); 
                           }

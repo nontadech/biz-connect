@@ -1,4 +1,5 @@
 // ignore_for_file: non_constant_identifier_names
+
 import 'package:biz_connect/domain/entities/user_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'qr_entity.freezed.dart';
@@ -16,6 +17,8 @@ class QRContactData with _$QRContactData  {
     @Default('') String? position,
     @Default('') String? profile_image,
     @Default('') String? email,
+    @Default(0.0) double? location_lat,
+    @Default(0.0) double? location_lng,
     @Default([]) List<UserInterest>? user_interest,
   }) = _QRContactData;
   factory QRContactData.fromJson(Map<String, Object?> json)

@@ -28,6 +28,8 @@ mixin _$QRContactData {
   String? get position => throw _privateConstructorUsedError;
   String? get profile_image => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
+  double? get location_lat => throw _privateConstructorUsedError;
+  double? get location_lng => throw _privateConstructorUsedError;
   List<UserInterest>? get user_interest => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -51,6 +53,8 @@ abstract class $QRContactDataCopyWith<$Res> {
       String? position,
       String? profile_image,
       String? email,
+      double? location_lat,
+      double? location_lng,
       List<UserInterest>? user_interest});
 }
 
@@ -75,6 +79,8 @@ class _$QRContactDataCopyWithImpl<$Res, $Val extends QRContactData>
     Object? position = freezed,
     Object? profile_image = freezed,
     Object? email = freezed,
+    Object? location_lat = freezed,
+    Object? location_lng = freezed,
     Object? user_interest = freezed,
   }) {
     return _then(_value.copyWith(
@@ -110,6 +116,14 @@ class _$QRContactDataCopyWithImpl<$Res, $Val extends QRContactData>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
+      location_lat: freezed == location_lat
+          ? _value.location_lat
+          : location_lat // ignore: cast_nullable_to_non_nullable
+              as double?,
+      location_lng: freezed == location_lng
+          ? _value.location_lng
+          : location_lng // ignore: cast_nullable_to_non_nullable
+              as double?,
       user_interest: freezed == user_interest
           ? _value.user_interest
           : user_interest // ignore: cast_nullable_to_non_nullable
@@ -135,6 +149,8 @@ abstract class _$$QRContactDataImplCopyWith<$Res>
       String? position,
       String? profile_image,
       String? email,
+      double? location_lat,
+      double? location_lng,
       List<UserInterest>? user_interest});
 }
 
@@ -157,6 +173,8 @@ class __$$QRContactDataImplCopyWithImpl<$Res>
     Object? position = freezed,
     Object? profile_image = freezed,
     Object? email = freezed,
+    Object? location_lat = freezed,
+    Object? location_lng = freezed,
     Object? user_interest = freezed,
   }) {
     return _then(_$QRContactDataImpl(
@@ -192,6 +210,14 @@ class __$$QRContactDataImplCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
+      location_lat: freezed == location_lat
+          ? _value.location_lat
+          : location_lat // ignore: cast_nullable_to_non_nullable
+              as double?,
+      location_lng: freezed == location_lng
+          ? _value.location_lng
+          : location_lng // ignore: cast_nullable_to_non_nullable
+              as double?,
       user_interest: freezed == user_interest
           ? _value._user_interest
           : user_interest // ignore: cast_nullable_to_non_nullable
@@ -212,6 +238,8 @@ class _$QRContactDataImpl implements _QRContactData {
       this.position = '',
       this.profile_image = '',
       this.email = '',
+      this.location_lat = 0.0,
+      this.location_lng = 0.0,
       final List<UserInterest>? user_interest = const []})
       : _user_interest = user_interest;
 
@@ -241,6 +269,12 @@ class _$QRContactDataImpl implements _QRContactData {
   @override
   @JsonKey()
   final String? email;
+  @override
+  @JsonKey()
+  final double? location_lat;
+  @override
+  @JsonKey()
+  final double? location_lng;
   final List<UserInterest>? _user_interest;
   @override
   @JsonKey()
@@ -254,7 +288,7 @@ class _$QRContactDataImpl implements _QRContactData {
 
   @override
   String toString() {
-    return 'QRContactData(user_id: $user_id, first_name: $first_name, last_name: $last_name, tel: $tel, company: $company, position: $position, profile_image: $profile_image, email: $email, user_interest: $user_interest)';
+    return 'QRContactData(user_id: $user_id, first_name: $first_name, last_name: $last_name, tel: $tel, company: $company, position: $position, profile_image: $profile_image, email: $email, location_lat: $location_lat, location_lng: $location_lng, user_interest: $user_interest)';
   }
 
   @override
@@ -274,6 +308,10 @@ class _$QRContactDataImpl implements _QRContactData {
             (identical(other.profile_image, profile_image) ||
                 other.profile_image == profile_image) &&
             (identical(other.email, email) || other.email == email) &&
+            (identical(other.location_lat, location_lat) ||
+                other.location_lat == location_lat) &&
+            (identical(other.location_lng, location_lng) ||
+                other.location_lng == location_lng) &&
             const DeepCollectionEquality()
                 .equals(other._user_interest, _user_interest));
   }
@@ -290,6 +328,8 @@ class _$QRContactDataImpl implements _QRContactData {
       position,
       profile_image,
       email,
+      location_lat,
+      location_lng,
       const DeepCollectionEquality().hash(_user_interest));
 
   @JsonKey(ignore: true)
@@ -316,6 +356,8 @@ abstract class _QRContactData implements QRContactData {
       final String? position,
       final String? profile_image,
       final String? email,
+      final double? location_lat,
+      final double? location_lng,
       final List<UserInterest>? user_interest}) = _$QRContactDataImpl;
 
   factory _QRContactData.fromJson(Map<String, dynamic> json) =
@@ -337,6 +379,10 @@ abstract class _QRContactData implements QRContactData {
   String? get profile_image;
   @override
   String? get email;
+  @override
+  double? get location_lat;
+  @override
+  double? get location_lng;
   @override
   List<UserInterest>? get user_interest;
   @override

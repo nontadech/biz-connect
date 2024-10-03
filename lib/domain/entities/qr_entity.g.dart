@@ -16,6 +16,8 @@ _$QRContactDataImpl _$$QRContactDataImplFromJson(Map<String, dynamic> json) =>
       position: json['position'] as String? ?? '',
       profile_image: json['profile_image'] as String? ?? '',
       email: json['email'] as String? ?? '',
+      location_lat: (json['location_lat'] as num?)?.toDouble() ?? 0.0,
+      location_lng: (json['location_lng'] as num?)?.toDouble() ?? 0.0,
       user_interest: (json['user_interest'] as List<dynamic>?)
               ?.map((e) => UserInterest.fromJson(e as Map<String, dynamic>))
               .toList() ??
@@ -32,6 +34,8 @@ Map<String, dynamic> _$$QRContactDataImplToJson(_$QRContactDataImpl instance) =>
       'position': instance.position,
       'profile_image': instance.profile_image,
       'email': instance.email,
+      'location_lat': instance.location_lat,
+      'location_lng': instance.location_lng,
       'user_interest': instance.user_interest,
     };
 

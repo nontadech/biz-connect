@@ -1,4 +1,6 @@
 
+import 'dart:developer';
+
 import 'package:biz_connect/app/config/themes/theme.dart';
 import 'package:biz_connect/domain/entities/event_entity.dart';
 import 'package:biz_connect/presentation/controllers/auth/auth_controller.dart';
@@ -64,6 +66,7 @@ class PopularEventDetail extends GetView<PopularEventController> {
             );
           }
         }
+        log(event.toString()  );
         return Stack(
           children: [
             Container(
@@ -292,7 +295,7 @@ class PopularEventDetail extends GetView<PopularEventController> {
                               ],
                             )
                           ),
-                          SizedBox(
+                          event.location_lat != 0.0 && event.location_lng != 0.0 ?  SizedBox(
                             width: double.infinity,
                             height: 300,
                             child: FlutterMap(
@@ -326,7 +329,7 @@ class PopularEventDetail extends GetView<PopularEventController> {
                                 ),
                               ],
                             )
-                          ),
+                          ) : const SizedBox(),
                           const SizedBox(
                             height: 100,
                           )

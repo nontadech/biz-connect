@@ -471,8 +471,8 @@ class _$EventListImpl implements _EventList {
       this.thumnail = "",
       this.image_display = "",
       this.location_name = "",
-      this.location_lat,
-      this.location_lng,
+      this.location_lat = 0.0,
+      this.location_lng = 0.0,
       this.date,
       this.date_end,
       this.start_time,
@@ -518,8 +518,10 @@ class _$EventListImpl implements _EventList {
   @JsonKey()
   final String? location_name;
   @override
+  @JsonKey()
   final double? location_lat;
   @override
+  @JsonKey()
   final double? location_lng;
   @override
   final String? date;
