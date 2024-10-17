@@ -22,6 +22,7 @@ class AuthAPI implements APIRequestRepresentable {
   AuthAPI.postFCMToken() : this._(type: AuthType.postFCMToken);
 
 
+
   @override
   get body {
      switch (type) {

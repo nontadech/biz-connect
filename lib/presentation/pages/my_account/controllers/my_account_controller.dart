@@ -5,6 +5,7 @@ import 'package:biz_connect/data/models/user_model.dart';
 import 'package:biz_connect/domain/entities/event_entity.dart';
 import 'package:biz_connect/domain/entities/setting_entity.dart';
 import 'package:biz_connect/domain/entities/user_entity.dart';
+import 'package:biz_connect/domain/usecases/delete_account_use_case.dart';
 import 'package:biz_connect/domain/usecases/profile_use_case.dart';
 import 'package:biz_connect/main.dart';
 import 'package:biz_connect/presentation/controllers/auth/loading_binding.dart';
@@ -18,8 +19,9 @@ import 'package:go_router/go_router.dart';
 
 class MyAccountController extends GetxController {
   static MyAccountController get call => Get.find();
-  MyAccountController(this._profileUseCase);
+  MyAccountController(this._profileUseCase, this._deleteAccountUseCase);
   final ProfileUseCase _profileUseCase;
+  final DeleteAccountUseCase _deleteAccountUseCase;
   final store = Get.find<LocalStorageService>();
   final profileC = Get.find<ProfileController>();
   GlobalKey<FormState> myAccountFormKey = GlobalKey<FormState>();
@@ -141,5 +143,14 @@ class MyAccountController extends GetxController {
     lang(langType);
     EasyLocalization.of(NavigationService.navigatorKey.currentContext!)!.setLocale(langType == LangType.th ? const Locale('th', 'TH') : const Locale('en', 'US'));
     Get.updateLocale(langType == LangType.th ? const Locale('th', 'TH') : const Locale('en', 'US'));
+  }
+
+  Future<void>  deleteAccount() async {
+    try {
+      await _deleteAccountUseCase.execute();
+
+    } catch (error) {
+      log('error ${error.toString()}');
+    }
   }
 }

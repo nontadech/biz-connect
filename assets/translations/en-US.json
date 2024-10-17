@@ -83,5 +83,9 @@
     "Popular Event": "Popular Event",
     "You don`t have any speaker": "You don`t have any speaker",
     "You don`t have any contact": "You don`t have any contact",
-    "You don`t have any ticket": "You don`t have any ticket"
+    "You don`t have any ticket": "You don`t have any ticket",
+    "Delete Account": "Delete Account",
+    "Are you sure you want to delete your account?": "Are you sure you want to delete your account?",
+    "Delete": "Delete",
+    "CLOSE": "CLOSE"
 }

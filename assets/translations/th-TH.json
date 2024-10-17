@@ -84,5 +84,9 @@
     "Popular Event": "กิจกรรมยอดนิยม",
     "You don`t have any speaker": "คุณไม่มีวิทยากร",
     "You don`t have any contact": "คุณไม่มีข้อมูลผู้ติดต่อ",
-    "You don`t have any ticket": "คุณไม่มีบัตรเข้าร่วมงาน"
+    "You don`t have any ticket": "คุณไม่มีบัตรเข้าร่วมงาน",
+    "Delete Account": "ลบบัญชี",
+    "Are you sure you want to delete your account?": "คุณแน่ใจว่าต้องการลบบัญชีของคุณ?",
+    "Delete": "ลบ",
+    "CLOSE": "ปิด"
 }

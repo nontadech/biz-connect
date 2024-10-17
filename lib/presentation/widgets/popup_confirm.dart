@@ -2,7 +2,7 @@ import 'package:biz_connect/app/config/themes/theme.dart';
 import 'package:biz_connect/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
-Future<void> popupConfirm(BuildContext context, {String? topic, String? message, Function? onPressed}) {
+Future<void> popupConfirm(BuildContext context, {String? topic, String? message, Function? onPressed, String? textConfirm}) {
   return showDialog<void>(
     context: context,
     builder: (context) => AlertDialog(
@@ -47,7 +47,7 @@ Future<void> popupConfirm(BuildContext context, {String? topic, String? message,
                   height: 10.0,
                 ),
                 ElevatedButtonCustom(
-                  text: 'Opens Settings',
+                  text:  textConfirm ?? 'Opens Settings',
                   onPressed: () {
                     Navigator.pop(context);
                     onPressed!();

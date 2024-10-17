@@ -34,6 +34,7 @@ class AuthController extends GetxController {
       log(e.toString());
     }
   }
+
   logout() {
     store.user = null;
     isLoggedIn.value = false;

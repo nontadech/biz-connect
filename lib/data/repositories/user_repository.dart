@@ -1,3 +1,4 @@
+import 'package:biz_connect/data/models/body_model.dart';
 import 'package:biz_connect/data/models/user_model.dart';
 import 'package:biz_connect/data/providers/network/apis/user_api.dart';
 import 'package:biz_connect/domain/entities/user_entity.dart';
@@ -16,5 +17,9 @@ class UserRepositoryIml extends UserRepository {
     return UserAttendee.fromJson(response);
   }
   
- 
+  @override
+  Future<Body> deleteAccount() async {
+    final response = await UserAPI.deleteAccount().request();
+    return Body.fromJson(response);
+  }
 }

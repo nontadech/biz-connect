@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:biz_connect/app/services/local_storage.dart';
 import 'package:biz_connect/data/providers/network/api_endpoint.dart';
@@ -6,7 +7,7 @@ import 'package:biz_connect/data/providers/network/api_request_representable.dar
 import 'package:biz_connect/domain/entities/user_entity.dart';
 import 'package:get/get.dart';
 
-enum UserType { userEdit, setImageProfile, userSignUp}
+enum UserType { userEdit, setImageProfile, userSignUp, deleteAccount}
 
 class UserAPI implements APIRequestRepresentable {
   final UserType type;
@@ -20,12 +21,16 @@ class UserAPI implements APIRequestRepresentable {
 
   UserAPI.setImageProfile(String image) : this._(type: UserType.setImageProfile, image: image);
 
+  UserAPI.deleteAccount() : this._(type: UserType.deleteAccount);
+
   @override
   String get endpoint => APIEndpoint.api;
 
   @override
   String get path {
     switch (type) {
+      case UserType.deleteAccount:
+        return "/deleteAccount";
       case UserType.userEdit:
         return "/UserEdit";
       case UserType.setImageProfile:
@@ -47,6 +52,7 @@ class UserAPI implements APIRequestRepresentable {
         HttpHeaders.contentTypeHeader: 'application/json',
       };
     }
+    log('Bearer ${store.user!.data!.attendee!.api_token}');
     return {
       HttpHeaders.contentTypeHeader: 'application/json',
       HttpHeaders.authorizationHeader: 'Bearer ${store.user!.data!.attendee!.api_token}'

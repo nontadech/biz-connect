@@ -32,4 +32,5 @@ class AuthenticationRepositoryIml extends AuthenticationRepository {
     final response = await AuthAPI.postFCMToken().request();
     return Body.fromJson(response);
   }
+  
 }

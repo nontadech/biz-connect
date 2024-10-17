@@ -215,6 +215,33 @@ class MyAccountDetail extends GetView<MyAccountController>{
                   },
                   title: 'Share ny contact to others',
                 ),
+                  const SizedBox(height: 10.0),
+                
+                InkWell(
+                  onTap: () {
+                    popupConfirm(
+                      context,
+                      topic: 'Delete Account',
+                      message: 'Are you sure you want to delete your account?',
+                      textConfirm: 'Delete',
+                      onPressed:() {
+                        controller.deleteAccount();
+                        authC.logout();
+                        final layoutC = LayoutController.call;
+                        context.go('/home');
+                        layoutC.onItemTapped(AppBarPage.home);
+                      },
+                    );
+                  },
+                  child: TextCustom(
+                    text: 'Delete Account', 
+                    fontSize: FontSize.h7, 
+                    fontWeight: FontWeight.w500, 
+                    color: const Color(0xffFF3A44),
+                    decoration: TextDecoration.underline,
+                    decorationColor: const Color(0xffFF3A44),
+                  ),
+                ),  
                 const SizedBox(height: 10.0),
                 
                 InkWell(
